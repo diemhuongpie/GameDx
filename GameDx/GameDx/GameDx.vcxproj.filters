@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{7628d18e-4235-4448-840c-59c02d6d644b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{d4cee6d7-9c5a-4d12-8b24-581c0f165a67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Windows">
+      <UniqueIdentifier>{4e3482b1-f2d8-4aa8-9125-97a8da72816c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Sprite">
+      <UniqueIdentifier>{60d2c332-6e55-45b7-b661-2659a1a2bcc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Input">
+      <UniqueIdentifier>{0d656f2e-53c4-43f7-906a-398ed40f83c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Timer">
+      <UniqueIdentifier>{a8fc0df6-b5ad-4485-bf96-29f3833dd96c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\CGame">
+      <UniqueIdentifier>{6ea69618-c1e6-4951-b767-05725bd02658}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\CGame\cpp">
+      <UniqueIdentifier>{5ee5074a-bbf4-4a1d-8337-4af78347d219}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\stdafx">
+      <UniqueIdentifier>{d29b7d04-e56d-452e-a269-d0405646404e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\WinMain">
+      <UniqueIdentifier>{b88197d8-70c2-47c4-881a-b6832eabbf53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Utill">
+      <UniqueIdentifier>{2dd7cbca-8e96-422a-afd9-47ec60dfaa7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Timer\cpp">
+      <UniqueIdentifier>{141f5a45-c8f0-4b6d-a0d2-095315917746}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Windows\cpp">
+      <UniqueIdentifier>{1e52286a-7f7b-4d4f-b600-37c475325aa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Sprite\cpp">
+      <UniqueIdentifier>{a598e827-06ea-4967-9fbc-97f228c16034}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Input\cpp">
+      <UniqueIdentifier>{b253234a-9bc1-4611-9979-5bab72c0ba2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity">
+      <UniqueIdentifier>{6688b440-a067-47c7-9dcf-ef78aaa14549}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\TEST">
+      <UniqueIdentifier>{33d348d7-166c-4f50-a859-e03ef75dd5f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Typography">
+      <UniqueIdentifier>{74708610-570c-4d2e-a28d-e8d60686de04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Typography\cpp">
+      <UniqueIdentifier>{da88ffd0-eba5-4832-8a69-da61662ad17c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Camera">
+      <UniqueIdentifier>{bd18e6af-473b-4e7a-8dea-5813665e3568}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Parent">
+      <UniqueIdentifier>{63feac3a-ed7e-43b4-b24e-26ca7f21ce29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Parent\cpp">
+      <UniqueIdentifier>{a6639b3e-115e-43ef-99f7-f31ece8e1e8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Static Child">
+      <UniqueIdentifier>{4bd0e790-99b5-4248-af7e-5b6130215e9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Dynamic Child">
+      <UniqueIdentifier>{1498958d-59cd-41d3-a519-07baccbc3fc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Dynamic Child\Mod">
+      <UniqueIdentifier>{3858d857-00e7-457c-84c9-3b7b55e8f28c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Dynamic Child\Boss">
+      <UniqueIdentifier>{eb78e6ac-5650-4058-88cd-8214f64e72d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Dynamic Child\Player">
+      <UniqueIdentifier>{791a0e78-043b-444b-b2ed-5549a89c5a46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Static Child\Tile">
+      <UniqueIdentifier>{27f9bdb6-e504-46bd-bb63-5ddc67f255e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Dynamic Child\Player\cpp">
+      <UniqueIdentifier>{1a4a192d-3e9e-49ba-884d-b952a87a80b3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Class\Framework\Timer.cpp">
+      <Filter>Framework\Timer\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Game\Game.cpp">
+      <Filter>Game\CGame\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Framework\Windows.cpp">
+      <Filter>Framework\Windows\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Framework\Sprite.cpp">
+      <Filter>Framework\Sprite\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\WinMain.cpp">
+      <Filter>Game\WinMain</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Framework\KeyBoard.cpp">
+      <Filter>Framework\Input\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Test\Test.cpp">
+      <Filter>Game\TEST</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Framework\Text.cpp">
+      <Filter>Framework\Typography\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\BaseEntity.cpp">
+      <Filter>Game\Entity\Parent\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Player.cpp">
+      <Filter>Game\Entity\Dynamic Child\Player\cpp</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Class\Framework\Timer.h">
+      <Filter>Framework\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Framework\Windows.h">
+      <Filter>Framework\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Game\Game.h">
+      <Filter>Game\CGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Utill\Config.h">
+      <Filter>Game\Utill</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Utill\stdafx.h">
+      <Filter>Game\stdafx</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Framework\Sprite.h">
+      <Filter>Framework\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Framework\KeyBoard.h">
+      <Filter>Framework\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Test\Test.h">
+      <Filter>Game\TEST</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Framework\Text.h">
+      <Filter>Framework\Typography</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\BaseEntity.h">
+      <Filter>Game\Entity\Parent</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Player.h">
+      <Filter>Game\Entity\Dynamic Child\Player</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,55 @@
+/****************************************************************************/
+/* Create by Michael Le*/
+/* 07/07/2015 */
+/***************************************************************************/
+
+#ifndef __CSPRITE_H__
+#define __CSPRITE_H__
+
+#include "Game\Utill\stdafx.h"
+
+class CSprite
+{
+public:
+	static void		initSpriteHandler(LPD3DXSPRITE spriteHandler);
+public:
+	CSprite(wstring filePath, int nRows, int nColumns, int nFrames, int Index = 0);
+	CSprite(const CSprite& source);
+	~CSprite(void);
+
+	bool			Render(
+							D3DXVECTOR3 Position	= D3DXVECTOR3(0, 0, 0.5),
+							D3DXVECTOR2 scale		= D3DXVECTOR2(1.0f, 1.0f),
+							float		rotate		= 0,
+							int			draw_center = DRAWCENTER_MIDDLE_BOTTOM,
+							bool		isLoop		= true
+						  );
+
+
+	RECT			getScrRect();
+	D3DXVECTOR3		setCenter(int drawcenter);
+
+	void			Next();
+	void			Reset();
+	int				getIndex();
+	bool			isCompleted();
+
+private:
+	static LPD3DXSPRITE			m_spriteHandler;
+	static LPDIRECT3DDEVICE9	m_d3dDevice;
+	static vector<CSprite*>		m_LoadedSprite;
+
+	int							m_nRow;
+	int							m_nColumns;
+	int							m_nFrames;
+	int							m_Index;
+	D3DXIMAGE_INFO				m_Info;								// Information of image
+	D3DXIMAGE_INFO				m_FrameInfo;						// Information of frame's image
+	LPDIRECT3DTEXTURE9			m_Image;							//
+	double						m_drawTime;
+
+	//Completed for other action
+	bool						m_isCompleted;
+};
+
+#endif
