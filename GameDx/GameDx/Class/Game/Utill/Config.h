@@ -34,6 +34,11 @@
 
 #define matrix			D3DXMATRIX
 
+#define SAFE_RELEASE(A)		{if (A) {delete A; A = 0;}}
+
+#define BACKBUFFER_WIDTH	256
+#define	BACKBUFFER_HEIGHT	240
+
 /************************************/
 
 /*ENUM*/

@@ -60,15 +60,10 @@ bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int
 	position.y = (int)position.y;
 	position.z = (int)position.z;
 
-	//D3DXMatrixTranslation(&m_TranslationMatrix, 0.0f, (530.0f), 0.0f);
-	//
-	//D3DXMatrixRotationX(&m_RotationMatrix, D3DXToRadian(-180));
-
-	//D3DXMatrixMultiply(&m_TranformMatrix, &m_RotationMatrix, &m_TranslationMatrix);
-
-	////D3DXMatrixTranslation(&m_TranformMatrix, 0.0f, (m_FrameInfo.Height / 2), 0.0f);
-
-	//m_spriteHandler->SetTransform(&m_TranformMatrix);
+	m_spriteHandler->GetTransform(&m_CurrentMatrix);
+	D3DXMatrixTransformation2D(&m_TransformMatrix, &(D3DXVECTOR2)position, 0, &scale, &(D3DXVECTOR2)position, D3DXToRadian(rotate), NULL);
+	D3DXMatrixMultiply(&m_MultyMatrix, &m_TransformMatrix, &m_CurrentMatrix);
+	m_spriteHandler->SetTransform(&m_MultyMatrix);
 
 	m_spriteHandler->Draw(
 		m_Image,
@@ -78,6 +73,7 @@ bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int
 		D3DCOLOR_XRGB(255, 255, 255)
 		);
 
+	m_spriteHandler->SetTransform(&m_CurrentMatrix);
 
 	if (isLoop)
 		Next();

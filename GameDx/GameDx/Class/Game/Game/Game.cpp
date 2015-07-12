@@ -4,11 +4,11 @@
 
 CGame::CGame(HINSTANCE hInstance)
 {
-	m_Windows = new CWindows(hInstance);
+	m_Windows	= new CWindows(hInstance);
 	m_Windows->initWindowGame();
 
 	CSprite::initSpriteHandler(m_Windows->getSpriteHandler());
-	m_Keyboard = new CKeyBoard(hInstance, m_Windows->getWindowHandler());
+	m_Keyboard	= new CKeyBoard(hInstance, m_Windows->getWindowHandler());
 
 	this->initGame();
 }
@@ -25,6 +25,7 @@ void CGame::initGame()
 void CGame::updateGame()
 {
 	m_Keyboard->Update();
+	//CCamera::getInstance()->Update();
 
 	if (m_Keyboard->KeyDown(DIK_ESCAPE))
 		PostQuitMessage(0);

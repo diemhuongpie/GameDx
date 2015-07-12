@@ -52,9 +52,9 @@ private:
 	bool						m_isCompleted;
 
 	//Transform matrix
-	D3DXMATRIX					m_TranslationMatrix;
-	D3DXMATRIX					m_RotationMatrix;
-	D3DXMATRIX					m_TranformMatrix;
+	D3DXMATRIX					m_CurrentMatrix;
+	D3DXMATRIX					m_TransformMatrix;
+	D3DXMATRIX					m_MultyMatrix;
 };
 
 #endif

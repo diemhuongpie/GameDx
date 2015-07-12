@@ -8,10 +8,11 @@
 #define __CGAME_H__
 
 
-#include "Game\Utill\stdafx.h"
 #include "Framework\Windows.h"
+#include "Framework\Camera.h"
 #include "Game\Test\Test.h"
 #include "Game\Scene\MenuScene.h"
+#include "Game\Utill\stdafx.h"
 
 class CGame
 {
