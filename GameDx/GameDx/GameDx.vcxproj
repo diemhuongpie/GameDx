@@ -84,7 +84,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Class\Framework\Camera.h" />
     <ClInclude Include="Class\Framework\KeyBoard.h" />
     <ClInclude Include="Class\Framework\Sprite.h" />
     <ClInclude Include="Class\Framework\Text.h" />
@@ -100,7 +100,7 @@
     <ClInclude Include="Class\Game\Utill\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Class\Framework\Camera.cpp" />
     <ClCompile Include="Class\Framework\KeyBoard.cpp" />
     <ClCompile Include="Class\Framework\Sprite.cpp" />
     <ClCompile Include="Class\Framework\Text.cpp" />
