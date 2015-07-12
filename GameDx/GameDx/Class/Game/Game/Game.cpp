@@ -1,6 +1,7 @@
 #include "Game\Game\Game.h"
 #include "Framework\Sprite.h"
 
+
 CGame::CGame(HINSTANCE hInstance)
 {
 	m_Windows = new CWindows(hInstance);
@@ -19,12 +20,11 @@ CGame::~CGame()
 
 void CGame::initGame()
 {
-	m_Test = new Test(m_Windows->getDevice());
+	beginScene = new CMenuScene(m_Windows->getDevice());
 }
 void CGame::updateGame()
 {
 	m_Keyboard->Update();
-	m_Test->Update(m_Keyboard);
 
 	if (m_Keyboard->KeyDown(DIK_ESCAPE))
 		PostQuitMessage(0);
@@ -33,7 +33,7 @@ void CGame::updateGame()
 void CGame::renderGame()
 {
 	if (this->m_Windows->startDraw()) {
-		m_Test->Render();
+		beginScene->renderScene();
 	}
 	this->m_Windows->stopDraw();
 }

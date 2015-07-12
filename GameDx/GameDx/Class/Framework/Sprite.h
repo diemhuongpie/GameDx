@@ -13,7 +13,7 @@ class CSprite
 public:
 	static void		initSpriteHandler(LPD3DXSPRITE spriteHandler);
 public:
-	CSprite(wstring filePath, int nRows, int nColumns, int nFrames, int Index = 0);
+	CSprite(wstring filePath, int nRows = 1, int nColumns = 1, int nFrames = 1, int Index = 0);
 	CSprite(const CSprite& source);
 	~CSprite(void);
 
@@ -50,6 +50,11 @@ private:
 
 	//Completed for other action
 	bool						m_isCompleted;
+
+	//Transform matrix
+	D3DXMATRIX					m_TranslationMatrix;
+	D3DXMATRIX					m_RotationMatrix;
+	D3DXMATRIX					m_TranformMatrix;
 };
 
 #endif

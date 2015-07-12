@@ -26,6 +26,14 @@
 #define KEYBOARD_BUFFER_SIZE	1024
 #define ISKEYDOWN(keystatus) (keystatus & 0x80)
 
+#define vector3d		D3DXVECTOR3
+#define vector3dZero	D3DXVECTOR3(0.0f,0.0f,0.5f)
+#define vector2d		D3DXVECTOR2
+#define vector2dZero	D3DXVECTOR2(0.0f,0.0f)
+#define vector4d		D3DXVECTOR4
+
+#define matrix			D3DXMATRIX
+
 /************************************/
 
 /*ENUM*/
@@ -34,6 +42,15 @@ enum GAMESTATE
 	STATE_END,
 	STATE_RUN
 };
+
+
+enum CAMERASTATE
+{
+	CAMERA_NORMAL,						// with rockman, this mean is update for X asix
+	CAMERA_AUTO,						// with rockman, this mean is update for Y asix
+	CAMERA_STOP
+};
+
 
 enum KEYSTATE
 {

@@ -11,11 +11,11 @@
 
 #include "Game\Utill\stdafx.h"
 #include "Game\Game\Game.h";
+#include "Game\Scene\MenuScene.h"
 
 int CALLBACK WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 	CGame* game = new CGame(hInstance);
-
 	MSG msg;
 	ZeroMemory(&msg, sizeof(msg));
 

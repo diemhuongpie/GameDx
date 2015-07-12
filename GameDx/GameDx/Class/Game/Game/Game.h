@@ -1,15 +1,17 @@
+/****************************************************************************/
+/* Create by Michael Le*/
+/* 07/07/2015 */
+/***************************************************************************/
+
+
 #ifndef __CGAME_H__
 #define __CGAME_H__
 
 
 #include "Game\Utill\stdafx.h"
 #include "Framework\Windows.h"
-/****************************************************************************/
-/* Create by Michael Le*/
-/* 07/07/2015 */
-/***************************************************************************/
-
 #include "Game\Test\Test.h"
+#include "Game\Scene\MenuScene.h"
 
 class CGame
 {
@@ -24,7 +26,7 @@ public:
 private:
 	CWindows*		m_Windows;
 	CKeyBoard*		m_Keyboard;
-	Test*			m_Test;
+	CMenuScene*		beginScene;
 };
 
 #endif

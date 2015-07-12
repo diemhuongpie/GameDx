@@ -33,7 +33,8 @@ CSprite::CSprite(wstring filePath, int nRows, int nColumns, int nFrame, int Inde
 										D3DCOLOR_XRGB(0, 63, 63),
 										&m_Info,
 										NULL,
-										&m_Image);
+										&m_Image
+									);
 	if (hr != D3D_OK)		
 		return;
 
@@ -41,6 +42,7 @@ CSprite::CSprite(wstring filePath, int nRows, int nColumns, int nFrame, int Inde
 	this->m_FrameInfo.Height	= (int)((float)this->m_Info.Height / (float)this->m_nRow);
 	this->m_isCompleted = false;
 	this->m_drawTime = 0;
+
 }
 
 CSprite::~CSprite()
@@ -52,11 +54,21 @@ bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int
 	RECT rec;
 	rec = getScrRect();
 
-	D3DXVECTOR3 center((float)this->m_FrameInfo.Width / 2, (float)this->m_FrameInfo.Height, 0);
+	D3DXVECTOR3 center = this->setCenter(drawcenter);
 
 	position.x = (int)position.x;
 	position.y = (int)position.y;
 	position.z = (int)position.z;
+
+	//D3DXMatrixTranslation(&m_TranslationMatrix, 0.0f, (530.0f), 0.0f);
+	//
+	//D3DXMatrixRotationX(&m_RotationMatrix, D3DXToRadian(-180));
+
+	//D3DXMatrixMultiply(&m_TranformMatrix, &m_RotationMatrix, &m_TranslationMatrix);
+
+	////D3DXMatrixTranslation(&m_TranformMatrix, 0.0f, (m_FrameInfo.Height / 2), 0.0f);
+
+	//m_spriteHandler->SetTransform(&m_TranformMatrix);
 
 	m_spriteHandler->Draw(
 		m_Image,
@@ -65,6 +77,7 @@ bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int
 		&position,
 		D3DCOLOR_XRGB(255, 255, 255)
 		);
+
 
 	if (isLoop)
 		Next();
@@ -97,7 +110,7 @@ D3DXVECTOR3	CSprite::setCenter(int drawcenter)
 		break;
 	case DRAWCENTER_LEFT_BOTTOM:
 		result.x = 0;
-		result.y = this->m_FrameInfo.Height;
+		result.y = 0;
 		break;
 	case DRAWCENTER_MIDDLE_TOP:
 		result.x = this->m_FrameInfo.Width / 2.0f;

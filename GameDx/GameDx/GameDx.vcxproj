@@ -57,7 +57,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameDx\GameDx\Class;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\Git\GameDx\GameDx\Class;C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\Git\GameDx\GameDx\Resource;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -84,6 +84,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Class\Framework\KeyBoard.h" />
     <ClInclude Include="Class\Framework\Sprite.h" />
     <ClInclude Include="Class\Framework\Text.h" />
@@ -92,11 +93,14 @@
     <ClInclude Include="Class\Game\Entity\BaseEntity.h" />
     <ClInclude Include="Class\Game\Entity\Player.h" />
     <ClInclude Include="Class\Game\Game\Game.h" />
+    <ClInclude Include="Class\Game\Scene\BaseScene.h" />
+    <ClInclude Include="Class\Game\Scene\MenuScene.h" />
     <ClInclude Include="Class\Game\Test\Test.h" />
     <ClInclude Include="Class\Game\Utill\Config.h" />
     <ClInclude Include="Class\Game\Utill\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Class\Framework\KeyBoard.cpp" />
     <ClCompile Include="Class\Framework\Sprite.cpp" />
     <ClCompile Include="Class\Framework\Text.cpp" />
@@ -105,6 +109,7 @@
     <ClCompile Include="Class\Game\Entity\BaseEntity.cpp" />
     <ClCompile Include="Class\Game\Entity\Player.cpp" />
     <ClCompile Include="Class\Game\Game\Game.cpp" />
+    <ClCompile Include="Class\Game\Scene\MenuScene.cpp" />
     <ClCompile Include="Class\Game\Test\Test.cpp" />
     <ClCompile Include="Class\Game\WinMain.cpp" />
   </ItemGroup>

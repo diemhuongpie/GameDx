@@ -88,6 +88,12 @@
     <Filter Include="Game\Entity\Dynamic Child\Player\cpp">
       <UniqueIdentifier>{1a4a192d-3e9e-49ba-884d-b952a87a80b3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{de1c7e28-409b-41ea-8b2d-df67189dbc68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\cpp">
+      <UniqueIdentifier>{8f0c5e2f-c203-4485-9050-cdee4d215b4d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Class\Framework\Timer.cpp">
@@ -119,6 +125,12 @@
     </ClCompile>
     <ClCompile Include="Class\Game\Entity\Player.cpp">
       <Filter>Game\Entity\Dynamic Child\Player\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Scene\MenuScene.cpp">
+      <Filter>Scene\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Framework\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +166,15 @@
     </ClInclude>
     <ClInclude Include="Class\Game\Entity\Player.h">
       <Filter>Game\Entity\Dynamic Child\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Scene\BaseScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Scene\MenuScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Framework\Camera</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
