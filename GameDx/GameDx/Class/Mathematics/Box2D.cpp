@@ -30,6 +30,16 @@ CBox2D::CBox2D(RECT rectangle, vector2d velocity)
 	m_Velocity		= velocity;
 }
 
+CBox2D::CBox2D(float x, float y, float width, float height)
+{
+	m_Position.x	= x;
+	m_Position.y	= y;
+
+	m_Size.x		= width;
+	m_Size.y		= height;
+
+	m_Velocity		= vector2dZero;
+}
 
 CBox2D::CBox2D(LPDIRECT3DDEVICE9 device, RECT rectangle, vector2d velocity)
 {
@@ -48,6 +58,21 @@ CBox2D::CBox2D(LPDIRECT3DDEVICE9 device, RECT rectangle, vector2d velocity)
 	m_Velocity		= velocity;
 }
 
+CBox2D::CBox2D(LPDIRECT3DDEVICE9 device, vector2d pos, vector2d size, vector2d velocity)
+{
+
+	HRESULT hr = D3DXCreateLine(device, &m_line);
+
+	if (FALSE(hr))
+		return;
+
+	m_Position = pos;
+
+	m_Size.x = size.x + deltaBoundingBox.x * 2;
+	m_Size.y = size.y + deltaBoundingBox.y * 2;
+
+	m_Velocity = velocity;
+}
 
 CBox2D::~CBox2D()
 {
@@ -81,9 +106,19 @@ float	CBox2D::getHeight()
 	return m_Size.y;
 }
 
+void	CBox2D::setHeight(float param1)
+{
+	m_Size.y = param1;
+}
+
 float	CBox2D::getWidth()
 {
 	return m_Size.x;
+}
+
+void	CBox2D::setWidth(float param1)
+{
+	m_Size.x = param1;
 }
 
 float	CBox2D::getX()
@@ -91,9 +126,19 @@ float	CBox2D::getX()
 	return m_Position.x;
 }
 
+void	CBox2D::setX(float param1)
+{
+	m_Position.x = param1;
+}
+
 float	CBox2D::getY()
 {
 	return m_Position.y;
+}
+
+void	CBox2D::setY(float param1)
+{
+	m_Position.y = param1;
 }
 
 float	CBox2D::getVelocityX()
@@ -101,7 +146,17 @@ float	CBox2D::getVelocityX()
 	return m_Velocity.x;
 }
 
+void	CBox2D::setVelocityX(float param1)
+{
+	m_Velocity.x = param1;
+}
+
 float	CBox2D::getVelocityY()
 {
 	return m_Velocity.y;
+}
+
+void CBox2D::setVelocityY(float param1)
+{
+	m_Velocity.y = param1;
 }

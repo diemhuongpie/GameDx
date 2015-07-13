@@ -16,11 +16,11 @@ CAMERASTATE			CCamera::m_StateCamera				= CAMERASTATE::CAMERA_NORMAL;
 
 CCamera::CCamera()
 {
-	m_Position		= vector3d(0, 530/2, 0);
+	m_Position		= vector3d(0, BACKBUFFER_HEIGHT, 0);
 	m_ViewportX		= &m_Position.x;
 	m_ViewportY		= &m_Position.y;
 
-	setLimitRectOfCurrentMap(3000, 530/2);
+	setLimitRectOfCurrentMap(3000, BACKBUFFER_HEIGHT);
 	D3DXMatrixIdentity(&m_MatrixTransform);
 	
 }
@@ -100,6 +100,6 @@ void		CCamera::setLimitRectOfCurrentMap(float width, float height)
 {
 	this->m_LimitRect.left			= 0;
 	this->m_LimitRect.right			= this->m_LimitRect.left + width;
-	this->m_LimitRect.bottom		= 240;
+	this->m_LimitRect.bottom		= 530;
 	this->m_LimitRect.top			= this->m_LimitRect.bottom + height;
 }

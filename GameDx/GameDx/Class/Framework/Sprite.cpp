@@ -111,7 +111,7 @@ D3DXVECTOR3	CSprite::setCenter(int drawcenter)
 		break;
 	case DRAWCENTER_LEFT_BOTTOM:
 		result.x = 0;
-		result.y = 0;
+		result.y = this->m_FrameInfo.Height;
 		break;
 	case DRAWCENTER_MIDDLE_TOP:
 		result.x = this->m_FrameInfo.Width / 2.0f;

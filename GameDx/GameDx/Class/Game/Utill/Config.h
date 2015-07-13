@@ -33,8 +33,8 @@
 
 #define SAFE_RELEASE(A)		{if (A) {delete A; A = 0;}}
 
-#define BACKBUFFER_WIDTH	256
-#define	BACKBUFFER_HEIGHT	240
+#define BACKBUFFER_WIDTH	530
+#define	BACKBUFFER_HEIGHT	530
 
 #define deltaBoundingBox	vector2d(5.0f, 5.0f)
 /************************************/

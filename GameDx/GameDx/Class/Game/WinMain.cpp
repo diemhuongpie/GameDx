@@ -47,9 +47,9 @@ int CALLBACK WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR 
 
 		CTimer::getInstance()->setTime(clock() - start);
 
-		//OutputDebugString(L"FPS: ");
-		//OutputDebugString(_itow((1000.0f / CTimer::getInstance()->getTime()), new WCHAR[1], 10));
-		//OutputDebugString(L"\n");
+		OutputDebugString(L"FPS: ");
+		OutputDebugString(_itow((1000.0f / CTimer::getInstance()->getTime()), new WCHAR[1], 10));
+		OutputDebugString(L"\n");
 	}
 	return 0;
 }
