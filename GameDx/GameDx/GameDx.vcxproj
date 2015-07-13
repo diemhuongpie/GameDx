@@ -100,6 +100,7 @@
     <ClInclude Include="Class\Game\Utill\stdafx.h" />
     <ClInclude Include="Class\Mathematics\Box2D.h" />
     <ClInclude Include="Class\Mathematics\Polygon.h" />
+    <ClInclude Include="Class\Mathematics\SweptAABB.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Class\Framework\Camera.cpp" />

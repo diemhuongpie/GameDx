@@ -100,17 +100,23 @@
     <Filter Include="Algorithm">
       <UniqueIdentifier>{56d50947-a3cc-4d6d-85b7-977f7cc0f45c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Algorithm\Box2D">
+    <Filter Include="Polygon">
+      <UniqueIdentifier>{ffba13e7-f8ca-4589-ba3b-e15cadba0d8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Polygon\Box2D">
       <UniqueIdentifier>{e8655775-92cc-4791-b15b-c3bfd60ac145}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Algorithm\Polygon%28Base%29">
+    <Filter Include="Polygon\Box2D\cpp">
+      <UniqueIdentifier>{2d35b91b-700b-40b5-8347-bf30100bcfb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Polygon\Polygon%28Base%29">
       <UniqueIdentifier>{9ab5997b-21f1-42f5-9cad-e3e04855d4ae}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Algorithm\Polygon%28Base%29\cpp">
+    <Filter Include="Polygon\Polygon%28Base%29\cpp">
       <UniqueIdentifier>{ccd3b4f7-ea36-4df4-bb0f-cd76a1505754}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Algorithm\Box2D\cpp">
-      <UniqueIdentifier>{2d35b91b-700b-40b5-8347-bf30100bcfb0}</UniqueIdentifier>
+    <Filter Include="Algorithm\Swept AABB">
+      <UniqueIdentifier>{e7f4ccf9-10c5-4ab2-afdd-c19519e57691}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -151,10 +157,10 @@
       <Filter>Framework\Camera</Filter>
     </ClCompile>
     <ClCompile Include="Class\Mathematics\Polygon.cpp">
-      <Filter>Algorithm\Polygon%28Base%29\cpp</Filter>
+      <Filter>Polygon\Polygon%28Base%29\cpp</Filter>
     </ClCompile>
     <ClCompile Include="Class\Mathematics\Box2D.cpp">
-      <Filter>Algorithm\Box2D\cpp</Filter>
+      <Filter>Polygon\Box2D\cpp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -201,10 +207,13 @@
       <Filter>Framework\Camera</Filter>
     </ClInclude>
     <ClInclude Include="Class\Mathematics\Box2D.h">
-      <Filter>Algorithm\Box2D</Filter>
+      <Filter>Polygon\Box2D</Filter>
     </ClInclude>
     <ClInclude Include="Class\Mathematics\Polygon.h">
-      <Filter>Algorithm\Polygon%28Base%29</Filter>
+      <Filter>Polygon\Polygon%28Base%29</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Mathematics\SweptAABB.h">
+      <Filter>Algorithm\Swept AABB</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
