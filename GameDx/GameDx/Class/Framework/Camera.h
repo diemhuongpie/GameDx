@@ -8,6 +8,7 @@ class CCamera
 {
 public:
 	static	void			Update							(vector3d	positionPlayer);
+	static	void			Render							();
 	static	void			NormalUpdate					(vector3d	positionPlayer);
 	static	void			AutoUpdate						(vector3d	positionPlayer);
 	static	vector3d		setPositionEntity				(vector3d	&position);

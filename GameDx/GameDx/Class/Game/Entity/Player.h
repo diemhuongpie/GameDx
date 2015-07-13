@@ -21,7 +21,7 @@ public:
 	virtual void updateEntity(RECT rectCamera)		override;
 	virtual void drawEntity()						override;
 private:
-
+	vector3d		m_Position;
 };
 
 #endif

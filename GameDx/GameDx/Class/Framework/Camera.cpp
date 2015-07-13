@@ -1,3 +1,8 @@
+#ifndef __VLD_H__
+#define __VLD_H__
+#include <vld.h>
+#endif
+
 #include "Camera.h"
 
 vector3d			CCamera::m_Position					= vector3dZero;
@@ -15,7 +20,7 @@ CCamera::CCamera()
 	m_ViewportX		= &m_Position.x;
 	m_ViewportY		= &m_Position.y;
 
-	setLimitRectOfCurrentMap(3000, 530 / 2);
+	setLimitRectOfCurrentMap(3000, 530/2);
 	D3DXMatrixIdentity(&m_MatrixTransform);
 	
 }
@@ -23,6 +28,8 @@ CCamera::CCamera()
 
 CCamera::~CCamera()
 {
+	SAFE_RELEASE(m_ViewportX);
+	SAFE_RELEASE(m_ViewportY);
 	SAFE_RELEASE(m_Instance);
 }
 
@@ -67,9 +74,9 @@ void CCamera::Update(vector3d	positionEntity)
 
 void	CCamera::NormalUpdate(vector3d	positionEntity)
 {
-	if (m_Position.x - BACKBUFFER_WIDTH / 2.0f > m_LimitRect.left - 16 
-		&& m_Position.x + BACKBUFFER_WIDTH < m_LimitRect.right)
-		m_Position.x = m_Position.x - BACKBUFFER_WIDTH / 2.0f;
+	if (positionEntity.x - BACKBUFFER_WIDTH / 2.0f > m_LimitRect.left - 16
+		&& positionEntity.x + BACKBUFFER_WIDTH < m_LimitRect.right)
+		m_Position.x = positionEntity.x - BACKBUFFER_WIDTH / 2.0f;
 
 	m_MatrixTransform._22 = -1.0f;
 	m_MatrixTransform._41 = -*m_ViewportX;

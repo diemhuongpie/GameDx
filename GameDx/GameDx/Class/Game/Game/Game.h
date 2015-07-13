@@ -13,6 +13,7 @@
 #include "Game\Test\Test.h"
 #include "Game\Scene\MenuScene.h"
 #include "Game\Utill\stdafx.h"
+#include "Game\Test\Test.h"
 
 class CGame
 {
@@ -28,6 +29,7 @@ private:
 	CWindows*		m_Windows;
 	CKeyBoard*		m_Keyboard;
 	CMenuScene*		beginScene;
+	Test*			m_Test;
 };
 
 #endif

@@ -1,5 +1,5 @@
 #include "Framework\Timer.h"
-
+#include "Game\Utill\Config.h"
 CTimer* CTimer::m_Instance = NULL;
 
 CTimer::CTimer()
@@ -10,7 +10,7 @@ CTimer::CTimer()
 
 CTimer::~CTimer()
 {
-
+	SAFE_RELEASE(m_Instance);
 }
 
 CTimer*	CTimer::getInstance()

@@ -10,6 +10,7 @@
 
 
 #include "Game\Utill\stdafx.h"
+#include "Game\Utill\Config.h"
 #include "Game\Game\Game.h";
 #include "Game\Scene\MenuScene.h"
 
@@ -26,13 +27,19 @@ int CALLBACK WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR 
 		start = clock();
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
-			if (msg.message == WM_QUIT) stateGame = GAMESTATE::STATE_END;
-
+			if (msg.message == WM_QUIT)
+			{
+				stateGame = GAMESTATE::STATE_END;
+				SAFE_RELEASE(game);
+			}
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
-		game->updateGame();
-		game->renderGame();
+		if (stateGame == GAMESTATE::STATE_RUN)
+		{
+			game->updateGame();
+			game->renderGame();
+		}
 
 		CTimer::getInstance()->setTime(clock() - start);
 		if (CTimer::getInstance()->getTime() < FRAME_RATE)
@@ -40,9 +47,9 @@ int CALLBACK WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR 
 
 		CTimer::getInstance()->setTime(clock() - start);
 
-		OutputDebugString(L"FPS: ");
-		OutputDebugString(_itow((1000.0f / CTimer::getInstance()->getTime()), new WCHAR[1], 10));
-		OutputDebugString(L"\n");
+		//OutputDebugString(L"FPS: ");
+		//OutputDebugString(_itow((1000.0f / CTimer::getInstance()->getTime()), new WCHAR[1], 10));
+		//OutputDebugString(L"\n");
 	}
 	return 0;
 }

@@ -47,6 +47,11 @@ CSprite::CSprite(wstring filePath, int nRows, int nColumns, int nFrame, int Inde
 
 CSprite::~CSprite()
 {
+	if (this->m_LoadedSprite.empty())
+	{
+		m_LoadedSprite.clear();
+		m_LoadedSprite.~vector();
+	}
 }
 
 bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int drawcenter, bool isLoop)

@@ -5,9 +5,6 @@
 
 #ifndef __CONFIG_H__
 #define __CONFIG_H__
-
-
-
 /*DEFINE*/
 #define FPS 60
 #define FRAME_RATE (1000.0f/60.0f)
@@ -39,6 +36,7 @@
 #define BACKBUFFER_WIDTH	256
 #define	BACKBUFFER_HEIGHT	240
 
+#define deltaBoundingBox	vector2d(5.0f, 5.0f)
 /************************************/
 
 /*ENUM*/
@@ -77,4 +75,12 @@ struct KeyState
 /*CONST*/
 /******************/
 
+
+/******************************/
+/*VLD*/
+#ifndef __VLD_H__
+#define __VLD_H__
+#include <vld.h>
+#endif
+/********************/
 #endif

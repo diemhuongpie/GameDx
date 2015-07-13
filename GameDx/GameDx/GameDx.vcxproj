@@ -98,6 +98,8 @@
     <ClInclude Include="Class\Game\Test\Test.h" />
     <ClInclude Include="Class\Game\Utill\Config.h" />
     <ClInclude Include="Class\Game\Utill\stdafx.h" />
+    <ClInclude Include="Class\Mathematics\Box2D.h" />
+    <ClInclude Include="Class\Mathematics\Polygon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Class\Framework\Camera.cpp" />
@@ -112,6 +114,8 @@
     <ClCompile Include="Class\Game\Scene\MenuScene.cpp" />
     <ClCompile Include="Class\Game\Test\Test.cpp" />
     <ClCompile Include="Class\Game\WinMain.cpp" />
+    <ClCompile Include="Class\Mathematics\Box2D.cpp" />
+    <ClCompile Include="Class\Mathematics\Polygon.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
