@@ -57,7 +57,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\Git\GameDx\GameDx\Class;C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\Git\GameDx\GameDx\Resource;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Game_HKHe\Rockman_Game\GameDx\GameDx\Resource;F:\Game_HKHe\Rockman_Game\GameDx\GameDx\Class;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

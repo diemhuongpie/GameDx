@@ -10,6 +10,7 @@
 #ifndef __SWEPTAABB_H__
 #define __SWEPTAABB_H__
 
+#include "Game\Utill\stdafx.h"
 #include "Box2D.h"
 
 
@@ -40,18 +41,18 @@ bool AABB(CBox2D box1, CBox2D box2, float& moveX, float& moveY)
 {
 	moveX	=	moveY	=	0.0f;
 
-	float left		= box2.getX() - (box1.getX()	 + box1.getWidth());
-	float right		= box2.getX() + box2.getWidth()  - box1.getX();
-	float bottom	= box2.getY() - box2.getHeight() - box1.getY();
-	float top		= box2.getY() - box1.getY()		 + box1.getHeight();
+	float xInvEntry		= box2.getX() - (box1.getX()	 + box1.getWidth());
+	float xInvExit		= box2.getX() + box2.getWidth()  - box1.getX();
+	float yInvEntry		= box2.getY() - box2.getHeight() - box1.getY();
+	float yInvExit		= box2.getY() - box1.getY() + box1.getHeight();
 
 	// check that there was a collision
-	if (left > 0 || right < 0 || bottom > 0 || top < 0)
+	if (xInvEntry > 0 || xInvExit < 0 || yInvEntry > 0 || yInvExit < 0)
 		return false;
 
 	// find the offset of both sides
-	moveX = abs(left)	< right ?	left	: right;
-	moveY = abs(bottom)	< top	?	bottom	: top;
+	moveX = abs(xInvEntry)	< xInvExit ? xInvEntry : xInvExit;
+	moveY = abs(yInvEntry)	< yInvExit ? yInvEntry : yInvExit;
 
 	// only use whichever offset is the smallest
 	if (abs(moveX) < abs(moveY))
@@ -63,6 +64,102 @@ bool AABB(CBox2D box1, CBox2D box2, float& moveX, float& moveY)
 
 }
 
+
+//SweptAABB Alogorithm
+float SweptAABB(CBox2D box1, CBox2D box2, float &normalX, float &normalY)
+{
+	float xInvEntry, yInvEntry;
+	float xInvExit, yInvExit;
+
+	if (box1.getVelocityX() > 0.0f)
+	{
+		xInvEntry		= box2.getX()	- (box1.getX()		+ box1.getWidth());
+		xInvExit		= (box2.getX()	+ box2.getWidth())	- box1.getX();
+	}
+	else
+	{
+		xInvEntry		= (box2.getX()	+ box2.getWidth())	- box1.getX();
+		xInvExit		= box2.getX()	- (box1.getX()		+ box1.getWidth());
+	}
+
+	if (box1.getVelocityY() > 0.0f)
+	{
+		yInvEntry		= (box2.getY()	- box2.getHeight())	- box1.getY();
+		yInvExit		= box2.getY()	- (box1.getY()		- box1.getHeight());
+	}
+	else
+	{
+		yInvEntry		= box2.getY()	- (box1.getY()		- box1.getHeight());
+		yInvExit		= (box2.getY()	- box2.getHeight())	- box1.getY();
+	}
+
+
+	float xEntry, yEntry;
+	float xExit, yExit;
+
+	if (box1.getVelocityX() == 0.0f)
+	{
+		xEntry			= -std::numeric_limits<float>::infinity();
+		xExit			=  std::numeric_limits<float>::infinity();
+	}
+	else
+	{
+		xEntry			= xInvEntry	/ box1.getVelocityX();
+		xExit			= xInvExit	/ box1.getVelocityX();
+	}
+
+	if (box1.getVelocityY() == 0.0f)
+	{
+		yEntry			= -std::numeric_limits<float>::infinity();
+		yExit			=  std::numeric_limits<float>::infinity();
+	}
+	else
+	{
+		yEntry			= yInvEntry	/ box1.getVelocityY();
+		yExit			= yInvExit	/ box1.getVelocityY();
+	}
+
+	float entryTime		= std::fmaxf(xEntry, yEntry);
+	float exitTime		= std::fminf(xExit, yExit);
+
+	if (entryTime > exitTime || xEntry < 0.0f || yEntry < 0.0f || yEntry > 1.0f || yEntry > 1.0f)
+	{
+		normalX			= 0.0f;
+		normalY			= 0.0f;
+		return 1.0f;
+	}
+	else
+	{
+		if (xEntry > yEntry && (box1.getY() - box1.getHeight() != box2.getY()))
+		{
+			if (xInvEntry < 0.0f)
+			{
+				normalX = 1.0f;
+				normalY = 0.0f;
+			}
+			else
+			{
+				normalX = -1.0f;
+				normalY = 0.0f;
+			}
+		}
+		else
+		{
+			if (yInvEntry <= 0.0f)
+			{
+				normalX = 0.0f;
+				normalY = 1.0f;
+			}
+			else
+			{
+				normalX = 0.0f;
+				normalY = -1.0f;
+			}
+		}
+
+		return entryTime;
+	}
+}
 
 
 
