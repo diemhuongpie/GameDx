@@ -3,12 +3,12 @@
 /* 08/07/2015 */
 /*********************************************************/
 
-#include "BaseEntity.h"
+#include "MovableEntity.h"
 
 #ifndef __CPLAYER_H__
 #define __CPLEYER_H__
 
-class CPlayer : public CBaseEntity
+class CPlayer : public CMovable
 {
 public:
 	CPlayer();
@@ -21,7 +21,7 @@ public:
 	virtual void updateEntity(RECT rectCamera)		override;
 	virtual void drawEntity()						override;
 private:
-	vector3d		m_Position;
+
 };
 
 #endif

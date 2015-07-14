@@ -23,6 +23,7 @@
 #define KEYBOARD_BUFFER_SIZE	1024
 #define ISKEYDOWN(keystatus) (keystatus & 0x80)
 
+#define directDevice	LPDIRECT3DDEVICE9
 #define vector3d		D3DXVECTOR3
 #define vector3dZero	D3DXVECTOR3(0.0f,0.0f,0.5f)
 #define vector2d		D3DXVECTOR2
@@ -37,6 +38,7 @@
 #define	BACKBUFFER_HEIGHT	530
 
 #define deltaBoundingBox	vector2d(5.0f, 5.0f)
+
 /************************************/
 
 /*ENUM*/
@@ -61,6 +63,17 @@ enum KEYSTATE
 	KEY_RELEASE,
 	KEY_UP,
 	KEY_DOWN
+};
+
+enum PLAYERSTATE
+{
+	PLAYER_STAND,
+	PLAYER_MOVE,
+	PLAYER_JUMP,
+	PLAYER_CLIMB,
+	PLAYER_DIE,
+	PLAYER_HIT,
+	PLAYER_SHOOT
 };
 /******************/
 
