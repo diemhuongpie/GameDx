@@ -1,0 +1,38 @@
+﻿Build started 7/16/2015 3:23:02 PM.
+     1>Project "F:\Game_HKHe\Rockman_GameDx\GameDx\GameDx\GameDx.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\Git\GameDx\GameDx\Resource" /I"C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\Git\GameDx\GameDx\Class" /IF:\Game_HKHe\Rockman_GameDx\GameDx\GameDx\Resource /IF:\Game_HKHe\Rockman_GameDx\GameDx\GameDx\Class /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Class\Game\Scene\SelectStageScene.cpp
+         SelectStageScene.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\Game_HKHe\Rockman_GameDx\GameDx\Debug\GameDx.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" d3d9.lib d3dx9.lib dxguid.lib dinput8.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\Game_HKHe\Rockman_GameDx\GameDx\Debug\GameDx.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\Game_HKHe\Rockman_GameDx\GameDx\Debug\GameDx.lib" /MACHINE:X86 Debug\Camera.obj
+         Debug\KeyBoard.obj
+         Debug\Sprite.obj
+         Debug\Text.obj
+         Debug\Timer.obj
+         Debug\Windows.obj
+         Debug\BaseEntity.obj
+         Debug\MovableEntity.obj
+         Debug\Player.obj
+         Debug\StaticEntity.obj
+         Debug\Game.obj
+         Debug\MenuScene.obj
+         Debug\SelectStageScene.obj
+         Debug\Climb.obj
+         Debug\Die.obj
+         Debug\Hit.obj
+         Debug\Jump.obj
+         Debug\Move.obj
+         Debug\Shoot.obj
+         Debug\Stand.obj
+         Debug\State.obj
+         Debug\Test.obj
+         Debug\WinMain.obj
+         Debug\Box2D.obj
+         Debug\Polygon.obj
+         Debug\InformationResource.obj
+         GameDx.vcxproj -> F:\Game_HKHe\Rockman_GameDx\GameDx\Debug\GameDx.exe
+     1>Done Building Project "F:\Game_HKHe\Rockman_GameDx\GameDx\GameDx\GameDx.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.74

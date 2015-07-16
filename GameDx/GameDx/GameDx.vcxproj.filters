@@ -228,6 +228,12 @@
     <ClCompile Include="Class\Framework\Camera.cpp">
       <Filter>Framework\Camera\cpp</Filter>
     </ClCompile>
+    <ClCompile Include="Class\Game\Scene\SelectStageScene.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="InformationResource.cpp">
+      <Filter>Game\Utill</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Class\Framework\Timer.h">
@@ -311,8 +317,11 @@
     <ClInclude Include="Class\Game\Entity\MovableEntity.h">
       <Filter>Game\Entity\Child\Dynamic Child\Base</Filter>
     </ClInclude>
-    <ClInclude Include="InformationResource.h">
+    <ClInclude Include="Class\Game\Utill\InformationResource.h">
       <Filter>Game\Utill</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Scene\SelectStageScene.h">
+      <Filter>Game\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

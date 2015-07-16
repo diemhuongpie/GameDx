@@ -57,7 +57,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\Git\GameDx\GameDx\Resource;C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\Git\GameDx\GameDx\Class;F:\Game_HKHe\Rockman_Game\GameDx\GameDx\Resource;F:\Game_HKHe\Rockman_Game\GameDx\GameDx\Class;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\Git\GameDx\GameDx\Resource;C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\Git\GameDx\GameDx\Class;F:\Game_HKHe\Rockman_GameDx\GameDx\GameDx\Resource;F:\Game_HKHe\Rockman_GameDx\GameDx\GameDx\Class;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -97,6 +97,7 @@
     <ClInclude Include="Class\Game\Game\Game.h" />
     <ClInclude Include="Class\Game\Scene\BaseScene.h" />
     <ClInclude Include="Class\Game\Scene\MenuScene.h" />
+    <ClInclude Include="Class\Game\Scene\SelectStageScene.h" />
     <ClInclude Include="Class\Game\State\Climb.h" />
     <ClInclude Include="Class\Game\State\Die.h" />
     <ClInclude Include="Class\Game\State\Hit.h" />
@@ -107,11 +108,11 @@
     <ClInclude Include="Class\Game\State\State.h" />
     <ClInclude Include="Class\Game\Test\Test.h" />
     <ClInclude Include="Class\Game\Utill\Config.h" />
+    <ClInclude Include="Class\Game\Utill\InformationResource.h" />
     <ClInclude Include="Class\Game\Utill\stdafx.h" />
     <ClInclude Include="Class\Mathematics\Box2D.h" />
     <ClInclude Include="Class\Mathematics\Polygon.h" />
     <ClInclude Include="Class\Mathematics\SweptAABB.h" />
-    <ClInclude Include="InformationResource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Class\Framework\Camera.cpp" />
@@ -126,6 +127,7 @@
     <ClCompile Include="Class\Game\Entity\StaticEntity.cpp" />
     <ClCompile Include="Class\Game\Game\Game.cpp" />
     <ClCompile Include="Class\Game\Scene\MenuScene.cpp" />
+    <ClCompile Include="Class\Game\Scene\SelectStageScene.cpp" />
     <ClCompile Include="Class\Game\State\Climb.cpp" />
     <ClCompile Include="Class\Game\State\Die.cpp" />
     <ClCompile Include="Class\Game\State\Hit.cpp" />
@@ -138,6 +140,7 @@
     <ClCompile Include="Class\Game\WinMain.cpp" />
     <ClCompile Include="Class\Mathematics\Box2D.cpp" />
     <ClCompile Include="Class\Mathematics\Polygon.cpp" />
+    <ClCompile Include="InformationResource.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
