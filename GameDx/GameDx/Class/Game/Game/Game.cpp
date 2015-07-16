@@ -36,6 +36,9 @@ void CGame::updateGame()
 	if (m_Keyboard->KeyDown(DIK_ESCAPE))
 		PostQuitMessage(0);
 
+	beginScene->updateScene(m_Keyboard);
+	beginScene->updateScene();
+
 }
 void CGame::renderGame()
 {

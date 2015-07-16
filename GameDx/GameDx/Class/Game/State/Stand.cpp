@@ -1,5 +1,5 @@
 #include "Stand.h"
-#include "Game\Utill\InformationResource.h"
+
 
 CPlayerStand*			CPlayerStand::m_Instance		= NULL;
 
@@ -15,8 +15,8 @@ CStand::~CStand()
 CPlayerStand::CPlayerStand()
 {
 	this->m_Tag					= "CPlayerStand";
-	m_listSprite.push_back(new CSprite(rockmanStand,		1, 2, 2));
-	m_listSprite.push_back(new CSprite(rockmanStandShoot,	1, 1, 1));
+	//m_listSprite.push_back(new CSprite(rockmanStand,		1, 2, 2));
+	//m_listSprite.push_back(new CSprite(rockmanStandShoot,	1, 1, 1));
 }
 
 CPlayerStand::~CPlayerStand()

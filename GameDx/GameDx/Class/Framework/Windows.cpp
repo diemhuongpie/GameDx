@@ -14,8 +14,8 @@ LRESULT CALLBACK WinProc_(HWND WindowsHandle, UINT Message, WPARAM wParam, LPARA
 
 CWindows::CWindows(HINSTANCE hInstance, LPWSTR Name, bool isWindowed)
 {
-	this->m_ScreenHeight	= 485;
-	this->m_ScreenWidth		= 530;
+	this->m_ScreenHeight	= BACKBUFFER_HEIGHT;
+	this->m_ScreenWidth		= BACKBUFFER_WIDTH;
 	this->m_hInstance		= hInstance;
 	this->m_IsWindowed		= isWindowed;
 	this->m_Name			= Name;

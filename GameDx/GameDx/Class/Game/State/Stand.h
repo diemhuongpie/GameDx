@@ -5,6 +5,7 @@
 #include "State.h"
 #include "Framework\Sprite.h"
 #include "Game\Utill\stdafx.h"
+//#include "Game\Utill\InformationResource.h"
 
 class CStand :
 	public CState

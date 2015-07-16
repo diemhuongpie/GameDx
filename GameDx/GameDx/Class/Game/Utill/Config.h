@@ -34,8 +34,8 @@
 
 #define SAFE_RELEASE(A)		{if (A) {delete A; A = 0;}}
 
-#define BACKBUFFER_WIDTH	530
-#define	BACKBUFFER_HEIGHT	530
+#define BACKBUFFER_WIDTH	510
+#define	BACKBUFFER_HEIGHT	485
 
 #define deltaBoundingBox	vector2d(5.0f, 5.0f)
 
@@ -74,6 +74,16 @@ enum PLAYERSTATE
 	PLAYER_DIE,
 	PLAYER_HIT,
 	PLAYER_SHOOT
+};
+
+enum STAGESELECTED
+{
+	CUTMAN,
+	GUTSMAN,
+	ICEMAN,
+	BOMBMAN,
+	FIREMAN,
+	ELECMAN
 };
 /******************/
 
