@@ -24,7 +24,7 @@ CGame::~CGame()
 
 void CGame::initGame()
 {
-	beginScene	= new CMenuScene(m_Windows->getDevice());
+	beginScene	= new CSelectStageScene(m_Windows->getDevice());
 	m_Test		= new Test(m_Windows->getDevice());
 }
 void CGame::updateGame()

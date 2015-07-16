@@ -18,4 +18,10 @@ const wchar_t* rockmanStandShoot		= L"Image//Game//Sprites//RockMan//RockManNorm
 const wchar_t* rockmanStart				= L"Image//Game//Sprites//RockMan//RockManNormal//rockman_start.png";
 
 /*******************************************/
+
+/************RESOURCE FOR SELECTSTAGE*******/
+const wchar_t* backgroundSeletStage		= L"Image//SelectStage//selectStage.png";
+const wchar_t* buttonMenuState			= L"Image//SelectStage//button_menu_state.png";
+/******************************************/
+
 #endif
