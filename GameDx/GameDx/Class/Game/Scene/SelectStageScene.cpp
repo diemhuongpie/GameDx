@@ -62,6 +62,10 @@ void CSelectStageScene::updateScene(CKeyBoard* device)
 
 	if (m_IndexSelect < 0)	m_IndexSelect	=	5;
 	if (m_IndexSelect > 5)	m_IndexSelect	=	0;
+
+
+
+
 }
 
 void CSelectStageScene::renderScene()

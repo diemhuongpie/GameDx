@@ -231,7 +231,7 @@
     <ClCompile Include="Class\Game\Scene\SelectStageScene.cpp">
       <Filter>Game\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="InformationResource.cpp">
+    <ClCompile Include="Class\Game\Utill\InformationResource.cpp">
       <Filter>Game\Utill</Filter>
     </ClCompile>
   </ItemGroup>

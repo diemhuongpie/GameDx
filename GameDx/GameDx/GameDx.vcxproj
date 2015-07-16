@@ -137,10 +137,10 @@
     <ClCompile Include="Class\Game\State\Stand.cpp" />
     <ClCompile Include="Class\Game\State\State.cpp" />
     <ClCompile Include="Class\Game\Test\Test.cpp" />
+    <ClCompile Include="Class\Game\Utill\InformationResource.cpp" />
     <ClCompile Include="Class\Game\WinMain.cpp" />
     <ClCompile Include="Class\Mathematics\Box2D.cpp" />
     <ClCompile Include="Class\Mathematics\Polygon.cpp" />
-    <ClCompile Include="InformationResource.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
