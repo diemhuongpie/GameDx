@@ -3,6 +3,9 @@
 
 
 #include "State.h"
+#include "Framework\Sprite.h"
+#include "Game\Utill\stdafx.h"
+
 class CStand :
 	public CState
 {
@@ -18,6 +21,20 @@ class CPlayerStand :
 public:
 	CPlayerStand();
 	~CPlayerStand();
+
+	virtual	const	char*	getTag()								override;
+	virtual			void	setTag(char*)							override;
+	virtual			void	switchState(CBaseEntity*)				override;
+	virtual			bool	loadSprite(directDevice device)			override;
+	virtual			void	update(vector2d &Position)				override;
+/***********************UPDATE IF YOU NEED SOME ANOTHER FUCTION******************/
+	virtual			void	render()								override;
+
+	static			CPlayerStand*			getInstance();
+
+private:
+	static			CPlayerStand*			m_Instance;
+					vector<CSprite*>		m_listSprite;
 };
 
 #endif

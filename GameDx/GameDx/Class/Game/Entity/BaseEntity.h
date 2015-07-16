@@ -9,7 +9,8 @@
 
 #include "Game\Utill\stdafx.h"
 #include "Framework\KeyBoard.h"
-#include "Game\State\State.h"
+
+class CState;
 
 class CBaseEntity
 {
@@ -23,10 +24,12 @@ public:
 	virtual void updateEntity(CKeyBoard device)				= 0;
 	virtual void updateEntity(RECT rectCamera)				= 0;
 	virtual void drawEntity()								= 0;
+	virtual void setState(CState* newState)					= 0;
 
 protected:
 	CState*				m_State;
 
 };
+
 
 #endif
