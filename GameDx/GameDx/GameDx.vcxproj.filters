@@ -151,6 +151,9 @@
     <Filter Include="Game\Entity\Child\Dynamic Child\Base\cpp">
       <UniqueIdentifier>{805820e3-08ff-4bbc-98c8-f3391894b57d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Camera\cpp">
+      <UniqueIdentifier>{c82f94e3-c1e3-45e9-a219-87524a6e299d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Class\Framework\Timer.cpp">
@@ -185,9 +188,6 @@
     </ClCompile>
     <ClCompile Include="Class\Game\Scene\MenuScene.cpp">
       <Filter>Game\Scene\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Framework\Camera.cpp">
-      <Filter>Framework\Camera</Filter>
     </ClCompile>
     <ClCompile Include="Class\Mathematics\Polygon.cpp">
       <Filter>Polygon\Polygon%28Base%29\cpp</Filter>
@@ -224,6 +224,9 @@
     </ClCompile>
     <ClCompile Include="Class\Game\Entity\MovableEntity.cpp">
       <Filter>Game\Entity\Child\Dynamic Child\Base\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Framework\Camera.cpp">
+      <Filter>Framework\Camera\cpp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -307,6 +310,9 @@
     </ClInclude>
     <ClInclude Include="Class\Game\Entity\MovableEntity.h">
       <Filter>Game\Entity\Child\Dynamic Child\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="InformationResource.h">
+      <Filter>Game\Utill</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

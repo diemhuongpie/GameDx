@@ -111,6 +111,7 @@
     <ClInclude Include="Class\Mathematics\Box2D.h" />
     <ClInclude Include="Class\Mathematics\Polygon.h" />
     <ClInclude Include="Class\Mathematics\SweptAABB.h" />
+    <ClInclude Include="InformationResource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Class\Framework\Camera.cpp" />
