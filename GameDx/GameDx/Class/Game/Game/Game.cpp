@@ -30,7 +30,7 @@ void CGame::initGame()
 void CGame::updateGame()
 {
 	m_Keyboard->Update();
-	m_Test->Update(m_Keyboard);
+	//m_Test->Update(m_Keyboard);
 	CCamera::getInstance()->Update(m_Test->getPosision());
 
 	if (m_Keyboard->KeyDown(DIK_ESCAPE))
@@ -44,7 +44,7 @@ void CGame::renderGame()
 {
 	if (this->m_Windows->startDraw()) {
 		beginScene->renderScene();
-		m_Test->Render();
+		//m_Test->Render();
 	}
 	this->m_Windows->stopDraw();
 }

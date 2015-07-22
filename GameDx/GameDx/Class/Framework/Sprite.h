@@ -51,6 +51,7 @@ private:
 
 			//Completed for other action
 			bool						m_isCompleted;
+			bool						m_isLoop;
 
 			//Transform matrix
 			D3DXMATRIX					m_CurrentMatrix;

@@ -56,9 +56,8 @@ CSprite::~CSprite()
 
 bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int drawcenter, bool isLoop, float FPSs)
 {
-	static	clock_t timeAround	= 0;
-			clock_t	timeNow		= clock();
-	
+	m_isCompleted				= false;
+
 	RECT rec;
 	rec = getScrRect();
 
@@ -82,18 +81,21 @@ bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int
 		);
 
 	OutputDebugString(L"FPSs : ");
-	OutputDebugString(_itow(1000.0f/(timeNow - timeAround), new WCHAR[1], 10));
+	OutputDebugString(_itow(1000.0f/(this->m_drawTime), new WCHAR[1], 10));
 	OutputDebugString(L"\n");
 
 	m_spriteHandler->SetTransform(&m_CurrentMatrix);
 
-	if (timeNow - timeAround >= 1000.0f / FPSs && isLoop == true)
+	if ((float)(m_drawTime*FPSs) >= 1000.0f)
 	{
 		Next();
-		timeAround = timeNow;
+		m_drawTime		= 0;
+		this->m_isLoop	= isLoop;
+		m_isCompleted	= isCompleted();
 	}
+	
+	m_drawTime			+= CTimer::getInstance()->getTime();
 
-	m_isCompleted = isCompleted();
 	return m_isCompleted;
 }
 
@@ -172,9 +174,13 @@ int			CSprite::getIndex()
 }
 
 bool		CSprite::isCompleted() 
-{
-	if (m_Index == m_nColumns*m_nRow) {
-		Reset();
+{	
+	if (m_Index >= m_nColumns*m_nRow)
+	{
+		if (this->m_isLoop)
+			Reset();
+		else
+			m_Index = m_nColumns*m_nRow;
 		return true;
 	}
 	return false;

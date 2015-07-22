@@ -71,5 +71,5 @@ void CSelectStageScene::updateScene(CKeyBoard* device)
 void CSelectStageScene::renderScene()
 {
 	//m_Background			->Render((vector3d(0.0, 0.0f, 0.5f)), vector2d(1.0f, 1.0f), 0, DRAWCENTER_LEFT_TOP, true, FPS);
-	m_ButtonMenuSelectStage	->Render(m_PositionButton,			vector2d(1.0f, 1.0f), 0, DRAWCENTER_LEFT_TOP, true, 40);
+	m_ButtonMenuSelectStage	->Render(m_PositionButton,			vector2d(1.0f, 1.0f), 0, DRAWCENTER_LEFT_TOP, false, 60);
 }
