@@ -20,7 +20,6 @@ public:
 	virtual	const	char*	getTag()								= 0;
 	virtual			void	setTag(char*)							= 0;
 	virtual			void	switchState(CBaseEntity*)				= 0;
-	virtual			bool	loadSprite(directDevice device)			= 0;
 	virtual			void	update(vector2d &Position)				= 0;
 	/***********************UPDATE IF YOU NEED SOME ANOTHER FUCTION****************/
 	virtual			void	render()								= 0;

@@ -22,7 +22,8 @@ public:
 							D3DXVECTOR2 scale		= D3DXVECTOR2(1.0f, 1.0f),
 							float		rotate		= 0,
 							int			draw_center = DRAWCENTER_MIDDLE_BOTTOM,
-							bool		isLoop		= true
+							bool		isLoop		= true,
+							float		FPSs		= 60
 						  );
 
 
@@ -35,26 +36,26 @@ public:
 	bool			isCompleted();
 
 private:
-	static LPD3DXSPRITE			m_spriteHandler;
-	static LPDIRECT3DDEVICE9	m_d3dDevice;
-	static vector<CSprite*>		m_LoadedSprite;
+	static	LPD3DXSPRITE			m_spriteHandler;
+	static	LPDIRECT3DDEVICE9	m_d3dDevice;
+	static	vector<CSprite*>		m_LoadedSprite;
 
-	int							m_nRow;
-	int							m_nColumns;
-	int							m_nFrames;
-	int							m_Index;
-	D3DXIMAGE_INFO				m_Info;								// Information of image
-	D3DXIMAGE_INFO				m_FrameInfo;						// Information of frame's image
-	LPDIRECT3DTEXTURE9			m_Image;							//
-	double						m_drawTime;
+			int							m_nRow;
+			int							m_nColumns;
+			int							m_nFrames;
+			int							m_Index;
+			D3DXIMAGE_INFO				m_Info;								// Information of image
+			D3DXIMAGE_INFO				m_FrameInfo;						// Information of frame's image
+			LPDIRECT3DTEXTURE9			m_Image;							//
+			double						m_drawTime;
 
-	//Completed for other action
-	bool						m_isCompleted;
+			//Completed for other action
+			bool						m_isCompleted;
 
-	//Transform matrix
-	D3DXMATRIX					m_CurrentMatrix;
-	D3DXMATRIX					m_TransformMatrix;
-	D3DXMATRIX					m_MultyMatrix;
+			//Transform matrix
+			D3DXMATRIX					m_CurrentMatrix;
+			D3DXMATRIX					m_TransformMatrix;
+			D3DXMATRIX					m_MultyMatrix;
 };
 
 #endif

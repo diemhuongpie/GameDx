@@ -12,7 +12,7 @@ CSprite::CSprite(wstring filePath, int nRows, int nColumns, int nFrame, int Inde
 	this->m_nRow					= nRows;
 	this->m_nFrames					= nFrame;
 	this->m_Index					= Index;
-	this->m_drawTime				= 0;
+	//this->m_drawTime				= 0;
 
 	HRESULT hr;
 	hr = D3DXGetImageInfoFromFile(filePath.c_str(), &this->m_Info);
@@ -41,7 +41,7 @@ CSprite::CSprite(wstring filePath, int nRows, int nColumns, int nFrame, int Inde
 	this->m_FrameInfo.Width		= (int)((float)this->m_Info.Width  / (float)this->m_nColumns);
 	this->m_FrameInfo.Height	= (int)((float)this->m_Info.Height / (float)this->m_nRow);
 	this->m_isCompleted = false;
-	this->m_drawTime = 0;
+	//this->m_drawTime = 0;
 
 }
 
@@ -54,8 +54,11 @@ CSprite::~CSprite()
 	}
 }
 
-bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int drawcenter, bool isLoop)
+bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int drawcenter, bool isLoop, float FPSs)
 {
+	static	clock_t timeAround	= 0;
+			clock_t	timeNow		= clock();
+	
 	RECT rec;
 	rec = getScrRect();
 
@@ -78,10 +81,18 @@ bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int
 		D3DCOLOR_XRGB(255, 255, 255)
 		);
 
+	OutputDebugString(L"FPSs : ");
+	OutputDebugString(_itow(1000.0f/(timeNow - timeAround), new WCHAR[1], 10));
+	OutputDebugString(L"\n");
+
 	m_spriteHandler->SetTransform(&m_CurrentMatrix);
 
-	if (isLoop)
+	if (timeNow - timeAround >= 1000.0f / FPSs && isLoop == true)
+	{
 		Next();
+		timeAround = timeNow;
+	}
+
 	m_isCompleted = isCompleted();
 	return m_isCompleted;
 }

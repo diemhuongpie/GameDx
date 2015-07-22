@@ -6,6 +6,10 @@
 #ifndef __STDAFX_H__
 #define __STDAFX_H__
 
+#ifdef _MSC_VER
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include <Windows.h>
 #include <time.h>
 #include <math.h>
