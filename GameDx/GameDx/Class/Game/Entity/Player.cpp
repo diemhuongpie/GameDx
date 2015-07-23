@@ -23,7 +23,7 @@ bool CPlayer::initEntity()
 
 void CPlayer::updateEntity(float deltaTime)
 {
-	deltaTime = CTimer::getInstance()->getTime();
+	deltaTime = static_cast<float>(CTimer::getInstance()->getElapedTime());
 	/* LOGIC FOR TIME*/
 
 }

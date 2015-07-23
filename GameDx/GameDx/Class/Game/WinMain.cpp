@@ -21,10 +21,9 @@ int CALLBACK WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR 
 	ZeroMemory(&msg, sizeof(msg));
 
 	int stateGame = GAMESTATE::STATE_RUN;
-	clock_t start;
 	while (stateGame)
 	{
-		start = clock();
+		CTimer::getInstance()->begin();
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
 			if (msg.message == WM_QUIT)
@@ -41,14 +40,17 @@ int CALLBACK WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR 
 			game->renderGame();
 		}
 
-		CTimer::getInstance()->setTime(clock() - start);
-		if (CTimer::getInstance()->getTime() < FRAME_RATE)
-			SleepEx((DWORD)fabs(FRAME_RATE - (CTimer::getInstance()->getTime())), FALSE);
+		CTimer::getInstance()->end();
+		CTimer::getInstance()->setElapedTime();
+		if (CTimer::getInstance()->getElapedTime() < GAME_RATE)
+		{
+			SleepEx((DWORD)fabs(GAME_RATE - (CTimer::getInstance()->getElapedTime())), FALSE);
+			CTimer::getInstance()->end();
+			CTimer::getInstance()->setElapedTime();
+		}
 
-		CTimer::getInstance()->setTime(clock() - start);
-
-		OutputDebugString(L"FPS: ");
-		OutputDebugString(_itow((1000.0f / CTimer::getInstance()->getTime()), new WCHAR[1], 10));
+		OutputDebugString(L"Game: ");
+		OutputDebugString(_itow(( CTimer::getInstance()->getElapedTime()), new WCHAR[1], 10));
 		OutputDebugString(L"\n");
 	}
 	return 0;

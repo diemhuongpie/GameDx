@@ -44,7 +44,7 @@ void Test::Update(CKeyBoard* device)
 
 
 
-	m_Bounding->update(CTimer::getInstance()->getTime(), vector2d(m_position.x, m_position.y));
+	m_Bounding->update(CTimer::getInstance()->getElapedTime(), vector2d(m_position.x, m_position.y));
 
 }
 

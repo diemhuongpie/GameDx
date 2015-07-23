@@ -1,7 +1,7 @@
 #include "Sprite.h"
 
 LPD3DXSPRITE		CSprite::m_spriteHandler	= NULL;
-LPDIRECT3DDEVICE9	CSprite::m_d3dDevice	= 0;
+LPDIRECT3DDEVICE9	CSprite::m_d3dDevice		= 0;
 vector<CSprite*>	CSprite::m_LoadedSprite;
 
 
@@ -12,8 +12,8 @@ CSprite::CSprite(wstring filePath, int nRows, int nColumns, int nFrame, int Inde
 	this->m_nRow					= nRows;
 	this->m_nFrames					= nFrame;
 	this->m_Index					= Index;
-	//this->m_drawTime				= 0;
-
+	this->m_ElapedTime				= 0.0;
+	
 	HRESULT hr;
 	hr = D3DXGetImageInfoFromFile(filePath.c_str(), &this->m_Info);
 	if (hr != D3D_OK)	
@@ -41,7 +41,6 @@ CSprite::CSprite(wstring filePath, int nRows, int nColumns, int nFrame, int Inde
 	this->m_FrameInfo.Width		= (int)((float)this->m_Info.Width  / (float)this->m_nColumns);
 	this->m_FrameInfo.Height	= (int)((float)this->m_Info.Height / (float)this->m_nRow);
 	this->m_isCompleted = false;
-	//this->m_drawTime = 0;
 
 }
 
@@ -56,10 +55,9 @@ CSprite::~CSprite()
 
 bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int drawcenter, bool isLoop, float FPSs)
 {
-	m_isCompleted				= false;
-
 	RECT rec;
-	rec = getScrRect();
+	rec				= getScrRect();
+	m_isCompleted	= false;
 
 	D3DXVECTOR3 center = this->setCenter(drawcenter);
 
@@ -80,21 +78,21 @@ bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int
 		D3DCOLOR_XRGB(255, 255, 255)
 		);
 
-	OutputDebugString(L"FPSs : ");
-	OutputDebugString(_itow(1000.0f/(this->m_drawTime), new WCHAR[1], 10));
-	OutputDebugString(L"\n");
-
 	m_spriteHandler->SetTransform(&m_CurrentMatrix);
 
-	if ((float)(m_drawTime*FPSs) >= 1000.0f)
+	if (double(60)*m_ElapedTime >= 1000.0f)
 	{
 		Next();
-		m_drawTime		= 0;
+		m_ElapedTime	= 0.0;
 		this->m_isLoop	= isLoop;
-		m_isCompleted	= isCompleted();
+		m_isCompleted	= isCompleted();	
 	}
-	
-	m_drawTime			+= CTimer::getInstance()->getTime();
+
+	// special thing. stupid code
+	if (CTimer::getInstance()->getElapedTime() < 0)
+		return false;
+
+	m_ElapedTime		+= CTimer::getInstance()->getElapedTime();
 
 	return m_isCompleted;
 }

@@ -63,13 +63,10 @@ void CSelectStageScene::updateScene(CKeyBoard* device)
 	if (m_IndexSelect < 0)	m_IndexSelect	=	5;
 	if (m_IndexSelect > 5)	m_IndexSelect	=	0;
 
-
-
-
 }
 
 void CSelectStageScene::renderScene()
 {
-	m_Background			->Render((vector3d(0.0, 0.0f, 0.5f)), vector2d(1.0f, 1.0f), 0, DRAWCENTER_LEFT_TOP, true, FPS);
-	m_ButtonMenuSelectStage	->Render(m_PositionButton,			vector2d(1.0f, 1.0f), 0, DRAWCENTER_LEFT_TOP, true, 40);
+	m_Background			->Render((vector3d(0.0, 0.0f, 0.5f)),	vector2d(1.0f, 1.0f), 0, DRAWCENTER_LEFT_TOP, true, FPS);
+	m_ButtonMenuSelectStage	->Render(m_PositionButton,				vector2d(1.0f, 1.0f), 0, DRAWCENTER_LEFT_TOP, true, FPS);
 }

@@ -7,7 +7,7 @@
 #define __CONFIG_H__
 /*DEFINE*/
 #define FPS 60
-#define FRAME_RATE (1000.0f/60.0f)
+#define GAME_RATE (1000.0f/60.0f)
 #define WINDOWS_NAME L"Oishi"
 
 #define DRAWCENTER_LEFT_TOP			1					

@@ -47,7 +47,7 @@ private:
 			D3DXIMAGE_INFO				m_Info;								// Information of image
 			D3DXIMAGE_INFO				m_FrameInfo;						// Information of frame's image
 			LPDIRECT3DTEXTURE9			m_Image;							//
-			double						m_drawTime;
+			double						m_ElapedTime;
 
 			//Completed for other action
 			bool						m_isCompleted;
