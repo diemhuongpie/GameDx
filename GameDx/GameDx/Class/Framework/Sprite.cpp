@@ -55,26 +55,26 @@ CSprite::~CSprite()
 
 bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int drawcenter, bool isLoop, float FPSs)
 {
-	// lấy kích thước của 1 frame (frame là 1 bức ảnh nhỏ trong sprite, sprite là 1 bức ảnh gồm nhiều bức ảnh nhỏ, mô tả trạng thái của nhân vật)
+	// get frame's size (frame is a image which's part of sprite, sprite is a big image which include many small images and describe state of character)
 	RECT rec;
 	rec				= getScrRect();
 	m_isCompleted	= false;
 
-	// xét tâm vẽ
+	// center point to draw
 	D3DXVECTOR3 center = this->setCenter(drawcenter);
 
-	// xét tọa độ
+	// position
 	position.x = (int)position.x;
 	position.y = (int)position.y;
 	position.z = (int)position.z;
 
-	// xét transform, gồm xoay, lật, thu nhỏ, phóng to...
+	// transform: rotate, flip, scale...
 	m_spriteHandler->GetTransform(&m_CurrentMatrix);
 	D3DXMatrixTransformation2D(&m_TransformMatrix, &(D3DXVECTOR2)position, 0, &scale, &(D3DXVECTOR2)position, D3DXToRadian(rotate), NULL);
 	D3DXMatrixMultiply(&m_MultyMatrix, &m_TransformMatrix, &m_CurrentMatrix);
 	m_spriteHandler->SetTransform(&m_MultyMatrix);
 
-	// vẽ sprite lên màn hình
+	// draw sprite into the screen
 	m_spriteHandler->Draw(
 		m_Image,
 		&rec,
@@ -89,17 +89,17 @@ bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int
 	OutputDebugString(_itow((1000.0 / m_ElapedTime), new WCHAR[1], 10));
 	OutputDebugString(L"\n");
 
-	// xét FPSs (FPS of Sprite). FPS được tính bằng số frame được vẽ lên màn hình trên 1 giây (1000 millisecon)
-	// vì vậy nếu thời gian vẽ của Game (thời gian của 1 vòng lặp update hoặc render) nhỏ hơn thời gian mình muốn.
-	// thì mình phải sleep. Tuy nhiên nếu sleep thì nó bị giật, nên tốt nhất là vẽ lại frame đó. Nghĩa là index giữ nguyên.
-	// Nếu mà thời gian vẽ đạt được rồi, nghĩa là đủ thời gian để vẽ thì gọi hàm Next để tăng index. và gán lại elapedTime.
+	// FPSs (FPS of Sprite). FPS is how many frames whoch are drawn in 1 second (1000 millisecond)
+	// So if time to draw of game (this's time of a render or update loop) is smaller than time we want we have to sleep.
+	// However, if sleep chaging frame isn't really good, good way is redraw the previous frame. That's mean no change index.
+	// if time is enough to draw, we increase index by calling Next function and change value of elapedTime.
 	if (double(FPSs)*m_ElapedTime >= 1000.0f)
 	{
 		Next();
 		m_ElapedTime	= 0.0;
 		this->m_isLoop	= isLoop;
 
-		// xét xem đã vẽ xong hành động chưa. Nếu hành động được lặp lại. thì đưa index về 0; nếu ko thì vẽ frame cuối cùng ra ( nghĩa là ko bị lặp lại)
+		// know drawing completly or not yet. if action is repeated , index equal 0; if not draw the last frame (That's mean action isn't repeated)
 		m_isCompleted	= isCompleted();	
 	}
 
@@ -107,7 +107,7 @@ bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int
 	if (CTimer::getInstance()->getElapedTime() < 0)
 		return false;
 
-	// trường hợp nếu thời gian vẽ thực tế nhỏ hơn thời gian cài đặt thì bỏ qua việc tăng index. và cộng thời gian của lần lặp này.
+	// if time to draw in real is smaller than time to set, we skip increase index and sum time of this loop.
 	m_ElapedTime		+= CTimer::getInstance()->getElapedTime();
 
 	return m_isCompleted;
