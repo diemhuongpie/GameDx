@@ -85,10 +85,6 @@ bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int
 
 	m_spriteHandler->SetTransform(&m_CurrentMatrix);
 
-	OutputDebugString(L"FPSs: ");
-	OutputDebugString(_itow((1000.0 / m_ElapedTime), new WCHAR[1], 10));
-	OutputDebugString(L"\n");
-
 	// FPSs (FPS of Sprite). FPS is how many frames whoch are drawn in 1 second (1000 millisecond)
 	// So if time to draw of game (this's time of a render or update loop) is smaller than time we want we have to sleep.
 	// However, if sleep chaging frame isn't really good, good way is redraw the previous frame. That's mean no change index.

@@ -11,7 +11,7 @@
 
 #include "Game\Utill\stdafx.h"
 #include "Game\Utill\Config.h"
-#include "Game\Game\Game.h";
+#include "Game\Game\Game.h"
 #include "Game\Scene\MenuScene.h"
 
 int CALLBACK WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)

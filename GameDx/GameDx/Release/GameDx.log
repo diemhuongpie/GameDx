@@ -1,0 +1,42 @@
+﻿Build started 27/07/2015 2:43:15 CH.
+     1>Project "C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\GameDx.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Resource" /I"C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Class" /I"C:\Program Files (x86)\Visual Leak Detector\include" /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Class\Framework\Sprite.cpp
+         Sprite.cpp
+     1>Class\Framework\Sprite.cpp(67): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>Class\Framework\Sprite.cpp(68): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>Class\Framework\Sprite.cpp(69): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>Class\Framework\Sprite.cpp(137): warning C4244: '=' : conversion from 'UINT' to 'float', possible loss of data
+     1>Class\Framework\Sprite.cpp(149): warning C4244: '=' : conversion from 'UINT' to 'float', possible loss of data
+     1>Class\Framework\Sprite.cpp(152): warning C4244: '=' : conversion from 'UINT' to 'float', possible loss of data
+     1>Class\Framework\Sprite.cpp(156): warning C4244: '=' : conversion from 'UINT' to 'float', possible loss of data
+     1>Class\Framework\Sprite.cpp(160): warning C4244: '=' : conversion from 'UINT' to 'float', possible loss of data
+     1>Class\Framework\Sprite.cpp(161): warning C4244: '=' : conversion from 'UINT' to 'float', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\Release\GameDx.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" d3d9.lib d3dx9.lib dxguid.lib dinput8.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\Release\GameDx.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\Release\GameDx.lib" /MACHINE:X86 /SAFESEH Release\Camera.obj
+         Release\KeyBoard.obj
+         Release\Sprite.obj
+         Release\Text.obj
+         Release\Timer.obj
+         Release\Windows.obj
+         Release\BaseEntity.obj
+         Release\Tile.obj
+         Release\MovableEntity.obj
+         Release\Player.obj
+         Release\StaticEntity.obj
+         Release\Game.obj
+         Release\MenuScene.obj
+         Release\SelectStageScene.obj
+         Release\Test.obj
+         Release\InformationResource.obj
+         Release\WinMain.obj
+         Release\Box2D.obj
+         Release\Polygon.obj
+         Generating code
+         Finished generating code
+         GameDx.vcxproj -> C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\Release\GameDx.exe
+     1>Done Building Project "C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\GameDx.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.32
