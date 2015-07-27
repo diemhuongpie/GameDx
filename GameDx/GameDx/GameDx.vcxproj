@@ -57,7 +57,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\Git\GameDx\GameDx\Resource;C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\Git\GameDx\GameDx\Class;F:\Game_HKHe\Rockman_GameDx\GameDx\GameDx\Resource;F:\Game_HKHe\Rockman_GameDx\GameDx\GameDx\Class;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Resource;C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Class;F:\Game_HKHe\Rockman_GameDx\GameDx\GameDx\Resource;F:\Game_HKHe\Rockman_GameDx\GameDx\GameDx\Class;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -91,6 +91,7 @@
     <ClInclude Include="Class\Framework\Timer.h" />
     <ClInclude Include="Class\Framework\Windows.h" />
     <ClInclude Include="Class\Game\Entity\BaseEntity.h" />
+    <ClInclude Include="Class\Game\Entity\Map\Tile.h" />
     <ClInclude Include="Class\Game\Entity\MovableEntity.h" />
     <ClInclude Include="Class\Game\Entity\Player.h" />
     <ClInclude Include="Class\Game\Entity\StaticEntity.h" />
@@ -98,14 +99,6 @@
     <ClInclude Include="Class\Game\Scene\BaseScene.h" />
     <ClInclude Include="Class\Game\Scene\MenuScene.h" />
     <ClInclude Include="Class\Game\Scene\SelectStageScene.h" />
-    <ClInclude Include="Class\Game\State\Climb.h" />
-    <ClInclude Include="Class\Game\State\Die.h" />
-    <ClInclude Include="Class\Game\State\Hit.h" />
-    <ClInclude Include="Class\Game\State\Jump.h" />
-    <ClInclude Include="Class\Game\State\Move.h" />
-    <ClInclude Include="Class\Game\State\Shoot.h" />
-    <ClInclude Include="Class\Game\State\Stand.h" />
-    <ClInclude Include="Class\Game\State\State.h" />
     <ClInclude Include="Class\Game\Test\Test.h" />
     <ClInclude Include="Class\Game\Utill\Config.h" />
     <ClInclude Include="Class\Game\Utill\InformationResource.h" />
@@ -122,20 +115,13 @@
     <ClCompile Include="Class\Framework\Timer.cpp" />
     <ClCompile Include="Class\Framework\Windows.cpp" />
     <ClCompile Include="Class\Game\Entity\BaseEntity.cpp" />
+    <ClCompile Include="Class\Game\Entity\Map\Tile.cpp" />
     <ClCompile Include="Class\Game\Entity\MovableEntity.cpp" />
     <ClCompile Include="Class\Game\Entity\Player.cpp" />
     <ClCompile Include="Class\Game\Entity\StaticEntity.cpp" />
     <ClCompile Include="Class\Game\Game\Game.cpp" />
     <ClCompile Include="Class\Game\Scene\MenuScene.cpp" />
     <ClCompile Include="Class\Game\Scene\SelectStageScene.cpp" />
-    <ClCompile Include="Class\Game\State\Climb.cpp" />
-    <ClCompile Include="Class\Game\State\Die.cpp" />
-    <ClCompile Include="Class\Game\State\Hit.cpp" />
-    <ClCompile Include="Class\Game\State\Jump.cpp" />
-    <ClCompile Include="Class\Game\State\Move.cpp" />
-    <ClCompile Include="Class\Game\State\Shoot.cpp" />
-    <ClCompile Include="Class\Game\State\Stand.cpp" />
-    <ClCompile Include="Class\Game\State\State.cpp" />
     <ClCompile Include="Class\Game\Test\Test.cpp" />
     <ClCompile Include="Class\Game\Utill\InformationResource.cpp" />
     <ClCompile Include="Class\Game\WinMain.cpp" />

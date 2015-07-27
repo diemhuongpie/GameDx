@@ -32,6 +32,8 @@ private:
 	vector2d	m_Size;
 	vector2d	m_Velocity;
 
+	int			m_StyleBoddy;
+
 private:
 	LPD3DXLINE	m_line;
 

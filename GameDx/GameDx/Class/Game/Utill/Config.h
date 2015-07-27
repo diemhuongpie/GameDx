@@ -5,6 +5,9 @@
 
 #ifndef __CONFIG_H__
 #define __CONFIG_H__
+
+#include <tchar.h>
+
 /*DEFINE*/
 #define FPS 60
 #define GAME_RATE (1000.0f/60.0f)
@@ -20,25 +23,29 @@
 #define DRAWCENTER_RIGHT_MIDDLE		8
 #define DRAWCENTER_RIGHT_BOTTOM		9
 
-#define KEYBOARD_BUFFER_SIZE	1024
-#define ISKEYDOWN(keystatus) (keystatus & 0x80)
+#define KEYBOARD_BUFFER_SIZE		1024
+#define ISKEYDOWN(keystatus)		(keystatus & 0x80)
 
-#define directDevice	LPDIRECT3DDEVICE9
-#define vector3d		D3DXVECTOR3
-#define vector3dZero	D3DXVECTOR3(0.0f,0.0f,0.5f)
-#define vector2d		D3DXVECTOR2
-#define vector2dZero	D3DXVECTOR2(0.0f,0.0f)
-#define vector4d		D3DXVECTOR4
+#define directDevice				LPDIRECT3DDEVICE9
+#define vector3d					D3DXVECTOR3
+#define vector3dZero				D3DXVECTOR3(0.0f,0.0f,0.5f)
+#define vector2d					D3DXVECTOR2
+#define vector2dZero				D3DXVECTOR2(0.0f,0.0f)
+#define vector4d					D3DXVECTOR4
 
-#define matrix			D3DXMATRIX
+#define matrix						D3DXMATRIX
 
-#define SAFE_RELEASE(A)		{if (A) {delete A; A = 0;}}
+#define SAFE_RELEASE(A)				{if (A) {delete A; A = 0;}}
 
-#define BACKBUFFER_WIDTH	510
-#define	BACKBUFFER_HEIGHT	485
+#define BACKBUFFER_WIDTH			510
+#define	BACKBUFFER_HEIGHT			485
 
-#define deltaBoundingBox	vector2d(5.0f, 5.0f)
+#define deltaBoundingBox			vector2d(5.0f, 5.0f)
 
+#define DEFAULT_FONT_SIZE			8
+#define DEFAULT_FONTNAME			_T("MegaMan 2")
+#define DEFAULT_FONTPATH			_T("Resource//Font//megaman_2.ttf")
+#define DEFAULT_FONT_COLOR			0xFFBCBCBC
 /************************************/
 
 /*ENUM*/

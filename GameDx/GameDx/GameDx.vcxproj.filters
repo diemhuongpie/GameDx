@@ -154,6 +154,9 @@
     <Filter Include="Framework\Camera\cpp">
       <UniqueIdentifier>{c82f94e3-c1e3-45e9-a219-87524a6e299d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Entity\Child\Static Child\Children\Tile\cpp">
+      <UniqueIdentifier>{60ca7272-2cfc-4cb6-aede-3a61d3e062b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Class\Framework\Timer.cpp">
@@ -195,30 +198,6 @@
     <ClCompile Include="Class\Mathematics\Box2D.cpp">
       <Filter>Polygon\Box2D\cpp</Filter>
     </ClCompile>
-    <ClCompile Include="Class\Game\State\State.cpp">
-      <Filter>Game\State\Parent\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\State\Climb.cpp">
-      <Filter>Game\State\Children\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\State\Die.cpp">
-      <Filter>Game\State\Children\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\State\Hit.cpp">
-      <Filter>Game\State\Children\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\State\Jump.cpp">
-      <Filter>Game\State\Children\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\State\Move.cpp">
-      <Filter>Game\State\Children\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\State\Shoot.cpp">
-      <Filter>Game\State\Children\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\State\Stand.cpp">
-      <Filter>Game\State\Children\cpp</Filter>
-    </ClCompile>
     <ClCompile Include="Class\Game\Entity\StaticEntity.cpp">
       <Filter>Game\Entity\Child\Static Child\Base\cpp</Filter>
     </ClCompile>
@@ -233,6 +212,9 @@
     </ClCompile>
     <ClCompile Include="Class\Game\Utill\InformationResource.cpp">
       <Filter>Game\Utill</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Map\Tile.cpp">
+      <Filter>Game\Entity\Child\Static Child\Children\Tile\cpp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -287,30 +269,6 @@
     <ClInclude Include="Class\Mathematics\SweptAABB.h">
       <Filter>Algorithm\Swept AABB</Filter>
     </ClInclude>
-    <ClInclude Include="Class\Game\State\State.h">
-      <Filter>Game\State\Parent</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\Game\State\Climb.h">
-      <Filter>Game\State\Children</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\Game\State\Die.h">
-      <Filter>Game\State\Children</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\Game\State\Hit.h">
-      <Filter>Game\State\Children</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\Game\State\Jump.h">
-      <Filter>Game\State\Children</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\Game\State\Move.h">
-      <Filter>Game\State\Children</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\Game\State\Shoot.h">
-      <Filter>Game\State\Children</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\Game\State\Stand.h">
-      <Filter>Game\State\Children</Filter>
-    </ClInclude>
     <ClInclude Include="Class\Game\Entity\StaticEntity.h">
       <Filter>Game\Entity\Child\Static Child\Base</Filter>
     </ClInclude>
@@ -322,6 +280,9 @@
     </ClInclude>
     <ClInclude Include="Class\Game\Scene\SelectStageScene.h">
       <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Map\Tile.h">
+      <Filter>Game\Entity\Child\Static Child\Children\Tile</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -6,7 +6,6 @@ Test::Test(LPDIRECT3DDEVICE9 device)
 {
 	m_SpriteTest	= new CSprite(L"Resource//Test//BOX_OPENED.png", 1, 3, 3, 0);
 	m_position		= D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	m_Text			= new CText(device, 24, (char)"Font//megaman.ttf");
 
 	RECT rect		= {	
 						m_position.x,
@@ -50,8 +49,6 @@ void Test::Update(CKeyBoard* device)
 
 void Test::Render()
 {
-	m_Bounding->render();
-	m_Text->Draw(L".", { CCamera::setPositionEntity(m_position).x, CCamera::setPositionEntity(m_position).y, CCamera::setPositionEntity(m_position).x + 30, CCamera::setPositionEntity(m_position).y + 30 }, 1, D3DXCOLOR(1.0f, 1.0f, 0.0f, 1.0f));
 	m_SpriteTest->Render(CCamera::setPositionEntity(m_position), vector2d(1.0f, 1.0f), 0.0f, DRAWCENTER_LEFT_TOP);
 }
 

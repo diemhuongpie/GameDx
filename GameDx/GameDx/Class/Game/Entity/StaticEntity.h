@@ -6,21 +6,26 @@
 #ifndef __CSTATICENTITY_H__
 #define __CSTATICENTITY_H__
 
+#include "BaseEntity.h"
 #include "Game\Utill\stdafx.h"
 #include "Game\Utill\Config.h"
-#include "BaseEntity.h"
 #include "Mathematics\Box2D.h"
+#include "Framework\Sprite.h"
 
-
+// class nay van dang la asbtract class
 class CStaticEntity
 {
 public:
 	CStaticEntity();
 	~CStaticEntity();
 
+	// load sprite vao day....sau do goi no trong ham Init va ham Init sex duoc goi trong ham new.
+	virtual		bool					loadSprite()			= 0;
+
 protected:
-	vector2d				m_Position;
-	CBox2D*					m_Bounding;
+				vector2d				m_Position;
+				CBox2D*					m_Bounding;
+				vector<CSprite*>		m_listSprite;
 };
 
 #endif

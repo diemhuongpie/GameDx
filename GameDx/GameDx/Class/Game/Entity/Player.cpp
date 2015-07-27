@@ -21,6 +21,11 @@ bool CPlayer::initEntity()
 	return true;
 }
 
+bool CPlayer::loadSprite()
+{
+	return true;
+}
+
 void CPlayer::updateEntity(float deltaTime)
 {
 	deltaTime = static_cast<float>(CTimer::getInstance()->getElapedTime());

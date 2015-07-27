@@ -20,6 +20,9 @@ public:
 	virtual void updateEntity(CKeyBoard device)		override;
 	virtual void updateEntity(RECT rectCamera)		override;
 	virtual void drawEntity()						override;
+
+	virtual bool loadSprite()						override;
+
 private:
 
 };

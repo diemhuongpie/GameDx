@@ -78,7 +78,11 @@ void CWindows::initWindowGame()
 	if (FAILED(hr))
 		return;
 
-	D3DXCreateSprite(m_d3dDevice, &m_SpriteHandler);
+	hr = D3DXCreateSprite(m_d3dDevice, &m_SpriteHandler);
+
+	if (FAILED(hr))
+		return;
+
 }
 
 bool CWindows::startDraw()

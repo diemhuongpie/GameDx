@@ -7,23 +7,26 @@
 #define __TEXT_H__
 
 #include "Game\Utill\stdafx.h"
+#include "Game\Utill\Config.h"
 
 class CText
 {
 public:
-	CText(LPDIRECT3DDEVICE9);
-	CText(LPDIRECT3DDEVICE9, int fontSize, char fontFace);
+	CText(LPDIRECT3DDEVICE9, LPD3DXSPRITE&);
+	CText(LPDIRECT3DDEVICE9, LPD3DXSPRITE&, LPCTSTR, LPCTSTR);
 	~CText();
 
-	void Draw(wstring, RECT, UINT, D3DCOLOR);
+	template<class T>
+	void Draw(const T& Content, D3DXVECTOR3 Position, D3DCOLOR Color = DEFAULT_FONT_COLOR, int Size = DEFAULT_FONT_SIZE, UINT DT_Type = DT_LEFT);
+
 	void Init();
 	void setFontSize(int fontSize);
-	void setFontFace(char fontFace);
 private:
 	LPDIRECT3DDEVICE9	m_Device;
+	LPD3DXSPRITE		m_SpriteHandle;
 	LPD3DXFONT			m_Font;
 	int					m_FontSize;
-	CHAR				m_FontFace;
+	LPCTSTR				m_FontFace;
 };
 
 #endif
