@@ -12,21 +12,29 @@
 class CText
 {
 public:
-	CText(LPDIRECT3DDEVICE9, LPD3DXSPRITE&);
-	CText(LPDIRECT3DDEVICE9, LPD3DXSPRITE&, LPCTSTR, LPCTSTR);
+	CText();
+	CText(LPCTSTR, LPCTSTR, int);
 	~CText();
 
-	template<class T>
-	void Draw(const T& Content, D3DXVECTOR3 Position, D3DCOLOR Color = DEFAULT_FONT_COLOR, int Size = DEFAULT_FONT_SIZE, UINT DT_Type = DT_LEFT);
+				void				Draw(const wchar_t *Content, D3DXVECTOR3 Position, D3DCOLOR Color = DEFAULT_FONT_COLOR, int Size = DEFAULT_FONT_SIZE, UINT DT_Type = DT_LEFT, wchar_t* FontFace = DEFAULT_FONTNAME);
+				void				InitFont();
+				void				setChange(int fontSize = DEFAULT_FONT_SIZE, LPCTSTR fontFace = DEFAULT_FONTNAME);
+				LPCTSTR				findFontPath(LPCTSTR FontFace);
+	
+	static		void				InitDevice(LPDIRECT3DDEVICE9, LPD3DXSPRITE);
+	static		CText*				getInstace();
 
-	void Init();
-	void setFontSize(int fontSize);
 private:
-	LPDIRECT3DDEVICE9	m_Device;
-	LPD3DXSPRITE		m_SpriteHandle;
-	LPD3DXFONT			m_Font;
-	int					m_FontSize;
-	LPCTSTR				m_FontFace;
+	static		LPDIRECT3DDEVICE9	m_Device;
+	static		LPD3DXSPRITE		m_SpriteHandle;
+				LPD3DXFONT			m_Font;
+				int					m_FontSize;
+				LPCTSTR				m_FontFace;
+
+private:
+	static		CText*				m_Instance;
+
+
 };
 
 #endif

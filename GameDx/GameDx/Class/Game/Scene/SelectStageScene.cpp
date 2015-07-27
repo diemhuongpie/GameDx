@@ -1,5 +1,6 @@
 #include "SelectStageScene.h"
 #include "Game\Utill\Config.h"
+#include "Framework\Text.h"
 
 
 CSelectStageScene::CSelectStageScene()
@@ -67,6 +68,7 @@ void CSelectStageScene::updateScene(CKeyBoard* device)
 
 void CSelectStageScene::renderScene()
 {
-	m_Background			->Render((vector3d(0.0, 0.0f, 0.5f)),	vector2d(1.0f, 1.0f), 0, DRAWCENTER_LEFT_TOP, true, FPS);
-	m_ButtonMenuSelectStage	->Render(m_PositionButton,				vector2d(1.0f, 1.0f), 0, DRAWCENTER_LEFT_TOP, true, 30);
+	m_Background			->Render((vector3d(0.0, 0.0f, 0.5f)),	vector2d(1.0f, 1.0f), 0, DRAWCENTER_LEFT_TOP,	true, FPS);
+	m_ButtonMenuSelectStage	->Render (m_PositionButton,				vector2d(1.0f, 1.0f), 0, DRAWCENTER_LEFT_TOP,	true, 30);
+	CText::getInstace()		->Draw(_T("TEXT"), vector3d(200, 200, 0.5),	DEFAULT_FONT_COLOR,  30, DT_BOTTOM,				DEFAULT_FONTNAME);
 }

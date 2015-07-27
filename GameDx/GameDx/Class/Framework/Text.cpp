@@ -1,29 +1,42 @@
 #include "Text.h"
 
+CText*				CText::m_Instance			= NULL;
+LPDIRECT3DDEVICE9	CText::m_Device				= 0;
+LPD3DXSPRITE		CText::m_SpriteHandle		= 0;
 
-CText::CText(LPDIRECT3DDEVICE9 device, LPD3DXSPRITE& spriteHandle)
+CText::CText()
 {
-	m_Device				= device;
-	m_SpriteHandle			= spriteHandle;
 	m_FontFace				= DEFAULT_FONTNAME;
 	m_FontSize				= DEFAULT_FONT_SIZE;
 
 	AddFontResourceEx(DEFAULT_FONTPATH, FR_PRIVATE, 0);
 
-	this->Init();
 }
 
-CText::CText(LPDIRECT3DDEVICE9 device, LPD3DXSPRITE& spriteHandle, LPCTSTR fontFace,LPCTSTR fontPath)
+CText::CText(LPCTSTR fontFace,LPCTSTR fontPath, int fontSize)
 {
-	m_Device				= device;
-	m_SpriteHandle			= spriteHandle;
 	m_FontFace				= fontFace;
+	m_FontSize				= fontSize;
 
 	AddFontResourceEx(fontPath, FR_PRIVATE, 0);
 
-	this->Init();
 }
 
+void CText::InitFont()
+{
+	HRESULT hr = D3DXCreateFont(
+							m_Device,
+							m_Instance->m_FontSize,
+							0, 400, 0, false,
+							DEFAULT_CHARSET,
+							OUT_TT_PRECIS,
+							CLIP_DEFAULT_PRECIS,
+							DEFAULT_PITCH,
+							m_Instance->m_FontFace,
+							&(m_Instance->m_Font));
+	if (FAILED(hr))
+		return;
+}
 
 CText::~CText()
 {
@@ -34,35 +47,25 @@ CText::~CText()
 	}
 }
 
-void CText::Init()
-{							
-HRESULT hr = D3DXCreateFont(
-							m_Device,
-							m_FontSize,
-							0, 400, 0, false,
-							DEFAULT_CHARSET,
-							OUT_TT_PRECIS,
-							CLIP_DEFAULT_PRECIS,
-							DEFAULT_PITCH,
-							m_FontFace,
-							&m_Font);
-	if (FAILED(hr))
-		return;
+void CText::InitDevice(LPDIRECT3DDEVICE9 device, LPD3DXSPRITE spriteHandle)
+{						
+	m_Device			= device;
+	m_SpriteHandle		= spriteHandle;
 };
 
 
-template<class T>
-void CText::Draw(const T& Content, D3DXVECTOR3 Position, D3DCOLOR Color, int Size, UINT DT_Type)
+//template<class T>
+void CText::Draw(const wchar_t* Content, D3DXVECTOR3 Position, D3DCOLOR Color, int Size, UINT DT_Type, wchar_t* FontFace)
 {
-	if (Size != fontSize_)
-		setFontSize(Size);
+	if (Size != m_FontSize || FontFace != m_FontFace)
+		setChange(Size, FontFace);
 
 	D3DXVECTOR3 pos(Position);
 
 	RECT drawField;
 	drawField = { pos.x, pos.y, 0, 0 };
 
-	font_->DrawText(spriteHandler_, Default::tostr(Content).c_str(),
+	m_Font->DrawText(m_SpriteHandle, (Content),
 		-1, &drawField, DT_CALCRECT, Color);
 
 	if (DT_Type == DT_CENTER)
@@ -78,13 +81,32 @@ void CText::Draw(const T& Content, D3DXVECTOR3 Position, D3DCOLOR Color, int Siz
 		drawField.right		-= w;
 	}
 
-	font_->DrawText(spriteHandler_, Default::tostr(Content).c_str(),
+	m_Font->DrawText(m_SpriteHandle, (Content),
 		-1, &drawField, DT_Type, Color);
 };
 
-void CText::setFontSize(int fontSize)
+void CText::setChange(int fontSize, LPCTSTR fontFace)
 {
 	m_Font->Release();
 	m_FontSize = fontSize;
-	Init();
+	m_FontFace = fontFace;
+	this->m_Instance = new CText(m_FontFace, findFontPath(m_FontFace), m_FontSize);
+	m_Instance->InitFont();
+}
+
+LPCTSTR CText::findFontPath(LPCTSTR fontFace)
+{
+	if (fontFace == DEFAULT_FONTNAME)
+		return DEFAULT_FONTPATH;
+	return DEFAULT_FONTPATH;
+}
+
+CText* CText::getInstace()
+{
+	if (!m_Instance)
+	{
+		m_Instance = new CText();
+		m_Instance->InitFont();
+	}
+	return m_Instance;
 }

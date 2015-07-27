@@ -8,6 +8,7 @@ CGame::CGame(HINSTANCE hInstance)
 	m_Windows->initWindowGame();
 
 	CSprite::initSpriteHandler(m_Windows->getSpriteHandler());
+	CText::InitDevice(m_Windows->getDevice(), m_Windows->getSpriteHandler());
 	m_Keyboard	= new CKeyBoard(hInstance, m_Windows->getWindowHandler());
 
 	this->initGame();
