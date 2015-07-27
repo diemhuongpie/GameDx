@@ -20,7 +20,8 @@ public:
 	virtual		bool					loadSprite()		=	0;
 
 protected:
-				vector2d				m_Position;
+				int						m_State;
+				vector3d				m_Position;
 				vector2d				m_Velocity;
 				CBox2D*					m_Bounding;
 				vector<CSprite*>		m_listSprite;
