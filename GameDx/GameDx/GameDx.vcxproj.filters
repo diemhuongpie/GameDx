@@ -180,9 +180,6 @@
     <ClCompile Include="Class\Game\Test\Test.cpp">
       <Filter>Game\TEST</Filter>
     </ClCompile>
-    <ClCompile Include="Class\Framework\Text.cpp">
-      <Filter>Framework\Typography\cpp</Filter>
-    </ClCompile>
     <ClCompile Include="Class\Game\Entity\BaseEntity.cpp">
       <Filter>Game\Entity\Parent\cpp</Filter>
     </ClCompile>
@@ -216,6 +213,9 @@
     <ClCompile Include="Class\Game\Entity\Map\Tile.cpp">
       <Filter>Game\Entity\Child\Static Child\Children\Tile\cpp</Filter>
     </ClCompile>
+    <ClCompile Include="Class\Framework\Text.cpp">
+      <Filter>Framework\Typography\cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Class\Framework\Timer.h">
@@ -241,9 +241,6 @@
     </ClInclude>
     <ClInclude Include="Class\Game\Test\Test.h">
       <Filter>Game\TEST</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\Framework\Text.h">
-      <Filter>Framework\Typography</Filter>
     </ClInclude>
     <ClInclude Include="Class\Game\Entity\BaseEntity.h">
       <Filter>Game\Entity\Parent</Filter>
@@ -283,6 +280,9 @@
     </ClInclude>
     <ClInclude Include="Class\Game\Entity\Map\Tile.h">
       <Filter>Game\Entity\Child\Static Child\Children\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Framework\Text.h">
+      <Filter>Framework\Typography</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
