@@ -91,9 +91,10 @@ bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int
 	// if time is enough to draw, we increase index by calling Next function and change value of elapedTime.
 	if (double(FPSs)*m_ElapedTime >= 1000.0f)
 	{
+		this->m_isLoop = isLoop;
 		Next();
 		m_ElapedTime	= 0.0;
-		this->m_isLoop	= isLoop;
+		
 
 		// know drawing completly or not yet. if action is repeated , index equal 0; if not draw the last frame (That's mean action isn't repeated)
 		m_isCompleted	= isCompleted();	
@@ -108,7 +109,65 @@ bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int
 
 	return m_isCompleted;
 }
+bool		CSprite::Render(int fromFrame, int toFrame, D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int drawcenter, bool isLoop, float FPSs)
+{
+	if (this->m_Index <= fromFrame)
+		m_Index = fromFrame;
+	if (this->m_Index >= toFrame)
+		m_Index = toFrame;
 
+	// get frame's size (frame is a image which's part of sprite, sprite is a big image which include many small images and describe state of character)
+	RECT rec;
+	rec = getScrRect();
+	m_isCompleted = false;
+
+	// center point to draw
+	D3DXVECTOR3 center = this->setCenter(drawcenter);
+
+	// position
+	position.x = (int)position.x;
+	position.y = (int)position.y;
+	position.z = (int)position.z;
+
+	// transform: rotate, flip, scale...
+	m_spriteHandler->GetTransform(&m_CurrentMatrix);
+	D3DXMatrixTransformation2D(&m_TransformMatrix, &(D3DXVECTOR2)position, 0, &scale, &(D3DXVECTOR2)position, D3DXToRadian(rotate), NULL);
+	D3DXMatrixMultiply(&m_MultyMatrix, &m_TransformMatrix, &m_CurrentMatrix);
+	m_spriteHandler->SetTransform(&m_MultyMatrix);
+
+	// draw sprite into the screen
+	m_spriteHandler->Draw(
+		m_Image,
+		&rec,
+		&center,
+		&position,
+		D3DCOLOR_XRGB(255, 255, 255)
+		);
+
+	m_spriteHandler->SetTransform(&m_CurrentMatrix);
+
+	// FPSs (FPS of Sprite). FPS is how many frames whoch are drawn in 1 second (1000 millisecond)
+	// So if time to draw of game (this's time of a render or update loop) is smaller than time we want we have to sleep.
+	// However, if sleep chaging frame isn't really good, good way is redraw the previous frame. That's mean no change index.
+	// if time is enough to draw, we increase index by calling Next function and change value of elapedTime.
+	if (double(FPSs)*m_ElapedTime >= 1000.0f)
+	{
+		this->m_isLoop = isLoop;
+		Next();
+		m_ElapedTime = 0.0;
+
+		// know drawing completly or not yet. if action is repeated , index equal 0; if not draw the last frame (That's mean action isn't repeated)
+		m_isCompleted = isCompleted();
+	}
+	// special thing. stupid code
+	if (CTimer::getInstance()->getElapedTime() < 0)
+		return false;
+
+	// if time to draw in real is smaller than time to set, we skip increase index and sum time of this loop.
+	m_ElapedTime += CTimer::getInstance()->getElapedTime();
+
+	return m_isCompleted;
+}
 RECT		CSprite::getScrRect()
 {
 	RECT rect;
