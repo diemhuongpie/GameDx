@@ -7,16 +7,16 @@
 #include "Framework\KeyBoard.h"
 #include "Game\Scene\BaseScene.h"
 #include "Game\Utill\InformationResource.h"
+#include "Game\Utill\Config.h"
 
 class CSelectStageScene :
 	public CBaseScene
 {
 public:
 	CSelectStageScene();
-	CSelectStageScene(LPDIRECT3DDEVICE9);
 	~CSelectStageScene();
 
-	virtual bool initScene(LPDIRECT3DDEVICE9)		override;
+	virtual bool initScene()						override;
 	virtual void updateScene()						override;
 	virtual void updateScene(CKeyBoard*)			override;
 	virtual void renderScene()						override;
@@ -26,7 +26,7 @@ private:
 	CSprite*				m_ButtonMenuSelectStage;
 	vector3d				m_PositionButton;
 	int						m_IndexSelect;
-	//vector<CText*>			m_Text;
+	bool					m_enterTheGame;
 };
 
 #endif

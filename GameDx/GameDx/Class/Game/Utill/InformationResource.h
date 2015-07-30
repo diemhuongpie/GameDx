@@ -25,6 +25,17 @@ public:
 	static const wchar_t*	backgroundSeletStage;
 	static const wchar_t*	buttonMenuState;
 	/*************************************************/
+
+	/************RESOURCE FOR MENU*******/
+	static const wchar_t*	backgroundMenu;
+	static const wchar_t*	megaManBackground;
+	static const wchar_t*	rulerBackground;
+	/*************************************************/
+
+	/************RESOURCE FOR INTROSCENE*******/
+	static const wchar_t*	sprite;
+	static const wchar_t*	backgroundIntroStage;
+	/*************************************************/
 };
 
 #endif

@@ -12,7 +12,7 @@
 #include "Framework\Camera.h"
 #include "Game\Test\Test.h"
 #include "Game\Utill\stdafx.h"
-#include "Game\Scene\SelectStageScene.h"
+#include "Game\Scene\SceneManager.h"
 
 class CGame
 {
@@ -27,7 +27,6 @@ public:
 private:
 	CWindows*				m_Windows;
 	CKeyBoard*				m_Keyboard;
-	CSelectStageScene*		beginScene;
 	Test*					m_Test;
 };
 

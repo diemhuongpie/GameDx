@@ -44,7 +44,7 @@ public:
 	void			Next();
 	void			Reset();
 	int				getIndex();
-	bool			isCompleted();
+	bool			isCompleted(int);
 
 private:
 	static	LPD3DXSPRITE			m_spriteHandler;

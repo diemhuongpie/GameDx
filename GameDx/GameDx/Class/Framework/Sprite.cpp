@@ -97,7 +97,7 @@ bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int
 		
 
 		// know drawing completly or not yet. if action is repeated , index equal 0; if not draw the last frame (That's mean action isn't repeated)
-		m_isCompleted	= isCompleted();	
+		m_isCompleted	= isCompleted(m_nColumns*m_nRow);	
 	}
 
 	// special thing. stupid code
@@ -157,7 +157,7 @@ bool		CSprite::Render(int fromFrame, int toFrame, D3DXVECTOR3 position, D3DXVECT
 		m_ElapedTime = 0.0;
 
 		// know drawing completly or not yet. if action is repeated , index equal 0; if not draw the last frame (That's mean action isn't repeated)
-		m_isCompleted = isCompleted();
+		m_isCompleted = isCompleted(toFrame);
 	}
 	// special thing. stupid code
 	if (CTimer::getInstance()->getElapedTime() < 0)
@@ -242,14 +242,14 @@ int			CSprite::getIndex()
 	return m_Index;
 }
 
-bool		CSprite::isCompleted() 
+bool		CSprite::isCompleted(int toFrame) 
 {	
-	if (m_Index >= m_nColumns*m_nRow)
+	if (m_Index >= toFrame)
 	{
 		if (this->m_isLoop)
 			Reset();
 		else
-			m_Index = m_nColumns*m_nRow;
+			m_Index = toFrame;
 		return true;
 	}
 	return false;

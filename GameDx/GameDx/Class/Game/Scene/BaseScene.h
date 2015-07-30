@@ -10,7 +10,7 @@ public:
 	CBaseScene(){};
 	~CBaseScene(){};
 
-	virtual bool initScene(LPDIRECT3DDEVICE9)		= 0;
+	virtual bool initScene()						= 0;
 	virtual void updateScene()						= 0;
 	virtual void updateScene(CKeyBoard*)			= 0;
 	virtual void renderScene()						= 0;

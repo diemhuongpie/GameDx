@@ -48,10 +48,6 @@ int CALLBACK WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR 
 			CTimer::getInstance()->end();
 			CTimer::getInstance()->setElapedTime();
 		}
-
-		OutputDebugString(L"Game: ");
-		OutputDebugString(_itow(( CTimer::getInstance()->getElapedTime()), new WCHAR[1], 10));
-		OutputDebugString(L"\n");
 	}
 	return 0;
 }
