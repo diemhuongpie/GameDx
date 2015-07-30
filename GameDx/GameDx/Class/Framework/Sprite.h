@@ -23,7 +23,8 @@ public:
 							float		rotate		= 0,
 							int			draw_center = DRAWCENTER_MIDDLE_BOTTOM,
 							bool		isLoop		= true,
-							float		FPSs		= 60
+							float		FPSs		= 60,
+							D3DCOLOR	anphaBlend	= D3DCOLOR_XRGB(255, 255, 255)
 						  );
 
 	bool			Render(
@@ -34,7 +35,8 @@ public:
 							float		rotate		= 0,
 							int			draw_center = DRAWCENTER_MIDDLE_BOTTOM,
 							bool		isLoop		= true,
-							float		FPSs		= 60
+							float		FPSs		= 60,
+							D3DCOLOR	anphaBlend	= D3DCOLOR_XRGB(255, 255, 255)
 							);
 
 

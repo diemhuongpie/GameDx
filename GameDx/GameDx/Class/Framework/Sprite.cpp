@@ -30,7 +30,7 @@ CSprite::CSprite(wstring filePath, int nRows, int nColumns, int nFrame, int Inde
 										D3DPOOL_DEFAULT,
 										D3DX_DEFAULT,
 										D3DX_DEFAULT,
-										D3DCOLOR_XRGB(0, 63, 63),
+										D3DCOLOR_XRGB(34, 177, 76),
 										&m_Info,
 										NULL,
 										&m_Image
@@ -53,7 +53,7 @@ CSprite::~CSprite()
 	}
 }
 
-bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int drawcenter, bool isLoop, float FPSs)
+bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int drawcenter, bool isLoop, float FPSs, D3DCOLOR anphaBlend)
 {
 	// get frame's size (frame is a image which's part of sprite, sprite is a big image which include many small images and describe state of character)
 	RECT rec;
@@ -80,7 +80,7 @@ bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int
 		&rec,
 		&center,
 		&position,
-		D3DCOLOR_XRGB(255, 255, 255)
+		anphaBlend
 		);
 
 	m_spriteHandler->SetTransform(&m_CurrentMatrix);
@@ -109,7 +109,7 @@ bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int
 
 	return m_isCompleted;
 }
-bool		CSprite::Render(int fromFrame, int toFrame, D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int drawcenter, bool isLoop, float FPSs)
+bool		CSprite::Render(int fromFrame, int toFrame, D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int drawcenter, bool isLoop, float FPSs, D3DCOLOR anphaBlend)
 {
 	if (this->m_Index <= fromFrame)
 		m_Index = fromFrame;
@@ -141,7 +141,7 @@ bool		CSprite::Render(int fromFrame, int toFrame, D3DXVECTOR3 position, D3DXVECT
 		&rec,
 		&center,
 		&position,
-		D3DCOLOR_XRGB(255, 255, 255)
+		anphaBlend
 		);
 
 	m_spriteHandler->SetTransform(&m_CurrentMatrix);
