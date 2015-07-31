@@ -5,6 +5,7 @@
 #include "Framework\Sprite.h"
 #include "Framework\Text.h"
 #include "Game\Utill\InformationResource.h"
+#include "Game\Utill\Config.h"
 class CIntroStageScene :
 	public CBaseScene
 {
@@ -22,6 +23,8 @@ private:
 	CSprite*		m_Sprite;
 	vector3d		m_Position;
 	int				m_direct;
+	int				m_RandomPoint;
+	int			m_isRandomPoint;
 };
 
 #endif

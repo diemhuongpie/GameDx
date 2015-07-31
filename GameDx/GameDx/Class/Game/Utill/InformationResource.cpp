@@ -28,6 +28,6 @@ const wchar_t*		CInfomationResource::rulerBackground			= L"Resource//Image//Scen
 /*************************************************/
 
 /************RESOURCE FOR INTROSCENE*******/
-const wchar_t*		CInfomationResource::sprite						= L"Resource//Image//Game//Sprites//BossCutMan//cutman_stand0.png";
+const wchar_t*		CInfomationResource::sprite						= L"Resource//Image//IntroScene//cutManIntro.png";
 const wchar_t*		CInfomationResource::backgroundIntroStage		= L"Resource//Image//Background//background_3.png";
 /*************************************************/

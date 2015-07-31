@@ -4,6 +4,8 @@
 #include "Game\Scene\SceneManager.h"
 #include "Game\Scene\IntroStageScene.h"
 
+bool effect = false;
+
 CSelectStageScene::CSelectStageScene()
 {
 	this->initScene();
@@ -67,6 +69,17 @@ void CSelectStageScene::updateScene(CKeyBoard* device)
 	if (device->KeyPress(DIK_RETURN))
 		m_enterTheGame = true;
 
+	static double countTime = 0;
+	if (CTimer::getInstance()->getElapedTime() >= 0)
+		countTime += CTimer::getInstance()->getElapedTime();
+	if (countTime >= 100)
+	{
+		countTime	= 0;
+		effect		= true;
+	}
+	else
+		effect = false;
+
 	if (m_IndexSelect < 0)	m_IndexSelect	=	5;
 	if (m_IndexSelect > 5)	m_IndexSelect	=	0;
 
@@ -86,34 +99,30 @@ void CSelectStageScene::renderScene()
 	CText::getInstace()->Draw(_T(SELECT_FIREMAN_STRING),	vector3d(64 *	BACKBUFFER_WIDTH / 170, 86 * BACKBUFFER_HEIGHT / 97, 0.5),	DAFAULT_TEXT_COLOR_STAGE, 16, DT_CENTER, DEFAULT_FONTNAME);
 	CText::getInstace()->Draw(_T(SELECT_ELECMAN),			vector3d(42 *	BACKBUFFER_WIDTH / 170, 59 * BACKBUFFER_HEIGHT / 97, 0.5),	DAFAULT_TEXT_COLOR_STAGE, 16, DT_CENTER, DEFAULT_FONTNAME);
 
-	static double countTime = 0;
-	if (CTimer::getInstance()->getElapedTime() >= 0)
-		countTime += CTimer::getInstance()->getElapedTime();
 
-	if (countTime >= 100)
+	if (effect)
 	{
-		countTime = 0;
 		CText::getInstace()->Draw(_T(SELECT_STAGE_STRING),			vector3d(BACKBUFFER_WIDTH / 2, 3 * BACKBUFFER_HEIGHT / 7, 0.5),				DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
 		CText::getInstace()->Draw(_T(PRESS_START_GAME_STRING),		vector3d(BACKBUFFER_WIDTH / 2, 7.2 * BACKBUFFER_HEIGHT / 14, 0.5),			DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
 		switch (m_IndexSelect)
 		{
 		case STAGESELECTED::CUTMAN:
-			CText::getInstace()->Draw(_T(SELECT_CUTMAN_STRING),		vector3d(64 *	BACKBUFFER_WIDTH / 170, 32 * BACKBUFFER_HEIGHT / 97, 0.5),	DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
+			CText::getInstace()->Draw(_T(SELECT_CUTMAN_STRING),		vector3d(64 *	BACKBUFFER_WIDTH / 170, 32 * BACKBUFFER_HEIGHT / 97, 0.5f),	DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
 			break;
 		case STAGESELECTED::GUTSMAN:
-			CText::getInstace()->Draw(_T(SELECT_GUTMAN_STRING),		vector3d(108 *	BACKBUFFER_WIDTH / 170, 32 * BACKBUFFER_HEIGHT / 97, 0.5),	DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
+			CText::getInstace()->Draw(_T(SELECT_GUTMAN_STRING),		vector3d(108 *	BACKBUFFER_WIDTH / 170, 32 * BACKBUFFER_HEIGHT / 97, 0.5f),	DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
 			break;
 		case STAGESELECTED::ICEMAN:
-			CText::getInstace()->Draw(_T(SELECT_ICEMAN_STRING),		vector3d(130 *	BACKBUFFER_WIDTH / 170, 59 * BACKBUFFER_HEIGHT / 97, 0.5),	DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
+			CText::getInstace()->Draw(_T(SELECT_ICEMAN_STRING),		vector3d(130 *	BACKBUFFER_WIDTH / 170, 59 * BACKBUFFER_HEIGHT / 97, 0.5f),	DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
 			break;
 		case STAGESELECTED::BOMBMAN:
-			CText::getInstace()->Draw(_T(SELECT_BOMBMAN_STRING),	vector3d(108 *	BACKBUFFER_WIDTH / 170, 86 * BACKBUFFER_HEIGHT / 97, 0.5),	DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
+			CText::getInstace()->Draw(_T(SELECT_BOMBMAN_STRING),	vector3d(108 *	BACKBUFFER_WIDTH / 170, 86 * BACKBUFFER_HEIGHT / 97, 0.5f),	DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
 			break;
 		case STAGESELECTED::FIREMAN:
-			CText::getInstace()->Draw(_T(SELECT_FIREMAN_STRING),	vector3d(64 *	BACKBUFFER_WIDTH / 170, 86 * BACKBUFFER_HEIGHT / 97, 0.5),	DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
+			CText::getInstace()->Draw(_T(SELECT_FIREMAN_STRING),	vector3d(64 *	BACKBUFFER_WIDTH / 170, 86 * BACKBUFFER_HEIGHT / 97, 0.5f),	DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
 			break;
 		case STAGESELECTED::ELECMAN:
-			CText::getInstace()->Draw(_T(SELECT_ELECMAN),			vector3d(42 *	BACKBUFFER_WIDTH / 170, 59 * BACKBUFFER_HEIGHT / 97, 0.5),	DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
+			CText::getInstace()->Draw(_T(SELECT_ELECMAN),			vector3d(42 *	BACKBUFFER_WIDTH / 170, 59 * BACKBUFFER_HEIGHT / 97, 0.5f),	DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
 			break;
 		default:
 			break;
