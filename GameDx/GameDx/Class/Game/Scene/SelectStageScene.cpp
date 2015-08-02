@@ -28,7 +28,7 @@ bool CSelectStageScene::initScene()
 	return true;
 }
 
-void CSelectStageScene::updateScene()
+void CSelectStageScene::updateScene(double deltaTime)
 {
 	switch (m_IndexSelect)
 	{

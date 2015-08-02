@@ -6,6 +6,8 @@
 #include "Framework\Text.h"
 #include "Game\Utill\InformationResource.h"
 #include "Game\Utill\Config.h"
+#include "Game\Scene\SceneManager.h"
+#include "Game\Scene\PopUpScene.h"
 class CIntroStageScene :
 	public CBaseScene
 {
@@ -14,7 +16,7 @@ public:
 	~CIntroStageScene();
 
 	virtual bool initScene()						override;
-	virtual void updateScene()						override;
+	virtual void updateScene(double deltaTime)		override;
 	virtual void updateScene(CKeyBoard*)			override;
 	virtual void renderScene()						override;
 

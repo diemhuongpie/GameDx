@@ -31,3 +31,8 @@ const wchar_t*		CInfomationResource::rulerBackground			= L"Resource//Image//Scen
 const wchar_t*		CInfomationResource::sprite						= L"Resource//Image//IntroScene//cutManIntro.png";
 const wchar_t*		CInfomationResource::backgroundIntroStage		= L"Resource//Image//Background//background_3.png";
 /*************************************************/
+
+/************RESOURCE FOR POPUPSCENE*******/
+const wchar_t*	CInfomationResource::popUp							= L"Resource//Image//PopupScene//popup.png";
+const wchar_t*	CInfomationResource::itemLife						= L"Resource//Image//PopupScene//Item_life.png";
+/*************************************************/

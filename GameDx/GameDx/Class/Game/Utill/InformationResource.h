@@ -36,6 +36,11 @@ public:
 	static const wchar_t*	sprite;
 	static const wchar_t*	backgroundIntroStage;
 	/*************************************************/
+
+	/************RESOURCE FOR POPUPSCENE*******/
+	static const wchar_t*	popUp;
+	static const wchar_t*	itemLife;
+	/*************************************************/
 };
 
 #endif

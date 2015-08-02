@@ -24,7 +24,7 @@ public:
 							int			draw_center = DRAWCENTER_MIDDLE_BOTTOM,
 							bool		isLoop		= true,
 							float		FPSs		= 60,
-							D3DCOLOR	anphaBlend	= D3DCOLOR_XRGB(255, 255, 255)
+							D3DCOLOR	fade		= D3DCOLOR_XRGB(255, 255, 255)
 						  );
 
 	bool			Render(
@@ -36,7 +36,7 @@ public:
 							int			draw_center = DRAWCENTER_MIDDLE_BOTTOM,
 							bool		isLoop		= true,
 							float		FPSs		= 60,
-							D3DCOLOR	anphaBlend	= D3DCOLOR_XRGB(255, 255, 255)
+							D3DCOLOR	fade		= D3DCOLOR_XRGB(255, 255, 255)
 							);
 
 

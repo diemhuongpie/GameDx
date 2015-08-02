@@ -1,24 +1,28 @@
-#pragma once
+#ifndef __POPUPSCENE_H__
+#define __POPUPSCENE_H__
+
 #include "BaseScene.h"
+#include "Game\Utill\InformationResource.h"
 #include "Framework\Sprite.h"
 #include "Game\Scene\SceneManager.h"
-#include "Game\Utill\InformationResource.h"
 #include "Game\Utill\Config.h"
 
-class CGameOverScene :
+class CPopUpScene :
 	public CBaseScene
 {
 public:
-	CGameOverScene();
-	~CGameOverScene();
+	CPopUpScene();
+	~CPopUpScene();
 
 	virtual bool initScene()						override;
-	virtual void updateScene(double deltaTime)		override;
 	virtual void updateScene(CKeyBoard*)			override;
+	virtual void updateScene(double deltaTime)		override;
 	virtual void renderScene()						override;
 
 private:
-	CSprite*			m_Background;
-	CSprite*			m_ArrowChoice;
+	CSprite*				m_PpopUp;
+	CSprite*				m_LifeItem;
 };
+
+#endif
 

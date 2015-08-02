@@ -27,7 +27,7 @@ void CGame::initGame()
 {
 	m_Test			= new Test(m_Windows->getDevice());
 }
-void CGame::updateGame()
+void CGame::updateGame(double deltaTime)
 {
 	m_Keyboard->Update();
 	//m_Test->Update(m_Keyboard);
@@ -37,7 +37,7 @@ void CGame::updateGame()
 		PostQuitMessage(0);
 
 	CSceneManager::getInstance()->getScene().top()->updateScene(m_Keyboard);
-	CSceneManager::getInstance()->getScene().top()->updateScene();
+	CSceneManager::getInstance()->getScene().top()->updateScene(deltaTime);
 
 }
 void CGame::renderGame()

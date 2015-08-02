@@ -21,7 +21,7 @@ public:
 	~CGame(void);
 
 	void initGame();
-	void updateGame();
+	void updateGame(double deltaTime);
 	void renderGame();
 
 private:

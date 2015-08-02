@@ -15,7 +15,7 @@ public:
 
 	virtual bool initScene()						override;
 	virtual void updateScene(CKeyBoard*)			override;
-	virtual void updateScene()						override;
+	virtual void updateScene(double deltaTime)		override;
 	virtual void renderScene()						override;
 
 private:

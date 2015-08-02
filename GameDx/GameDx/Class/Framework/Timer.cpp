@@ -9,6 +9,7 @@ CTimer::CTimer()
 	this->m_Second			=	0;
 	this->m_Minute			=	0;
 	this->m_Hours			=	0;
+	this->m_ElapedTime		=	0;
 
 	QueryPerformanceFrequency(&m_freq);
 
@@ -65,7 +66,8 @@ double	CTimer::getHours()
 
 void	CTimer::setElapedTime()
 {
-	m_ElapedTime = ((double)(m_end.QuadPart - m_start.QuadPart) / m_freq.QuadPart)*1000.00;
+	if (((double)(m_end.QuadPart - m_start.QuadPart) / m_freq.QuadPart)*1000.00 > 0)
+		m_ElapedTime = ((double)(m_end.QuadPart - m_start.QuadPart) / m_freq.QuadPart)*1000.00;
 }
 
 void	CTimer::setElapedTime(double second)

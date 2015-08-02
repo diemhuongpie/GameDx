@@ -61,21 +61,6 @@
     <Filter Include="Framework\Camera">
       <UniqueIdentifier>{bd18e6af-473b-4e7a-8dea-5813665e3568}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Entity\Parent">
-      <UniqueIdentifier>{63feac3a-ed7e-43b4-b24e-26ca7f21ce29}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Entity\Parent\cpp">
-      <UniqueIdentifier>{a6639b3e-115e-43ef-99f7-f31ece8e1e8d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Entity\Child">
-      <UniqueIdentifier>{bfb43658-9f59-4769-9d7e-31e959e0e4b4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Entity\Child\Static Child">
-      <UniqueIdentifier>{4bd0e790-99b5-4248-af7e-5b6130215e9a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Entity\Child\Dynamic Child">
-      <UniqueIdentifier>{1498958d-59cd-41d3-a519-07baccbc3fc4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Scene">
       <UniqueIdentifier>{de1c7e28-409b-41ea-8b2d-df67189dbc68}</UniqueIdentifier>
     </Filter>
@@ -112,50 +97,53 @@
     <Filter Include="Game\State\Children\cpp">
       <UniqueIdentifier>{83483afb-53d1-4e96-aa28-c9b25a3380dd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Entity\Child\Static Child\Base">
-      <UniqueIdentifier>{18e5311d-6808-4fe3-ae31-c348b87db237}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Entity\Child\Static Child\Children">
-      <UniqueIdentifier>{ea34b8a9-2ac5-418a-b8cf-512d80235306}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Entity\Child\Static Child\Children\Tile">
-      <UniqueIdentifier>{27f9bdb6-e504-46bd-bb63-5ddc67f255e5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Entity\Child\Static Child\Base\cpp">
-      <UniqueIdentifier>{c2f2e2fc-3280-49c3-94ec-45e116ff6a66}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Entity\Child\Dynamic Child\Base">
-      <UniqueIdentifier>{f704c1f2-5be0-43e1-9601-905254fc87f0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Entity\Child\Dynamic Child\Children">
-      <UniqueIdentifier>{772fb4e3-6551-4b27-afc3-70b8cc2dc2a6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Entity\Child\Dynamic Child\Children\Player">
-      <UniqueIdentifier>{791a0e78-043b-444b-b2ed-5549a89c5a46}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Entity\Child\Dynamic Child\Children\Player\cpp">
-      <UniqueIdentifier>{1a4a192d-3e9e-49ba-884d-b952a87a80b3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Entity\Child\Dynamic Child\Children\Mod">
-      <UniqueIdentifier>{3858d857-00e7-457c-84c9-3b7b55e8f28c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Entity\Child\Dynamic Child\Children\Boss">
-      <UniqueIdentifier>{eb78e6ac-5650-4058-88cd-8214f64e72d6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Entity\Child\Dynamic Child\Base\cpp">
-      <UniqueIdentifier>{805820e3-08ff-4bbc-98c8-f3391894b57d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Framework\Camera\cpp">
       <UniqueIdentifier>{c82f94e3-c1e3-45e9-a219-87524a6e299d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Entity\Child\Static Child\Children\Tile\cpp">
-      <UniqueIdentifier>{60ca7272-2cfc-4cb6-aede-3a61d3e062b7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Algorithm">
       <UniqueIdentifier>{ed5c13c2-f964-4069-8098-ff6001f0ac6c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Algorithm\SweptAABB">
       <UniqueIdentifier>{356ceb7b-1cf9-4ec2-9c17-e9c08c9f92ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Base">
+      <UniqueIdentifier>{f704c1f2-5be0-43e1-9601-905254fc87f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Base\cpp">
+      <UniqueIdentifier>{805820e3-08ff-4bbc-98c8-f3391894b57d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Children">
+      <UniqueIdentifier>{772fb4e3-6551-4b27-afc3-70b8cc2dc2a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Children\Boss">
+      <UniqueIdentifier>{eb78e6ac-5650-4058-88cd-8214f64e72d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Children\Mod">
+      <UniqueIdentifier>{3858d857-00e7-457c-84c9-3b7b55e8f28c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Children\Player">
+      <UniqueIdentifier>{791a0e78-043b-444b-b2ed-5549a89c5a46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Children\Tile">
+      <UniqueIdentifier>{27f9bdb6-e504-46bd-bb63-5ddc67f255e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Children\Tile\cpp">
+      <UniqueIdentifier>{60ca7272-2cfc-4cb6-aede-3a61d3e062b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Children\Player\cpp">
+      <UniqueIdentifier>{75adf925-f133-4665-a1e8-4246dfe47a22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm\ObjectPool">
+      <UniqueIdentifier>{ac1aebda-f853-43da-8337-9d48732ecb8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm\Factory">
+      <UniqueIdentifier>{d7da7b2d-94ad-41ca-87ba-464cef19f69c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm\Singleton">
+      <UniqueIdentifier>{b9beb86f-1bc2-430c-a3ac-5fc3353f4389}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm\Collision">
+      <UniqueIdentifier>{8bd82b04-8ec1-4191-bf21-5ddab73c7591}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -180,12 +168,6 @@
     <ClCompile Include="Class\Game\Test\Test.cpp">
       <Filter>Game\TEST</Filter>
     </ClCompile>
-    <ClCompile Include="Class\Game\Entity\BaseEntity.cpp">
-      <Filter>Game\Entity\Parent\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\Entity\Player.cpp">
-      <Filter>Game\Entity\Child\Dynamic Child\Children\Player\cpp</Filter>
-    </ClCompile>
     <ClCompile Include="Class\Game\Scene\MenuScene.cpp">
       <Filter>Game\Scene\cpp</Filter>
     </ClCompile>
@@ -195,35 +177,50 @@
     <ClCompile Include="Class\Mathematics\Box2D.cpp">
       <Filter>Polygon\Box2D\cpp</Filter>
     </ClCompile>
-    <ClCompile Include="Class\Game\Entity\StaticEntity.cpp">
-      <Filter>Game\Entity\Child\Static Child\Base\cpp</Filter>
-    </ClCompile>
     <ClCompile Include="Class\Game\Entity\MovableEntity.cpp">
-      <Filter>Game\Entity\Child\Dynamic Child\Base\cpp</Filter>
+      <Filter>Game\Entity\Base\cpp</Filter>
     </ClCompile>
     <ClCompile Include="Class\Framework\Camera.cpp">
       <Filter>Framework\Camera\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\Scene\SelectStageScene.cpp">
-      <Filter>Game\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Class\Game\Utill\InformationResource.cpp">
       <Filter>Game\Utill</Filter>
     </ClCompile>
     <ClCompile Include="Class\Game\Entity\Map\Tile.cpp">
-      <Filter>Game\Entity\Child\Static Child\Children\Tile\cpp</Filter>
+      <Filter>Game\Entity\Children\Tile\cpp</Filter>
     </ClCompile>
     <ClCompile Include="Class\Framework\Text.cpp">
       <Filter>Framework\Typography\cpp</Filter>
     </ClCompile>
-    <ClCompile Include="Class\Game\Scene\SceneManager.cpp">
-      <Filter>Game\Scene</Filter>
+    <ClCompile Include="Class\Game\Scene\SelectStageScene.cpp">
+      <Filter>Game\Scene\cpp</Filter>
     </ClCompile>
     <ClCompile Include="Class\Game\Scene\IntroStageScene.cpp">
-      <Filter>Game\Scene</Filter>
+      <Filter>Game\Scene\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Scene\SceneManager.cpp">
+      <Filter>Game\Scene\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Scene\PlayScene.cpp">
+      <Filter>Game\Scene\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\BaseEntity.cpp">
+      <Filter>Game\Entity\Base\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\StaticEntity.cpp">
+      <Filter>Game\Entity\Base\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Player.cpp">
+      <Filter>Game\Entity\Children\Player\cpp</Filter>
     </ClCompile>
     <ClCompile Include="Class\Mathematics\Collision.cpp">
-      <Filter>Algorithm</Filter>
+      <Filter>Algorithm\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Scene\PopUpScene.cpp">
+      <Filter>Game\Scene\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Scene\GameOverScene.cpp">
+      <Filter>Game\Scene\cpp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -251,12 +248,6 @@
     <ClInclude Include="Class\Game\Test\Test.h">
       <Filter>Game\TEST</Filter>
     </ClInclude>
-    <ClInclude Include="Class\Game\Entity\BaseEntity.h">
-      <Filter>Game\Entity\Parent</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\Game\Entity\Player.h">
-      <Filter>Game\Entity\Child\Dynamic Child\Children\Player</Filter>
-    </ClInclude>
     <ClInclude Include="Class\Game\Scene\BaseScene.h">
       <Filter>Game\Scene</Filter>
     </ClInclude>
@@ -272,11 +263,8 @@
     <ClInclude Include="Class\Mathematics\Polygon.h">
       <Filter>Polygon\Polygon%28Base%29</Filter>
     </ClInclude>
-    <ClInclude Include="Class\Game\Entity\StaticEntity.h">
-      <Filter>Game\Entity\Child\Static Child\Base</Filter>
-    </ClInclude>
     <ClInclude Include="Class\Game\Entity\MovableEntity.h">
-      <Filter>Game\Entity\Child\Dynamic Child\Base</Filter>
+      <Filter>Game\Entity\Base</Filter>
     </ClInclude>
     <ClInclude Include="Class\Game\Utill\InformationResource.h">
       <Filter>Game\Utill</Filter>
@@ -285,7 +273,7 @@
       <Filter>Game\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Class\Game\Entity\Map\Tile.h">
-      <Filter>Game\Entity\Child\Static Child\Children\Tile</Filter>
+      <Filter>Game\Entity\Children\Tile</Filter>
     </ClInclude>
     <ClInclude Include="Class\Framework\Text.h">
       <Filter>Framework\Typography</Filter>
@@ -296,11 +284,29 @@
     <ClInclude Include="Class\Game\Scene\IntroStageScene.h">
       <Filter>Game\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Class\Mathematics\Collision.h">
-      <Filter>Algorithm</Filter>
-    </ClInclude>
     <ClInclude Include="Class\Mathematics\SweptAABB.h">
       <Filter>Algorithm\SweptAABB</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Scene\PlayScene.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\BaseEntity.h">
+      <Filter>Game\Entity\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\StaticEntity.h">
+      <Filter>Game\Entity\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Player.h">
+      <Filter>Game\Entity\Children\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Mathematics\Collision.h">
+      <Filter>Algorithm\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Scene\PopUpScene.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Scene\GameOverScene.h">
+      <Filter>Game\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

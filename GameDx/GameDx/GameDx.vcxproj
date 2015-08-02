@@ -101,8 +101,11 @@
     <ClInclude Include="Class\Game\Entity\StaticEntity.h" />
     <ClInclude Include="Class\Game\Game\Game.h" />
     <ClInclude Include="Class\Game\Scene\BaseScene.h" />
+    <ClInclude Include="Class\Game\Scene\GameOverScene.h" />
     <ClInclude Include="Class\Game\Scene\IntroStageScene.h" />
     <ClInclude Include="Class\Game\Scene\MenuScene.h" />
+    <ClInclude Include="Class\Game\Scene\PlayScene.h" />
+    <ClInclude Include="Class\Game\Scene\PopUpScene.h" />
     <ClInclude Include="Class\Game\Scene\SceneManager.h" />
     <ClInclude Include="Class\Game\Scene\SelectStageScene.h" />
     <ClInclude Include="Class\Game\Test\Test.h" />
@@ -127,8 +130,11 @@
     <ClCompile Include="Class\Game\Entity\Player.cpp" />
     <ClCompile Include="Class\Game\Entity\StaticEntity.cpp" />
     <ClCompile Include="Class\Game\Game\Game.cpp" />
+    <ClCompile Include="Class\Game\Scene\GameOverScene.cpp" />
     <ClCompile Include="Class\Game\Scene\IntroStageScene.cpp" />
     <ClCompile Include="Class\Game\Scene\MenuScene.cpp" />
+    <ClCompile Include="Class\Game\Scene\PlayScene.cpp" />
+    <ClCompile Include="Class\Game\Scene\PopUpScene.cpp" />
     <ClCompile Include="Class\Game\Scene\SceneManager.cpp" />
     <ClCompile Include="Class\Game\Scene\SelectStageScene.cpp" />
     <ClCompile Include="Class\Game\Test\Test.cpp" />
