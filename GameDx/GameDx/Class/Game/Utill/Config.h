@@ -122,8 +122,8 @@ struct KeyState
 /*CONST*/
 /******************/
 
-
 /******************************/
+
 /*VLD*/
 #ifndef __VLD_H__
 #define __VLD_H__

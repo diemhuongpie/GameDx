@@ -82,9 +82,6 @@
     <Filter Include="Game\Scene\cpp">
       <UniqueIdentifier>{8f0c5e2f-c203-4485-9050-cdee4d215b4d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Algorithm">
-      <UniqueIdentifier>{56d50947-a3cc-4d6d-85b7-977f7cc0f45c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Polygon">
       <UniqueIdentifier>{ffba13e7-f8ca-4589-ba3b-e15cadba0d8e}</UniqueIdentifier>
     </Filter>
@@ -99,9 +96,6 @@
     </Filter>
     <Filter Include="Polygon\Polygon%28Base%29\cpp">
       <UniqueIdentifier>{ccd3b4f7-ea36-4df4-bb0f-cd76a1505754}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Algorithm\Swept AABB">
-      <UniqueIdentifier>{e7f4ccf9-10c5-4ab2-afdd-c19519e57691}</UniqueIdentifier>
     </Filter>
     <Filter Include="Game\State">
       <UniqueIdentifier>{9281d50e-116f-4945-bcf7-1549d3eeed39}</UniqueIdentifier>
@@ -156,6 +150,12 @@
     </Filter>
     <Filter Include="Game\Entity\Child\Static Child\Children\Tile\cpp">
       <UniqueIdentifier>{60ca7272-2cfc-4cb6-aede-3a61d3e062b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm">
+      <UniqueIdentifier>{ed5c13c2-f964-4069-8098-ff6001f0ac6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm\SweptAABB">
+      <UniqueIdentifier>{356ceb7b-1cf9-4ec2-9c17-e9c08c9f92ae}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -216,6 +216,15 @@
     <ClCompile Include="Class\Framework\Text.cpp">
       <Filter>Framework\Typography\cpp</Filter>
     </ClCompile>
+    <ClCompile Include="Class\Game\Scene\SceneManager.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Scene\IntroStageScene.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Mathematics\Collision.cpp">
+      <Filter>Algorithm</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Class\Framework\Timer.h">
@@ -263,9 +272,6 @@
     <ClInclude Include="Class\Mathematics\Polygon.h">
       <Filter>Polygon\Polygon%28Base%29</Filter>
     </ClInclude>
-    <ClInclude Include="Class\Mathematics\SweptAABB.h">
-      <Filter>Algorithm\Swept AABB</Filter>
-    </ClInclude>
     <ClInclude Include="Class\Game\Entity\StaticEntity.h">
       <Filter>Game\Entity\Child\Static Child\Base</Filter>
     </ClInclude>
@@ -283,6 +289,18 @@
     </ClInclude>
     <ClInclude Include="Class\Framework\Text.h">
       <Filter>Framework\Typography</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Scene\SceneManager.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Scene\IntroStageScene.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Mathematics\Collision.h">
+      <Filter>Algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Mathematics\SweptAABB.h">
+      <Filter>Algorithm\SweptAABB</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,6 +3,7 @@
 #include "Game\Utill\InformationResource.h"
 #include "Game\Scene\SelectStageScene.h"
 #include "Game\Scene\SceneManager.h"
+#include "Game\Utill\Config.h"
 
 class CSceneManager;
 
@@ -30,18 +31,15 @@ bool CMenuScene::initScene()
 
 void CMenuScene::updateScene()
 {
-	static double countTime = 0;
+	static double countTimeOfMenu = 0;
 	if (m_enterTheGame && CTimer::getInstance()->getElapedTime() >= 0)
-		countTime += CTimer::getInstance()->getElapedTime();
+		countTimeOfMenu += CTimer::getInstance()->getElapedTime();
 
-	OutputDebugString(L"Size: ");
-	OutputDebugString(_itow(countTime, new WCHAR[1], 10));
-	OutputDebugString(L"\n");
-
-	if (countTime >= 1000 * 32 / 16)
+	if (countTimeOfMenu >= 1000 * 32 / 16)
 	{
 		CSceneManager::getInstance()->getScene().pop();
 		CSceneManager::getInstance()->getScene().push(new CSelectStageScene());
+		countTimeOfMenu = 0;
 	}
 
 }

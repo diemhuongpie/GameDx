@@ -5,7 +5,6 @@
 #include "Framework\Text.h"
 #include "BaseScene.h"
 #include "Framework\Windows.h"
-#include "Framework\Text.h"
 
 class CMenuScene :
 	public CBaseScene

@@ -59,7 +59,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Resource;C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Class;F:\Game_HKHe\Rockman_GameDx\GameDx\GameDx\Resource;F:\Game_HKHe\Rockman_GameDx\GameDx\GameDx\Class;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Resource;C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Class;C:\Users\DiemHuong Shin\Desktop\Rockman\GameDx\GameDx\Resource;C:\Users\DiemHuong Shin\Desktop\Rockman\GameDx\GameDx\Class;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -101,13 +101,16 @@
     <ClInclude Include="Class\Game\Entity\StaticEntity.h" />
     <ClInclude Include="Class\Game\Game\Game.h" />
     <ClInclude Include="Class\Game\Scene\BaseScene.h" />
+    <ClInclude Include="Class\Game\Scene\IntroStageScene.h" />
     <ClInclude Include="Class\Game\Scene\MenuScene.h" />
+    <ClInclude Include="Class\Game\Scene\SceneManager.h" />
     <ClInclude Include="Class\Game\Scene\SelectStageScene.h" />
     <ClInclude Include="Class\Game\Test\Test.h" />
     <ClInclude Include="Class\Game\Utill\Config.h" />
     <ClInclude Include="Class\Game\Utill\InformationResource.h" />
     <ClInclude Include="Class\Game\Utill\stdafx.h" />
     <ClInclude Include="Class\Mathematics\Box2D.h" />
+    <ClInclude Include="Class\Mathematics\Collision.h" />
     <ClInclude Include="Class\Mathematics\Polygon.h" />
     <ClInclude Include="Class\Mathematics\SweptAABB.h" />
   </ItemGroup>
@@ -124,12 +127,15 @@
     <ClCompile Include="Class\Game\Entity\Player.cpp" />
     <ClCompile Include="Class\Game\Entity\StaticEntity.cpp" />
     <ClCompile Include="Class\Game\Game\Game.cpp" />
+    <ClCompile Include="Class\Game\Scene\IntroStageScene.cpp" />
     <ClCompile Include="Class\Game\Scene\MenuScene.cpp" />
+    <ClCompile Include="Class\Game\Scene\SceneManager.cpp" />
     <ClCompile Include="Class\Game\Scene\SelectStageScene.cpp" />
     <ClCompile Include="Class\Game\Test\Test.cpp" />
     <ClCompile Include="Class\Game\Utill\InformationResource.cpp" />
     <ClCompile Include="Class\Game\WinMain.cpp" />
     <ClCompile Include="Class\Mathematics\Box2D.cpp" />
+    <ClCompile Include="Class\Mathematics\Collision.cpp" />
     <ClCompile Include="Class\Mathematics\Polygon.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
