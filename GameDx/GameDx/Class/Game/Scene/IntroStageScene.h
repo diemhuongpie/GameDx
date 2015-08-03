@@ -7,7 +7,7 @@
 #include "Game\Utill\InformationResource.h"
 #include "Game\Utill\Config.h"
 #include "Game\Scene\SceneManager.h"
-#include "Game\Scene\PopUpScene.h"
+#include "Game\Scene\PlayScene.h"
 class CIntroStageScene :
 	public CBaseScene
 {
@@ -24,9 +24,12 @@ private:
 	CSprite*		m_Background;
 	CSprite*		m_Sprite;
 	vector3d		m_Position;
-	int				m_direct;
+	int				m_Direct;
 	int				m_RandomPoint;
-	int			m_isRandomPoint;
+	int				m_isRandomPoint;
+	bool			m_TimeForChangingSprite;
+	wchar_t*		m_Temp;
+	int				m_Index;
 };
 
 #endif

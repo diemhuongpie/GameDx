@@ -6,6 +6,7 @@
 #include "Game\Utill\Config.h"
 #include "Game\Scene\BaseScene.h"
 #include "Game\Scene\MenuScene.h"
+#include "Game\Scene\PlayScene.h"
 
 class CSceneManager
 {

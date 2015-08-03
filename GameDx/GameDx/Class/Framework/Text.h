@@ -27,7 +27,7 @@ public:
 private:
 	static		LPDIRECT3DDEVICE9	m_Device;
 	static		LPD3DXSPRITE		m_SpriteHandle;
-				LPD3DXFONT			m_Font;
+	static		LPD3DXFONT			m_Font;
 				int					m_FontSize;
 				LPCTSTR				m_FontFace;
 

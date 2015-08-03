@@ -9,9 +9,9 @@
 #include <tchar.h>
 
 /*DEFINE*/
-#define FPS 60
-#define GAME_RATE (1000.0f/60.0f)
-#define WINDOWS_NAME L"Oishi"
+#define FPS							60
+#define GAME_RATE					(1000.0f/60.0f)
+#define WINDOWS_NAME				L"Oishi"
 
 #define DRAWCENTER_LEFT_TOP			1					
 #define DRAWCENTER_LEFT_MIDDLE		2			
@@ -35,6 +35,7 @@
 
 #define matrix						D3DXMATRIX
 
+#define DIRECT_COORDINATE(A)		{-(A)}
 #define SAFE_RELEASE(A)				{if (A) {delete A; A = 0;}}
 
 #define BACKBUFFER_WIDTH			510
@@ -63,6 +64,11 @@
 
 #define DEFAULT_POINT_STRING		L"0000"
 #define CUTMAN_STAGE_INFO_STRING	L"CUTMAN\n\nCLEAR POINT"
+
+
+
+#define POOLSIZE					5
+#define LEVELPOOL(A)				(A*POOLSIZE)		
 /************************************/
 
 /*ENUM*/
@@ -108,6 +114,12 @@ enum STAGESELECTED
 	BOMBMAN,
 	FIREMAN,
 	ELECMAN
+};
+
+enum DIRECTION
+{
+	DIRECTION_UP	=  1,
+	DIRECTION_DOWN	= -1
 };
 /******************/
 

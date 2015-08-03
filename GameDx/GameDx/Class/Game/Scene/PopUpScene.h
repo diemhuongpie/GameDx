@@ -5,6 +5,7 @@
 #include "Game\Utill\InformationResource.h"
 #include "Framework\Sprite.h"
 #include "Game\Scene\SceneManager.h"
+#include "Game\Scene\MenuScene.h"
 #include "Game\Utill\Config.h"
 
 class CPopUpScene :

@@ -3,6 +3,7 @@
 CText*				CText::m_Instance			= NULL;
 LPDIRECT3DDEVICE9	CText::m_Device				= 0;
 LPD3DXSPRITE		CText::m_SpriteHandle		= 0;
+LPD3DXFONT			CText::m_Font				= 0;
 
 CText::CText()
 {
@@ -26,14 +27,14 @@ void CText::InitFont()
 {
 	HRESULT hr = D3DXCreateFont(
 							m_Device,
-							m_Instance->m_FontSize,
+							m_FontSize,
 							0, 400, 0, false,
 							DEFAULT_CHARSET,
 							OUT_TT_PRECIS,
 							CLIP_DEFAULT_PRECIS,
 							DEFAULT_PITCH,
-							m_Instance->m_FontFace,
-							&(m_Instance->m_Font));
+							m_FontFace,
+							&(m_Font));
 	if (FAILED(hr))
 		return;
 }
@@ -65,7 +66,9 @@ void CText::Draw(const wchar_t* Content, D3DXVECTOR3 Position, D3DCOLOR Color, i
 	RECT drawField;
 	drawField = { pos.x, pos.y, 0, 0 };
 
-	m_Font->DrawText(m_SpriteHandle, (Content),
+	//http://stackoverflow.com/questions/1655242/lpd3dxfont-drawtext-using-dt-calcrect
+
+	m_Font->DrawText(m_SpriteHandle, Content,
 		-1, &drawField, DT_CALCRECT, Color);
 
 	if (DT_Type == DT_CENTER)
@@ -81,16 +84,16 @@ void CText::Draw(const wchar_t* Content, D3DXVECTOR3 Position, D3DCOLOR Color, i
 		drawField.right		-= w;
 	}
 
-	m_Font->DrawText(m_SpriteHandle, (Content),
+	m_Font->DrawText(m_SpriteHandle, Content,
 		-1, &drawField, DT_Type, Color);
 };
 
 void CText::setChange(int fontSize, LPCTSTR fontFace)
 {
 	m_Font->Release();
-	m_FontSize = fontSize;
-	m_FontFace = fontFace;
-	this->m_Instance = new CText(m_FontFace, findFontPath(m_FontFace), m_FontSize);
+	m_FontSize			= fontSize;
+	m_FontFace			= fontFace;
+	this->m_Instance	= new CText(m_FontFace, findFontPath(m_FontFace), m_FontSize);
 	m_Instance->InitFont();
 }
 

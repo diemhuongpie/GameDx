@@ -37,9 +37,9 @@ void CMenuScene::updateScene(double deltaTime)
 
 	if (countTimeOfMenu >= 1000 * 32 / 16)
 	{
+		countTimeOfMenu = 0;
 		CSceneManager::getInstance()->getScene().pop();
 		CSceneManager::getInstance()->getScene().push(new CSelectStageScene());
-		countTimeOfMenu = 0;
 	}
 
 }
@@ -54,9 +54,9 @@ void CMenuScene::updateScene(CKeyBoard* Keyboard)
 void CMenuScene::renderScene()
 {
 		m_Background		->Render(						vector3d(0.0, 0.0f, 0.5f), vector2d(1.0f, 1.0f), 0, DRAWCENTER_LEFT_TOP);
-		CText::getInstace()	->Draw(_T(START_GAME_STRING),	vector3d(BACKBUFFER_WIDTH / 2, 12 * BACKBUFFER_HEIGHT / 15, 0.5),			DEFAULT_FONT_COLOR, 15, DT_CENTER, DEFAULT_FONTNAME);
+		CText::getInstace()	->Draw(_T(START_GAME_STRING),	vector3d(BACKBUFFER_WIDTH / 2, 12 * BACKBUFFER_HEIGHT / 15, 0.5),			DEFAULT_FONT_COLOR, DEFAULT_FONT_SIZE, DT_CENTER, DEFAULT_FONTNAME);
 		CText::getInstace()	->Draw(_T(PRODUCTOR),			vector3d(BACKBUFFER_WIDTH / 2, 7 *	BACKBUFFER_HEIGHT / 8, 0.5),			DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
-		CText::getInstace()	->Draw(_T(TM),					vector3d(13 * BACKBUFFER_WIDTH / 16, 11 * BACKBUFFER_HEIGHT / 28, 0.5),		DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
+		CText::getInstace()	->Draw(_T(TM),					vector3d(13 * BACKBUFFER_WIDTH / 16, 11 * BACKBUFFER_HEIGHT / 28, 0.5),		DEFAULT_FONT_COLOR, 20, DT_CENTER, DEFAULT_FONTNAME);
 
 	if (m_enterTheGame == true)
 	{
