@@ -30,6 +30,8 @@ private:
 	bool			m_TimeForChangingSprite;
 	wchar_t*		m_Temp;
 	int				m_Index;
+	bool			m_LoadTextTime;
+	double			m_countTimeForText;
 };
 
 #endif

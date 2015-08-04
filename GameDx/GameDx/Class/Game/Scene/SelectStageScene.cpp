@@ -4,7 +4,7 @@
 #include "Game\Scene\SceneManager.h"
 #include "Game\Scene\IntroStageScene.h"
 
-bool g_effectOfStage = false;
+bool m_Particle = false;
 
 CSelectStageScene::CSelectStageScene()
 {
@@ -24,6 +24,7 @@ bool CSelectStageScene::initScene()
 	m_ButtonMenuSelectStage		= new CSprite(CInfomationResource::buttonMenuState,			1, 2, 2, 0);
 	m_IndexSelect				= STAGESELECTED::CUTMAN;
 	m_enterTheGame				= false;
+	m_Particle					= false;
 
 	return true;
 }
@@ -76,10 +77,10 @@ void CSelectStageScene::updateScene(CKeyBoard* device)
 	if (countTimeOfStageSceneSelected >= 100)
 	{
 		countTimeOfStageSceneSelected = 0;
-		g_effectOfStage = true;
+		m_Particle = true;
 	}
 	else
-		g_effectOfStage = false;
+		m_Particle = false;
 
 	if (m_IndexSelect < 0)	m_IndexSelect	=	5;
 	if (m_IndexSelect > 5)	m_IndexSelect	=	0;
@@ -91,10 +92,10 @@ void CSelectStageScene::renderScene()
 	static clock_t tiner = 0;
 	if (CTimer::getInstance()->getElapedTime() > 0)
 		tiner += CTimer::getInstance()->getElapedTime();
+
 	OutputDebugString(L"StageSelect: ");
 	OutputDebugString(_itow(tiner, new WCHAR[1], 10));
 	OutputDebugString(L"\n");
-
 	tiner = 00;
 
 	m_Background			->Render((vector3d(0.0, 0.0f, 0.5f)),	vector2d(1.0f, 1.0f), 0, DRAWCENTER_LEFT_TOP,	true, FPS);
@@ -110,7 +111,7 @@ void CSelectStageScene::renderScene()
 	CText::getInstace()->Draw(_T(SELECT_ELECMAN),			vector3d(42 *	BACKBUFFER_WIDTH / 170, 59 * BACKBUFFER_HEIGHT / 97, 0.5),	DAFAULT_TEXT_COLOR_STAGE, 16, DT_CENTER, DEFAULT_FONTNAME);
 
 
-	if (g_effectOfStage)
+	if (m_Particle)
 	{
 		CText::getInstace()->Draw(_T(SELECT_STAGE_STRING),			vector3d(BACKBUFFER_WIDTH / 2, 3 * BACKBUFFER_HEIGHT / 7, 0.5),				DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
 		CText::getInstace()->Draw(_T(PRESS_START_GAME_STRING),		vector3d(BACKBUFFER_WIDTH / 2, 7.2 * BACKBUFFER_HEIGHT / 14, 0.5),			DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);

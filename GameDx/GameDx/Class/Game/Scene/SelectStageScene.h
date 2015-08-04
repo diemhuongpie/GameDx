@@ -27,6 +27,7 @@ private:
 	vector3d				m_PositionButton;
 	int						m_IndexSelect;
 	bool					m_enterTheGame;
+	bool					m_Particle;
 };
 
 #endif

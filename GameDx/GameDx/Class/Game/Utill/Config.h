@@ -69,6 +69,9 @@
 
 #define POOLSIZE					5
 #define LEVELPOOL(A)				(A*POOLSIZE)		
+#define GAME_OVER_STRING			"GAME  OVER"
+#define CONTINUE_STRING				"CONTINUE"
+#define SELECT_STAGE_STRING_GV		"SELECT  STAGE"
 /************************************/
 
 /*ENUM*/

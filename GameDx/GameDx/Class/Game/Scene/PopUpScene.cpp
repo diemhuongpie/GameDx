@@ -1,5 +1,5 @@
 #include "PopUpScene.h"
-
+#include "Game\Scene\GameOverScene.h"
 
 CPopUpScene::CPopUpScene()
 {
@@ -23,8 +23,9 @@ void CPopUpScene::updateScene(CKeyBoard* keyboard)
 	if (keyboard->KeyPress(DIK_RETURN))
 	{
 		CSceneManager::getInstance()->getScene().pop();
-		CSceneManager::getInstance()->getScene().push(new CMenuScene());
+		CSceneManager::getInstance()->getScene().push(new CGameOverScene());
 	}
+
 }
 void CPopUpScene::updateScene(double deltaTime)
 {
