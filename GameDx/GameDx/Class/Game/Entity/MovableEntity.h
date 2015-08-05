@@ -19,11 +19,12 @@ public:
 	~CMovable();
 	virtual		bool					loadSprite()		=	0;
 	virtual		vector3d				getPosition();
-
 				CBox2D*					getBroadPhaseBox();
+
 protected:
 				int						m_State;
 				vector3d				m_Position;
+				vector2d				m_Velocity;
 				vector<CSprite*>		m_listSprite;
 				CBox2D*					m_BroadPhaseBox;
 

@@ -13,16 +13,14 @@
 class CBaseEntity
 {
 public:
-	//CBox2D*					m_Bounding;
-	vector2d				m_Velocity;
 
 	CBaseEntity();
 	CBaseEntity(directDevice);
 	~CBaseEntity();
 
 	virtual bool initEntity()										= 0;
-	virtual void updateEntity(CKeyBoard *device, float deltaTime)	= 0;
-	virtual void updateEntity(RECT rectCamera)						= 0;
+	virtual void updateEntity(float deltaTime)						= 0;
+	virtual void updateEntity(CKeyBoard* deivce)					= 0;
 	virtual void drawEntity()										= 0;
 
 protected:

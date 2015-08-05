@@ -1,22 +1,22 @@
-#include "Enemy_cut.h"
+#include "EnemyCut.h"
 
 
-CEnemy_cut::CEnemy_cut()
+CEnemyCut::CEnemyCut()
 {
 }
 
-CEnemy_cut::CEnemy_cut(vector3d m_position_player)
+CEnemyCut::CEnemyCut(vector3d m_position_player)
 {
 	this->initEntity();
 	m_position_p = m_position_player;
 }
 
 
-CEnemy_cut::~CEnemy_cut()
+CEnemyCut::~CEnemyCut()
 {
 }
 
-bool CEnemy_cut::initEntity()
+bool CEnemyCut::initEntity()
 {
 	m_Position = vector3d(350.0f, 300.0f, 0.0f);
 	// LOAD SPRITE
@@ -26,13 +26,13 @@ bool CEnemy_cut::initEntity()
 }
 
 
-bool CEnemy_cut::loadSprite()
+bool CEnemyCut::loadSprite()
 {
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//enemy_cut.png", 1, 2, 2, 0));
 	return true;
 }
 
-void CEnemy_cut::updateEntity(CKeyBoard *device, float deltaTime)
+void CEnemyCut::updateEntity(CKeyBoard *device, float deltaTime)
 {
 
 	this->m_Position.x += this->m_Velocity.x*deltaTime;
@@ -94,12 +94,12 @@ void CEnemy_cut::updateEntity(CKeyBoard *device, float deltaTime)
 	}
 }
 
-void CEnemy_cut::updateEntity(RECT rectCamera)
+void CEnemyCut::updateEntity(RECT rectCamera)
 {
 
 }
 
-void CEnemy_cut::drawEntity()
+void CEnemyCut::drawEntity()
 {
 	if (m_isLEFT)
 		this->m_listSprite[0]->Render(m_Position, vector2d(1.0, 1.0), 0.0f, DRAWCENTER_MIDDLE_MIDDLE, true, 10);

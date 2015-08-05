@@ -1,17 +1,17 @@
-#include "Enemy_bubble_blue.h"
+#include "EnemyBubbleBlue.h"
 
 
-CEnemy_bubble_blue::CEnemy_bubble_blue()
+CEnemyBubbleBlue::CEnemyBubbleBlue()
 {
 	this->initEntity();
 }
 
 
-CEnemy_bubble_blue::~CEnemy_bubble_blue()
+CEnemyBubbleBlue::~CEnemyBubbleBlue()
 {
 }
 
-bool CEnemy_bubble_blue::initEntity()
+bool CEnemyBubbleBlue::initEntity()
 {
 	m_Position = D3DXVECTOR3(500.0f, 100.0f, 0.0f);
 	x = 1;
@@ -23,13 +23,13 @@ bool CEnemy_bubble_blue::initEntity()
 }
 
 
-bool CEnemy_bubble_blue::loadSprite()
+bool CEnemyBubbleBlue::loadSprite()
 {
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//enemy_bubble_blue.png", 1, 2, 2, 0));
 	return true;
 }
 
-void  CEnemy_bubble_blue::enemyMoving()
+void  CEnemyBubbleBlue::enemyMoving()
 {
 	switch (x)
 	{
@@ -44,7 +44,7 @@ void  CEnemy_bubble_blue::enemyMoving()
 		break;
 	}
 }
-void CEnemy_bubble_blue::updateEntity(CKeyBoard *device, float deltaTime)
+void CEnemyBubbleBlue::updateEntity(CKeyBoard *device, float deltaTime)
 {
 	if (m_Position.x > m_position1.x)
 	{
@@ -105,13 +105,13 @@ void CEnemy_bubble_blue::updateEntity(CKeyBoard *device, float deltaTime)
 	}
 }
 
-void CEnemy_bubble_blue::updateEntity(RECT rectCamera)
+void CEnemyBubbleBlue::updateEntity(RECT rectCamera)
 {
 	
 	
 }
 
-void  CEnemy_bubble_blue::drawEntity()
+void  CEnemyBubbleBlue::drawEntity()
 {
 	if (m_isLEFT)
 	{

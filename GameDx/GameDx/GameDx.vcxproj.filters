@@ -151,6 +151,12 @@
     <Filter Include="Game\Entity\Children\Boss\cpp">
       <UniqueIdentifier>{ef3c7356-9a00-48b3-a45c-d07474b17d8d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Entity\Children\Bullet">
+      <UniqueIdentifier>{11b7d92d-367b-4cf2-a69f-5fbd60092181}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Children\Bullet\cpp">
+      <UniqueIdentifier>{938d492f-707b-4bfc-abaa-0976f8ff5fc1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Class\Framework\Timer.cpp">
@@ -216,9 +222,6 @@
     <ClCompile Include="Class\Game\Entity\StaticEntity.cpp">
       <Filter>Game\Entity\Base\cpp</Filter>
     </ClCompile>
-    <ClCompile Include="Class\Game\Entity\Player.cpp">
-      <Filter>Game\Entity\Children\Player\cpp</Filter>
-    </ClCompile>
     <ClCompile Include="Class\Mathematics\Collision.cpp">
       <Filter>Algorithm\Collision</Filter>
     </ClCompile>
@@ -228,32 +231,38 @@
     <ClCompile Include="Class\Game\Scene\GameOverScene.cpp">
       <Filter>Game\Scene\cpp</Filter>
     </ClCompile>
-    <ClCompile Include="Class\Game\Entity\Enemy_ball.cpp">
+    <ClCompile Include="Class\Game\Entity\Bullet\Bullet.cpp">
+      <Filter>Game\Entity\Children\Bullet\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy\EnemyBall.cpp">
       <Filter>Game\Entity\Children\Mod\cpp</Filter>
     </ClCompile>
-    <ClCompile Include="Class\Game\Entity\Enemy_bubble_blue.cpp">
+    <ClCompile Include="Class\Game\Entity\Enemy\EnemyBubbleBlue.cpp">
       <Filter>Game\Entity\Children\Mod\cpp</Filter>
     </ClCompile>
-    <ClCompile Include="Class\Game\Entity\Enemy_robot_red.cpp">
+    <ClCompile Include="Class\Game\Entity\Enemy\EnemyCut.cpp">
       <Filter>Game\Entity\Children\Mod\cpp</Filter>
     </ClCompile>
-    <ClCompile Include="Boss_cut_man.cpp">
+    <ClCompile Include="Class\Game\Entity\Enemy\EnemyEyeRed.cpp">
+      <Filter>Game\Entity\Children\Mod\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy\EnemyInkBlue.cpp">
+      <Filter>Game\Entity\Children\Mod\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy\EnemyMachineAutoOrange.cpp">
+      <Filter>Game\Entity\Children\Mod\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy\EnemyRobotRed.cpp">
+      <Filter>Game\Entity\Children\Mod\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy\EnemyTankRed.cpp">
+      <Filter>Game\Entity\Children\Mod\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Player\Player.cpp">
+      <Filter>Game\Entity\Children\Player\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy\BossCutMan.cpp">
       <Filter>Game\Entity\Children\Boss\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\Entity\Enemy_cut.cpp">
-      <Filter>Game\Entity\Children\Mod\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\Entity\Enemy_eye_red.cpp">
-      <Filter>Game\Entity\Children\Mod\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\Entity\Enemy_ink_blue.cpp">
-      <Filter>Game\Entity\Children\Mod\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\Entity\Enemy_machine_auto_orange.cpp">
-      <Filter>Game\Entity\Children\Mod\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\Entity\Enemy_tank_red.cpp">
-      <Filter>Game\Entity\Children\Mod\cpp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -329,9 +338,6 @@
     <ClInclude Include="Class\Game\Entity\StaticEntity.h">
       <Filter>Game\Entity\Base</Filter>
     </ClInclude>
-    <ClInclude Include="Class\Game\Entity\Player.h">
-      <Filter>Game\Entity\Children\Player</Filter>
-    </ClInclude>
     <ClInclude Include="Class\Mathematics\Collision.h">
       <Filter>Algorithm\Collision</Filter>
     </ClInclude>
@@ -341,32 +347,44 @@
     <ClInclude Include="Class\Game\Scene\GameOverScene.h">
       <Filter>Game\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Class\Game\Entity\Enemy_ball.h">
+    <ClInclude Include="Class\Game\Algorithsm\CObjectPool.h">
+      <Filter>Algorithm\ObjectPool</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Algorithsm\Singleton.h">
+      <Filter>Algorithm\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Bullet\Bullet.h">
+      <Filter>Game\Entity\Children\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Enemy\EnemyBall.h">
       <Filter>Game\Entity\Children\Mod</Filter>
     </ClInclude>
-    <ClInclude Include="Class\Game\Entity\Enemy_bubble_blue.h">
+    <ClInclude Include="Class\Game\Entity\Enemy\EnemyBubbleBlue.h">
       <Filter>Game\Entity\Children\Mod</Filter>
     </ClInclude>
-    <ClInclude Include="Class\Game\Entity\Enemy_robot_red.h">
+    <ClInclude Include="Class\Game\Entity\Enemy\EnemyCut.h">
       <Filter>Game\Entity\Children\Mod</Filter>
     </ClInclude>
-    <ClInclude Include="Boss_cut_man.h">
+    <ClInclude Include="Class\Game\Entity\Enemy\EnemyEyeRed.h">
+      <Filter>Game\Entity\Children\Mod</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Enemy\EnemyInkBlue.h">
+      <Filter>Game\Entity\Children\Mod</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Enemy\EnemyMachineAutoOrange.h">
+      <Filter>Game\Entity\Children\Mod</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Enemy\EnemyRobotRed.h">
+      <Filter>Game\Entity\Children\Mod</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Enemy\EnemyTankRed.h">
+      <Filter>Game\Entity\Children\Mod</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Player\Player.h">
+      <Filter>Game\Entity\Children\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Enemy\BossCutMan.h">
       <Filter>Game\Entity\Children\Boss</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_cut.h">
-      <Filter>Game\Entity\Children\Mod</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_eye_red.h">
-      <Filter>Game\Entity\Children\Mod</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_ink_blue.h">
-      <Filter>Game\Entity\Children\Mod</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_machine_auto_orange.h">
-      <Filter>Game\Entity\Children\Mod</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_tank_red.h">
-      <Filter>Game\Entity\Children\Mod</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

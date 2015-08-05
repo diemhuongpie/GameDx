@@ -1,13 +1,15 @@
-#pragma once
+#ifndef __ENEMY_BALL_H__
+#define __ENEMY_BALL_H__
+
 #include "Game\Entity\MovableEntity.h"
 #include "Framework\Camera.h"
 
-class CEnemy_ball : public CMovable
+class CEnemyBall : public CMovable
 {
 public:
-	CEnemy_ball();
-	CEnemy_ball(LPDIRECT3DDEVICE9);
-	~CEnemy_ball();
+	CEnemyBall();
+	CEnemyBall(LPDIRECT3DDEVICE9);
+	~CEnemyBall();
 
 	bool initEntity()											;
 	void updateEntity(CKeyBoard *device, float deltaTime)		;
@@ -21,3 +23,4 @@ private:
 	bool check_State;
 };
 
+#endif

@@ -1,13 +1,15 @@
-#pragma once
+#ifndef __ENEMY_CUT_H__
+#define __ENEMY_CUT_H__
+
 #include "Game\Entity\MovableEntity.h"
 #include "Framework\Camera.h"
 
-class CEnemy_cut : public CMovable
+class CEnemyCut : public CMovable
 {
 public:
-	CEnemy_cut();
-	CEnemy_cut(vector3d m_position_player);
-	~CEnemy_cut();
+	CEnemyCut();
+	CEnemyCut(vector3d m_position_player);
+	~CEnemyCut();
 
 	bool initEntity();
 	void updateEntity(CKeyBoard *device, float deltaTime);
@@ -22,3 +24,4 @@ private:
 	bool m_isJUMP;
 };
 
+#endif

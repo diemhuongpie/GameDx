@@ -1,18 +1,22 @@
-#pragma once
+#ifndef __ENEMY_BUBBLE_BLE_H__
+#define __ENEMY_BUBBLE_BLE_H__
+
 #include "Game\Entity\MovableEntity.h"
 #include "Framework\Camera.h"
 
-class CEnemy_bubble_blue : public CMovable
+class CEnemyBubbleBlue : public CMovable
 {
 public:
-	CEnemy_bubble_blue();
-	~CEnemy_bubble_blue();
+	CEnemyBubbleBlue();
+	~CEnemyBubbleBlue();
+
 	bool initEntity();
 	void updateEntity(CKeyBoard *device, float deltaTime);
 	void updateEntity(RECT rectCamera);
 	void drawEntity();
 	bool loadSprite();
 	void enemyMoving();
+
 private:
 	vector3d m_position1;
 	int x;
@@ -23,3 +27,4 @@ private:
 	bool m_isLEFT;
 };
 
+#endif

@@ -103,9 +103,9 @@ enum KEYSTATE
 	KEY_DOWN
 };
 
-enum Player_State
+enum PLAYSTATE
 {
-	START = 0,
+	START					= 0,
 	STAND,
 	STAND_SHOOT,
 	RUN,

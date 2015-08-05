@@ -1,22 +1,22 @@
-#include "Enemy_ball.h"
+#include "EnemyBall.h"
 #include "Game\Utill\InformationResource.h"
 
 
-CEnemy_ball::CEnemy_ball()
+CEnemyBall::CEnemyBall()
 {
 	this->initEntity();
 }
 
-CEnemy_ball::CEnemy_ball(LPDIRECT3DDEVICE9)
+CEnemyBall::CEnemyBall(LPDIRECT3DDEVICE9)
 {
 	this->initEntity();
 }
 
-CEnemy_ball::~CEnemy_ball()
+CEnemyBall::~CEnemyBall()
 {
 }
 
-bool CEnemy_ball::initEntity()
+bool CEnemyBall::initEntity()
 {
 	check_State = true;
 	m_Position = vector3d(350.0f, 300.0f, 0.0f);
@@ -28,13 +28,13 @@ bool CEnemy_ball::initEntity()
 }
 
 
-bool CEnemy_ball::loadSprite()
+bool CEnemyBall::loadSprite()
 {
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//enemy_ball.png", 1, 2, 2, 0));
 	return true;
 }
 
-void CEnemy_ball::updateEntity(CKeyBoard *device, float deltaTime)
+void CEnemyBall::updateEntity(CKeyBoard *device, float deltaTime)
 {
 
 	this->m_Position.x += this->m_Velocity.x*deltaTime;
@@ -55,12 +55,12 @@ void CEnemy_ball::updateEntity(CKeyBoard *device, float deltaTime)
 	}
 }
 
-void CEnemy_ball::updateEntity(RECT rectCamera)
+void CEnemyBall::updateEntity(RECT rectCamera)
 {
 
 }
 
-void  CEnemy_ball::drawEntity()
+void  CEnemyBall::drawEntity()
 {
 	if (check_State)
 		this->m_listSprite[0]->Render(0, 0, m_Position, vector2d(1.0, 1.0), 0.0f, DRAWCENTER_MIDDLE_MIDDLE, true, 10);

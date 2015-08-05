@@ -1,12 +1,14 @@
-#pragma once
+#ifndef __ENEMY_ROBOT_RED_H__
+#define __ENEMY_ROBOT_RED_H__
+
 #include "Game\Entity\MovableEntity.h"
 #include "Framework\Camera.h"
 
-class Enemy_robot_red : public CMovable
+class EnemyRobotRed : public CMovable
 {
 public:
-	Enemy_robot_red();
-	~Enemy_robot_red();
+	EnemyRobotRed();
+	~EnemyRobotRed();
 	bool initEntity();
 	void updateEntity(CKeyBoard *device, float deltaTime);
 	void updateEntity(RECT rectCamera);
@@ -18,4 +20,6 @@ private:
 	int m_delay_Time;
 	bool check_State;
 };
+
+#endif
 

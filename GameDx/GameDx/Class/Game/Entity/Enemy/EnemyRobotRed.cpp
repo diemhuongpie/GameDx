@@ -1,17 +1,17 @@
-#include "Enemy_robot_red.h"
+#include "EnemyRobotRed.h"
 
 
-Enemy_robot_red::Enemy_robot_red()
+EnemyRobotRed::EnemyRobotRed()
 {
 	this->initEntity();
 }
 
 
-Enemy_robot_red::~Enemy_robot_red()
+EnemyRobotRed::~EnemyRobotRed()
 {
 }
 
-bool Enemy_robot_red::initEntity()
+bool EnemyRobotRed::initEntity()
 {
 	check_State = true;
 	m_Position = D3DXVECTOR3(300.0f, 100.0f, 0.0f);
@@ -23,13 +23,13 @@ bool Enemy_robot_red::initEntity()
 }
 
 
-bool Enemy_robot_red::loadSprite()
+bool EnemyRobotRed::loadSprite()
 {
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//enemy_robot_red.png", 1, 2, 2, 0));
 	return true;
 }
 
-void Enemy_robot_red::updateEntity(CKeyBoard *device, float deltaTime)
+void EnemyRobotRed::updateEntity(CKeyBoard *device, float deltaTime)
 {
 	this->m_Position.x += this->m_Velocity.x*deltaTime;
 	this->m_Position.y += this->m_Velocity.y*deltaTime;
@@ -74,12 +74,12 @@ void Enemy_robot_red::updateEntity(CKeyBoard *device, float deltaTime)
 	}
 }
 
-void Enemy_robot_red::updateEntity(RECT rectCamera)
+void EnemyRobotRed::updateEntity(RECT rectCamera)
 {
 
 }
 
-void  Enemy_robot_red::drawEntity()
+void  EnemyRobotRed::drawEntity()
 {
 	if (m_isLEFT)
 	{
