@@ -13,7 +13,7 @@
 class CBaseEntity
 {
 public:
-	CBox2D*					m_Bounding;
+	//CBox2D*					m_Bounding;
 	vector2d				m_Velocity;
 
 	CBaseEntity();

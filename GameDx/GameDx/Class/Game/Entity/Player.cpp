@@ -29,11 +29,6 @@ bool CPlayer::initEntity()
 	return true;
 }
 
-RECT CPlayer::getBound()
-{
-	return m_Bounding;
-}
-
 bool CPlayer::loadSprite()
 {
 	this->m_listSprite.push_back(new CSprite(CInfomationResource::rockmanStart, 1, 3, 3, 0));

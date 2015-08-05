@@ -34,17 +34,6 @@ protected:
 	bool m_isDEAD;
 	bool m_isCLIMB;
 	bool m_isCOL;
-
-	virtual bool initEntity()						override;
-	virtual RECT getBound()							override;
-	virtual vector2d getVelocity()					override;
-	virtual void updateEntity(float deltaTime)		override;
-	virtual void updateEntity(CKeyBoard device)		override;
-	virtual void updateEntity(RECT rectCamera)		override;
-	virtual void drawEntity()						override;
-
-	virtual bool loadSprite()						override;
-
 private:
 
 };
