@@ -145,6 +145,12 @@
     <Filter Include="Algorithm\Collision">
       <UniqueIdentifier>{8bd82b04-8ec1-4191-bf21-5ddab73c7591}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Entity\Children\Mod\cpp">
+      <UniqueIdentifier>{28c998b2-7d36-4ee5-8324-477f4fb8bcfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Children\Boss\cpp">
+      <UniqueIdentifier>{ef3c7356-9a00-48b3-a45c-d07474b17d8d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Class\Framework\Timer.cpp">
@@ -221,6 +227,33 @@
     </ClCompile>
     <ClCompile Include="Class\Game\Scene\GameOverScene.cpp">
       <Filter>Game\Scene\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy_ball.cpp">
+      <Filter>Game\Entity\Children\Mod\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy_bubble_blue.cpp">
+      <Filter>Game\Entity\Children\Mod\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy_robot_red.cpp">
+      <Filter>Game\Entity\Children\Mod\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_cut_man.cpp">
+      <Filter>Game\Entity\Children\Boss\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy_cut.cpp">
+      <Filter>Game\Entity\Children\Mod\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy_eye_red.cpp">
+      <Filter>Game\Entity\Children\Mod\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy_ink_blue.cpp">
+      <Filter>Game\Entity\Children\Mod\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy_machine_auto_orange.cpp">
+      <Filter>Game\Entity\Children\Mod\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy_tank_red.cpp">
+      <Filter>Game\Entity\Children\Mod\cpp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -307,6 +340,33 @@
     </ClInclude>
     <ClInclude Include="Class\Game\Scene\GameOverScene.h">
       <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Enemy_ball.h">
+      <Filter>Game\Entity\Children\Mod</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Enemy_bubble_blue.h">
+      <Filter>Game\Entity\Children\Mod</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Enemy_robot_red.h">
+      <Filter>Game\Entity\Children\Mod</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss_cut_man.h">
+      <Filter>Game\Entity\Children\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_cut.h">
+      <Filter>Game\Entity\Children\Mod</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_eye_red.h">
+      <Filter>Game\Entity\Children\Mod</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_ink_blue.h">
+      <Filter>Game\Entity\Children\Mod</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_machine_auto_orange.h">
+      <Filter>Game\Entity\Children\Mod</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_tank_red.h">
+      <Filter>Game\Entity\Children\Mod</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

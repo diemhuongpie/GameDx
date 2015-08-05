@@ -18,6 +18,7 @@ public:
 	CMovable();
 	~CMovable();
 	virtual		bool					loadSprite()		=	0;
+	virtual		vector3d				getPosition();
 
 protected:
 				int						m_State;

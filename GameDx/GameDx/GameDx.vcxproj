@@ -59,7 +59,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Resource;C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Class;C:\Users\DiemHuong Shin\Desktop\Rockman\GameDx\GameDx\Resource;C:\Users\DiemHuong Shin\Desktop\Rockman\GameDx\GameDx\Class;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Dat\Desktop\GameDx\GameDx\GameDx\Resource;C:\Users\Dat\Desktop\GameDx\GameDx\GameDx\Class;C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Resource;C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Class;C:\Users\DiemHuong Shin\Desktop\Rockman\GameDx\GameDx\Resource;C:\Users\DiemHuong Shin\Desktop\Rockman\GameDx\GameDx\Class;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -88,6 +88,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Boss_cut_man.h" />
     <ClInclude Include="Class\Framework\Camera.h" />
     <ClInclude Include="Class\Framework\KeyBoard.h" />
     <ClInclude Include="Class\Framework\Sprite.h" />
@@ -95,6 +96,9 @@
     <ClInclude Include="Class\Framework\Timer.h" />
     <ClInclude Include="Class\Framework\Windows.h" />
     <ClInclude Include="Class\Game\Entity\BaseEntity.h" />
+    <ClInclude Include="Class\Game\Entity\Enemy_ball.h" />
+    <ClInclude Include="Class\Game\Entity\Enemy_bubble_blue.h" />
+    <ClInclude Include="Class\Game\Entity\Enemy_robot_red.h" />
     <ClInclude Include="Class\Game\Entity\Map\Tile.h" />
     <ClInclude Include="Class\Game\Entity\MovableEntity.h" />
     <ClInclude Include="Class\Game\Entity\Player.h" />
@@ -116,8 +120,14 @@
     <ClInclude Include="Class\Mathematics\Collision.h" />
     <ClInclude Include="Class\Mathematics\Polygon.h" />
     <ClInclude Include="Class\Mathematics\SweptAABB.h" />
+    <ClInclude Include="Enemy_cut.h" />
+    <ClInclude Include="Enemy_eye_red.h" />
+    <ClInclude Include="Enemy_ink_blue.h" />
+    <ClInclude Include="Enemy_machine_auto_orange.h" />
+    <ClInclude Include="Enemy_tank_red.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Boss_cut_man.cpp" />
     <ClCompile Include="Class\Framework\Camera.cpp" />
     <ClCompile Include="Class\Framework\KeyBoard.cpp" />
     <ClCompile Include="Class\Framework\Sprite.cpp" />
@@ -125,6 +135,14 @@
     <ClCompile Include="Class\Framework\Timer.cpp" />
     <ClCompile Include="Class\Framework\Windows.cpp" />
     <ClCompile Include="Class\Game\Entity\BaseEntity.cpp" />
+    <ClCompile Include="Class\Game\Entity\Enemy_ball.cpp" />
+    <ClCompile Include="Class\Game\Entity\Enemy_bubble_blue.cpp" />
+    <ClCompile Include="Class\Game\Entity\Enemy_cut.cpp" />
+    <ClCompile Include="Class\Game\Entity\Enemy_eye_red.cpp" />
+    <ClCompile Include="Class\Game\Entity\Enemy_ink_blue.cpp" />
+    <ClCompile Include="Class\Game\Entity\Enemy_machine_auto_orange.cpp" />
+    <ClCompile Include="Class\Game\Entity\Enemy_robot_red.cpp" />
+    <ClCompile Include="Class\Game\Entity\Enemy_tank_red.cpp" />
     <ClCompile Include="Class\Game\Entity\Map\Tile.cpp" />
     <ClCompile Include="Class\Game\Entity\MovableEntity.cpp" />
     <ClCompile Include="Class\Game\Entity\Player.cpp" />

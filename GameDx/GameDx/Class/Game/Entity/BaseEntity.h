@@ -17,11 +17,10 @@ public:
 	CBaseEntity(directDevice);
 	~CBaseEntity();
 
-	virtual bool initEntity()								= 0;
-	virtual void updateEntity(float deltaTime)				= 0;
-	virtual void updateEntity(CKeyBoard device)				= 0;
-	virtual void updateEntity(RECT rectCamera)				= 0;
-	virtual void drawEntity()								= 0;
+	virtual bool initEntity()										= 0;
+	virtual void updateEntity(CKeyBoard *device, float deltaTime)	= 0;
+	virtual void updateEntity(RECT rectCamera)						= 0;
+	virtual void drawEntity()										= 0;
 
 protected:
 

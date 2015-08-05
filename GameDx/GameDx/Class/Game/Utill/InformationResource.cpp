@@ -11,7 +11,7 @@ const wchar_t*		CInfomationResource::rockmanClimb				= L"Resource//Image//Game//
 const wchar_t*		CInfomationResource::rockmanClimbEnd			= L"Resource//Image//Game//Sprites//RockMan//RockManNormal//rockman_stair_end.png";
 const wchar_t*		CInfomationResource::rockmanClimbShoot			= L"Resource//Image//Game//Sprites//RockMan//RockManNormal//rockman_stair_fire.png";
 const wchar_t*		CInfomationResource::rockmanStand				= L"Resource//Image//Game//Sprites//RockMan//RockManNormal//rockman_stand.png";
-const wchar_t*		CInfomationResource::rockmanStandShoot			= L"Resource//Image//Game//Sprites//RockMan//RockManNormal//rockman_stand_fire";
+const wchar_t*		CInfomationResource::rockmanStandShoot			= L"Resource//Image//Game//Sprites//RockMan//RockManNormal//rockman_stand_fire.png";
 const wchar_t*		CInfomationResource::rockmanStart				= L"Resource//Image//Game//Sprites//RockMan//RockManNormal//rockman_start.png";
 
 /*******************************************/

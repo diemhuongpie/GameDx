@@ -35,6 +35,8 @@
 
 #define matrix						D3DXMATRIX
 
+#define PI							3.14
+
 #define DIRECT_COORDINATE(A)		{-(A)}
 #define SAFE_RELEASE(A)				{if (A) {delete A; A = 0;}}
 
@@ -65,7 +67,10 @@
 #define DEFAULT_POINT_STRING		L"0000"
 #define CUTMAN_STAGE_INFO_STRING	L"CUTMAN\n\nCLEAR POINT"
 
-
+#define VEL_PLAYER_X 4
+#define VEL_PLAYER_Y 19
+#define ACCEL_PLAYER_X 0.5f
+#define ACCEL_PLAYER_Y 1
 
 #define POOLSIZE					5
 #define LEVELPOOL(A)				(A*POOLSIZE)		
@@ -98,16 +103,21 @@ enum KEYSTATE
 	KEY_DOWN
 };
 
-enum PLAYERSTATE
+enum Player_State
 {
-	PLAYER_STAND = 0,
-	PLAYER_MOVE,
-	PLAYER_JUMP,
-	PLAYER_CLIMB,
-	PLAYER_DIE,
-	PLAYER_HIT,
-	PLAYER_SHOOT
+	START = 0,
+	STAND,
+	STAND_SHOOT,
+	RUN,
+	RUN_SHOOT,
+	JUMP,
+	JUMP_SHOOT,
+	CLIMB,
+	CLIMB_SHOOT,
+	CLIMB_END,
+	HIT
 };
+
 
 enum STAGESELECTED
 {
