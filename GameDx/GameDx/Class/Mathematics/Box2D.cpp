@@ -101,6 +101,11 @@ void	CBox2D::render()
 	m_line->Draw(vertex4, 2, 0xFFFF00FF);
 }
 
+CBox2D	CBox2D::getBroadPhaseBox(CBox2D* BoundingOfObject, vector2d Velocity)
+{
+
+}
+
 float	CBox2D::getHeight()
 {
 	return m_Size.y;
