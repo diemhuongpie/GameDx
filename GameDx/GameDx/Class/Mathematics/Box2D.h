@@ -15,6 +15,7 @@ public:
 	CBox2D(LPDIRECT3DDEVICE9, RECT, vector2d);
 	CBox2D(LPDIRECT3DDEVICE9, vector2d, vector2d, vector2d);
 	CBox2D(float, float, float, float);
+	CBox2D(CBox2D*, vector2d);
 	~CBox2D();
 
 	virtual		void	update(float deltaTime, vector2d pos)			override;
@@ -26,7 +27,7 @@ public:
 				float	getHeight();		void	setHeight(float);
 				float	getVelocityX();		void	setVelocityX(float);
 				float	getVelocityY();		void	setVelocityY(float);
-	static		CBox2D	getBroadPhaseBox(CBox2D*, vector2d);
+	static		CBox2D*	getBroadPhaseBox(CBox2D*, vector2d);
 private:
 	vector2d	m_Position;
 	vector2d	m_Size;
