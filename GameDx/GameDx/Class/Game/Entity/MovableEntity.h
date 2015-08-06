@@ -23,6 +23,7 @@ public:
 
 protected:
 				int						m_State;
+				int						m_Direction;
 				vector3d				m_Position;
 				vector2d				m_Velocity;
 				vector<CSprite*>		m_listSprite;

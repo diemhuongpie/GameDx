@@ -131,7 +131,10 @@ enum STAGESELECTED
 
 enum DIRECTION
 {
+	DIRECTION_NONE	=  0,
+	DIRECTION_RIGHT =  1,
 	DIRECTION_UP	=  1,
+	DIRECTION_LEFT	= -1,
 	DIRECTION_DOWN	= -1
 };
 
@@ -150,6 +153,41 @@ struct KeyState
 {
 	int KeyCode;
 	KEYSTATE KeyStates;
+};
+
+struct PLAYERSTATES
+{
+	enum START
+	{
+		START				= 0
+	};
+	enum STAND
+	{
+		STAND				= 1,
+		STAND_SHOOT			= 2
+	};
+	enum MOVE
+	{
+		MOVE				= 3,
+		MOVE_SHOOT			= 4
+	};
+	enum JUMP
+	{
+		JUMP				= 5,
+		JUMP_SHOOT			= 6
+	};
+	enum CLIMB
+	{
+		CLIMB				= 7,
+		CLIMB_SHOOT			= 8,
+		CLIMB_END			= 9
+	};
+	enum HIT
+	{
+		HIT					= 10
+	};
+
+
 };
 /******************************/
 
