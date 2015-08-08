@@ -155,39 +155,19 @@ struct KeyState
 	KEYSTATE KeyStates;
 };
 
-struct PLAYERSTATES
+enum PLAYERSTATES
 {
-	enum START
-	{
-		START				= 0
-	};
-	enum STAND
-	{
-		STAND				= 1,
-		STAND_SHOOT			= 2
-	};
-	enum MOVE
-	{
-		MOVE				= 3,
-		MOVE_SHOOT			= 4
-	};
-	enum JUMP
-	{
-		JUMP				= 5,
-		JUMP_SHOOT			= 6
-	};
-	enum CLIMB
-	{
-		CLIMB				= 7,
-		CLIMB_SHOOT			= 8,
-		CLIMB_END			= 9
-	};
-	enum HIT
-	{
-		HIT					= 10
-	};
-
-
+	STATE_START				= 0,
+	STATE_STAND				= 1,
+	STATE_STAND_SHOOT		= 2,
+	STATE_MOVE				= 3,
+	STATE_MOVE_SHOOT		= 4,
+	STATE_JUMP				= 5,
+	STATE_JUMP_SHOOT		= 6,
+	STATE_CLIMB				= 7,
+	STATE_CLIMB_SHOOT		= 8,
+	STATE_CLIMB_END			= 9,
+	STATE_HIT				= 10
 };
 /******************************/
 

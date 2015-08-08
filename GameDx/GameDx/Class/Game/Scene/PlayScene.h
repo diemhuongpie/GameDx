@@ -21,7 +21,7 @@ public:
 	virtual void renderScene()						override;
 
 private:
-			//CPlayer*								m_Player;
+			CPlayer*								m_Player;
 			CEnemyBall*								m_EnemyBall;
 			CEnemyBubbleBlue*						m_EnemyBubbleBlue;
 			CEnemyCut*								m_EnemyCut;
