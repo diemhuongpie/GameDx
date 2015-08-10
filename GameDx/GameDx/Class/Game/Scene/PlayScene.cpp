@@ -22,7 +22,6 @@ bool	CPlayScene::initScene()
 void	CPlayScene::updateScene(double deltaTime)
 {
 	m_Player->updateEntity(deltaTime);
-	m_EnemyBall->updateEntity(deltaTime);
 }
 
 void	CPlayScene::updateScene(CKeyBoard* keyboard)

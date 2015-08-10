@@ -65,10 +65,6 @@ void CPlayer::updateEntity(float deltaTime)
 		break;
 	}
 
-	CPlayer* player1 = new CPlayer();
-	CPlayer* player2 = new CPlayer();
-	player2->m_Bounding = new CBox2D(10, 100, 100, 100);
-
 }
 
 void CPlayer::updateEntity(CKeyBoard* device)
@@ -124,6 +120,10 @@ void CPlayer::updateEntity(CKeyBoard* device)
 		m_State			= PLAYERSTATES::STATE_JUMP_SHOOT;
 		m_Direction.x	= DIRECTION::DIRECTION_RIGHT;
 	}
+	if (device->KeyDown(DIK_LEFT) && device->KeyDown(DIK_RIGHT))
+	{
+		m_State = PLAYERSTATES::STATE_STAND;
+	}
 }
 
 void CPlayer::drawEntity()
@@ -133,13 +133,9 @@ void CPlayer::drawEntity()
 
 void CPlayer::logicMovePlayer(float deltaTime)
 {
-	m_Position.x += m_Velocity.x*(deltaTime / 60)*m_Direction.x;
+	m_Position.x += m_Velocity.x*(deltaTime / 100)*m_Direction.x;
 	//m_Position.y += m_Velocity.y*(deltaTime / 60)*m_Direction;
 }
 void CPlayer::logicJumpPlayer(float deltaTime)
-{
-}
-
-void CPlayer::controlPlayer(CKeyBoard *device, float deltaTime)
 {
 }

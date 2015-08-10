@@ -34,18 +34,15 @@ COLDIRECTION CCollision::CheckCollision(CMovable* MovableObject, CBaseEntity* Ob
 					return COLDIRECTION::COLDIRECTION_RIGHT;
 			else
 			{
+				// already changing axis Oy to dacac
 				if (MovableObject->m_Bounding->getY() == Object->m_Bounding->getY() + Object->m_Bounding->getHeight())
-					return COLDIRECTION::COLDIRECTION_BOTTOM;
-				if (MovableObject->m_Bounding->getY() + MovableObject->m_Bounding->getHeight() == Object->m_Bounding->getY())
 					return COLDIRECTION::COLDIRECTION_TOP;
-				if (MovableObject->m_Bounding->getX() == Object->m_Bounding->getX() + Object->m_Bounding->getWidth())
-				{
-					return COLDIRECTION::COLDIRECTION_LEFT;
-				}
-				if (MovableObject->m_Bounding->getX() + MovableObject->m_Bounding->getWidth() == Object->m_Bounding->getX())
-				{
-					return COLDIRECTION::COLDIRECTION_RIGHT;
-				}
+				else if (MovableObject->m_Bounding->getY() + MovableObject->m_Bounding->getHeight() == Object->m_Bounding->getY())
+						return COLDIRECTION::COLDIRECTION_BOTTOM;
+					else if (MovableObject->m_Bounding->getX() == Object->m_Bounding->getX() + Object->m_Bounding->getWidth())
+							return COLDIRECTION::COLDIRECTION_LEFT;
+						else if (MovableObject->m_Bounding->getX() + MovableObject->m_Bounding->getWidth() == Object->m_Bounding->getX())
+								return COLDIRECTION::COLDIRECTION_RIGHT;
 			}
 	}
 	else
