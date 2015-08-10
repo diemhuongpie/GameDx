@@ -16,6 +16,9 @@ const wchar_t*		CInfomationResource::rockmanStart				= L"Resource//Image//Game//
 
 /*******************************************/
 
+/************BULLET RESOURCE*****************/
+const wchar_t*		CInfomationResource::rockmanBullet				= L"Resource//Image//Game//Sprites//RockMan//Bullet//bullet_rockman.png";
+
 /************RESOURCE FOR SELECTSTAGE*******/
 const wchar_t*		CInfomationResource::backgroundSeletStage		= L"Resource//Image//SelectStage//selectStage.png";
 const wchar_t*		CInfomationResource::buttonMenuState			= L"Resource//Image//SelectStage//button_menu_state.png";

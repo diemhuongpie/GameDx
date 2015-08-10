@@ -21,6 +21,11 @@ public:
 	static const wchar_t*	rockmanStart;
 	/*************************************************/
 
+	/************BULLET RESOURCE*******/
+	static const wchar_t*	rockmanBullet;
+
+	/*************************************************/
+
 	/************RESOURCE FOR SELECTSTAGE*******/
 	static const wchar_t*	backgroundSeletStage;
 	static const wchar_t*	buttonMenuState;

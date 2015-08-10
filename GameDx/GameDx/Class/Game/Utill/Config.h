@@ -29,6 +29,7 @@
 #define directDevice				LPDIRECT3DDEVICE9
 #define vector3d					D3DXVECTOR3
 #define vector3dZero				D3DXVECTOR3(0.0f,0.0f,0.5f)
+#define	vector3dMinimum				D3DXVECTOR3(-10000, -10000, 0.5f)
 #define vector2d					D3DXVECTOR2
 #define vector2dZero				D3DXVECTOR2(0.0f,0.0f)
 #define vector4d					D3DXVECTOR4
@@ -101,6 +102,14 @@ enum KEYSTATE
 	KEY_RELEASE,
 	KEY_UP,
 	KEY_DOWN
+};
+
+enum BULLETSTATE
+{
+	BULLET_STATE_SHOW,
+	BULLET_STATE_INVIS,
+	BULLET_STATE_HIT,
+	BULLET_STATE_DIE
 };
 
 enum PLAYSTATE

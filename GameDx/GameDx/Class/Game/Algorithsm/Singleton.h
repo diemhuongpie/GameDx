@@ -16,12 +16,12 @@ public:
 
 	static	void	release()
 	{
-		delete	s_Instance
-	}
-protected:
-	static *T		s_Instance;
+		delete	s_Instance;
+	};
+//protected:
+//	static *T		s_Instance;
 };
 
-template <class T>
-T*	CSingleton<T>::s_Instance = 0;
+//template <class T>
+//T*	CSingleton<T>::s_Instance = 0;
 #endif

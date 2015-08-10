@@ -19,7 +19,8 @@ public:
 	~CMovable();
 	virtual		bool					loadSprite()		=	0;
 	virtual		vector3d				getPosition();
-
+				
+				RECT					getBounding();
 protected:
 				int						m_State;
 				vector2d				m_Direction;

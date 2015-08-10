@@ -97,7 +97,8 @@
     <ClInclude Include="Class\Game\Algorithsm\CObjectPool.h" />
     <ClInclude Include="Class\Game\Algorithsm\Singleton.h" />
     <ClInclude Include="Class\Game\Entity\BaseEntity.h" />
-    <ClInclude Include="Class\Game\Entity\Bullet\Bullet.h" />
+    <ClInclude Include="Class\Game\Entity\Bullet\BulletManager.h" />
+    <ClInclude Include="Class\Game\Entity\Bullet\BulletNormal.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\BossCutMan.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyBall.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyBubbleBlue.h" />
@@ -137,7 +138,8 @@
     <ClCompile Include="Class\Framework\Timer.cpp" />
     <ClCompile Include="Class\Framework\Windows.cpp" />
     <ClCompile Include="Class\Game\Entity\BaseEntity.cpp" />
-    <ClCompile Include="Class\Game\Entity\Bullet\Bullet.cpp" />
+    <ClCompile Include="Class\Game\Entity\Bullet\BulletManager.cpp" />
+    <ClCompile Include="Class\Game\Entity\Bullet\BulletNormal.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\BossCutMan.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyBall.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyBubbleBlue.cpp" />

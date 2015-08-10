@@ -48,9 +48,11 @@ public:
 	int				getIndex();
 	bool			isCompleted(int);
 
+	D3DXIMAGE_INFO	getFrameInfo();
+
 private:
 	static	LPD3DXSPRITE			m_spriteHandler;
-	static	LPDIRECT3DDEVICE9	m_d3dDevice;
+	static	LPDIRECT3DDEVICE9		m_d3dDevice;
 	static	vector<CSprite*>		m_LoadedSprite;
 
 			int							m_nRow;

@@ -3,18 +3,22 @@
 
 #include "Game\Entity\MovableEntity.h"
 
-class CBullet	: public CMovable
+class CBulletNormal	: public CMovable
 {
 public:
-	CBullet();
-	~CBullet();
+	CBulletNormal();
+	~CBulletNormal();
 
 	virtual		bool					initEntity()										override;
 	virtual		void					updateEntity(CKeyBoard* device)						override;
 	virtual		void					updateEntity(float deltaTime)						override;
 	virtual		void					drawEntity()										override;
 	virtual		bool					loadSprite()										override;
-	virtual		vector3d				getPosition();										
+	virtual		vector3d				getPosition();
+
+				void					setState(int newState);
+				int						getState();
+				void					setDirection(vector2d newDirection);
 
 private:
 

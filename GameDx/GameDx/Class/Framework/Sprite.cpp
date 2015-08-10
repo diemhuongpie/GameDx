@@ -260,3 +260,8 @@ void		CSprite::initSpriteHandler(LPD3DXSPRITE spriteHandler)
 	m_spriteHandler = spriteHandler;
 	m_spriteHandler->GetDevice(&m_d3dDevice);
 }
+
+D3DXIMAGE_INFO	CSprite::getFrameInfo()
+{
+	return this->m_FrameInfo;
+}
