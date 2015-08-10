@@ -13,6 +13,8 @@ public:
 	bool initEntity();
 	void updateEntity(CKeyBoard *device, float deltaTime);
 	void updateEntity(RECT rectCamera);
+	virtual void updateEntity(float deltaTime)							override;
+	virtual void updateEntity(CKeyBoard* deivce)						override;
 	void drawEntity();
 	bool loadSprite();
 	void enemyMoving();

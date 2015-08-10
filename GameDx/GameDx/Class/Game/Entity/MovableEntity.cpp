@@ -22,3 +22,9 @@ RECT		CMovable::getBounding()
 	result = { m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height };
 	return result;
 }
+
+vector2d CMovable::getVelocity()
+{
+	return m_Velocity;
+}
+

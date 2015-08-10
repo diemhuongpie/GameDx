@@ -3,6 +3,8 @@
 
 #include "Game\Entity\MovableEntity.h"
 #include "Framework\Camera.h"
+#include "Mathematics\Collision.h"
+#include "EnemyBubbleBlue.h"
 
 class CEnemyBall : public CMovable
 {
@@ -14,6 +16,8 @@ public:
 	bool initEntity()											;
 	void updateEntity(CKeyBoard *device, float deltaTime)		;
 	void updateEntity(RECT rectCamera)							;
+	virtual void updateEntity(float deltaTime)							override;
+	virtual void updateEntity(CKeyBoard* deivce)						override;
 	void drawEntity()											;
 
 	bool loadSprite()											;

@@ -24,6 +24,9 @@ bool CPlayer::initEntity()
 	m_Velocity		= vector2d(9.8, 9.8);
 
 	this->loadSprite();
+	
+	this->m_Bounding = new CBox2D(100, 100, 100, 100);
+	this->m_isMovable = true;
 
 	return true;
 }
@@ -61,6 +64,11 @@ void CPlayer::updateEntity(float deltaTime)
 	default:
 		break;
 	}
+
+	CPlayer* player1 = new CPlayer();
+	CPlayer* player2 = new CPlayer();
+	player2->m_Bounding = new CBox2D(10, 100, 100, 100);
+
 }
 
 void CPlayer::updateEntity(CKeyBoard* device)
@@ -129,5 +137,9 @@ void CPlayer::logicMovePlayer(float deltaTime)
 	//m_Position.y += m_Velocity.y*(deltaTime / 60)*m_Direction;
 }
 void CPlayer::logicJumpPlayer(float deltaTime)
+{
+}
+
+void CPlayer::controlPlayer(CKeyBoard *device, float deltaTime)
 {
 }

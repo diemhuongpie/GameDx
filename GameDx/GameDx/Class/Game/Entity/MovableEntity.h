@@ -12,6 +12,7 @@
 #include "Framework\Sprite.h"
 #include "Mathematics\Box2D.h"
 
+
 class CMovable : public CBaseEntity
 {
 public:
@@ -19,8 +20,9 @@ public:
 	~CMovable();
 	virtual		bool					loadSprite()		=	0;
 	virtual		vector3d				getPosition();
-				
 				RECT					getBounding();
+	virtual		vector2d				getVelocity();
+
 protected:
 				int						m_State;
 				vector2d				m_Direction;

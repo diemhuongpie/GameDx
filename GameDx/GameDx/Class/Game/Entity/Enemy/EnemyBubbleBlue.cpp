@@ -13,6 +13,10 @@ CEnemyBubbleBlue::~CEnemyBubbleBlue()
 
 bool CEnemyBubbleBlue::initEntity()
 {
+	m_isMovable = false;
+	RECT rectangle = { 150, 300, 500, 200 };
+	m_Bounding = new CBox2D(rectangle);
+
 	m_Position = D3DXVECTOR3(500.0f, 100.0f, 0.0f);
 	x = 1;
 	m_count = 0;
@@ -20,6 +24,18 @@ bool CEnemyBubbleBlue::initEntity()
 	this->loadSprite();
 	return true;
 
+}
+
+void CEnemyBubbleBlue::updateEntity(float deltaTime)
+{
+}
+
+void CEnemyBubbleBlue::updateEntity(RECT rectCamera)
+{
+}
+
+void CEnemyBubbleBlue::updateEntity(CKeyBoard* deivce)
+{
 }
 
 
@@ -103,12 +119,6 @@ void CEnemyBubbleBlue::updateEntity(CKeyBoard *device, float deltaTime)
 	{
 		m_isLEFT = true;
 	}
-}
-
-void CEnemyBubbleBlue::updateEntity(RECT rectCamera)
-{
-	
-	
 }
 
 void  CEnemyBubbleBlue::drawEntity()

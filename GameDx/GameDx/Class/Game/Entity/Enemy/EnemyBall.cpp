@@ -1,7 +1,6 @@
 #include "EnemyBall.h"
 #include "Game\Utill\InformationResource.h"
 
-
 CEnemyBall::CEnemyBall()
 {
 	this->initEntity();
@@ -18,6 +17,11 @@ CEnemyBall::~CEnemyBall()
 
 bool CEnemyBall::initEntity()
 {
+	m_isMovable = true;
+	RECT rectangle = { 420, 300, 500, 200 };
+	m_Bounding = new CBox2D(rectangle, vector2d(50, 50));
+	m_Velocity = vector2d(50, 50);
+
 	check_State = true;
 	m_Position = vector3d(350.0f, 300.0f, 0.0f);
 	m_delay_Time = 0;
@@ -34,9 +38,17 @@ bool CEnemyBall::loadSprite()
 	return true;
 }
 
+void CEnemyBall::updateEntity(float deltaTime)
+{
+	CCollision::CheckCollision(new CEnemyBall(), new CEnemyBubbleBlue());
+}
+
+void CEnemyBall::updateEntity(CKeyBoard* deivce)
+{
+}
+
 void CEnemyBall::updateEntity(CKeyBoard *device, float deltaTime)
 {
-
 	this->m_Position.x += this->m_Velocity.x*deltaTime;
 	this->m_Position.y += this->m_Velocity.y*deltaTime;
 	m_delay_Time++;

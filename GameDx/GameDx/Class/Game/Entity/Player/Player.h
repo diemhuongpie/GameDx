@@ -7,7 +7,7 @@
 #include "Framework\Camera.h"
 
 #ifndef __CPLAYER_H__
-#define __CPLEYER_H__
+#define __CPLAYER_H__
 
 
 class CPlayer : public CMovable
@@ -27,7 +27,7 @@ public:
 public:
 			void logicMovePlayer(float deltaTime);
 			void logicJumpPlayer(float deltaTime);
-
+			
 protected:
 	
 	vector2d	m_Acceleration;

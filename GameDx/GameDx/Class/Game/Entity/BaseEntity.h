@@ -9,13 +9,13 @@
 
 #include "Game\Utill\stdafx.h"
 #include "Framework\KeyBoard.h"
+#include "Mathematics\Box2D.h"
 
 class CBaseEntity
 {
 public:
 	CBox2D*					m_Bounding;
-	vector2d				m_Velocity;
-
+	bool					m_isMovable;
 	CBaseEntity();
 	CBaseEntity(directDevice);
 	~CBaseEntity();
