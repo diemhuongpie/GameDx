@@ -1,6 +1,7 @@
 #include "IntroStageScene.h"
 #include <ctime>
 #include <stack>
+#include "Game\Scene\SelectStageScene.h"
 
 
 CIntroStageScene::CIntroStageScene()
@@ -25,7 +26,14 @@ bool CIntroStageScene::initScene()
 	m_countTimeForText			=  0;
 	m_LoadTextTime				= false;
 	m_TimeForChangingSprite		= true;
-	m_Temp						= new wchar_t[wcslen(CUTMAN_STAGE_INFO_STRING) + 1];
+
+	if (CSelectStageScene::m_IndexSelect == STAGESELECTED::CUTMAN)
+		m_Temp					= new wchar_t[wcslen(CUTMAN_STAGE_INFO_STRING) + 1];
+	if (CSelectStageScene::m_IndexSelect == STAGESELECTED::BOMBMAN)
+		m_Temp					= new wchar_t[wcslen(BOMBMAN_STAGE_INFO_STRING) + 1];
+	if (CSelectStageScene::m_IndexSelect == STAGESELECTED::FIREMAN)
+		m_Temp					= new wchar_t[wcslen(FIREMAN_STAGE_INFO_STRING) + 1];
+
 	m_Background				= new CSprite(CInfomationResource::backgroundIntroStage);
 	m_Sprite					= new CSprite(CInfomationResource::sprite, 1, 3, 3, 0);
 	m_Position					= D3DXVECTOR3(BACKBUFFER_WIDTH / 3, BACKBUFFER_HEIGHT / 4, 0.5f);
@@ -55,14 +63,27 @@ void CIntroStageScene::updateScene(double deltaTime)
 	if (countTimeOfIntroStage	>= 1000 * 64 / 16)
 	{
 		m_TimeForChangingSprite = false;
-		wmemset(m_Temp, L'', wcslen(CUTMAN_STAGE_INFO_STRING) + 1);
-		wcsncpy(m_Temp, CUTMAN_STAGE_INFO_STRING, m_Index);
+		if (CSelectStageScene::m_IndexSelect == STAGESELECTED::CUTMAN)
+		{
+			wmemset(m_Temp, L'', wcslen(CUTMAN_STAGE_INFO_STRING) + 1);
+			wcsncpy(m_Temp, CUTMAN_STAGE_INFO_STRING, m_Index);
+		}
+		if (CSelectStageScene::m_IndexSelect == STAGESELECTED::BOMBMAN)
+		{
+			wmemset(m_Temp, L'', wcslen(BOMBMAN_STAGE_INFO_STRING) + 1);
+			wcsncpy(m_Temp, BOMBMAN_STAGE_INFO_STRING, m_Index);
+		}
+		if (CSelectStageScene::m_IndexSelect == STAGESELECTED::FIREMAN)
+		{
+			wmemset(m_Temp, L'', wcslen(FIREMAN_STAGE_INFO_STRING) + 1);
+			wcsncpy(m_Temp, FIREMAN_STAGE_INFO_STRING, m_Index);
+		}
 
 		if (m_countTimeForText >= 1000 * 2 / 16)
 		{
 			m_LoadTextTime = true;
 
-			if (m_Index <= wcslen(CUTMAN_STAGE_INFO_STRING))
+			if (m_Index <= wcslen(BOMBMAN_STAGE_INFO_STRING))
 			{
 				m_Index++;
 			}
@@ -70,7 +91,7 @@ void CIntroStageScene::updateScene(double deltaTime)
 			m_countTimeForText = 0;
 		}
 
-		if (m_Index > wcslen(CUTMAN_STAGE_INFO_STRING))
+		if (m_Index > wcslen(BOMBMAN_STAGE_INFO_STRING))
 			if (m_isRandomPoint <= 15)
 			{
 				m_RandomPoint++;

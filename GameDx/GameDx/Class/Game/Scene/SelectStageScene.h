@@ -17,15 +17,16 @@ public:
 	~CSelectStageScene();
 
 	virtual bool initScene()						override;
-	virtual void updateScene(double deltaTime)						override;
+	virtual void updateScene(double deltaTime)		override;
 	virtual void updateScene(CKeyBoard*)			override;
 	virtual void renderScene()						override;
+
+	static int				m_IndexSelect;
 
 private:
 	CSprite*				m_Background;
 	CSprite*				m_ButtonMenuSelectStage;
 	vector3d				m_PositionButton;
-	int						m_IndexSelect;
 	bool					m_enterTheGame;
 	bool					m_Particle;
 };

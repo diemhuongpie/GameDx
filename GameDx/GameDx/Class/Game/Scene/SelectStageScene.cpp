@@ -5,6 +5,7 @@
 #include "Game\Scene\IntroStageScene.h"
 
 bool m_Particle = false;
+int CSelectStageScene::m_IndexSelect = STAGESELECTED::CUTMAN;
 
 CSelectStageScene::CSelectStageScene()
 {
@@ -22,7 +23,6 @@ bool CSelectStageScene::initScene()
 {
 	m_Background				= new CSprite(CInfomationResource::backgroundSeletStage,	1, 1, 1, 0);
 	m_ButtonMenuSelectStage		= new CSprite(CInfomationResource::buttonMenuState,			1, 2, 2, 0);
-	m_IndexSelect				= STAGESELECTED::CUTMAN;
 	m_enterTheGame				= false;
 	m_Particle					= false;
 
@@ -69,7 +69,8 @@ void CSelectStageScene::updateScene(CKeyBoard* device)
 	if (device->KeyPress(DIK_RIGHT))
 		m_IndexSelect++;
 	if (device->KeyPress(DIK_RETURN))
-		m_enterTheGame = true;
+		if((m_IndexSelect == STAGESELECTED::CUTMAN) || (m_IndexSelect == STAGESELECTED::BOMBMAN)|| (m_IndexSelect == STAGESELECTED::FIREMAN))
+			m_enterTheGame = true;
 
 	static double countTimeOfStageSceneSelected = 0;
 	if (CTimer::getInstance()->getElapedTime() >= 0)
