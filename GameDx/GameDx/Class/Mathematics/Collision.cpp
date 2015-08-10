@@ -21,43 +21,65 @@ COLDIRECTION CCollision::CheckCollision(CMovable* MovableObject, CBaseEntity* Ob
 
 	if (AABB(*(MovableObject->m_Bounding), *(Object->m_Bounding), moveX, moveY))
 	{
-		if (moveX == 0)
+		if (moveY != 0)
 			if (moveY >= 0)
 				return COLDIRECTION::COLDIRECTION_TOP;
 			else
 				return COLDIRECTION::COLDIRECTION_BOTTOM;
-		
-		else
-		if (moveX > 0)
-			return COLDIRECTION::COLDIRECTION_LEFT;
-		else
-			return COLDIRECTION::COLDIRECTION_RIGHT;
-		
+		else 
+			if (moveX != 0)
+				if (moveX < 0)
+					return COLDIRECTION::COLDIRECTION_LEFT;
+				else
+					return COLDIRECTION::COLDIRECTION_RIGHT;
+			else
+			{
+				if (MovableObject->m_Bounding->getY() == Object->m_Bounding->getY() + Object->m_Bounding->getHeight())
+					return COLDIRECTION::COLDIRECTION_BOTTOM;
+				if (MovableObject->m_Bounding->getY() + MovableObject->m_Bounding->getHeight() == Object->m_Bounding->getY())
+					return COLDIRECTION::COLDIRECTION_TOP;
+				if (MovableObject->m_Bounding->getX() == Object->m_Bounding->getX() + Object->m_Bounding->getWidth())
+				{
+					return COLDIRECTION::COLDIRECTION_LEFT;
+				}
+				if (MovableObject->m_Bounding->getX() + MovableObject->m_Bounding->getWidth() == Object->m_Bounding->getX())
+				{
+					return COLDIRECTION::COLDIRECTION_RIGHT;
+				}
+			}
 	}
 	else
 	{
-		if (Object->m_Velocity == vector2dZero)
-			velocity = MovableObject->m_Velocity;
+		if (Object->m_isMovable == false)
+			velocity = MovableObject->getVelocity();
 		else
 		{
 			object = (CMovable*)Object;
-			velocity = vector2d(MovableObject->m_Velocity.x - object->m_Velocity.x, MovableObject->m_Velocity.y - object->m_Velocity.y);
+			velocity = vector2d(MovableObject->getVelocity().x - object->getVelocity().x, MovableObject->getVelocity().y - object->getVelocity().y);
 		}
 
-		if (AABB(*(CBox2D::getBroadPhaseBox(MovableObject->m_Bounding, velocity)), *(Object->m_Bounding), moveX, moveY))
+		if (AABB(GetBroadPhaseBox(*(MovableObject->m_Bounding), velocity), *(Object->m_Bounding), moveX, moveY))
 		{
-			timeCollition = SweptAABB(*(MovableObject->m_Bounding), *(Object->m_Bounding), normalX, normalY);
+			timeCollition = SweptAABB(GetBoundForMovable(*(MovableObject->m_Bounding), velocity), *(Object->m_Bounding), normalX, normalY);
 			
 			if (timeCollition > 0.0f && timeCollition < 1.0f)
 			{
 				if (normalX != 0)
+				{
 					if (moveX != 0)
-						if(normalX == -1)
+						if(normalX == -1.0f)
 							return COLDIRECTION::COLDIRECTION_LEFT;
-						else
+						else if (normalX == 1.0f)
 							return COLDIRECTION::COLDIRECTION_RIGHT;
-
-
+				}
+				else
+				{
+					if (moveY != 0)
+						if(normalY == -1.0f)
+							return COLDIRECTION::COLDIRECTION_BOTTOM;
+						else if (normalY == 1.0f)
+							return COLDIRECTION::COLDIRECTION_TOP;
+				}
 				
 			}
 

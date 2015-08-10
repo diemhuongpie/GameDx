@@ -41,6 +41,18 @@ CBox2D::CBox2D(float x, float y, float width, float height)
 	m_Velocity		= vector2dZero;
 }
 
+CBox2D::CBox2D(float x, float y, float width, float height, vector2d velocity)
+{
+	m_Position.x = x;
+	m_Position.y = y;
+
+	m_Size.x = width;
+	m_Size.y = height;
+
+	m_Velocity = velocity;
+}
+
+
 CBox2D::CBox2D(LPDIRECT3DDEVICE9 device, RECT rectangle, vector2d velocity)
 {
 
@@ -72,16 +84,6 @@ CBox2D::CBox2D(LPDIRECT3DDEVICE9 device, vector2d pos, vector2d size, vector2d v
 	m_Size.y = size.y + deltaBoundingBox.y * 2;
 
 	m_Velocity = velocity;
-}
-
-CBox2D::CBox2D(CBox2D* BoundingOfObject, vector2d Velocity)
-{
-	m_Position.x = BoundingOfObject->getX();
-	m_Position.y = BoundingOfObject->getY();
-	m_Size.x	 = BoundingOfObject->getWidth();
-	m_Size.y	 = BoundingOfObject->getHeight();
-
-	m_Velocity	 = Velocity;
 }
 
 CBox2D::~CBox2D()
@@ -169,9 +171,4 @@ float	CBox2D::getVelocityY()
 void CBox2D::setVelocityY(float param1)
 {
 	m_Velocity.y = param1;
-}
-
-CBox2D* CBox2D::getBroadPhaseBox(CBox2D* BoundingOfObject, vector2d Velocity)
-{
-	return new CBox2D(BoundingOfObject, Velocity);
 }

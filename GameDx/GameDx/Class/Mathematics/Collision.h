@@ -6,14 +6,13 @@
 #include "Game\Entity\MovableEntity.h"
 #include "Mathematics\SweptAABB.h"
 
-
 class CCollision
 {
 public:
 	CCollision();
 	~CCollision();
 	
-	COLDIRECTION CheckCollision(CMovable* MovableObject, CBaseEntity* Object);
+	static COLDIRECTION CheckCollision(CMovable* MovableObject, CBaseEntity* Object);
 };
 
 #endif

@@ -14,7 +14,7 @@
 #include "Box2D.h"
 
 
-bool AABBCheck(CBox2D box1, CBox2D box2)
+inline bool AABBCheck(CBox2D box1, CBox2D box2)
 {
 	return !(	box1.getX() + box1.getWidth() < box2.getX()	
 			||	box1.getX() > box2.getX() + box2.getWidth() 
@@ -24,7 +24,7 @@ bool AABBCheck(CBox2D box1, CBox2D box2)
 }
 
 
-CBox2D GetSweptBroadPhaseBox(CBox2D box)
+inline CBox2D GetSweptBroadPhaseBox(CBox2D box, vector2d velocity)
 {
 	CBox2D boundingBox(0, 0, 0, 0);
 
@@ -33,11 +33,43 @@ CBox2D GetSweptBroadPhaseBox(CBox2D box)
 	box.getVelocityX() > 0 ? boundingBox.setWidth(box.getWidth()	+ box.getVelocityX())	: boundingBox.setWidth(box.getWidth()	- box.getVelocityX());
 	box.getVelocityY() > 0 ? boundingBox.setHeight(box.getHeight()	+ box.getVelocityY())	: boundingBox.setWidth(box.getHeight()	- box.getVelocityY());
 
+	boundingBox.setVelocityX((velocity.x * CTimer::getInstance()->getElapedTime() / 1000.0) / ((float) 1 / FPS));
+	boundingBox.setVelocityY((velocity.y * CTimer::getInstance()->getElapedTime() / 1000.0) / ((float) 1 / FPS));
+
 	return boundingBox;
 }
 
+inline CBox2D GetBroadPhaseBox(CBox2D box, vector2d velocity)
+{
+	CBox2D boundingBox(0, 0, 0, 0, vector2dZero);
 
-bool AABB(CBox2D box1, CBox2D box2, float& moveX, float& moveY)
+	boundingBox.setX(box.getX());
+	boundingBox.setY(box.getY());
+	boundingBox.setWidth(box.getWidth());
+	boundingBox.setHeight(box.getHeight());
+
+	boundingBox.setVelocityX((velocity.x * CTimer::getInstance()->getElapedTime() / 1000.0) / ((float)1 / FPS));
+	boundingBox.setVelocityY((velocity.y * CTimer::getInstance()->getElapedTime() / 1000.0) / ((float)1 / FPS));
+
+	return  GetSweptBroadPhaseBox(boundingBox, velocity);
+}
+
+inline CBox2D GetBoundForMovable(CBox2D box, vector2d velocity)
+{
+	CBox2D boundingBox(0, 0, 0, 0, vector2dZero);
+
+	boundingBox.setX(box.getX());
+	boundingBox.setY(box.getY());
+	boundingBox.setWidth(box.getWidth());
+	boundingBox.setHeight(box.getHeight());
+
+	boundingBox.setVelocityX((velocity.x * CTimer::getInstance()->getElapedTime() / 1000.0) / ((float)1 / FPS));
+	boundingBox.setVelocityY((velocity.y * CTimer::getInstance()->getElapedTime() / 1000.0) / ((float)1 / FPS));
+
+	return  boundingBox;
+}
+
+inline bool AABB(CBox2D box1, CBox2D box2, float& moveX, float& moveY)
 {
 	moveX	=	moveY	=	0.0f;
 
@@ -66,7 +98,7 @@ bool AABB(CBox2D box1, CBox2D box2, float& moveX, float& moveY)
 
 
 //SweptAABB Alogorithm
-float SweptAABB(CBox2D box1, CBox2D box2, float &normalX, float &normalY)
+inline float SweptAABB(CBox2D box1, CBox2D box2, float &normalX, float &normalY)
 {
 	float xInvEntry, yInvEntry;
 	float xInvExit, yInvExit;
@@ -122,7 +154,7 @@ float SweptAABB(CBox2D box1, CBox2D box2, float &normalX, float &normalY)
 	float entryTime		= std::fmaxf(xEntry, yEntry);
 	float exitTime		= std::fminf(xExit, yExit);
 
-	if (entryTime > exitTime || xEntry < 0.0f || yEntry < 0.0f || yEntry > 1.0f || yEntry > 1.0f)
+	if (entryTime > exitTime || xEntry < 0.0f && yEntry < 0.0f || yEntry > 1.0f || yEntry > 1.0f)
 	{
 		normalX			= 0.0f;
 		normalY			= 0.0f;
@@ -160,8 +192,5 @@ float SweptAABB(CBox2D box1, CBox2D box2, float &normalX, float &normalY)
 		return entryTime;
 	}
 }
-
-
-
 
 #endif
