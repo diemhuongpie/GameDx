@@ -18,10 +18,10 @@ class CMovable : public CBaseEntity
 public:
 	CMovable();
 	~CMovable();
-	virtual		bool					loadSprite()		=	0;
-	virtual		vector3d				getPosition();
-				RECT					getBounding();
-	virtual		vector2d				getVelocity();
+	virtual		bool					loadSprite()			=	0;
+	virtual		vector3d				getPosition()					;
+	virtual		RECT					getBounding()			override;
+	virtual		vector2d				getVelocity()					;
 
 protected:
 				int						m_State;

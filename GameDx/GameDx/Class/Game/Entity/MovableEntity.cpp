@@ -19,7 +19,7 @@ RECT		CMovable::getBounding()
 {
 	RECT result = { 0, 0, 0, 0 };
 	if (!m_listSprite.size())
-	result = { m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height };
+		result = { m_Position.x - m_listSprite.at(0)->getFrameInfo().Width / 2, m_Position.y + m_listSprite.at(0)->getFrameInfo().Height / 2, m_Position.x + m_listSprite.at(0)->getFrameInfo().Width / 2, m_Position.y - m_listSprite.at(0)->getFrameInfo().Height / 2 };
 	return result;
 }
 

@@ -24,6 +24,7 @@ public:
 	virtual void updateEntity(float deltaTime)						= 0;
 	virtual void updateEntity(CKeyBoard* deivce)					= 0;
 	virtual void drawEntity()										= 0;
+	virtual	RECT getBounding()										= 0;
 
 protected:
 

@@ -18,6 +18,8 @@ COLDIRECTION CCollision::CheckCollision(CMovable* MovableObject, CBaseEntity* Ob
 	double timeCollition;
 	float normalX, normalY;
 
+	MovableObject	->m_Bounding = new CBox2D(MovableObject->getBounding());
+	Object			->m_Bounding = new CBox2D(Object->getBounding());
 
 	if (AABB(*(MovableObject->m_Bounding), *(Object->m_Bounding), moveX, moveY))
 	{
@@ -34,7 +36,7 @@ COLDIRECTION CCollision::CheckCollision(CMovable* MovableObject, CBaseEntity* Ob
 					return COLDIRECTION::COLDIRECTION_RIGHT;
 			else
 			{
-				// already changing axis Oy to dacac
+				// already changing axis Oy into dacac
 				if (MovableObject->m_Bounding->getY() == Object->m_Bounding->getY() + Object->m_Bounding->getHeight())
 					return COLDIRECTION::COLDIRECTION_TOP;
 				else if (MovableObject->m_Bounding->getY() + MovableObject->m_Bounding->getHeight() == Object->m_Bounding->getY())

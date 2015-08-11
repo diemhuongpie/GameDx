@@ -13,7 +13,7 @@
 #include "Framework\Sprite.h"
 
 // class nay van dang la asbtract class
-class CStaticEntity
+class CStaticEntity : public CBaseEntity
 {
 public:
 	CStaticEntity();
@@ -21,6 +21,7 @@ public:
 
 	// load sprite vao day....sau do goi no trong ham Init va ham Init sex duoc goi trong ham new.
 	virtual		bool					loadSprite()			= 0;
+	virtual		RECT					getBounding()			override;
 
 protected:
 				vector2d				m_Position;
