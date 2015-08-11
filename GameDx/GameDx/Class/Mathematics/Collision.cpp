@@ -18,9 +18,6 @@ COLDIRECTION CCollision::CheckCollision(CMovable* MovableObject, CBaseEntity* Ob
 	double timeCollition;
 	float normalX, normalY;
 
-	MovableObject	->m_Bounding = new CBox2D(MovableObject->getBounding());
-	Object			->m_Bounding = new CBox2D(Object->getBounding());
-
 	if (AABB(*(MovableObject->m_Bounding), *(Object->m_Bounding), moveX, moveY))
 	{
 		if (moveY != 0)

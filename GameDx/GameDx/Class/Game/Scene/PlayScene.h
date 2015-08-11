@@ -7,6 +7,8 @@
 #include "Game\Entity\Enemy\EnemyBubbleBlue.h"
 #include "Game\Entity\Enemy\EnemyRobotRed.h"
 #include "Game\Entity\Enemy\EnemyCut.h"
+#include "Game\Entity\Enemy\EnemyTankRed.h"
+#include "Mathematics\Collision.h"
 
 class CPlayScene :
 	public CBaseScene
@@ -22,6 +24,8 @@ public:
 
 private:
 			CPlayer*								m_Player;
+			CEnemyTankRed*							m_EnemyTankRed;
+
 			CEnemyBall*								m_EnemyBall;
 			CEnemyBubbleBlue*						m_EnemyBubbleBlue;
 			CEnemyCut*								m_EnemyCut;

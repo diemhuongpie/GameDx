@@ -3,7 +3,7 @@
 
 CPlayScene::CPlayScene()
 {
-	m_Player = new CPlayer();
+	this->initScene();
 }
 
 
@@ -13,8 +13,12 @@ CPlayScene::~CPlayScene()
 
 bool	CPlayScene::initScene()
 {
-	m_Player->initEntity();
-	m_EnemyBall = new CEnemyBall();
+	//m_Player->initEntity();
+
+	m_Player = new CPlayer();
+	m_EnemyTankRed = new CEnemyTankRed();
+
+	//m_EnemyBall = new CEnemyBall();
 
 	return true;
 }
@@ -22,6 +26,9 @@ bool	CPlayScene::initScene()
 void	CPlayScene::updateScene(double deltaTime)
 {
 	m_Player->updateEntity(deltaTime);
+	m_EnemyTankRed->updateEntity(deltaTime);
+
+	CCollision::CheckCollision(m_Player, m_EnemyTankRed);
 }
 
 void	CPlayScene::updateScene(CKeyBoard* keyboard)
@@ -35,4 +42,5 @@ void	CPlayScene::updateScene(CKeyBoard* keyboard)
 void	CPlayScene::renderScene()
 {
 	m_Player->drawEntity();
+	m_EnemyTankRed->drawEntity();
 }

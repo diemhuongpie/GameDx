@@ -25,7 +25,8 @@ bool CPlayer::initEntity()
 
 	this->loadSprite();
 	
-	this->m_Bounding = new CBox2D(100, 100, 100, 100);
+	//this->m_Bounding = new CBox2D(100, 100, 100, 100);
+	this->m_Bounding = new CBox2D(this->getBounding());
 	this->m_isMovable = true;
 
 	return true;
@@ -64,6 +65,8 @@ void CPlayer::updateEntity(float deltaTime)
 	default:
 		break;
 	}
+
+	//this->m_Bounding = new CBox2D(this->getBounding());
 
 }
 
@@ -134,6 +137,7 @@ void CPlayer::drawEntity()
 void CPlayer::logicMovePlayer(float deltaTime)
 {
 	m_Position.x += m_Velocity.x*(deltaTime / 100)*m_Direction.x;
+
 	//m_Position.y += m_Velocity.y*(deltaTime / 60)*m_Direction;
 }
 void CPlayer::logicJumpPlayer(float deltaTime)

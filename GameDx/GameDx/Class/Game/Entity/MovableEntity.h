@@ -21,6 +21,7 @@ public:
 	virtual		bool					loadSprite()			=	0;
 	virtual		vector3d				getPosition()					;
 	virtual		RECT					getBounding()			override;
+	virtual		bool					initEntity()			override;
 	virtual		vector2d				getVelocity()					;
 
 protected:

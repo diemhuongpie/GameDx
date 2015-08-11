@@ -22,10 +22,11 @@ public:
 	// load sprite vao day....sau do goi no trong ham Init va ham Init sex duoc goi trong ham new.
 	virtual		bool					loadSprite()			= 0;
 	virtual		RECT					getBounding()			override;
+	virtual		bool					initEntity()			override;
+				vector2d				getPosition();
 
 protected:
-				vector2d				m_Position;
-				CBox2D*					m_Bounding;
+				vector3d				m_Position;
 				vector<CSprite*>		m_listSprite;
 };
 

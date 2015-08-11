@@ -7,6 +7,7 @@
 #include "Framework\Text.h"
 #include "Mathematics\Box2D.h"
 #include "Game\Entity\MovableEntity.h"
+#include "Game\Entity\StaticEntity.h"
 
 class Test
 {
@@ -23,9 +24,11 @@ private:
 	D3DXVECTOR3	m_position;
 	CText*		m_Text;
 	CBox2D*		m_Bounding;
-
 	CMovable*	MovableObject;
-	
+
+	CSprite*		m_StaticSprite;
+	CStaticEntity*	m_StaticObject;
+	D3DXVECTOR3		m_positionStatic;
 };
 
 #endif
