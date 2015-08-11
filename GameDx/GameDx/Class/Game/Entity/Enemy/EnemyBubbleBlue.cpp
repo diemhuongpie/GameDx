@@ -26,18 +26,6 @@ bool CEnemyBubbleBlue::initEntity()
 
 }
 
-void CEnemyBubbleBlue::updateEntity(float deltaTime)
-{
-}
-
-void CEnemyBubbleBlue::updateEntity(RECT rectCamera)
-{
-}
-
-void CEnemyBubbleBlue::updateEntity(CKeyBoard* deivce)
-{
-}
-
 
 bool CEnemyBubbleBlue::loadSprite()
 {
@@ -60,7 +48,16 @@ void  CEnemyBubbleBlue::enemyMoving()
 		break;
 	}
 }
-void CEnemyBubbleBlue::updateEntity(CKeyBoard *device, float deltaTime)
+void CEnemyBubbleBlue::updateEntity(CKeyBoard *device)
+{
+
+}
+
+void CEnemyBubbleBlue::updateEntity(RECT rectCamera)
+{
+}
+
+void CEnemyBubbleBlue::updateEntity(float deltaTime)
 {
 	if (m_Position.x > m_position1.x)
 	{

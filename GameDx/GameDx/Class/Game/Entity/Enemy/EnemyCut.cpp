@@ -32,7 +32,11 @@ bool CEnemyCut::loadSprite()
 	return true;
 }
 
-void CEnemyCut::updateEntity(CKeyBoard *device, float deltaTime)
+void CEnemyCut::updateEntity(CKeyBoard *device)
+{
+
+}
+void CEnemyCut::updateEntity(float deltaTime)
 {
 
 	this->m_Position.x += this->m_Velocity.x*deltaTime;

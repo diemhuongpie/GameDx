@@ -1,3 +1,5 @@
+//
+
 #include "EnemyTankRed.h"
 
 
@@ -11,10 +13,10 @@ CEnemyTankRed::~CEnemyTankRed()
 {
 }
 
-CEnemyTankRed::CEnemyTankRed(LPDIRECT3DDEVICE9)
-{
-	this->initEntity();
-}
+//CEnemyTankRed::CEnemyTankRed(LPDIRECT3DDEVICE9)
+//{
+//	this->initEntity();
+//}
 
 bool CEnemyTankRed::initEntity()
 {

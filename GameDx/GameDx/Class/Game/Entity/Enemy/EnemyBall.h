@@ -14,10 +14,9 @@ public:
 	~CEnemyBall();
 
 	bool initEntity()											;
-	void updateEntity(CKeyBoard *device, float deltaTime)		;
+	void updateEntity(float deltaTime)							;
+	void updateEntity(CKeyBoard *device)						;
 	void updateEntity(RECT rectCamera)							;
-	virtual void updateEntity(float deltaTime)							override;
-	virtual void updateEntity(CKeyBoard* deivce)						override;
 	void drawEntity()											;
 
 	bool loadSprite()											;

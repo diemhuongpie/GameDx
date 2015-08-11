@@ -104,8 +104,11 @@
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyBubbleBlue.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyCut.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyEyeRed.h" />
+    <ClInclude Include="Class\Game\Entity\Enemy\EnemyFishOrange.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyInkBlue.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyMachineAutoOrange.h" />
+    <ClInclude Include="Class\Game\Entity\Enemy\EnemyMachineOrange.h" />
+    <ClInclude Include="Class\Game\Entity\Enemy\EnemyNinja.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyRobotRed.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyTankRed.h" />
     <ClInclude Include="Class\Game\Entity\Map\Tile.h" />
@@ -145,8 +148,11 @@
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyBubbleBlue.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyCut.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyEyeRed.cpp" />
+    <ClCompile Include="Class\Game\Entity\Enemy\EnemyFishOrange.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyInkBlue.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyMachineAutoOrange.cpp" />
+    <ClCompile Include="Class\Game\Entity\Enemy\EnemyMachineOrange.cpp" />
+    <ClCompile Include="Class\Game\Entity\Enemy\EnemyNinja.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyRobotRed.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyTankRed.cpp" />
     <ClCompile Include="Class\Game\Entity\Map\Tile.cpp" />

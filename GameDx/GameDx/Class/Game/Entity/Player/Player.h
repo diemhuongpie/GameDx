@@ -27,10 +27,12 @@ public:
 public:
 			void logicMovePlayer(float deltaTime);
 			void logicJumpPlayer(float deltaTime);
+			void logicStandPlayer(float deltaTime);
 			
 protected:
 	
 	vector2d	m_Acceleration;
+	bool		m_isJump;
 private:
 
 };

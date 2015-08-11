@@ -231,6 +231,18 @@
     <ClCompile Include="Class\Game\Scene\GameOverScene.cpp">
       <Filter>Game\Scene\cpp</Filter>
     </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Player\Player.cpp">
+      <Filter>Game\Entity\Children\Player\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy\BossCutMan.cpp">
+      <Filter>Game\Entity\Children\Boss\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Bullet\BulletManager.cpp">
+      <Filter>Game\Entity\Children\Bullet\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Bullet\BulletNormal.cpp">
+      <Filter>Game\Entity\Children\Bullet\cpp</Filter>
+    </ClCompile>
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyBall.cpp">
       <Filter>Game\Entity\Children\Mod\cpp</Filter>
     </ClCompile>
@@ -243,10 +255,19 @@
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyEyeRed.cpp">
       <Filter>Game\Entity\Children\Mod\cpp</Filter>
     </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy\EnemyFishOrange.cpp">
+      <Filter>Game\Entity\Children\Mod\cpp</Filter>
+    </ClCompile>
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyInkBlue.cpp">
       <Filter>Game\Entity\Children\Mod\cpp</Filter>
     </ClCompile>
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyMachineAutoOrange.cpp">
+      <Filter>Game\Entity\Children\Mod\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy\EnemyMachineOrange.cpp">
+      <Filter>Game\Entity\Children\Mod\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy\EnemyNinja.cpp">
       <Filter>Game\Entity\Children\Mod\cpp</Filter>
     </ClCompile>
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyRobotRed.cpp">
@@ -254,18 +275,6 @@
     </ClCompile>
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyTankRed.cpp">
       <Filter>Game\Entity\Children\Mod\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\Entity\Player\Player.cpp">
-      <Filter>Game\Entity\Children\Player\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\Entity\Enemy\BossCutMan.cpp">
-      <Filter>Game\Entity\Children\Boss\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\Entity\Bullet\BulletManager.cpp">
-      <Filter>Game\Entity\Children\Bullet\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\Entity\Bullet\BulletNormal.cpp">
-      <Filter>Game\Entity\Children\Bullet\cpp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -356,6 +365,18 @@
     <ClInclude Include="Class\Game\Algorithsm\Singleton.h">
       <Filter>Algorithm\Singleton</Filter>
     </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Player\Player.h">
+      <Filter>Game\Entity\Children\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Enemy\BossCutMan.h">
+      <Filter>Game\Entity\Children\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Bullet\BulletManager.h">
+      <Filter>Game\Entity\Children\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Bullet\BulletNormal.h">
+      <Filter>Game\Entity\Children\Bullet</Filter>
+    </ClInclude>
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyBall.h">
       <Filter>Game\Entity\Children\Mod</Filter>
     </ClInclude>
@@ -368,10 +389,19 @@
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyEyeRed.h">
       <Filter>Game\Entity\Children\Mod</Filter>
     </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Enemy\EnemyFishOrange.h">
+      <Filter>Game\Entity\Children\Mod</Filter>
+    </ClInclude>
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyInkBlue.h">
       <Filter>Game\Entity\Children\Mod</Filter>
     </ClInclude>
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyMachineAutoOrange.h">
+      <Filter>Game\Entity\Children\Mod</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Enemy\EnemyMachineOrange.h">
+      <Filter>Game\Entity\Children\Mod</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Enemy\EnemyNinja.h">
       <Filter>Game\Entity\Children\Mod</Filter>
     </ClInclude>
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyRobotRed.h">
@@ -379,18 +409,6 @@
     </ClInclude>
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyTankRed.h">
       <Filter>Game\Entity\Children\Mod</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\Game\Entity\Player\Player.h">
-      <Filter>Game\Entity\Children\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\Game\Entity\Enemy\BossCutMan.h">
-      <Filter>Game\Entity\Children\Boss</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\Game\Entity\Bullet\BulletManager.h">
-      <Filter>Game\Entity\Children\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\Game\Entity\Bullet\BulletNormal.h">
-      <Filter>Game\Entity\Children\Bullet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

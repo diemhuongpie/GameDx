@@ -14,9 +14,8 @@ EnemyRobotRed::~EnemyRobotRed()
 bool EnemyRobotRed::initEntity()
 {
 	check_State = true;
-	m_Position = D3DXVECTOR3(300.0f, 100.0f, 0.0f);
+	m_Position = D3DXVECTOR3(300.0f, 300.0f, 0.0f);
 	m_delay_Time = 0;
-	m_Velocity.x = 1;
 	// LOAD SPRITE
 	this->loadSprite();
 	return true;
@@ -28,8 +27,11 @@ bool EnemyRobotRed::loadSprite()
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//enemy_robot_red.png", 1, 2, 2, 0));
 	return true;
 }
+void EnemyRobotRed::updateEntity(CKeyBoard *device)
+{
 
-void EnemyRobotRed::updateEntity(CKeyBoard *device, float deltaTime)
+}
+void EnemyRobotRed::updateEntity(float deltaTime)
 {
 	this->m_Position.x += this->m_Velocity.x*deltaTime;
 	this->m_Position.y += this->m_Velocity.y*deltaTime;
@@ -43,35 +45,38 @@ void EnemyRobotRed::updateEntity(CKeyBoard *device, float deltaTime)
 		m_isLEFT = false;
 	}
 
-	if (m_Position.y >= 300)
+	if (m_delay_Time >= 70)
+		m_delay_Time = 0;
+	if (m_delay_Time > 0 && m_delay_Time < 50)
 	{
-		if (m_delay_Time >= 30)
+		
+		if (m_Position.y >= 300)
 		{
-			m_delay_Time = 0;
 			check_State = true;
-			m_Position.y = 300;
-			m_Velocity.x = 0;
+			m_Velocity.y = 0;
+		}
+		m_Velocity.x = 0;
+		
+	}
+	if (m_delay_Time >= 50)
+	{
+		check_State = false;
+		if (m_isLEFT)
+		{
+			m_Velocity.x = -2;
 		}
 		else
 		{
-			if (m_isLEFT)
-			{
-				m_Velocity.x = -2;
-			}
-			else
-			{
-				m_Velocity.x = 2;
-			}
-
-			m_Velocity.y = -15;
+			m_Velocity.x = 2;
 		}
 
+		m_Velocity.y = -9;
 	}
-	else
+	if (m_Position.y < 300)
 	{
-		check_State = false;
-		m_Velocity.y++;
+		m_Velocity.y ++;
 	}
+
 }
 
 void EnemyRobotRed::updateEntity(RECT rectCamera)

@@ -12,7 +12,8 @@ public:
 	~CEnemyCut();
 
 	bool initEntity();
-	void updateEntity(CKeyBoard *device, float deltaTime);
+	void updateEntity(float deltaTime);
+	void updateEntity(CKeyBoard *device);
 	void updateEntity(RECT rectCamera);
 	void drawEntity();
 

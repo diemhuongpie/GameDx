@@ -21,11 +21,12 @@ bool CPlayer::initEntity()
 	m_Position		= vector3d(100, 300, 0.5);
 	m_State			= PLAYSTATE::START;
 	m_Direction		= vector2d(DIRECTION::DIRECTION_RIGHT, DIRECTION::DIRECTION_RIGHT);
-	m_Velocity		= vector2d(9.8, 9.8);
-
+	//m_Velocity		= vector2d(9.8,0);
+	m_Acceleration	= vector2d(0.5f, 0);
+	this->m_isJump = true;
 	this->loadSprite();
 	
-	//this->m_Bounding = new CBox2D(100, 100, 100, 100);
+	
 	this->m_Bounding = new CBox2D(this->getBounding());
 	this->m_isMovable = true;
 
@@ -50,23 +51,36 @@ bool CPlayer::loadSprite()
 
 void CPlayer::updateEntity(float deltaTime)
 {
+	m_Position.x += m_Velocity.x*(deltaTime / 100)*m_Direction.x;
+	m_Position.y += m_Velocity.y*(deltaTime / 60);
+	if (!m_isJump && m_Position.y < 280)
+	{
+		m_Velocity.y *= 1;
+	}
+	if (m_Position.y >= 300)
+	{
+		m_isJump = true;
+		m_Position.y = 300;
+	}
 	switch (m_State)
 	{
 	case PLAYERSTATES::STATE_START:
 		break;
 	case PLAYERSTATES::STATE_STAND:
+		if (m_isJump)
+			logicStandPlayer(deltaTime);
 		break;
 	case PLAYERSTATES::STATE_MOVE:
-		logicMovePlayer(deltaTime);
+		if (m_isJump)
+			logicMovePlayer(deltaTime);
 		break;
 	case PLAYERSTATES::STATE_JUMP:
+		if (m_isJump)
 		logicJumpPlayer(deltaTime);
 		break;
 	default:
 		break;
 	}
-
-	//this->m_Bounding = new CBox2D(this->getBounding());
 
 }
 
@@ -84,7 +98,7 @@ void CPlayer::updateEntity(CKeyBoard* device)
 		m_State			= PLAYERSTATES::STATE_MOVE;
 		m_Direction.x	= DIRECTION::DIRECTION_RIGHT;
 	}
-	if (device->KeyPress(DIK_F))
+	if (device->KeyDown(DIK_F))
 	{
 		m_State			= PLAYERSTATES::STATE_STAND_SHOOT;
 	}
@@ -136,10 +150,24 @@ void CPlayer::drawEntity()
 
 void CPlayer::logicMovePlayer(float deltaTime)
 {
-	m_Position.x += m_Velocity.x*(deltaTime / 100)*m_Direction.x;
-
-	//m_Position.y += m_Velocity.y*(deltaTime / 60)*m_Direction;
+	m_Velocity.x = 5;
 }
 void CPlayer::logicJumpPlayer(float deltaTime)
+{	
+	m_Velocity.y = -10;
+	m_isJump = false;
+}
+void CPlayer::logicStandPlayer(float deltaTime)
 {
+	m_Velocity.x += m_Acceleration.x*(deltaTime / 100);
+	m_Acceleration.x = -0.5;
+	
+	if ((m_Velocity.x > 0 && m_Velocity.x <= 1) || (m_Velocity.x >= -1 && m_Velocity.x < 0))
+	{
+		m_Acceleration.x = 0;
+		m_Velocity.x = 0;
+	}
+	
+	
+
 }

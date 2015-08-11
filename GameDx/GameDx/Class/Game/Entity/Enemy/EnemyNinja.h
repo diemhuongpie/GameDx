@@ -1,14 +1,13 @@
-#ifndef __ENEMY_ROBOT_RED_H__
-#define __ENEMY_ROBOT_RED_H__
-
+#pragma once
 #include "Game\Entity\MovableEntity.h"
 #include "Framework\Camera.h"
 
-class EnemyRobotRed : public CMovable
+class CEnemyNinja : public CMovable
 {
 public:
-	EnemyRobotRed();
-	~EnemyRobotRed();
+	CEnemyNinja();
+	CEnemyNinja(vector3d, vector3d);
+	~CEnemyNinja();
 	bool initEntity();
 	void updateEntity(float deltaTime);
 	void updateEntity(CKeyBoard *device);
@@ -16,11 +15,14 @@ public:
 	void drawEntity();
 
 	bool loadSprite();
+	void jump();
+	void fire();
+
 private:
 	bool m_isLEFT;
-	int m_delay_Time;
-	bool check_State;
-};
+	int	 m_checkState;
+	int	 m_delayTime;
+	vector3d m_PositionPlayer;
 
-#endif
+};
 

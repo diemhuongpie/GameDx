@@ -37,18 +37,15 @@ bool CEnemyBall::loadSprite()
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//enemy_ball.png", 1, 2, 2, 0));
 	return true;
 }
+void CEnemyBall::updateEntity(CKeyBoard *device)
+{
+
+
+}
 
 void CEnemyBall::updateEntity(float deltaTime)
 {
 	CCollision::CheckCollision(new CEnemyBall(), new CEnemyBubbleBlue());
-}
-
-void CEnemyBall::updateEntity(CKeyBoard* deivce)
-{
-}
-
-void CEnemyBall::updateEntity(CKeyBoard *device, float deltaTime)
-{
 	this->m_Position.x += this->m_Velocity.x*deltaTime;
 	this->m_Position.y += this->m_Velocity.y*deltaTime;
 	m_delay_Time++;
