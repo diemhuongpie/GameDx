@@ -172,3 +172,12 @@ void CBox2D::setVelocityY(float param1)
 {
 	m_Velocity.y = param1;
 }
+
+bool CBox2D::isIntersect(CBox2D box1, CBox2D box2)
+{
+	return !(box1.getX() >= (box2.getX() + box2.getWidth())	||
+			(box1.getWidth() + box1.getX() <= box2.getX())	||
+			(box1.getY() >= box2.getY() + box2.getHeight())	||
+			(box1.getY() + box1.getHeight() <= box2.getY())
+			);
+}
