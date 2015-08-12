@@ -38,6 +38,7 @@
 
 #define PI							3.14
 
+#define SIGN(A)						(A >= 0 ? 1 : -1)
 #define DIRECT_COORDINATE(A)		{-(A)}
 #define SAFE_RELEASE(A)				{if (A) {delete A; A = 0;}}
 

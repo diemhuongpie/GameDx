@@ -25,10 +25,17 @@ bool	CPlayScene::initScene()
 
 void	CPlayScene::updateScene(double deltaTime)
 {
+
+	CCamera::getInstance()->Update(m_Player->getPosition());
+
 	m_Player->updateEntity(deltaTime);
 	m_EnemyTankRed->updateEntity(deltaTime);
 
 	CCollision::CheckCollision(m_Player, m_EnemyTankRed);
+
+	OutputDebugString(L"COLLISION DIRECTION: ");
+	OutputDebugString(_itow(CCollision::CheckCollision(m_Player, m_EnemyTankRed), new WCHAR[1], 10));
+	OutputDebugString(L"\n");
 }
 
 void	CPlayScene::updateScene(CKeyBoard* keyboard)

@@ -13,7 +13,6 @@ CEnemyBubbleBlue::~CEnemyBubbleBlue()
 
 bool CEnemyBubbleBlue::initEntity()
 {
-	m_isMovable = false;
 	RECT rectangle = { 150, 300, 500, 200 };
 	m_Bounding = new CBox2D(rectangle);
 

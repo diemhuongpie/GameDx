@@ -20,7 +20,6 @@ bool	CBulletNormal::initEntity()
 {
 	m_Position		= vector3d(100, 300, 0.5);
 	m_State			= BULLETSTATE::BULLET_STATE_SHOW;
-	m_Direction		= vector2d(DIRECTION::DIRECTION_RIGHT, DIRECTION::DIRECTION_RIGHT);
 	m_Velocity		= vector2d(9.8, 9.8);
 
 	this->loadSprite();
@@ -36,7 +35,7 @@ void	CBulletNormal::updateEntity(float deltaTime)
 		m_Position					= vector3dMinimum;
 		break;
 	case BULLETSTATE::BULLET_STATE_SHOW:
-		m_Position.x				+= m_Velocity.x*deltaTime / 30 * m_Direction.x;
+		m_Position.x += m_Velocity.x*deltaTime / 30 * SIGN(m_Velocity.x);
 		break;
 	case BULLETSTATE::BULLET_STATE_HIT:
 		m_State						= BULLETSTATE::BULLET_STATE_INVIS;
@@ -55,7 +54,7 @@ void	CBulletNormal::updateEntity(CKeyBoard* device)
 
 void	CBulletNormal::drawEntity()
 {
-	m_listSprite.at(m_State)->Render(m_Position, vector2d(m_Direction.x*2.0, m_Direction.y*2.0), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
+	m_listSprite.at(m_State)->Render(m_Position, vector2d(SIGN(m_Velocity.x)*2.0, SIGN(m_Velocity.y)*2.0), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
 }
 
 vector3d CBulletNormal::getPosition()
@@ -71,8 +70,4 @@ void	CBulletNormal::setState(int newState)
 int		CBulletNormal::getState()
 {
 	return m_State;
-}
-void	CBulletNormal::setDirection(vector2d newDirection)
-{
-	m_Direction		= newDirection;
 }

@@ -9,7 +9,6 @@
 #include "BaseEntity.h"
 #include "Game\Utill\stdafx.h"
 #include "Game\Utill\Config.h"
-#include "Framework\Sprite.h"
 #include "Mathematics\Box2D.h"
 
 
@@ -20,17 +19,13 @@ public:
 	~CMovable();
 	virtual		bool					loadSprite()			=	0;
 	virtual		vector3d				getPosition()					;
-	virtual		RECT					getBounding()			override;
+	virtual		CBox2D					getBounding()			override;
 	virtual		bool					initEntity()			override;
+	virtual		const char*				getTagNode()			override;
 	virtual		vector2d				getVelocity()					;
 
 protected:
-				int						m_State;
-				vector2d				m_Direction;
-				vector3d				m_Position;
 				vector2d				m_Velocity;
-				vector<CSprite*>		m_listSprite;
-
 };
 
 #endif

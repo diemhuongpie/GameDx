@@ -18,7 +18,6 @@ public:
 
 				void					setState(int newState);
 				int						getState();
-				void					setDirection(vector2d newDirection);
 
 private:
 

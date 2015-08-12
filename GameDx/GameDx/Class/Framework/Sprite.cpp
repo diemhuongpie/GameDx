@@ -13,6 +13,7 @@ CSprite::CSprite(wstring filePath, int nRows, int nColumns, int nFrame, int Inde
 	this->m_nFrames					= nFrame;
 	this->m_Index					= Index;
 	this->m_ElapedTime				= 0.0;
+	this->m_Scale					= vector2d(1, 1);
 	
 	HRESULT hr;
 	hr = D3DXGetImageInfoFromFile(filePath.c_str(), &this->m_Info);
@@ -59,6 +60,7 @@ bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int
 	RECT rec;
 	rec				= getScrRect();
 	m_isCompleted	= false;
+	this->m_Scale	= scale;
 
 	// center point to draw
 	D3DXVECTOR3 center = this->setCenter(drawcenter);
@@ -70,7 +72,7 @@ bool		CSprite::Render(D3DXVECTOR3 position, D3DXVECTOR2 scale, float rotate, int
 
 	// transform: rotate, flip, scale...
 	m_spriteHandler->GetTransform(&m_CurrentMatrix);
-	D3DXMatrixTransformation2D(&m_TransformMatrix, &(D3DXVECTOR2)position, 0, &scale, &(D3DXVECTOR2)position, D3DXToRadian(rotate), NULL);
+	D3DXMatrixTransformation2D(&m_TransformMatrix, &(D3DXVECTOR2)position, 0, &m_Scale, &(D3DXVECTOR2)position, D3DXToRadian(rotate), NULL);
 	D3DXMatrixMultiply(&m_MultyMatrix, &m_TransformMatrix, &m_CurrentMatrix);
 	m_spriteHandler->SetTransform(&m_MultyMatrix);
 
@@ -118,8 +120,9 @@ bool		CSprite::Render(int fromFrame, int toFrame, D3DXVECTOR3 position, D3DXVECT
 
 	// get frame's size (frame is a image which's part of sprite, sprite is a big image which include many small images and describe state of character)
 	RECT rec;
-	rec = getScrRect();
-	m_isCompleted = false;
+	rec				= getScrRect();
+	m_isCompleted	= false;
+	this->m_Scale	= scale;
 
 	// center point to draw
 	D3DXVECTOR3 center = this->setCenter(drawcenter);
@@ -131,7 +134,7 @@ bool		CSprite::Render(int fromFrame, int toFrame, D3DXVECTOR3 position, D3DXVECT
 
 	// transform: rotate, flip, scale...
 	m_spriteHandler->GetTransform(&m_CurrentMatrix);
-	D3DXMatrixTransformation2D(&m_TransformMatrix, &(D3DXVECTOR2)position, 0, &scale, &(D3DXVECTOR2)position, D3DXToRadian(rotate), NULL);
+	D3DXMatrixTransformation2D(&m_TransformMatrix, &(D3DXVECTOR2)position, 0, &m_Scale, &(D3DXVECTOR2)position, D3DXToRadian(rotate), NULL);
 	D3DXMatrixMultiply(&m_MultyMatrix, &m_TransformMatrix, &m_CurrentMatrix);
 	m_spriteHandler->SetTransform(&m_MultyMatrix);
 
@@ -264,4 +267,9 @@ void		CSprite::initSpriteHandler(LPD3DXSPRITE spriteHandler)
 D3DXIMAGE_INFO	CSprite::getFrameInfo()
 {
 	return this->m_FrameInfo;
+}
+
+D3DXVECTOR2		CSprite::getScale()
+{
+	return this->m_Scale;
 }

@@ -18,17 +18,16 @@ CPlayer::CPlayer(LPDIRECT3DDEVICE9)
 
 bool CPlayer::initEntity()
 {
-	m_Position		= vector3d(100, 300, 0.5);
+	m_Position		= vector3d(200, 300, 0.5);
 	m_State			= PLAYSTATE::START;
-	m_Direction		= vector2d(DIRECTION::DIRECTION_RIGHT, DIRECTION::DIRECTION_RIGHT);
-	//m_Velocity		= vector2d(9.8,0);
+
 	m_Acceleration	= vector2d(0.5f, 0);
-	this->m_isJump = true;
+	this->m_isJump	= true;
+	m_Velocity		= vector2d(9.8, 9.8);
+
 	this->loadSprite();
-	
-	
-	this->m_Bounding = new CBox2D(this->getBounding());
-	this->m_isMovable = true;
+	this->m_Bounding = new CBox2D(0, 0, 0, 0);
+
 
 	return true;
 }
@@ -51,31 +50,17 @@ bool CPlayer::loadSprite()
 
 void CPlayer::updateEntity(float deltaTime)
 {
-	m_Position.x += m_Velocity.x*(deltaTime / 100)*m_Direction.x;
-	m_Position.y += m_Velocity.y*(deltaTime / 60);
-	if (!m_isJump && m_Position.y < 280)
-	{
-		m_Velocity.y *= 1;
-	}
-	if (m_Position.y >= 300)
-	{
-		m_isJump = true;
-		m_Position.y = 300;
-	}
 	switch (m_State)
 	{
 	case PLAYERSTATES::STATE_START:
 		break;
 	case PLAYERSTATES::STATE_STAND:
-		if (m_isJump)
 			logicStandPlayer(deltaTime);
 		break;
 	case PLAYERSTATES::STATE_MOVE:
-		if (m_isJump)
 			logicMovePlayer(deltaTime);
 		break;
 	case PLAYERSTATES::STATE_JUMP:
-		if (m_isJump)
 		logicJumpPlayer(deltaTime);
 		break;
 	default:
@@ -91,32 +76,31 @@ void CPlayer::updateEntity(CKeyBoard* device)
 	if (device->KeyDown(DIK_LEFT))
 	{
 		m_State			= PLAYERSTATES::STATE_MOVE;
-		m_Direction.x	= DIRECTION::DIRECTION_LEFT;
+		m_Velocity.x	= std::abs(m_Velocity.x)*DIRECTION::DIRECTION_LEFT;
 	}
 	if (device->KeyDown(DIK_RIGHT))
 	{
 		m_State			= PLAYERSTATES::STATE_MOVE;
-		m_Direction.x	= DIRECTION::DIRECTION_RIGHT;
+		m_Velocity.x	= std::abs(m_Velocity.x)*DIRECTION::DIRECTION_RIGHT;
 	}
-	if (device->KeyDown(DIK_F))
+	if (device->KeyPress(DIK_F))
 	{
 		m_State			= PLAYERSTATES::STATE_STAND_SHOOT;
 	}
 	if (device->KeyDown(DIK_D))
 	{
 		m_State			= PLAYERSTATES::STATE_JUMP;
-		//m_Direction.x	= DIRECTION::DIRECTION_NONE;
-		m_Direction.y	= DIRECTION::DIRECTION_UP;
+		m_Velocity.y	= std::abs(m_Velocity.y) * DIRECTION::DIRECTION_UP;
 	}
 	if (device->KeyDown(DIK_D) && device->KeyDown(DIK_LEFT))
 	{
 		m_State			= PLAYERSTATES::STATE_JUMP;
-		m_Direction.x	= DIRECTION::DIRECTION_LEFT;
+		m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_LEFT;
 	}
 	if (device->KeyDown(DIK_D) && device->KeyDown(DIK_RIGHT))
 	{
 		m_State			= PLAYERSTATES::STATE_JUMP;
-		m_Direction.x	= DIRECTION::DIRECTION_RIGHT;
+		m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_RIGHT;
 	}
 	if (device->KeyDown(DIK_D) && device->KeyDown(DIK_F))
 	{
@@ -125,17 +109,17 @@ void CPlayer::updateEntity(CKeyBoard* device)
 	if (device->KeyDown(DIK_RIGHT) && device->KeyDown(DIK_F))
 	{
 		m_State			= PLAYERSTATES::STATE_MOVE_SHOOT;
-		m_Direction.x	= DIRECTION::DIRECTION_RIGHT;
+		m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_RIGHT;
 	}
 	if (device->KeyDown(DIK_LEFT) && device->KeyDown(DIK_F))
 	{
 		m_State			= PLAYERSTATES::STATE_MOVE_SHOOT;
-		m_Direction.x	= DIRECTION::DIRECTION_LEFT;
+		m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_LEFT;
 	}
 	if (device->KeyDown(DIK_D) && device->KeyDown(DIK_F) && device->KeyDown(DIK_RIGHT))
 	{
 		m_State			= PLAYERSTATES::STATE_JUMP_SHOOT;
-		m_Direction.x	= DIRECTION::DIRECTION_RIGHT;
+		m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_RIGHT;
 	}
 	if (device->KeyDown(DIK_LEFT) && device->KeyDown(DIK_RIGHT))
 	{
@@ -145,29 +129,30 @@ void CPlayer::updateEntity(CKeyBoard* device)
 
 void CPlayer::drawEntity()
 {
-	m_listSprite.at(m_State)->Render(m_Position, vector2d(m_Direction.x*2.0, m_Direction.y*2.0), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
+	m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(m_Position), vector2d(SIGN(m_Velocity.x)*2, SIGN(m_Velocity.y)*2), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
+	//m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(vector3d(this->getBounding().getX(), this->getBounding().getY(), 0.5f)), vector2d(SIGN(m_Velocity.x) * 2, SIGN(m_Velocity.y) * 2), 0, DRAWCENTER_LEFT_TOP, true, 10);
 }
 
 void CPlayer::logicMovePlayer(float deltaTime)
 {
-	m_Velocity.x = 5;
+	m_Position.x += m_Velocity.x*(deltaTime / 100);
+
 }
 void CPlayer::logicJumpPlayer(float deltaTime)
 {	
 	m_Velocity.y = -10;
-	m_isJump = false;
 }
+
 void CPlayer::logicStandPlayer(float deltaTime)
 {
-	m_Velocity.x += m_Acceleration.x*(deltaTime / 100);
-	m_Acceleration.x = -0.5;
-	
 	if ((m_Velocity.x > 0 && m_Velocity.x <= 1) || (m_Velocity.x >= -1 && m_Velocity.x < 0))
 	{
 		m_Acceleration.x = 0;
 		m_Velocity.x = 0;
 	}
-	
-	
+}
 
+vector3d CPlayer::getPosition()
+{
+	return m_Position;
 }

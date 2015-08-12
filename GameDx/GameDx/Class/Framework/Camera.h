@@ -3,6 +3,7 @@
 
 #include "Game\Utill\stdafx.h"
 #include "Game\Utill\Config.h"
+#include "Mathematics\Box2D.h"
 
 class CCamera
 {
@@ -16,6 +17,7 @@ public:
 			CAMERASTATE		getStateCamera					();
 			vector3d		getPosisionCamera				();
 			vector4d		getViewport						();
+			CBox2D			getBoundingScreen				();
 			void			setPositionCamera				(vector3d*);
 			void			setLimitRectOfCurrentMap		(float, float);
 

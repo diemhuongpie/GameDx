@@ -12,22 +12,20 @@
 #include "Mathematics\Box2D.h"
 #include "Framework\Sprite.h"
 
-// class nay van dang la asbtract class
+
 class CStaticEntity : public CBaseEntity
 {
 public:
 	CStaticEntity();
 	~CStaticEntity();
 
-	// load sprite vao day....sau do goi no trong ham Init va ham Init sex duoc goi trong ham new.
 	virtual		bool					loadSprite()			= 0;
-	virtual		RECT					getBounding()			override;
+	virtual		CBox2D					getBounding()			override;
 	virtual		bool					initEntity()			override;
+	virtual		const char*				getTagNode()			override;
 				vector2d				getPosition();
 
 protected:
-				vector3d				m_Position;
-				vector<CSprite*>		m_listSprite;
 };
 
 #endif

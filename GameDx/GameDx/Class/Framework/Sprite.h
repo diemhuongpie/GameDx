@@ -49,6 +49,7 @@ public:
 	bool			isCompleted(int);
 
 	D3DXIMAGE_INFO	getFrameInfo();
+	D3DXVECTOR2		getScale();
 
 private:
 	static	LPD3DXSPRITE			m_spriteHandler;
@@ -63,6 +64,7 @@ private:
 			D3DXIMAGE_INFO				m_FrameInfo;						// Information of frame's image
 			LPDIRECT3DTEXTURE9			m_Image;							//
 			double						m_ElapedTime;
+			D3DXVECTOR2					m_Scale;
 
 			//Completed for other action
 			bool						m_isCompleted;

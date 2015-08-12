@@ -18,7 +18,7 @@ COLDIRECTION CCollision::CheckCollision(CMovable* MovableObject, CBaseEntity* Ob
 	double timeCollition;
 	float normalX, normalY;
 
-	if (AABB(*(MovableObject->m_Bounding), *(Object->m_Bounding), moveX, moveY))
+	if (AABB((MovableObject->getBounding()), (Object->getBounding()), moveX, moveY))
 	{
 		if (moveY != 0)
 			if (moveY >= 0)
@@ -34,19 +34,19 @@ COLDIRECTION CCollision::CheckCollision(CMovable* MovableObject, CBaseEntity* Ob
 			else
 			{
 				// already changing axis Oy into dacac
-				if (MovableObject->m_Bounding->getY() == Object->m_Bounding->getY() + Object->m_Bounding->getHeight())
+				if (MovableObject->getBounding().getY() == Object->getBounding().getY() + Object->getBounding().getHeight())
 					return COLDIRECTION::COLDIRECTION_TOP;
-				else if (MovableObject->m_Bounding->getY() + MovableObject->m_Bounding->getHeight() == Object->m_Bounding->getY())
+				else if (MovableObject->getBounding().getY() + MovableObject->getBounding().getHeight() == Object->getBounding().getY())
 						return COLDIRECTION::COLDIRECTION_BOTTOM;
-					else if (MovableObject->m_Bounding->getX() == Object->m_Bounding->getX() + Object->m_Bounding->getWidth())
+				else if (MovableObject->getBounding().getX() == Object->getBounding().getX() + Object->getBounding().getWidth())
 							return COLDIRECTION::COLDIRECTION_LEFT;
-						else if (MovableObject->m_Bounding->getX() + MovableObject->m_Bounding->getWidth() == Object->m_Bounding->getX())
+				else if (MovableObject->getBounding().getX() + MovableObject->getBounding().getWidth() == Object->getBounding().getX())
 								return COLDIRECTION::COLDIRECTION_RIGHT;
 			}
 	}
 	else
 	{
-		if (Object->m_isMovable == false)
+		if (Object->getTagNode() == "Static")
 			velocity = MovableObject->getVelocity();
 		else
 		{
@@ -54,9 +54,9 @@ COLDIRECTION CCollision::CheckCollision(CMovable* MovableObject, CBaseEntity* Ob
 			velocity = vector2d(MovableObject->getVelocity().x - object->getVelocity().x, MovableObject->getVelocity().y - object->getVelocity().y);
 		}
 
-		if (AABB(GetBroadPhaseBox(*(MovableObject->m_Bounding), velocity), *(Object->m_Bounding), moveX, moveY))
+		if (AABB(GetBroadPhaseBox(MovableObject->getBounding(), velocity), (Object->getBounding()), moveX, moveY))
 		{
-			timeCollition = SweptAABB(GetBoundForMovable(*(MovableObject->m_Bounding), velocity), *(Object->m_Bounding), normalX, normalY);
+			timeCollition = SweptAABB(GetBoundForMovable(MovableObject->getBounding(), velocity), Object->getBounding(), normalX, normalY);
 			
 			if (timeCollition > 0.0f && timeCollition < 1.0f)
 			{

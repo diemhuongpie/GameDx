@@ -1,7 +1,7 @@
 //
 
 #include "EnemyTankRed.h"
-
+#include "Framework\Camera.h"
 
 CEnemyTankRed::CEnemyTankRed()
 {
@@ -21,11 +21,10 @@ CEnemyTankRed::~CEnemyTankRed()
 bool CEnemyTankRed::initEntity()
 {
 	m_Position		= vector3d(80.0f, 300.0f, 0.5f);
-	m_isMovable		= false;
 
 	this->loadSprite();
 
-	this->m_Bounding = new CBox2D (this->getBounding());
+	this->m_Bounding = new CBox2D (0, 0 , 0, 0);
 	return true;
 }
 
@@ -48,5 +47,5 @@ void CEnemyTankRed::updateEntity(CKeyBoard* device)
 
 void CEnemyTankRed::drawEntity()
 {
-	m_listSprite.at(0)->Render(m_Position, vector2d(1.0f, 1.0f), 0.0f, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
+	m_listSprite.at(this->m_State)->Render(CCamera::setPositionEntity(m_Position), vector2d(1.0f, 1.0f), 0.0f, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
 }

@@ -55,6 +55,11 @@ vector4d	CCamera::getViewport()
 	return m_Viewport;
 }
 
+CBox2D		CCamera::getBoundingScreen()
+{
+	return CBox2D((int)m_ViewportX, (int)m_ViewportY, BACKBUFFER_WIDTH, BACKBUFFER_HEIGHT);
+}
+
 void CCamera::Update(vector3d	positionEntity)
 {
 	switch (CCamera::getInstance()->getStateCamera())

@@ -17,7 +17,6 @@ CEnemyBall::~CEnemyBall()
 
 bool CEnemyBall::initEntity()
 {
-	m_isMovable = true;
 	RECT rectangle = { 420, 300, 500, 200 };
 	m_Bounding = new CBox2D(rectangle, vector2d(50, 50));
 	m_Velocity = vector2d(50, 50);
