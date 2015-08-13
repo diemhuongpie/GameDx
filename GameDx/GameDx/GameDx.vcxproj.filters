@@ -133,15 +133,6 @@
     <Filter Include="Game\Entity\Children\Player\cpp">
       <UniqueIdentifier>{75adf925-f133-4665-a1e8-4246dfe47a22}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Algorithm\ObjectPool">
-      <UniqueIdentifier>{ac1aebda-f853-43da-8337-9d48732ecb8f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Algorithm\Factory">
-      <UniqueIdentifier>{d7da7b2d-94ad-41ca-87ba-464cef19f69c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Algorithm\Singleton">
-      <UniqueIdentifier>{b9beb86f-1bc2-430c-a3ac-5fc3353f4389}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Algorithm\Collision">
       <UniqueIdentifier>{8bd82b04-8ec1-4191-bf21-5ddab73c7591}</UniqueIdentifier>
     </Filter>
@@ -156,6 +147,24 @@
     </Filter>
     <Filter Include="Game\Entity\Children\Bullet\cpp">
       <UniqueIdentifier>{938d492f-707b-4bfc-abaa-0976f8ff5fc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm\Quadtree">
+      <UniqueIdentifier>{44201cab-7353-4940-8d8a-1560fc1ba542}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Template">
+      <UniqueIdentifier>{5b1d7c9b-e700-47cd-9925-40c2ba8a09aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Template\Factory">
+      <UniqueIdentifier>{d7da7b2d-94ad-41ca-87ba-464cef19f69c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Template\ObjectPool">
+      <UniqueIdentifier>{ac1aebda-f853-43da-8337-9d48732ecb8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Template\Singleton">
+      <UniqueIdentifier>{b9beb86f-1bc2-430c-a3ac-5fc3353f4389}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm\Quadtree\cpp">
+      <UniqueIdentifier>{31c33f42-8471-4fa2-8ab4-3ad3843f21b4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -276,6 +285,12 @@
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyTankRed.cpp">
       <Filter>Game\Entity\Children\Mod\cpp</Filter>
     </ClCompile>
+    <ClCompile Include="Class\Game\Algorithsm\QuadTree.cpp">
+      <Filter>Algorithm\Quadtree\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Algorithsm\QuadNode.cpp">
+      <Filter>Algorithm\Quadtree\cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Class\Framework\Timer.h">
@@ -360,10 +375,7 @@
       <Filter>Game\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Class\Game\Algorithsm\CObjectPool.h">
-      <Filter>Algorithm\ObjectPool</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\Game\Algorithsm\Singleton.h">
-      <Filter>Algorithm\Singleton</Filter>
+      <Filter>Template\ObjectPool</Filter>
     </ClInclude>
     <ClInclude Include="Class\Game\Entity\Player\Player.h">
       <Filter>Game\Entity\Children\Player</Filter>
@@ -409,6 +421,15 @@
     </ClInclude>
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyTankRed.h">
       <Filter>Game\Entity\Children\Mod</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Algorithsm\Singleton.h">
+      <Filter>Template\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Algorithsm\QuadTree.h">
+      <Filter>Algorithm\Quadtree</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Algorithsm\QuadNode.h">
+      <Filter>Algorithm\Quadtree</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

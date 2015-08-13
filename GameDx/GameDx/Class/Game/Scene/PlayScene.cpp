@@ -32,14 +32,14 @@ void	CPlayScene::updateScene(double deltaTime)
 	m_EnemyTankRed->updateEntity(deltaTime);
 
 	CCollision::CheckCollision(m_Player, m_EnemyTankRed);
-	CBox2D::isIntersect(m_Player->getBounding(), m_EnemyTankRed->getBounding());
+	CBox2D::Intersect(m_Player->getBounding(), m_EnemyTankRed->getBounding());
 
 	OutputDebugString(L"COLLISION DIRECTION: ");
 	OutputDebugString(_itow(CCollision::CheckCollision(m_Player, m_EnemyTankRed), new WCHAR[1], 10));
 	OutputDebugString(L"\n");
 
 	OutputDebugString(L"IS INTERSECT: ");
-	OutputDebugString(_itow(CBox2D::isIntersect(m_Player->getBounding(), m_EnemyTankRed->getBounding()), new WCHAR[1], 10));
+	OutputDebugString(_itow(CBox2D::Intersect(m_Player->getBounding(), m_EnemyTankRed->getBounding()), new WCHAR[1], 10));
 	OutputDebugString(L"\n");
 }
 

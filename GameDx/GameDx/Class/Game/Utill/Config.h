@@ -27,12 +27,15 @@
 #define ISKEYDOWN(keystatus)		(keystatus & 0x80)
 
 #define directDevice				LPDIRECT3DDEVICE9
+
 #define vector3d					D3DXVECTOR3
 #define vector3dZero				D3DXVECTOR3(0.0f,0.0f,0.5f)
 #define	vector3dMinimum				D3DXVECTOR3(-10000, -10000, 0.5f)
 #define vector2d					D3DXVECTOR2
 #define vector2dZero				D3DXVECTOR2(0.0f,0.0f)
 #define vector4d					D3DXVECTOR4
+
+#define CBoxZero					CBox2D(0, 0, 0, 0)			
 
 #define matrix						D3DXMATRIX
 
@@ -45,6 +48,7 @@
 #define BACKBUFFER_WIDTH			510
 #define	BACKBUFFER_HEIGHT			485
 
+#define SCREEN_SIZE					CBox2D()
 #define deltaBoundingBox			vector2d(5.0f, 5.0f)
 
 #define DEFAULT_FONT_SIZE			8
@@ -194,4 +198,10 @@ enum PLAYERSTATES
 #include <vld.h>
 #endif
 /********************/
+
+#define				SIZE_MAP_WIDTH			20000
+#define				SIZE_MAP_HIGHT			20000
+#define				MAX_OBJECT_OF_NODE		4
+#define				MAX_LEVEL_OF_NODE		5
+
 #endif

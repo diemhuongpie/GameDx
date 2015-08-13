@@ -173,7 +173,7 @@ void CBox2D::setVelocityY(float param1)
 	m_Velocity.y = param1;
 }
 
-bool CBox2D::isIntersect(CBox2D box1, CBox2D box2)
+bool CBox2D::Intersect(CBox2D box1, CBox2D box2)
 {
 	return !(
 			box1.getX()									> (box2.getX() + box2.getWidth())	||

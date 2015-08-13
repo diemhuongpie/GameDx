@@ -95,6 +95,8 @@
     <ClInclude Include="Class\Framework\Timer.h" />
     <ClInclude Include="Class\Framework\Windows.h" />
     <ClInclude Include="Class\Game\Algorithsm\CObjectPool.h" />
+    <ClInclude Include="Class\Game\Algorithsm\QuadNode.h" />
+    <ClInclude Include="Class\Game\Algorithsm\QuadTree.h" />
     <ClInclude Include="Class\Game\Algorithsm\Singleton.h" />
     <ClInclude Include="Class\Game\Entity\BaseEntity.h" />
     <ClInclude Include="Class\Game\Entity\Bullet\BulletManager.h" />
@@ -140,6 +142,8 @@
     <ClCompile Include="Class\Framework\Text.cpp" />
     <ClCompile Include="Class\Framework\Timer.cpp" />
     <ClCompile Include="Class\Framework\Windows.cpp" />
+    <ClCompile Include="Class\Game\Algorithsm\QuadNode.cpp" />
+    <ClCompile Include="Class\Game\Algorithsm\QuadTree.cpp" />
     <ClCompile Include="Class\Game\Entity\BaseEntity.cpp" />
     <ClCompile Include="Class\Game\Entity\Bullet\BulletManager.cpp" />
     <ClCompile Include="Class\Game\Entity\Bullet\BulletNormal.cpp" />

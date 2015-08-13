@@ -16,9 +16,9 @@ public:
 	CBox2D(LPDIRECT3DDEVICE9, vector2d, vector2d, vector2d);
 	CBox2D(float, float, float, float);
 	CBox2D(float, float, float, float, vector2d);
-
-	static bool			isIntersect(CBox2D, CBox2D);
 	~CBox2D();
+
+	static		bool	Intersect(CBox2D, CBox2D);
 
 	virtual		void	update(float deltaTime, vector2d pos)			override;
 	virtual		void	render()										override;
