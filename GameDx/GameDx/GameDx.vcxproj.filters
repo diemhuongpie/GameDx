@@ -240,6 +240,7 @@
     <ClCompile Include="Class\Game\Scene\GameOverScene.cpp">
       <Filter>Game\Scene\cpp</Filter>
     </ClCompile>
+<<<<<<< Updated upstream
     <ClCompile Include="Class\Game\Entity\Player\Player.cpp">
       <Filter>Game\Entity\Children\Player\cpp</Filter>
     </ClCompile>
@@ -284,6 +285,10 @@
     </ClCompile>
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyTankRed.cpp">
       <Filter>Game\Entity\Children\Mod\cpp</Filter>
+=======
+    <ClCompile Include="Class\MapManager.cpp">
+      <Filter>Game\Scene\cpp</Filter>
+>>>>>>> Stashed changes
     </ClCompile>
     <ClCompile Include="Class\Game\Algorithsm\QuadTree.cpp">
       <Filter>Algorithm\Quadtree\cpp</Filter>
@@ -374,6 +379,7 @@
     <ClInclude Include="Class\Game\Scene\GameOverScene.h">
       <Filter>Game\Scene</Filter>
     </ClInclude>
+<<<<<<< Updated upstream
     <ClInclude Include="Class\Game\Algorithsm\CObjectPool.h">
       <Filter>Template\ObjectPool</Filter>
     </ClInclude>
@@ -421,6 +427,10 @@
     </ClInclude>
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyTankRed.h">
       <Filter>Game\Entity\Children\Mod</Filter>
+=======
+    <ClInclude Include="Class\MapManager.h">
+      <Filter>Game\Scene</Filter>
+>>>>>>> Stashed changes
     </ClInclude>
     <ClInclude Include="Class\Game\Algorithsm\Singleton.h">
       <Filter>Template\Singleton</Filter>

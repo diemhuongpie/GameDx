@@ -12,7 +12,11 @@
 #include "Mathematics\Box2D.h"
 #include "Framework\Sprite.h"
 
+<<<<<<< Updated upstream
 
+=======
+// class nay van dang la asbtract class
+>>>>>>> Stashed changes
 class CStaticEntity : public CBaseEntity
 {
 public:
@@ -26,6 +30,12 @@ public:
 				vector2d				getPosition();
 
 protected:
+<<<<<<< Updated upstream
+=======
+				vector3d				m_Position;
+				CBox2D*					m_Bounding;
+				vector<CSprite*>		m_listSprite;
+>>>>>>> Stashed changes
 };
 
 #endif

@@ -46,7 +46,7 @@
 #define SAFE_RELEASE(A)				{if (A) {delete A; A = 0;}}
 
 #define BACKBUFFER_WIDTH			510
-#define	BACKBUFFER_HEIGHT			485
+#define	BACKBUFFER_HEIGHT			480
 
 #define SCREEN_SIZE					CBox2D()
 #define deltaBoundingBox			vector2d(5.0f, 5.0f)

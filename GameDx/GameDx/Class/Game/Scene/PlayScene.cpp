@@ -13,6 +13,7 @@ CPlayScene::~CPlayScene()
 
 bool	CPlayScene::initScene()
 {
+<<<<<<< Updated upstream
 	//m_Player->initEntity();
 
 	m_Player = new CPlayer();
@@ -20,6 +21,9 @@ bool	CPlayScene::initScene()
 
 	//m_EnemyBall = new CEnemyBall();
 
+=======
+	map->initEntity();	
+>>>>>>> Stashed changes
 	return true;
 }
 
@@ -53,6 +57,10 @@ void	CPlayScene::updateScene(CKeyBoard* keyboard)
 
 void	CPlayScene::renderScene()
 {
+<<<<<<< Updated upstream
 	m_Player->drawEntity();
 	m_EnemyTankRed->drawEntity();
+=======
+	map->drawEntity();
+>>>>>>> Stashed changes
 }

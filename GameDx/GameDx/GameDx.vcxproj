@@ -59,7 +59,11 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
+<<<<<<< Updated upstream
       <AdditionalIncludeDirectories>C:\Users\Dat\Desktop\GameDx\GameDx\GameDx\Resource;C:\Users\Dat\Desktop\GameDx\GameDx\GameDx\Class;C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Resource;C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Class;C:\Users\DiemHuong Shin\Desktop\Rockman\GameDx\GameDx\Resource;C:\Users\DiemHuong Shin\Desktop\Rockman\GameDx\GameDx\Class;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+=======
+      <AdditionalIncludeDirectories>C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Resource;C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Class;C:\Users\DiemHuong Shin\Desktop\Rockman\GameDx\GameDx\Resource;C:\Users\DiemHuong Shin\Desktop\Rockman\GameDx\GameDx\Class;C:\Users\LKuan_000\Documents\Visual Studio 2013\Projects\GameDx\GameDx\GameDx\Class;C:\Users\LKuan_000\Documents\Visual Studio 2013\Projects\GameDx\GameDx\GameDx\Resource;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+>>>>>>> Stashed changes
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -130,6 +134,7 @@
     <ClInclude Include="Class\Game\Utill\Config.h" />
     <ClInclude Include="Class\Game\Utill\InformationResource.h" />
     <ClInclude Include="Class\Game\Utill\stdafx.h" />
+    <ClInclude Include="Class\MapManager.h" />
     <ClInclude Include="Class\Mathematics\Box2D.h" />
     <ClInclude Include="Class\Mathematics\Collision.h" />
     <ClInclude Include="Class\Mathematics\Polygon.h" />
@@ -174,6 +179,7 @@
     <ClCompile Include="Class\Game\Test\Test.cpp" />
     <ClCompile Include="Class\Game\Utill\InformationResource.cpp" />
     <ClCompile Include="Class\Game\WinMain.cpp" />
+    <ClCompile Include="Class\MapManager.cpp" />
     <ClCompile Include="Class\Mathematics\Box2D.cpp" />
     <ClCompile Include="Class\Mathematics\Collision.cpp" />
     <ClCompile Include="Class\Mathematics\Polygon.cpp" />

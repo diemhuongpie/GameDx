@@ -2,6 +2,7 @@
 #define __PLAYSCENE_H__
 
 #include "BaseScene.h"
+<<<<<<< Updated upstream
 #include "Game\Entity\Player\Player.h"
 #include "Game\Entity\Enemy\EnemyBall.h"
 #include "Game\Entity\Enemy\EnemyBubbleBlue.h"
@@ -10,6 +11,9 @@
 #include "Game\Entity\Enemy\EnemyTankRed.h"
 #include "Mathematics\Collision.h"
 
+=======
+#include "MapManager.h"
+>>>>>>> Stashed changes
 class CPlayScene :
 	public CBaseScene
 {
@@ -22,6 +26,7 @@ public:
 	virtual void updateScene(double deltaTime)		override;
 	virtual void renderScene()						override;
 
+<<<<<<< Updated upstream
 private:
 			CPlayer*								m_Player;
 			CEnemyTankRed*							m_EnemyTankRed;
@@ -30,6 +35,9 @@ private:
 			CEnemyBubbleBlue*						m_EnemyBubbleBlue;
 			CEnemyCut*								m_EnemyCut;
 	
+=======
+	Map * map = new Map();
+>>>>>>> Stashed changes
 };
 
 #endif
