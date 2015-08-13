@@ -1,7 +1,7 @@
 #ifndef __SINGLETON_H__
 #define __SINGLETON_H__
 
-template < class  T> class CSingleton
+template <class  T> class CSingleton
 {
 public:
 	CSingleton(){}
@@ -18,10 +18,10 @@ public:
 	{
 		delete	s_Instance;
 	};
-//protected:
-//	static *T		s_Instance;
+protected:
+	static T*		s_Instance;
 };
 
-//template <class T>
-//T*	CSingleton<T>::s_Instance = 0;
+template <class T>
+T*	CSingleton<T>::s_Instance = 0;
 #endif
