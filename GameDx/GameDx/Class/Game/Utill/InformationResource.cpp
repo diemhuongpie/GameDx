@@ -31,7 +31,10 @@ const wchar_t*		CInfomationResource::rulerBackground			= L"Resource//Image//Scen
 /*************************************************/
 
 /************RESOURCE FOR INTROSCENE*******/
-const wchar_t*		CInfomationResource::sprite						= L"Resource//Image//IntroScene//cutManIntro.png";
+const wchar_t*		CInfomationResource::spriteCutManIntro			= L"Resource//Image//IntroScene//cutManIntro.png";
+const wchar_t*		CInfomationResource::spriteBombManJumbIntro		= L"Resource//Image//IntroScene//bombManJumbIntro.png";
+const wchar_t*		CInfomationResource::spriteBombManStandIntro	= L"Resource//Image//IntroScene//bombManStandIntro.png";
+const wchar_t*		CInfomationResource::spriteBombManBallIntro		= L"Resource//Image//IntroScene//bombManBallIntro.png";
 const wchar_t*		CInfomationResource::backgroundIntroStage		= L"Resource//Image//Background//background_3.png";
 /*************************************************/
 

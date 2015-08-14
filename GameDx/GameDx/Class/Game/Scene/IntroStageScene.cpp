@@ -28,14 +28,19 @@ bool CIntroStageScene::initScene()
 	m_TimeForChangingSprite		= true;
 
 	if (CSelectStageScene::m_IndexSelect == STAGESELECTED::CUTMAN)
+	{
 		m_Temp					= new wchar_t[wcslen(CUTMAN_STAGE_INFO_STRING) + 1];
+		m_Sprite				= new CSprite(CInfomationResource::spriteCutManIntro, 1, 3, 3, 0);
+	}
 	if (CSelectStageScene::m_IndexSelect == STAGESELECTED::BOMBMAN)
+	{
 		m_Temp					= new wchar_t[wcslen(BOMBMAN_STAGE_INFO_STRING) + 1];
+		m_Sprite				= new CSprite(CInfomationResource::spriteBombManJumbIntro, 1, 1, 1, 0);
+	}
 	if (CSelectStageScene::m_IndexSelect == STAGESELECTED::FIREMAN)
 		m_Temp					= new wchar_t[wcslen(FIREMAN_STAGE_INFO_STRING) + 1];
 
 	m_Background				= new CSprite(CInfomationResource::backgroundIntroStage);
-	m_Sprite					= new CSprite(CInfomationResource::sprite, 1, 3, 3, 0);
 	m_Position					= D3DXVECTOR3(BACKBUFFER_WIDTH / 3, BACKBUFFER_HEIGHT / 4, 0.5f);
 
 	return true;

@@ -38,7 +38,10 @@ public:
 	/*************************************************/
 
 	/************RESOURCE FOR INTROSCENE*******/
-	static const wchar_t*	sprite;
+	static const wchar_t*	spriteCutManIntro;
+	static const wchar_t*	spriteBombManJumbIntro;
+	static const wchar_t*	spriteBombManBallIntro;
+	static const wchar_t*	spriteBombManStandIntro;
 	static const wchar_t*	backgroundIntroStage;
 	/*************************************************/
 
