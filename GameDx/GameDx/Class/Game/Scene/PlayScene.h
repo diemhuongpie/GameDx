@@ -9,6 +9,7 @@
 #include "Game\Entity\Enemy\EnemyCut.h"
 #include "Game\Entity\Enemy\EnemyTankRed.h"
 #include "Mathematics\Collision.h"
+#include "Game\MapManager.h"
 
 class CPlayScene :
 	public CBaseScene
@@ -29,7 +30,7 @@ private:
 			CEnemyBall*								m_EnemyBall;
 			CEnemyBubbleBlue*						m_EnemyBubbleBlue;
 			CEnemyCut*								m_EnemyCut;
-	
+			Map*									map;
 };
 
 #endif

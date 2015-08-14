@@ -13,6 +13,7 @@ CPlayScene::~CPlayScene()
 
 bool	CPlayScene::initScene()
 {
+	map = new Map();
 	//m_Player->initEntity();
 
 	m_Player = new CPlayer();
@@ -55,4 +56,5 @@ void	CPlayScene::renderScene()
 {
 	m_Player->drawEntity();
 	m_EnemyTankRed->drawEntity();
+	map->drawEntity();
 }
