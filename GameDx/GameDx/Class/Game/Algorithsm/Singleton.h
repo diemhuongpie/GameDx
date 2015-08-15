@@ -3,6 +3,9 @@
 
 template <class  T> class CSingleton
 {
+protected:
+	static T*		s_Instance;
+
 public:
 	CSingleton(){}
 	virtual ~CSingleton(){}
@@ -11,15 +14,13 @@ public:
 	{
 		if (!s_Instance)
 			s_Instance = new T();
-		return s_Instace;
+		return s_Instance;
 	}
 
 	static	void	release()
 	{
 		delete	s_Instance;
 	};
-protected:
-	static T*		s_Instance;
 };
 
 template <class T>

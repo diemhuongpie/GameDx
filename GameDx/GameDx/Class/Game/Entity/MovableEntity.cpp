@@ -22,6 +22,11 @@ vector3d	CMovable::getPosition()
 	return m_Position;
 }
 
+void	CMovable::setPosition(vector3d pos)
+{
+	m_Position = pos;
+}
+
 CBox2D		CMovable::getBounding()
 {
 	if (m_listSprite.size())
@@ -43,4 +48,9 @@ vector2d CMovable::getVelocity()
 const char* CMovable::getTagNode()
 {
 	return this->m_TagNode;
+}
+
+int CMovable::getState()
+{
+	return m_State;
 }

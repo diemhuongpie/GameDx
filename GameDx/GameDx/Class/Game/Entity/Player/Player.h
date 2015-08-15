@@ -32,8 +32,10 @@ public:
 			
 protected:
 	
-	vector2d				m_Acceleration;
-	bool					m_isJump;
+			clock_t			m_TimeState;
+			vector2d		m_Accelero;
+			int time;
+
 
 private:
 

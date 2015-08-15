@@ -13,12 +13,14 @@ CPlayScene::~CPlayScene()
 
 bool	CPlayScene::initScene()
 {
-	map				= new Map();
+	//m_Player->initEntity();
+	m_Tag			= "PlayScene";
+	//map = new Map();
 	//m_Player->initEntity();
 
-	m_Player		= new CPlayer();
-	m_EnemyTankRed	= new CEnemyTankRed();
-	m_Tag			= "PlayScene";
+	m_Player			= new CPlayer();
+	m_EnemyTankRed		= new CEnemyTankRed();
+	m_BulletManager		= new CBulletManager();
 	//m_EnemyBall = new CEnemyBall();
 
 	return true;
@@ -34,11 +36,8 @@ void	CPlayScene::updateScene(double deltaTime)
 
 	CCollision::CheckCollision(m_Player, m_EnemyTankRed);
 	CBox2D::Intersect(m_Player->getBounding(), m_EnemyTankRed->getBounding());
-
-	OutputDebugString(L"COLLISION DIRECTION: ");
-	OutputDebugString(_itow(CCollision::CheckCollision(m_Player, m_EnemyTankRed), new WCHAR[1], 10));
-	OutputDebugString(L"\n");
-
+	m_BulletManager->updateBullet(deltaTime);
+	
 	OutputDebugString(L"IS INTERSECT: ");
 	OutputDebugString(_itow(CBox2D::Intersect(m_Player->getBounding(), m_EnemyTankRed->getBounding()), new WCHAR[1], 10));
 	OutputDebugString(L"\n");
@@ -56,5 +55,7 @@ void	CPlayScene::renderScene()
 {
 	m_Player		->drawEntity();
 	m_EnemyTankRed	->drawEntity();
-	map				->drawEntity();
+
+	m_BulletManager	->renderBullet();
+	//map->drawEntity();
 }

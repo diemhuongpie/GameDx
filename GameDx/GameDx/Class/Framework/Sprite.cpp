@@ -236,8 +236,8 @@ void		CSprite::Next()
 
 void		CSprite::Reset() 
 {
-	m_Index = 0;
-	m_isCompleted = false;
+	m_Index			= 0;
+	m_isCompleted	= false;
 }
 
 int			CSprite::getIndex()

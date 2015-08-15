@@ -30,7 +30,7 @@ CBox2D		CStaticEntity::getBounding()
 	return *m_Bounding;
 }
 
-vector2d CStaticEntity::getPosition()
+vector3d CStaticEntity::getPosition()
 {
 	return m_Position;
 }
@@ -38,4 +38,9 @@ vector2d CStaticEntity::getPosition()
 const char* CStaticEntity::getTagNode()
 {
 	return this->m_TagNode;
+}
+
+int CStaticEntity::getState()
+{
+	return m_State;
 }
