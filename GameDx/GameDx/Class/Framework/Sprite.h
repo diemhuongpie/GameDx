@@ -28,7 +28,7 @@ public:
 						  );
 
 	bool			Render(
-							int			fromFrame	= 1,
+							int			fromFrame	= 0,
 							int			toFrame		= 1,
 							D3DXVECTOR3 Position	= D3DXVECTOR3(0, 0, 0.5),
 							D3DXVECTOR2 scale		= D3DXVECTOR2(1.0f, 1.0f),

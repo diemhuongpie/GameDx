@@ -13,10 +13,13 @@ public:
 	~CBulletManager();
 
 	void			updateBullet(float			deltaTime);
+	void			updateBullet(CKeyBoard*		keyBoard);
 	void			updateBullet(CStaticEntity*	staticEntity);
 	void			updateBullet(CMovable*		player);
 
-	void			getBullet	(int			styleBullet);
+	void			renderBullet();
+
+	void			getBullet	(int			styleBullet, vector3d		m_Position);
 	void			createBullet(int			styleBullet);
 
 

@@ -7,8 +7,8 @@ CTile::CTile()
 
 CTile::CTile(vector3d pos, int State)
 {
-	m_Pos = pos;
-	m_State = State;
+	m_Position				= pos;
+	m_State					= State;
 }
 
 

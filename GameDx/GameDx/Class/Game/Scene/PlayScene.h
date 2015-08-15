@@ -8,8 +8,9 @@
 #include "Game\Entity\Enemy\EnemyRobotRed.h"
 #include "Game\Entity\Enemy\EnemyCut.h"
 #include "Game\Entity\Enemy\EnemyTankRed.h"
+#include "Game\Map\MapManager.h"
 #include "Mathematics\Collision.h"
-#include "Game\MapManager.h"
+#include "Game\Entity\Bullet\BulletManager.h"
 
 class CPlayScene :
 	public CBaseScene
@@ -31,6 +32,7 @@ private:
 			CEnemyBubbleBlue*						m_EnemyBubbleBlue;
 			CEnemyCut*								m_EnemyCut;
 			Map*									map;
+			CBulletManager*							m_BulletManager;
 };
 
 #endif

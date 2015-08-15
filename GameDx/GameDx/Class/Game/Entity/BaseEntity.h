@@ -27,6 +27,7 @@ public:
 	virtual void			drawEntity()										= 0;
 	virtual	CBox2D			getBounding()										= 0;
 	virtual const char*		getTagNode()										= 0;
+	virtual int				getState()											= 0;
 
 protected:
 	int						m_State;

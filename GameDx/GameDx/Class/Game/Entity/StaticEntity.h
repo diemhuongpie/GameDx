@@ -23,7 +23,8 @@ public:
 	virtual		CBox2D					getBounding()			override;
 	virtual		bool					initEntity()			override;
 	virtual		const char*				getTagNode()			override;
-				vector2d				getPosition();
+				vector3d				getPosition();
+	virtual		int						getState()				override;
 
 protected:
 };
