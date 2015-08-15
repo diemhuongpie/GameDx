@@ -124,12 +124,6 @@
     <Filter Include="Game\Entity\Children\Player">
       <UniqueIdentifier>{791a0e78-043b-444b-b2ed-5549a89c5a46}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Entity\Children\Tile">
-      <UniqueIdentifier>{27f9bdb6-e504-46bd-bb63-5ddc67f255e5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Entity\Children\Tile\cpp">
-      <UniqueIdentifier>{60ca7272-2cfc-4cb6-aede-3a61d3e062b7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Entity\Children\Player\cpp">
       <UniqueIdentifier>{75adf925-f133-4665-a1e8-4246dfe47a22}</UniqueIdentifier>
     </Filter>
@@ -165,6 +159,12 @@
     </Filter>
     <Filter Include="Algorithm\Quadtree\cpp">
       <UniqueIdentifier>{31c33f42-8471-4fa2-8ab4-3ad3843f21b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Children\Map">
+      <UniqueIdentifier>{27f9bdb6-e504-46bd-bb63-5ddc67f255e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Entity\Children\Map\cpp">
+      <UniqueIdentifier>{5764008a-e080-4aa2-bae2-62baf8c72520}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -206,9 +206,6 @@
     </ClCompile>
     <ClCompile Include="Class\Game\Utill\InformationResource.cpp">
       <Filter>Game\Utill</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\Entity\Map\Tile.cpp">
-      <Filter>Game\Entity\Children\Tile\cpp</Filter>
     </ClCompile>
     <ClCompile Include="Class\Framework\Text.cpp">
       <Filter>Framework\Typography\cpp</Filter>
@@ -291,6 +288,12 @@
     <ClCompile Include="Class\Game\Algorithsm\QuadNode.cpp">
       <Filter>Algorithm\Quadtree\cpp</Filter>
     </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Map\Tile.cpp">
+      <Filter>Game\Entity\Children\Map\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Map\MapManager.cpp">
+      <Filter>Game\Entity\Children\Map\cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Class\Framework\Timer.h">
@@ -340,9 +343,6 @@
     </ClInclude>
     <ClInclude Include="Class\Game\Scene\SelectStageScene.h">
       <Filter>Game\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\Game\Entity\Map\Tile.h">
-      <Filter>Game\Entity\Children\Tile</Filter>
     </ClInclude>
     <ClInclude Include="Class\Framework\Text.h">
       <Filter>Framework\Typography</Filter>
@@ -430,6 +430,12 @@
     </ClInclude>
     <ClInclude Include="Class\Game\Algorithsm\QuadNode.h">
       <Filter>Algorithm\Quadtree</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Map\MapManager.h">
+      <Filter>Game\Entity\Children\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Map\Tile.h">
+      <Filter>Game\Entity\Children\Map</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
