@@ -13,12 +13,12 @@ CPlayScene::~CPlayScene()
 
 bool	CPlayScene::initScene()
 {
-	map = new Map();
+	map				= new Map();
 	//m_Player->initEntity();
 
-	m_Player = new CPlayer();
-	m_EnemyTankRed = new CEnemyTankRed();
-
+	m_Player		= new CPlayer();
+	m_EnemyTankRed	= new CEnemyTankRed();
+	m_Tag			= "PlayScene";
 	//m_EnemyBall = new CEnemyBall();
 
 	return true;
@@ -29,8 +29,8 @@ void	CPlayScene::updateScene(double deltaTime)
 
 	CCamera::getInstance()->Update(m_Player->getPosition());
 
-	m_Player->updateEntity(deltaTime);
-	m_EnemyTankRed->updateEntity(deltaTime);
+	m_Player		->updateEntity(deltaTime);
+	m_EnemyTankRed	->updateEntity(deltaTime);
 
 	CCollision::CheckCollision(m_Player, m_EnemyTankRed);
 	CBox2D::Intersect(m_Player->getBounding(), m_EnemyTankRed->getBounding());
@@ -54,7 +54,7 @@ void	CPlayScene::updateScene(CKeyBoard* keyboard)
 
 void	CPlayScene::renderScene()
 {
-	m_Player->drawEntity();
-	m_EnemyTankRed->drawEntity();
-	map->drawEntity();
+	m_Player		->drawEntity();
+	m_EnemyTankRed	->drawEntity();
+	map				->drawEntity();
 }

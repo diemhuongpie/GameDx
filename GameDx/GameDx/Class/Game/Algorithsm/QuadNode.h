@@ -5,6 +5,9 @@
 #include "Game\Utill\stdafx.h"	
 #include "Game\Utill\Config.h"
 #include "Game\Entity\BaseEntity.h"
+#include "Game\Entity\MovableEntity.h"
+#include "Framework\Camera.h"
+#include "Mathematics\Collision.h"
 
 class CQuadNode
 {
@@ -21,12 +24,15 @@ public:
 	vector<CBaseEntity*>	getEntityList();						
 	CQuadNode**				getParent();							
 	void					SplitParent();
+	void					RenderNode();
+	void					DetectCollisionInNode(CMovable*);
 
 private:
 	int						m_NodeLevel;
 	CBox2D					m_NodeSize;
 	vector<CBaseEntity*>	m_EntityList;
 	CQuadNode**				m_Node;
+
 };
 
 #endif

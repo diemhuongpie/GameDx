@@ -18,19 +18,19 @@ public:
 	CPlayScene();
 	~CPlayScene();
 
-	virtual bool initScene()						override;
-	virtual void updateScene(CKeyBoard*)			override;
-	virtual void updateScene(double deltaTime)		override;
-	virtual void renderScene()						override;
+	virtual bool					initScene()							override;
+	virtual void					updateScene(CKeyBoard*)				override;
+	virtual void					updateScene(double deltaTime)		override;
+	virtual void					renderScene()						override;
 
 private:
-			CPlayer*								m_Player;
-			CEnemyTankRed*							m_EnemyTankRed;
+			CPlayer*				m_Player;
+			CEnemyTankRed*			m_EnemyTankRed;
 
-			CEnemyBall*								m_EnemyBall;
-			CEnemyBubbleBlue*						m_EnemyBubbleBlue;
-			CEnemyCut*								m_EnemyCut;
-			Map*									map;
+			CEnemyBall*				m_EnemyBall;
+			CEnemyBubbleBlue*		m_EnemyBubbleBlue;
+			CEnemyCut*				m_EnemyCut;
+			Map*					map;
 };
 
 #endif

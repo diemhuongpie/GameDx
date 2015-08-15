@@ -25,6 +25,7 @@ bool CSelectStageScene::initScene()
 	m_ButtonMenuSelectStage		= new CSprite(CInfomationResource::buttonMenuState,			1, 2, 2, 0);
 	m_enterTheGame				= false;
 	m_Particle					= false;
+	m_Tag						= "SelectStageScene";
 
 	return true;
 }

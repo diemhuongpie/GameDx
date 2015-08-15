@@ -14,7 +14,7 @@ CGameOverScene::~CGameOverScene()
 bool CGameOverScene::initScene()
 {
 	m_Background = new CSprite(CInfomationResource::backgroundIntroStage);
-
+	m_Tag		 = "GameOverScene";
 	return true;
 
 }

@@ -14,7 +14,8 @@ public:
 
 	void								CreateTree();
 	void								ReleaseTree();
-	vector<CBaseEntity*>				Retrieve();
+	void								RenderTree();
+	void								DeviceObjectToTree(vector<CBaseEntity*> ListTileObject);
 protected:
 	CQuadNode*							m_Node;
 

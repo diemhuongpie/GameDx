@@ -12,13 +12,13 @@ public:
 	CGameOverScene();
 	~CGameOverScene();
 
-	virtual bool initScene()						override;
-	virtual void updateScene(double deltaTime)		override;
-	virtual void updateScene(CKeyBoard*)			override;
-	virtual void renderScene()						override;
+	virtual bool			initScene()							override;
+	virtual void			updateScene(double deltaTime)		override;
+	virtual void			updateScene(CKeyBoard*)				override;
+	virtual void			renderScene()						override;
 
 private:
-	CSprite*			m_Background;
-	CSprite*			m_ArrowChoice;
+	CSprite*				m_Background;
+	CSprite*				m_ArrowChoice;
 };
 

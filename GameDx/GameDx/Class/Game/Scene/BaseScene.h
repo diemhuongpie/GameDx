@@ -10,13 +10,13 @@ public:
 	CBaseScene(){};
 	~CBaseScene(){};
 
-	virtual bool initScene()						= 0;
-	virtual void updateScene(double deltaTime)		= 0;
-	virtual void updateScene(CKeyBoard*)			= 0;
-	virtual void renderScene()						= 0;
+	virtual bool				initScene()						= 0;
+	virtual void				updateScene(double deltaTime)	= 0;
+	virtual void				updateScene(CKeyBoard*)			= 0;
+	virtual void				renderScene()					= 0;
 
-private:
-	/*char*			m_Tag;*/
+protected:
+	const char*					m_Tag;
 };
 
 #endif

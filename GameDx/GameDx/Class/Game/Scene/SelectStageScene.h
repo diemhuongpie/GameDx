@@ -16,10 +16,10 @@ public:
 	CSelectStageScene();
 	~CSelectStageScene();
 
-	virtual bool initScene()						override;
-	virtual void updateScene(double deltaTime)		override;
-	virtual void updateScene(CKeyBoard*)			override;
-	virtual void renderScene()						override;
+	virtual bool			initScene()							override;
+	virtual void			updateScene(double deltaTime)		override;
+	virtual void			updateScene(CKeyBoard*)				override;
+	virtual void			renderScene()						override;
 
 	static int				m_IndexSelect;
 

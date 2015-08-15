@@ -15,14 +15,14 @@ public:
 	CPopUpScene();
 	~CPopUpScene();
 
-	virtual bool initScene()						override;
-	virtual void updateScene(CKeyBoard*)			override;
-	virtual void updateScene(double deltaTime)		override;
-	virtual void renderScene()						override;
+	virtual bool				initScene()							override;
+	virtual void				updateScene(CKeyBoard*)				override;
+	virtual void				updateScene(double deltaTime)		override;
+	virtual void				renderScene()						override;
 
 private:
-	CSprite*				m_PpopUp;
-	CSprite*				m_LifeItem;
+	CSprite*					m_PpopUp;
+	CSprite*					m_LifeItem;
 };
 
 #endif

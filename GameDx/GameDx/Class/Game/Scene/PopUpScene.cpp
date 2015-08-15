@@ -15,6 +15,7 @@ bool CPopUpScene::initScene()
 {
 	m_PpopUp	= new CSprite(CInfomationResource::popUp);
 	m_LifeItem	= new CSprite(CInfomationResource::itemLife);
+	m_Tag		= "PopUpScene";
 	return true;
 }
 

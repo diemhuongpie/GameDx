@@ -96,3 +96,41 @@ bool CQuadNode::InsertEntity(CBaseEntity* entity)
 	}
 		return true;
 }
+
+void CQuadNode::RenderNode()
+{
+	if (!this)
+	{
+		if (CBox2D::Intersect(m_Node[0]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
+			m_Node[0]->RenderNode();
+		if (CBox2D::Intersect(m_Node[1]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
+			m_Node[1]->RenderNode();
+		if (CBox2D::Intersect(m_Node[2]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
+			m_Node[2]->RenderNode();
+		if (CBox2D::Intersect(m_Node[3]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
+			m_Node[3]->RenderNode();
+	}
+
+	for (vector<CBaseEntity*>::iterator i = m_EntityList.begin(); i != m_EntityList.end(); ++i)
+		(*i)->drawEntity();
+}
+
+void CQuadNode::DetectCollisionInNode(CMovable* MovableEntity)
+{
+	if (CBox2D::Intersect(m_Node[0]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
+		m_Node[0]->RenderNode();
+	if (CBox2D::Intersect(m_Node[1]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
+		m_Node[1]->RenderNode();
+	if (CBox2D::Intersect(m_Node[2]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
+		m_Node[2]->RenderNode();
+	if (CBox2D::Intersect(m_Node[3]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
+		m_Node[3]->RenderNode();
+
+	for (vector<CBaseEntity*>::iterator i = m_EntityList.begin(); i != m_EntityList.end(); ++i)
+	{
+		if (CCollision::CheckCollision(MovableEntity, (*i)))
+		{
+			//Resolve collision here
+		}
+	}
+}

@@ -24,8 +24,7 @@ bool CMenuScene::initScene()
 	m_MegaMan			= new CSprite(CInfomationResource::megaManBackground,	1, 2, 2, 0);
 	m_RuleBackground	= new CSprite(CInfomationResource::rulerBackground,		1, 2, 2, 0);
 	m_enterTheGame		= false;
-
-
+	m_Tag				= "MenuScene";
 	return true;
 }
 
