@@ -28,7 +28,7 @@ bool	CPlayScene::initScene()
 
 void	CPlayScene::updateScene(double deltaTime)
 {
-
+	// update Camera
 	CCamera::getInstance()->Update(m_Player->getPosition());
 
 	m_Player		->updateEntity(deltaTime);
