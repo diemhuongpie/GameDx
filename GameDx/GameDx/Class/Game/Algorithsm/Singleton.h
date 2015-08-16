@@ -6,9 +6,9 @@ template <class  T> class CSingleton
 protected:
 	static T*		s_Instance;
 
-public:
 	CSingleton(){}
 	virtual ~CSingleton(){}
+public:
 
 	static	T*		getInstance()
 	{

@@ -6,7 +6,6 @@ CPlayScene::CPlayScene()
 	this->initScene();
 }
 
-
 CPlayScene::~CPlayScene()
 {
 }
@@ -20,7 +19,6 @@ bool	CPlayScene::initScene()
 
 	m_Player			= new CPlayer();
 	m_EnemyTankRed		= new CEnemyTankRed();
-	m_BulletManager		= new CBulletManager();
 	//m_EnemyBall = new CEnemyBall();
 
 	return true;
@@ -36,11 +34,8 @@ void	CPlayScene::updateScene(double deltaTime)
 
 	CCollision::CheckCollision(m_Player, m_EnemyTankRed);
 	CBox2D::Intersect(m_Player->getBounding(), m_EnemyTankRed->getBounding());
-	m_BulletManager->updateBullet(deltaTime);
-	
-	OutputDebugString(L"IS INTERSECT: ");
-	OutputDebugString(_itow(CBox2D::Intersect(m_Player->getBounding(), m_EnemyTankRed->getBounding()), new WCHAR[1], 10));
-	OutputDebugString(L"\n");
+
+	CBulletManager::getInstance()->updateBullet(deltaTime);
 }
 
 void	CPlayScene::updateScene(CKeyBoard* keyboard)
@@ -56,6 +51,6 @@ void	CPlayScene::renderScene()
 	m_Player		->drawEntity();
 	m_EnemyTankRed	->drawEntity();
 
-	m_BulletManager	->renderBullet();
+	CBulletManager::getInstance()->renderBullet();
 	//map->drawEntity();
 }

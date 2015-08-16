@@ -19,8 +19,6 @@ void	CBulletManager::updateBullet(float deltaTime)
 		m_listBullet.at(i)->updateEntity(deltaTime);
 }
 
-
-
 void	CBulletManager::updateBullet(CStaticEntity* staticEntity)
 {
 

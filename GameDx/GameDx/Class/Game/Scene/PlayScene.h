@@ -29,11 +29,10 @@ private:
 			CEnemyTankRed*			m_EnemyTankRed;
 
 
-			CEnemyBall*								m_EnemyBall;
-			CEnemyBubbleBlue*						m_EnemyBubbleBlue;
-			CEnemyCut*								m_EnemyCut;
-			Map*									map;
-			CBulletManager*							m_BulletManager;
+			CEnemyBall*				m_EnemyBall;
+			CEnemyBubbleBlue*		m_EnemyBubbleBlue;
+			CEnemyCut*				m_EnemyCut;
+			Map*					map;
 };
 
 #endif
