@@ -25,16 +25,16 @@ public:
 	virtual bool			loadSprite()											override;
 
 public:
-
+			void 			logicStandPlayer(float deltaTime);
 			void 			logicMovePlayer(float deltaTime);
 			void 			logicJumpPlayer(float deltaTime);
-			void 			logicStandPlayer(float deltaTime);
+			void			logicClimbPlayer(float deltaTime);
 			
 protected:
 	
 			clock_t			m_TimeState;
 			vector2d		m_Accelero;
-			int time;
+			bool			m_IsMoveJumb;
 
 
 private:

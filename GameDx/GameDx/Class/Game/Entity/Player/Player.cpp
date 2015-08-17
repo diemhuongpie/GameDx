@@ -24,6 +24,7 @@ bool CPlayer::initEntity()
 	m_Accelero		= vector2d(0, 0);
 	m_State			= PLAYSTATE::START;
 	m_TimeState		= 0;
+	m_IsMoveJumb	= false;
 
 	this->loadSprite();
 	this->m_Bounding = new CBox2D(0, 0, 0, 0);
@@ -50,21 +51,33 @@ bool CPlayer::loadSprite()
 
 void CPlayer::updateEntity(float deltaTime)
 {
+	if (m_State == PLAYERSTATES::STATE_START)
+		m_State = PLAYERSTATES::STATE_STAND;
 
 	// Update Action
 	switch (m_State)
 	{
 	case PLAYERSTATES::STATE_START:
 		break;
+
 	case PLAYERSTATES::STATE_STAND:
-			logicStandPlayer(deltaTime);
+		logicStandPlayer(deltaTime);
 		break;
-	case PLAYERSTATES::STATE_MOVE:
-			logicMovePlayer(deltaTime);
+
+	case PLAYERSTATES::STATE_MOVE: 
+	case PLAYERSTATES::STATE_MOVE_SHOOT:
+		logicMovePlayer(deltaTime);
 		break;
+
 	case PLAYERSTATES::STATE_JUMP:
-		logicJumpPlayer(deltaTime);
+	case PLAYERSTATES::STATE_JUMP_SHOOT:
+		{
+			logicJumpPlayer(deltaTime);
+			if (m_IsMoveJumb)
+				logicMovePlayer(deltaTime);
+		}
 		break;
+
 	default:
 		break;
 	}
@@ -77,119 +90,307 @@ void CPlayer::updateEntity(float deltaTime)
 
 	if (m_Position.y < 50)
 	{
-		m_Position.y		= 50;
-		m_Accelero.y		= 0;
-		m_Velocity.y		= 10;
-		m_State = PLAYERSTATES::STATE_STAND;
+		m_Position.y = 50;
+		m_Accelero.y = 10;
+		m_Velocity.y = 10;
+		//m_State = PLAYERSTATES::STATE_STAND;
 	}
 
 	// Update State
 	m_TimeState += deltaTime;
 
-	OutputDebugString(L"DeltaCM: ");
-	OutputDebugString(_itow(m_Velocity.y*deltaTime / 10, new WCHAR[1], 10));
-	OutputDebugString(L"\n");
-
-	if (m_State == PLAYERSTATES::STATE_STAND)
-		m_TimeState		= 0;
-	if (m_State == PLAYERSTATES::STATE_STAND_SHOOT && m_TimeState > 1000)
-	{
-		m_State			= PLAYERSTATES::STATE_STAND;
-		m_State			= 0;
-	}
-	if (m_State == PLAYERSTATES::STATE_JUMP || m_State == PLAYERSTATES::STATE_JUMP_SHOOT)
-	{
-		if (m_TimeState > 1000)
-		{
-			m_State			= PLAYERSTATES::STATE_STAND;
-			m_Velocity.y	= 9.8;
-		}
-	}
+	/*OutputDebugString(L"State: ");
+	OutputDebugString(_itow(m_State, new WCHAR[1], 10));
+	OutputDebugString(L"\n");*/
 
 }
 
 void CPlayer::updateEntity(CKeyBoard* device)
 {
-	if (device->KeyDown(DIK_D) && device->KeyDown(DIK_F) && device->KeyDown(DIK_RIGHT))
+	switch (m_State)
 	{
-		m_State = PLAYERSTATES::STATE_JUMP_SHOOT;
-		m_Velocity.x = std::abs(m_Velocity.x) * DIRECTION::DIRECTION_RIGHT;
-		return;
-	}
-	if (device->KeyDown(DIK_RIGHT) && device->KeyDown(DIK_F))
-	{
-		m_State = PLAYERSTATES::STATE_MOVE_SHOOT;
-		m_Velocity.x = std::abs(m_Velocity.x) * DIRECTION::DIRECTION_RIGHT;
-		return;
-	}
-	if (device->KeyDown(DIK_LEFT) && device->KeyDown(DIK_F))
-	{
-		m_State = PLAYERSTATES::STATE_MOVE_SHOOT;
-		m_Velocity.x = std::abs(m_Velocity.x) * DIRECTION::DIRECTION_LEFT;
-		return;
-	}
-	if (device->KeyDown(DIK_LEFT) && device->KeyDown(DIK_RIGHT))
-	{
-		m_State = PLAYERSTATES::STATE_STAND;
-		return;
-	}
-	
-	if (device->KeyDown(DIK_D) && device->KeyDown(DIK_F))
-	{
-		m_State			= PLAYERSTATES::STATE_JUMP_SHOOT;
-		return;
-	}
-	if (device->KeyDown(DIK_LEFT))
-	{
-		m_State			= PLAYERSTATES::STATE_MOVE;
-		m_Velocity.x	= std::abs(m_Velocity.x)*DIRECTION::DIRECTION_LEFT;
-		return;
-	}
-	if (device->KeyDown(DIK_RIGHT))
-	{
-		m_State			= PLAYERSTATES::STATE_MOVE;
-		m_Velocity.x	= std::abs(m_Velocity.x)*DIRECTION::DIRECTION_RIGHT;
-		return;
-	}
-	if (device->KeyPress(DIK_F))
-	{
-		m_State			= PLAYERSTATES::STATE_STAND_SHOOT;
-		m_TimeState		= 0;
-		CBulletManager::getInstance()->getBullet(1, m_Position);
-		return;
-	}
-	if (device->KeyPress(DIK_D))
-	{
-		m_State			= PLAYERSTATES::STATE_JUMP;
-		m_Velocity.y	= std::abs(m_Velocity.y) * DIRECTION::DIRECTION_UP;
-		if (device->KeyDown(DIK_LEFT))
+	case PLAYERSTATES::STATE_STAND:
+		if (device->KeyDown(DIK_RIGHT))
 		{
-			m_State = PLAYERSTATES::STATE_JUMP;
-			m_Velocity.x = std::abs(m_Velocity.x) * DIRECTION::DIRECTION_LEFT;
-			return;
+			m_State			= PLAYERSTATES::STATE_MOVE;
+			m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_RIGHT;
+		}
+		else if (device->KeyDown(DIK_LEFT))
+		{
+			m_State			= PLAYERSTATES::STATE_MOVE;
+			m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_LEFT;
+		}
+		else if (device->KeyPress(DIK_Z) && device->KeyPress(DIK_X))
+		{
+			m_State			= PLAYERSTATES::STATE_JUMP_SHOOT;
+			m_TimeState		= 0;
+		}
+		else if (device->KeyPress(DIK_X))
+		{
+			m_State			= PLAYERSTATES::STATE_JUMP;
+			m_TimeState		= 0;
+			m_Velocity.y	= std::abs(m_Velocity.y) * (DIRECTION::DIRECTION_UP);
+		}
+		else if (device->KeyPress(DIK_Z))
+		{
+			m_State			= PLAYERSTATES::STATE_STAND_SHOOT;
+			m_TimeState		= 0;
+		}
+		break;
+
+	case PLAYERSTATES::STATE_MOVE:
+		if (device->KeyPress(DIK_Z) && device->KeyPress(DIK_X))
+		{
+			m_State			= PLAYERSTATES::STATE_JUMP_SHOOT;
+			m_TimeState		= 0;
+		}
+		else if (device->KeyPress(DIK_Z))
+		{
+			m_State			= PLAYERSTATES::STATE_MOVE_SHOOT;
+			m_TimeState		= 0;
+		}
+		else if (device->KeyPress(DIK_X))
+		{
+			m_State			= PLAYERSTATES::STATE_JUMP;
+			m_TimeState		= 0;
+		}
+		else if (device->KeyDown(DIK_RIGHT))
+		{
+				m_Velocity.x = std::abs(m_Velocity.x) * DIRECTION::DIRECTION_RIGHT;
+		}
+		else if (device->KeyDown(DIK_LEFT))
+		{
+			m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_LEFT;
+		}
+		else
+		{
+			m_State			= PLAYERSTATES::STATE_STAND; 
+		}
+		break;
+
+	case PLAYERSTATES::STATE_JUMP:
+		if (device->KeyPress(DIK_Z))
+		{
+			m_IsMoveJumb	= false;
+			m_State			= PLAYERSTATES::STATE_JUMP_SHOOT;
+		}
+		else if (device->KeyPress(DIK_RIGHT))
+		{
+			m_IsMoveJumb	= true;
+			m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_RIGHT;
+		}
+		else if (device->KeyPress(DIK_LEFT))
+		{
+			m_IsMoveJumb	= true;
+			m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_LEFT;
+		}
+		else
+		{
+			m_IsMoveJumb	= false;
+			if (m_TimeState > TIME_FOR_JUMB)
+			{
+				m_State		= PLAYERSTATES::STATE_STAND;
+				m_TimeState	= 0;
+			}
+		}
+
+		break;
+
+	case PLAYERSTATES::STATE_STAND_SHOOT:
+		if (device->KeyPress(DIK_Z))
+		{
+			if (m_TimeState > TIME_FOR_SHOOT)
+			{
+				m_State		= PLAYERSTATES::STATE_STAND;
+			}
+				m_TimeState = 0;
+		}
+		else if (device->KeyPress(DIK_RIGHT))
+		{
+			m_State			= PLAYERSTATES::STATE_MOVE_SHOOT;
+			m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_RIGHT;
+		}
+		else if (device->KeyPress(DIK_LEFT))
+		{
+			m_State			= PLAYERSTATES::STATE_MOVE_SHOOT;
+			m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_LEFT;
+		}
+		else if (device->KeyPress(DIK_X))
+		{
+			m_State			= PLAYERSTATES::STATE_JUMP;
+		}
+		else
+		{
+			if (m_TimeState > TIME_FOR_SHOOT * 0.2)
+			{
+				m_State		= PLAYERSTATES::STATE_STAND;
+				m_TimeState = 0;
+			}
+		}
+		break;
+
+	case PLAYERSTATES::STATE_MOVE_SHOOT:
+		if (device->KeyDown(DIK_X))
+		{
+			m_State			= PLAYERSTATES::STATE_JUMP;
+			m_TimeState		= 0;
+		}
+		else if (device->KeyDown(DIK_LEFT))
+		{
+			m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_LEFT;
+
+			if (device->KeyPress(DIK_Z))
+			{
+				if (m_TimeState > TIME_FOR_SHOOT)
+				{
+					m_State = PLAYERSTATES::STATE_MOVE;
+				}
+				m_TimeState	= 0;
+			}
+			else
+			{
+				if (m_TimeState > TIME_FOR_SHOOT * 0.2)
+				{
+					m_State		= PLAYERSTATES::STATE_MOVE;
+					m_TimeState = 0;
+				}
+			}
+		}
+		else if (device->KeyDown(DIK_RIGHT))
+		{
+			m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_RIGHT;
+
+			if (device->KeyPress(DIK_Z))
+			{
+				if (m_TimeState > TIME_FOR_SHOOT)
+				{
+					m_State = PLAYERSTATES::STATE_MOVE;
+				}
+				m_TimeState	= 0;
+			}
+			else
+			{
+				if (m_TimeState > TIME_FOR_SHOOT * 0.2)
+				{
+					m_State		= PLAYERSTATES::STATE_MOVE;
+					m_TimeState = 0;
+				}
+			}
+		}
+		else
+		{
+			if (m_TimeState > TIME_FOR_SHOOT * 0.2)
+			{
+				m_State		= PLAYERSTATES::STATE_MOVE;
+				m_TimeState = 0;
+			}
+		}
+		break;
+
+	case PLAYERSTATES::STATE_JUMP_SHOOT:
+		if (device->KeyDown(DIK_RIGHT))
+		{
+			if (m_TimeState > TIME_FOR_SHOOT / 2)
+			{
+				m_State		= PLAYERSTATES::STATE_MOVE;
+				m_State		= 0;
+			}
+			m_IsMoveJumb	= true;
+			m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_RIGHT;
+		}
+		else if (device->KeyDown(DIK_LEFT))
+		{
+			if (m_TimeState > TIME_FOR_SHOOT / 2)
+			{
+				m_State		= PLAYERSTATES::STATE_MOVE;
+				m_State		= 0;
+			}
+			m_IsMoveJumb	= true;
+			m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_LEFT;
+		}
+		else
+		{
+			m_IsMoveJumb	= false;
+			if (m_TimeState > TIME_FOR_SHOOT / 2)
+			{
+				m_State		= PLAYERSTATES::STATE_STAND;
+				m_TimeState = 0;
+			}
+		}
+		break;
+
+	case PLAYERSTATES::STATE_CLIMB:
+		if (device->KeyPress(DIK_Z) && device->KeyPress(DIK_X))
+		{
+			m_State			= PLAYERSTATES::STATE_JUMP_SHOOT;
+			m_TimeState		= 0;
+		}
+		else if (device->KeyPress(DIK_Z))
+		{
+			m_State			= PLAYERSTATES::STATE_CLIMB_SHOOT;
+		}
+		else if (device->KeyPress(DIK_X))
+		{
+			m_State			= PLAYERSTATES::STATE_JUMP;
+			m_TimeState		= 0;
+		}
+		break;
+
+	case PLAYERSTATES::STATE_CLIMB_SHOOT:
+		if (device->KeyPress(DIK_X))
+		{
+			m_State			= PLAYERSTATES::STATE_JUMP;
 		}
 		if (device->KeyDown(DIK_RIGHT))
 		{
-			m_State = PLAYERSTATES::STATE_JUMP;
-			m_Velocity.x = std::abs(m_Velocity.x) * DIRECTION::DIRECTION_RIGHT;
-			return;
+			m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_RIGHT;
 		}
-		return;
+		else if (device->KeyDown(DIK_LEFT))
+		{
+			m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_LEFT;
+		}
+		break;
+	default:
+		//m_State				= PLAYERSTATES::STATE_STAND;
+		break;
 	}
 }
 
 void CPlayer::drawEntity()
 {
-	m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(m_Position), vector2d(SIGN(m_Velocity.x)*2, 2), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
+	switch (m_State)
+	{
+	case PLAYERSTATES::STATE_STAND_SHOOT:
+	case PLAYERSTATES::STATE_MOVE_SHOOT:
+		m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(vector3d(m_Position.x + SIGN(m_Velocity.x) * DELTA_FIX_SIZE_RESOURCE, m_Position.y, 0.5f)),
+											vector2d(SIGN(m_Velocity.x) * 2, 2),
+											0,
+											DRAWCENTER_MIDDLE_MIDDLE,
+											true,
+											10);
+		OutputDebugString(L"pos: ");
+		OutputDebugString(_itow(m_Position.x, new WCHAR[1], 10));
+		OutputDebugString(L"\n");
+
+		break;
+	default:
+		m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(m_Position), vector2d(SIGN(m_Velocity.x) * 2, 2), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
+		break;
+	}
 }
 
 void CPlayer::logicMovePlayer(float deltaTime)
 {
 	m_Position.x += m_Velocity.x*(deltaTime / 100);
 }
+
 void CPlayer::logicJumpPlayer(float deltaTime)
 {	
-	m_Velocity.y = -15;
+		m_Velocity.y = -25;
+
+		OutputDebugString(L"pos: ");
+		OutputDebugString(_itow(m_Position.x, new WCHAR[1], 10));
+		OutputDebugString(L"\n");
 }
 
 void CPlayer::logicStandPlayer(float deltaTime)
@@ -200,6 +401,10 @@ void CPlayer::logicStandPlayer(float deltaTime)
 	}
 }
 
+void CPlayer::logicClimbPlayer(float deltaTime)
+{
+
+}
 vector3d CPlayer::getPosition()
 {
 	return m_Position;

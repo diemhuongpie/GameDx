@@ -41,12 +41,16 @@
 
 #define PI							3.14
 
-#define SIGN(A)						(A >= 0 ? 1 : -1)
+#define SIGN(A)						(A > 0 ? 1 : -1)
 #define DIRECT_COORDINATE(A)		{-(A)}
 #define SAFE_RELEASE(A)				{if (A) {delete A; A = 0;}}
 
 #define BACKBUFFER_WIDTH			510
 #define	BACKBUFFER_HEIGHT			485
+
+#define DELTA_FIX_SIZE_RESOURCE		10
+#define TIME_FOR_JUMB				500
+#define TIME_FOR_SHOOT				1000
 
 #define SCREEN_SIZE					CBox2D()
 #define deltaBoundingBox			vector2d(5.0f, 5.0f)

@@ -41,10 +41,6 @@ int CALLBACK WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR 
 		}
 
 
-		OutputDebugString(L"FPS GAME: ");
-		OutputDebugString(_itow(CTimer::getInstance()->getElapedTime(), new WCHAR[1], 10));
-		OutputDebugString(L"\n");
-
 		CTimer::getInstance()->end();
 		CTimer::getInstance()->setElapedTime();
 		if (CTimer::getInstance()->getElapedTime() < GAME_RATE)
