@@ -8,6 +8,7 @@
 #include "Game\Entity\Enemy\EnemyRobotRed.h"
 #include "Game\Entity\Enemy\EnemyCut.h"
 #include "Game\Entity\Enemy\EnemyTankRed.h"
+#include "Game\Entity\Enemy\EnemyMachineAutoOrange.h"
 #include "Game\Map\MapManager.h"
 #include "Mathematics\Collision.h"
 #include "Game\Entity\Bullet\BulletManager.h"
@@ -27,7 +28,7 @@ public:
 private:
 			CPlayer*				m_Player;
 			CEnemyTankRed*			m_EnemyTankRed;
-
+			CEnemyMachineAutoOrange*m_EnemyAutoOrange;
 
 			CEnemyBall*				m_EnemyBall;
 			CEnemyBubbleBlue*		m_EnemyBubbleBlue;

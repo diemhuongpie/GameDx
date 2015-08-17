@@ -3,9 +3,9 @@
 
 CBulletManager::CBulletManager()
 {
-	for (int i = 0; i < 5; ++i)
+	for (int i = 0; i < 1; ++i)
 	{
-		m_listBullet.push_back(new CBulletNormal());
+		m_listBullet.push_back(new CBulletMachineAutoOrange());
 	}
 }
 

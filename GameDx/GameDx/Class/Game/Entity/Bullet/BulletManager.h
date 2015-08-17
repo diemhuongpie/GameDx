@@ -5,6 +5,7 @@
 #include "Game\Entity\MovableEntity.h"
 #include "Game\Entity\StaticEntity.h"
 #include "Game\Entity\Bullet\BulletNormal.h"
+#include "Game\Entity\Bullet\BulletMachineAutoOrange.h"
 
 class CBulletManager : public CSingleton<CBulletManager>
 {
@@ -24,7 +25,8 @@ public:
 
 
 private:
-	vector<CBulletNormal*>						m_listBullet;
+	//vector<CBulletNormal*>						m_listBullet;
+	vector<CBulletMachineAutoOrange*>			m_listBullet;
 
 };
 

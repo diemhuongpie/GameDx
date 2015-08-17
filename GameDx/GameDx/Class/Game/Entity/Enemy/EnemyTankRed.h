@@ -4,6 +4,7 @@
 #include "Game\Entity\StaticEntity.h"
 #include "Game\Entity\MovableEntity.h"
 #include "Framework\Camera.h"
+#include "Game\Entity\Bullet\BulletManager.h"
 
 
 class CEnemyTankRed : public CStaticEntity

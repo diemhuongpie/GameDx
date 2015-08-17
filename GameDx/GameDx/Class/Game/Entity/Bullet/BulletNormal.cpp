@@ -11,7 +11,7 @@ CBulletNormal::~CBulletNormal()
 {
 }
 
-bool		CBulletNormal::loadSprite()
+bool CBulletNormal::loadSprite()
 {
 	this->m_listSprite.push_back(new CSprite(CInfomationResource::rockmanBullet, 1, 1, 1, 0));
 	return	true;
@@ -30,19 +30,19 @@ bool		CBulletNormal::initEntity()
 	return true;
 }
 
-void		CBulletNormal::updateEntity(float deltaTime)
+void CBulletNormal::updateEntity(float deltaTime)
 {
 	switch (m_State)
 	{
 	case BULLETSTATE::BULLET_STATE_INVIS:
-		m_Position					= vector3dMinimum;
+		m_Position	= vector3dMinimum;
 		break;
 	case BULLETSTATE::BULLET_STATE_SHOW:
 		if (deltaTime > 0)
 		m_Position.x += m_Velocity.x*deltaTime / 60 ;
 		break;
 	case BULLETSTATE::BULLET_STATE_HIT:
-		m_State			= BULLETSTATE::BULLET_STATE_INVIS;
+		m_State	= BULLETSTATE::BULLET_STATE_INVIS;
 		break;
 	case BULLETSTATE::BULLET_STATE_DIE:
 			break;
@@ -72,7 +72,7 @@ vector3d	CBulletNormal::getPosition()
 
 void		CBulletNormal::setState(int newState)
 {
-	m_State		= newState;
+	m_State	= newState;
 }
 
 int			CBulletNormal::getState()

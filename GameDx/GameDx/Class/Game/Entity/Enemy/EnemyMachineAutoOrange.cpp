@@ -1,4 +1,5 @@
 #include "EnemyMachineAutoOrange.h"
+#include "Game\Entity\Bullet\BulletManager.h"
 
 
 CEnemyMachineAutoOrange::CEnemyMachineAutoOrange()
@@ -34,24 +35,24 @@ bool CEnemyMachineAutoOrange::loadSprite()
 }
 void CEnemyMachineAutoOrange::updateEntity(CKeyBoard *device)
 {
-
 }
 void CEnemyMachineAutoOrange::updateEntity(float deltaTime)
 {
-	m_delay_Time++;
-	if (m_delay_Time > 0 && m_delay_Time < 35)
+	m_delay_Time += deltaTime;
+	if (m_delay_Time > 0 && m_delay_Time < 500)
 	{
 		check_State = true;
-		m_Velocity.x = -2;
+		
 	}
-	if (m_delay_Time >= 100)
+	if (m_delay_Time >= 2000)
 		m_delay_Time = 0;
 
-	if (m_delay_Time >= 35)
+	if (m_delay_Time >= 500)
 	{
 		check_State = false;
-		m_Velocity.x = 0;
+		CBulletManager::getInstance()->getBullet(1, this->m_Position);
 	}
+
 }
 
 void CEnemyMachineAutoOrange::updateEntity(RECT rectCamera)
