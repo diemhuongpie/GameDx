@@ -75,7 +75,7 @@ void		CBulletNormal::setState(int newState)
 	m_State	= newState;
 }
 
-int			CBulletNormal::getState()
+int	CBulletNormal::getState()
 {
 	return m_State;
 }

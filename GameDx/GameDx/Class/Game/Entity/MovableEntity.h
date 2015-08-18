@@ -24,7 +24,7 @@ public:
 	virtual		const char*				getTagNode()			override;
 	virtual		vector2d				getVelocity()					;
 	virtual		int						getState()				override;
-
+	virtual		void					setState(int newState)	override;
 	virtual		void					setPosition(vector3d pos)		;
 protected:
 				vector2d				m_Velocity;

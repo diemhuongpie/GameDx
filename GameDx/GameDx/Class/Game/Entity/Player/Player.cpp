@@ -197,8 +197,10 @@ void CPlayer::updateEntity(CKeyBoard* device)
 		break;
 
 	case PLAYERSTATES::STATE_STAND_SHOOT:
+		
 		if (device->KeyPress(DIK_Z))
 		{
+			CBulletManager::getInstance()->getBullet(TYPE_BULLET::NORMAL, this->m_Position);
 			if (m_TimeState > TIME_FOR_SHOOT)
 			{
 				m_State		= PLAYERSTATES::STATE_STAND;

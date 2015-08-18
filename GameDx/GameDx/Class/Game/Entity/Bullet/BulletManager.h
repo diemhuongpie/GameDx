@@ -6,6 +6,8 @@
 #include "Game\Entity\StaticEntity.h"
 #include "Game\Entity\Bullet\BulletNormal.h"
 #include "Game\Entity\Bullet\BulletMachineAutoOrange.h"
+#include "Game\Entity\Bullet\BulletEnemyBall.h"
+#include "Game\Entity\Bullet\BaseBullet.h"
 
 class CBulletManager : public CSingleton<CBulletManager>
 {
@@ -25,8 +27,9 @@ public:
 
 
 private:
-	//vector<CBulletNormal*>						m_listBullet;
-	vector<CBulletMachineAutoOrange*>			m_listBullet;
+	vector<CBaseBullet*>			m_listBullet;
+	int m_styleBullet;
+	
 
 };
 

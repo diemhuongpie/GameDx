@@ -1,5 +1,6 @@
 #include "EnemyBall.h"
 #include "Game\Utill\InformationResource.h"
+#include "Game\Entity\Bullet\BulletManager.h"
 
 CEnemyBall::CEnemyBall()
 {
@@ -53,14 +54,17 @@ void CEnemyBall::updateEntity(float deltaTime)
 		check_State = false;
 		m_Velocity.x = -2;
 	}
-	if (m_delay_Time >= 70)
-		m_delay_Time = 0;
+
 
 	if (m_delay_Time >= 35)
 	{
+		CBulletManager::getInstance()->getBullet(1, this->m_Position);
 		check_State = true;
 		m_Velocity.x = 0;
 	}
+
+	if (m_delay_Time >= 70)
+		m_delay_Time = 0;
 }
 
 void CEnemyBall::updateEntity(RECT rectCamera)

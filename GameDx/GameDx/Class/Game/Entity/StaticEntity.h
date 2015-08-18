@@ -25,6 +25,7 @@ public:
 	virtual		const char*				getTagNode()			override;
 				vector3d				getPosition();
 	virtual		int						getState()				override;
+	virtual		void					setState(int newState)	override;
 
 protected:
 };

@@ -1,25 +1,23 @@
 #ifndef __BULLET_H__
 #define __BULLET_H__
 
-#include "Game\Entity\MovableEntity.h"
+#include "Game\Entity\Bullet\BaseBullet.h"
 
-class CBulletNormal	: public CMovable
+class CBulletNormal	: public CBaseBullet
 {
+
 public:
 	CBulletNormal();
 	~CBulletNormal();
 
-	virtual		bool					initEntity()										override;
-	virtual		void					updateEntity(float deltaTime)						override;
-	virtual		void					updateEntity(CKeyBoard*)							override;
-	virtual		void					drawEntity()										override;
-	virtual		bool					loadSprite()										override;
-	virtual		vector3d				getPosition();
-
-				void					setState(int newState);
-				int						getState();
-
-private:
+	bool					initEntity()										;
+	void					updateEntity(float deltaTime)						;
+	void					updateEntity(CKeyBoard*)							;
+	void					drawEntity()										;
+	bool					loadSprite()										;
+	vector3d				getPosition();
+	void					setState(int newState);
+	int						getState();
 
 };
 

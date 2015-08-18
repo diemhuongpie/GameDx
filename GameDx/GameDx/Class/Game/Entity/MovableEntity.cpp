@@ -54,3 +54,8 @@ int CMovable::getState()
 {
 	return m_State;
 }
+
+void	CMovable::setState(int newState)
+{
+	m_State = newState;
+}

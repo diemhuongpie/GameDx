@@ -59,7 +59,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>C:\Users\Dat\Desktop\GameDx\GameDx\GameDx\Resource;C:\Users\Dat\Desktop\GameDx\GameDx\GameDx\Class;C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Resource;C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Class;C:\Users\DiemHuong Shin\Desktop\Rockman\GameDx\GameDx\Resource;C:\Users\DiemHuong Shin\Desktop\Rockman\GameDx\GameDx\Class;C:\Users\LKuan_000\Documents\Visual Studio 2013\Projects\GameDx\GameDx\GameDx\Resource;C:\Users\LKuan_000\Documents\Visual Studio 2013\Projects\GameDx\GameDx\GameDx\Class;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Dat\Desktop\RockMan\GameDx\GameDx\Resource;C:\Users\Dat\Desktop\RockMan\GameDx\GameDx\Class;C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Resource;C:\Users\Mr Zin\Desktop\GameProgramingWithDirectX\GameGit\GameDx\GameDx\Class;C:\Users\DiemHuong Shin\Desktop\Rockman\GameDx\GameDx\Resource;C:\Users\DiemHuong Shin\Desktop\Rockman\GameDx\GameDx\Class;C:\Users\LKuan_000\Documents\Visual Studio 2013\Projects\GameDx\GameDx\GameDx\Resource;C:\Users\LKuan_000\Documents\Visual Studio 2013\Projects\GameDx\GameDx\GameDx\Class;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -99,6 +99,9 @@
     <ClInclude Include="Class\Game\Algorithsm\QuadTree.h" />
     <ClInclude Include="Class\Game\Algorithsm\Singleton.h" />
     <ClInclude Include="Class\Game\Entity\BaseEntity.h" />
+    <ClInclude Include="Class\Game\Entity\Bullet\BaseBullet.h" />
+    <ClInclude Include="Class\Game\Entity\Bullet\BulletEnemyBall.h" />
+    <ClInclude Include="Class\Game\Entity\Bullet\BulletMachineAutoOrange.h" />
     <ClInclude Include="Class\Game\Entity\Bullet\BulletManager.h" />
     <ClInclude Include="Class\Game\Entity\Bullet\BulletNormal.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\BossCutMan.h" />
@@ -145,6 +148,8 @@
     <ClCompile Include="Class\Game\Algorithsm\QuadNode.cpp" />
     <ClCompile Include="Class\Game\Algorithsm\QuadTree.cpp" />
     <ClCompile Include="Class\Game\Entity\BaseEntity.cpp" />
+    <ClCompile Include="Class\Game\Entity\Bullet\BulletEnemyBall.cpp" />
+    <ClCompile Include="Class\Game\Entity\Bullet\BulletMachineAutoOrange.cpp" />
     <ClCompile Include="Class\Game\Entity\Bullet\BulletManager.cpp" />
     <ClCompile Include="Class\Game\Entity\Bullet\BulletNormal.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\BossCutMan.cpp" />

@@ -44,3 +44,8 @@ int CStaticEntity::getState()
 {
 	return m_State;
 }
+
+void		CStaticEntity::setState(int newState)
+{
+	m_State = newState;
+}

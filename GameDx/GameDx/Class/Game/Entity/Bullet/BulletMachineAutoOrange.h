@@ -3,8 +3,9 @@
 #include "Game\Entity\Bullet\BulletNormal.h"
 #include "Game\Utill\InformationResource.h"
 #include "Framework\Camera.h"
+#include "Game\Entity\Bullet\BaseBullet.h"
 
-class CBulletMachineAutoOrange : public CMovable
+class CBulletMachineAutoOrange : public CBaseBullet
 {
 public:
 	CBulletMachineAutoOrange();
@@ -16,10 +17,11 @@ public:
 	bool					loadSprite()										;
 	vector3d				getPosition();
 	void					Shoot(float);
+	void					setPosition(vector3d);
 	void					setState(int newState);
 	int						getState();
 private:
-	vector3d m_BulletPosition[5];
+	vector <vector3d> m_BulletPosition;
 
 };
 
