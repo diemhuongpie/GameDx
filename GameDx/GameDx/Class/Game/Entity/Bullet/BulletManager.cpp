@@ -3,14 +3,16 @@
 
 CBulletManager::CBulletManager()
 {
+	m_listBullet = new vector<CBaseBullet*>[TYPE_BULLET::NUMBER_OF_TYPE_BULLET];
+
 	for (int i = 0; i < 10; ++i)
 	{
-		if (m_styleBullet == TYPE_BULLET::MACHINE_AUTO_ORANGE)
-			m_listBullet.push_back(new CBulletMachineAutoOrange());
-		if (m_styleBullet == TYPE_BULLET::NORMAL)
-			m_listBullet.push_back(new CBulletNormal());
-		if (m_styleBullet == TYPE_BULLET::ENEMY_BALL)
-			m_listBullet.push_back(new CBulletEnemyBall());
+		m_listBullet[TYPE_BULLET::ENEMY_BALL].push_back(new CBulletEnemyBall());
+		m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE].push_back(new CBulletMachineAutoOrange());
+	}
+	for (int i = 0; i < 5; ++i)
+	{
+		m_listBullet[TYPE_BULLET::NORMAL].push_back(new CBulletNormal());
 	}
 }
 
@@ -18,41 +20,30 @@ CBulletManager::~CBulletManager()
 {
 }
 
-void	CBulletManager::updateBullet(float deltaTime)
+void	CBulletManager::ShowBullet(int styleBullet, vector3d pos)
 {
-	
-	for (int i = 0; i < m_listBullet.size(); ++i)
-		m_listBullet.at(i)->updateEntity(deltaTime);
-}
-
-void	CBulletManager::updateBullet(CStaticEntity* staticEntity)
-{
-
-}
-
-void	CBulletManager::updateBullet(CMovable* movEntity)
-{
-
-}
-
-void	CBulletManager::getBullet(int styleBullet, vector3d pos)
-{
-	
-	m_styleBullet = styleBullet;
-	for (int i = 0; i < m_listBullet.size(); ++i)
-		if (m_listBullet.at(i)->getState() == BULLETSTATE::BULLET_STATE_INVIS)
+	for (int i = 0; i < m_listBullet[styleBullet].size(); ++i)
+		if (m_listBullet[styleBullet].at(i)->getState() == BULLETSTATE::BULLET_STATE_INVIS)
 		{
-			m_listBullet.at(i)->setState(BULLETSTATE::BULLET_STATE_SHOW);
-			m_listBullet.at(i)->setPosition(pos);
+			m_listBullet[styleBullet].at(i)->setState(BULLETSTATE::BULLET_STATE_SHOW);
+			m_listBullet[styleBullet].at(i)->setPosition(pos);
+			break;
 		}
 }
 
-void	CBulletManager::createBullet(int styleBullet)
+void	CBulletManager::ShowBullet(int styleBullet, vector3d pos, vector2d Vel)
 {
+	for (int i = 0; i < m_listBullet[styleBullet].size(); ++i)
+	if (m_listBullet[styleBullet].at(i)->getState() == BULLETSTATE::BULLET_STATE_INVIS)
+	{
+		m_listBullet[styleBullet].at(i)->setState(BULLETSTATE::BULLET_STATE_SHOW);
+		m_listBullet[styleBullet].at(i)->setPosition(pos);
+		m_listBullet[styleBullet].at(i)->setVelocity(Vel);
+		break;
+	}
 }
 
-void	CBulletManager::renderBullet()
+vector<CBaseBullet*>*		CBulletManager::getListBullet()
 {
-	for (int i = 0; i < m_listBullet.size(); ++i)
-		m_listBullet.at(i)->drawEntity();
+	return m_listBullet;
 }

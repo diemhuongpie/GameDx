@@ -13,14 +13,15 @@ CPlayScene::~CPlayScene()
 bool	CPlayScene::initScene()
 {
 	//m_Player->initEntity();
-	m_Tag			= "PlayScene";
+	m_Tag				= "PlayScene";
 	//map = new Map();
 	//m_Player->initEntity();
 
 	m_Player			= new CPlayer();
 	m_EnemyTankRed		= new CEnemyTankRed();
-	m_EnemyAutoOrange = new CEnemyMachineAutoOrange(D3DXVECTOR3(200, 200, 0));
+	m_EnemyAutoOrange	= new CEnemyMachineAutoOrange(D3DXVECTOR3(200, 200, 0));
 	//m_EnemyBall = new CEnemyBall();
+
 
 	return true;
 }
@@ -32,11 +33,19 @@ void	CPlayScene::updateScene(double deltaTime)
 
 	m_Player		->updateEntity(deltaTime);
 	m_EnemyTankRed	->updateEntity(deltaTime);
+
 	m_EnemyAutoOrange->updateEntity(deltaTime);
+
 	CCollision::CheckCollision(m_Player, m_EnemyTankRed);
 	CBox2D::Intersect(m_Player->getBounding(), m_EnemyTankRed->getBounding());
-
-	CBulletManager::getInstance()->updateBullet(deltaTime);
+	
+	for (int i = 0; i < TYPE_BULLET::NUMBER_OF_TYPE_BULLET; ++i)
+	{
+		for (int j = 0; j < CBulletManager::getInstance()->getListBullet()[i].size(); j++)
+		{
+			CBulletManager::getInstance()->getListBullet()[i].at(j)->updateEntity(deltaTime);
+		}
+	}
 }
 
 void	CPlayScene::updateScene(CKeyBoard* keyboard)
@@ -51,7 +60,14 @@ void	CPlayScene::renderScene()
 {
 	m_Player		->drawEntity();
 	m_EnemyTankRed	->drawEntity();
+
 	m_EnemyAutoOrange->drawEntity();
-	CBulletManager::getInstance()->renderBullet();
-	//map->drawEntity();
+
+	for (int i = 0; i < TYPE_BULLET::NUMBER_OF_TYPE_BULLET; ++i)
+	{
+		for (int j = 0; j < CBulletManager::getInstance()->getListBullet()[i].size(); j++)
+		{
+			CBulletManager::getInstance()->getListBullet()[i].at(j)->drawEntity();
+		}
+	}
 }

@@ -99,9 +99,9 @@ void CPlayer::updateEntity(float deltaTime)
 	// Update State
 	m_TimeState += deltaTime;
 
-	/*OutputDebugString(L"State: ");
-	OutputDebugString(_itow(m_State, new WCHAR[1], 10));
-	OutputDebugString(L"\n");*/
+	OutputDebugString(L"Vel: ");
+	OutputDebugString(_itow(m_Velocity.x, new WCHAR[1], 10));
+	OutputDebugString(L"\n");
 
 }
 
@@ -122,6 +122,7 @@ void CPlayer::updateEntity(CKeyBoard* device)
 		}
 		else if (device->KeyPress(DIK_Z) && device->KeyPress(DIK_X))
 		{
+			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
 			m_State			= PLAYERSTATES::STATE_JUMP_SHOOT;
 			m_TimeState		= 0;
 		}
@@ -133,6 +134,7 @@ void CPlayer::updateEntity(CKeyBoard* device)
 		}
 		else if (device->KeyPress(DIK_Z))
 		{
+			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
 			m_State			= PLAYERSTATES::STATE_STAND_SHOOT;
 			m_TimeState		= 0;
 		}
@@ -141,11 +143,13 @@ void CPlayer::updateEntity(CKeyBoard* device)
 	case PLAYERSTATES::STATE_MOVE:
 		if (device->KeyPress(DIK_Z) && device->KeyPress(DIK_X))
 		{
+			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
 			m_State			= PLAYERSTATES::STATE_JUMP_SHOOT;
 			m_TimeState		= 0;
 		}
 		else if (device->KeyPress(DIK_Z))
 		{
+			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
 			m_State			= PLAYERSTATES::STATE_MOVE_SHOOT;
 			m_TimeState		= 0;
 		}
@@ -172,6 +176,7 @@ void CPlayer::updateEntity(CKeyBoard* device)
 		if (device->KeyPress(DIK_Z))
 		{
 			m_IsMoveJumb	= false;
+			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
 			m_State			= PLAYERSTATES::STATE_JUMP_SHOOT;
 		}
 		else if (device->KeyPress(DIK_RIGHT))
@@ -200,20 +205,25 @@ void CPlayer::updateEntity(CKeyBoard* device)
 		
 		if (device->KeyPress(DIK_Z))
 		{
-			CBulletManager::getInstance()->getBullet(TYPE_BULLET::NORMAL, this->m_Position);
+			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
+
 			if (m_TimeState > TIME_FOR_SHOOT)
 			{
 				m_State		= PLAYERSTATES::STATE_STAND;
 			}
+			else
+				CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
 				m_TimeState = 0;
 		}
 		else if (device->KeyPress(DIK_RIGHT))
 		{
+			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
 			m_State			= PLAYERSTATES::STATE_MOVE_SHOOT;
 			m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_RIGHT;
 		}
 		else if (device->KeyPress(DIK_LEFT))
 		{
+			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
 			m_State			= PLAYERSTATES::STATE_MOVE_SHOOT;
 			m_Velocity.x	= std::abs(m_Velocity.x) * DIRECTION::DIRECTION_LEFT;
 		}
@@ -247,6 +257,8 @@ void CPlayer::updateEntity(CKeyBoard* device)
 				{
 					m_State = PLAYERSTATES::STATE_MOVE;
 				}
+				else
+					CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
 				m_TimeState	= 0;
 			}
 			else
@@ -268,6 +280,8 @@ void CPlayer::updateEntity(CKeyBoard* device)
 				{
 					m_State = PLAYERSTATES::STATE_MOVE;
 				}
+				else
+					CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
 				m_TimeState	= 0;
 			}
 			else
@@ -277,6 +291,7 @@ void CPlayer::updateEntity(CKeyBoard* device)
 					m_State		= PLAYERSTATES::STATE_MOVE;
 					m_TimeState = 0;
 				}
+				//CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
 			}
 		}
 		else

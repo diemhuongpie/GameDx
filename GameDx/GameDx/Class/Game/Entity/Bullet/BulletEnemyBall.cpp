@@ -3,6 +3,7 @@
 
 CBulletEnemyBall::CBulletEnemyBall()
 {
+	initEntity();
 }
 
 

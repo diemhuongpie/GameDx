@@ -30,7 +30,7 @@ bool CBulletMachineAutoOrange::initEntity()
 	}
 	m_State = BULLETSTATE::BULLET_STATE_INVIS;
 	m_Velocity = vector2d(10, 10);
-	m_TagNode = "N";
+	m_TagNode = "A";
 
 	this->loadSprite();
 	return true;

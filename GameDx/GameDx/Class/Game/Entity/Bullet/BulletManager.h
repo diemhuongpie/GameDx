@@ -15,20 +15,12 @@ public:
 	CBulletManager();
 	~CBulletManager();
 
-	void			updateBullet(float			deltaTime);
-	void			updateBullet(CKeyBoard*		keyBoard);
-	void			updateBullet(CStaticEntity*	staticEntity);
-	void			updateBullet(CMovable*		player);
-
-	void			renderBullet();
-
-	void			getBullet	(int			styleBullet, vector3d		m_Position);
-	void			createBullet(int			styleBullet);
-
+	void							ShowBullet	(int			styleBullet, vector3d		m_Position);
+	void							ShowBullet	(int			styleBullet, vector3d		m_Position, vector2d		m_Vel);
+	vector<CBaseBullet*>*			getListBullet();
 
 private:
-	vector<CBaseBullet*>			m_listBullet;
-	int m_styleBullet;
+	vector<CBaseBullet*>*			m_listBullet;
 	
 
 };

@@ -11,7 +11,7 @@ public:
 	~CBulletNormal();
 
 	bool					initEntity()										;
-	void					updateEntity(float deltaTime)						;
+	virtual void			updateEntity(float deltaTime)				override;
 	void					updateEntity(CKeyBoard*)							;
 	void					drawEntity()										;
 	bool					loadSprite()										;

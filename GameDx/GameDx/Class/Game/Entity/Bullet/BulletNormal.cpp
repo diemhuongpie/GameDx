@@ -39,7 +39,7 @@ void CBulletNormal::updateEntity(float deltaTime)
 		break;
 	case BULLETSTATE::BULLET_STATE_SHOW:
 		if (deltaTime > 0)
-		m_Position.x += m_Velocity.x*deltaTime / 60 ;
+		m_Position.x += m_Velocity.x*deltaTime / 20 ;
 		break;
 	case BULLETSTATE::BULLET_STATE_HIT:
 		m_State	= BULLETSTATE::BULLET_STATE_INVIS;
@@ -50,7 +50,7 @@ void CBulletNormal::updateEntity(float deltaTime)
 		break;
 	}
 
-	if (m_Position.x > (CCamera::getInstance()->getBoundingScreen().getX() + CCamera::getInstance()->getBoundingScreen().getWidth()))
+	if (m_Position.x < CCamera::getInstance()->getBoundingScreen().getX() || m_Position.x > (CCamera::getInstance()->getBoundingScreen().getX() + CCamera::getInstance()->getBoundingScreen().getWidth()))
 		m_State = BULLETSTATE::BULLET_STATE_INVIS;
 }
 

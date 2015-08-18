@@ -58,7 +58,7 @@ void CEnemyBall::updateEntity(float deltaTime)
 
 	if (m_delay_Time >= 35)
 	{
-		CBulletManager::getInstance()->getBullet(1, this->m_Position);
+		CBulletManager::getInstance()->ShowBullet(1, this->m_Position);
 		check_State = true;
 		m_Velocity.x = 0;
 	}

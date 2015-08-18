@@ -59,3 +59,8 @@ void	CMovable::setState(int newState)
 {
 	m_State = newState;
 }
+
+void	CMovable::setVelocity(vector2d newVel)
+{
+	m_Velocity = newVel;
+}
