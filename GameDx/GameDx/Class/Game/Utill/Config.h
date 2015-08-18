@@ -100,7 +100,6 @@ enum GAMESTATE
 	STATE_RUN
 };
 
-
 enum CAMERASTATE
 {
 	CAMERA_NORMAL,						// with rockman, this mean is update for X asix

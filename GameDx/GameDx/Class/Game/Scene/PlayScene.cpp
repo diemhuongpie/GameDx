@@ -21,8 +21,6 @@ bool	CPlayScene::initScene()
 	m_EnemyTankRed		= new CEnemyTankRed();
 	m_EnemyAutoOrange	= new CEnemyMachineAutoOrange(D3DXVECTOR3(200, 200, 0));
 	//m_EnemyBall = new CEnemyBall();
-
-
 	return true;
 }
 

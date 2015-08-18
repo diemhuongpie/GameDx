@@ -21,7 +21,6 @@ public:
 
 private:
 	vector<CBaseBullet*>*			m_listBullet;
-	
 
 };
 

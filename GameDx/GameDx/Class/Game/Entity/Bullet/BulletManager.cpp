@@ -20,6 +20,7 @@ CBulletManager::~CBulletManager()
 {
 }
 
+
 void	CBulletManager::ShowBullet(int styleBullet, vector3d pos)
 {
 	for (int i = 0; i < m_listBullet[styleBullet].size(); ++i)

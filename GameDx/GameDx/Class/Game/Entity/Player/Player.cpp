@@ -291,7 +291,6 @@ void CPlayer::updateEntity(CKeyBoard* device)
 					m_State		= PLAYERSTATES::STATE_MOVE;
 					m_TimeState = 0;
 				}
-				//CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
 			}
 		}
 		else

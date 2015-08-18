@@ -18,7 +18,6 @@ public:
 	vector3d				getPosition();
 	void					setState(int newState);
 	int						getState();
-
 };
 
 #endif
