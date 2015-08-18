@@ -23,7 +23,7 @@ bool CEnemyBall::initEntity()
 	m_Velocity = vector2d(50, 50);
 
 	check_State = true;
-	m_Position = vector3d(350.0f, 300.0f, 0.0f);
+	m_Position = vector3d(450.0f, 200.0f, 0.0f);
 	m_delay_Time = 0;
 	// LOAD SPRITE
 	this->loadSprite();
@@ -46,20 +46,20 @@ void CEnemyBall::updateEntity(CKeyBoard *device)
 void CEnemyBall::updateEntity(float deltaTime)
 {
 	CCollision::CheckCollision(new CEnemyBall(), new CEnemyBubbleBlue());
-	this->m_Position.x += this->m_Velocity.x*deltaTime;
-	this->m_Position.y += this->m_Velocity.y*deltaTime;
+	this->m_Position.x += this->m_Velocity.x*deltaTime/60;
+	//this->m_Position.y += this->m_Velocity.y*deltaTime/60;
 	m_delay_Time++;
 	if (m_delay_Time > 0 && m_delay_Time < 35)
 	{
-		check_State = false;
+		check_State = true;
 		m_Velocity.x = -2;
 	}
 
 
 	if (m_delay_Time >= 35)
 	{
-		CBulletManager::getInstance()->ShowBullet(1, this->m_Position);
-		check_State = true;
+		CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::ENEMY_BALL, this->m_Position);
+		check_State = false;
 		m_Velocity.x = 0;
 	}
 

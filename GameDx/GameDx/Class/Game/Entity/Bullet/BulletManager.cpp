@@ -5,7 +5,7 @@ CBulletManager::CBulletManager()
 {
 	m_listBullet = new vector<CBaseBullet*>[TYPE_BULLET::NUMBER_OF_TYPE_BULLET];
 
-	for (int i = 0; i < 10; ++i)
+	for (int i = 0; i < 1; ++i)
 	{
 		m_listBullet[TYPE_BULLET::ENEMY_BALL].push_back(new CBulletEnemyBall());
 		m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE].push_back(new CBulletMachineAutoOrange());

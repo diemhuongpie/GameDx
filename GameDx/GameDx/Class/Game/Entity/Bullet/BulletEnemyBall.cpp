@@ -13,8 +13,8 @@ CBulletEnemyBall::~CBulletEnemyBall()
 
 bool CBulletEnemyBall::loadSprite()
 {
-	//for (int i = 0; i < 5; i ++)
-	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//enemy_bullet_orange.png", 1, 1, 1, 0));
+	for (int i = 0; i < 8; i ++)
+		this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//enemy_bullet_orange.png", 1, 1, 1, 0));
 	return	true;
 }
 
@@ -25,10 +25,10 @@ bool CBulletEnemyBall::initEntity()
 	for (int i = 0; i < 8; i++)
 	{
 		m_BulletPosition.push_back(vector3d(m_Position.x, m_Position.y, 0.5f));
-		m_Bounding = new CBox2D(m_BulletPosition.at(0).x, m_BulletPosition.at(0).y, 32, 32);
+		m_Bounding = new CBox2D(m_BulletPosition.at(i).x, m_BulletPosition.at(i).y, 32, 32);
 	}
 	m_State = BULLETSTATE::BULLET_STATE_INVIS;
-	m_Velocity = vector2d(10, 10);
+	m_Velocity = vector2d(5,5);
 	m_TagNode = "N";
 
 	this->loadSprite();
@@ -63,20 +63,20 @@ void CBulletEnemyBall::updateEntity(float deltaTime)
 			m_State = BULLETSTATE::BULLET_STATE_INVIS;
 }
 
-void CBulletEnemyBall::Shoot(float deltaTime)
+void CBulletEnemyBall::Shoot(float deltatime)
 {
-	m_BulletPosition[0].x += 10 * deltaTime / 60;
-	m_BulletPosition[1].x += 10 * deltaTime / 60;
-	m_BulletPosition[1].y -= 10 * deltaTime / 60;
-	m_BulletPosition[2].y -= 10 * deltaTime / 60;
-	m_BulletPosition[3].x -= 10 * deltaTime / 60;
-	m_BulletPosition[3].y -= 10 * deltaTime / 60;
-	m_BulletPosition[4].x -= 10 * deltaTime / 60;
-	m_BulletPosition[5].x -= 10 * deltaTime / 60;
-	m_BulletPosition[5].y += 10 * deltaTime / 60;
-	m_BulletPosition[6].y += 10 * deltaTime / 60;
-	m_BulletPosition[7].x += 10 * deltaTime / 60;
-	m_BulletPosition[7].y += 10 * deltaTime / 60;
+	m_BulletPosition.at(0).x += m_Velocity.x * deltatime;
+	m_BulletPosition.at(1).x += m_Velocity.x * deltatime;
+	m_BulletPosition.at(1).y -= m_Velocity.y * deltatime;
+	m_BulletPosition.at(2).y -= m_Velocity.y * deltatime;
+	m_BulletPosition.at(3).x -= m_Velocity.x * deltatime;
+	m_BulletPosition.at(3).y -= m_Velocity.y * deltatime;
+	m_BulletPosition.at(4).x -= m_Velocity.x * deltatime;
+	m_BulletPosition.at(5).x -= m_Velocity.x * deltatime;
+	m_BulletPosition.at(5).y += m_Velocity.x * deltatime;
+	m_BulletPosition.at(6).y += m_Velocity.y * deltatime;
+	m_BulletPosition.at(7).x += m_Velocity.x * deltatime;
+	m_BulletPosition.at(7).y += m_Velocity.y * deltatime;
 }
 void CBulletEnemyBall::updateEntity(CKeyBoard* device)
 {
@@ -103,7 +103,7 @@ vector3d CBulletEnemyBall::getPosition()
 
 void CBulletEnemyBall::setPosition(vector3d position)
 {
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 8; i++)
 	{
 		m_BulletPosition.at(i) = position;
 	}

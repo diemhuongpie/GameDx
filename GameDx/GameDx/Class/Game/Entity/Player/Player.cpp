@@ -176,7 +176,7 @@ void CPlayer::updateEntity(CKeyBoard* device)
 		if (device->KeyPress(DIK_Z))
 		{
 			m_IsMoveJumb	= false;
-			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
+			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::MACHINE_AUTO_ORANGE, m_Position, m_Velocity);
 			m_State			= PLAYERSTATES::STATE_JUMP_SHOOT;
 		}
 		else if (device->KeyPress(DIK_RIGHT))
