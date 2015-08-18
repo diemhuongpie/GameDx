@@ -1,0 +1,3 @@
+map1	Resource//Image//Maps//map1//
+map2	Resource//Image//Maps//map2//
+map3	Resource//Image//Maps//map3//
