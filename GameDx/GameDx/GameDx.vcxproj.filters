@@ -288,7 +288,13 @@
     <ClCompile Include="Class\Game\Algorithsm\QuadNode.cpp">
       <Filter>Algorithm\Quadtree\cpp</Filter>
     </ClCompile>
-    <ClCompile Include="Class\Game\Entity\Map\Tile.cpp">
+    <ClCompile Include="Class\Game\Map\MapManager.cpp">
+      <Filter>Game\Entity\Children\Map\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Map\MapData.cpp">
+      <Filter>Game\Entity\Children\Map\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Tile\Tile.cpp">
       <Filter>Game\Entity\Children\Map\cpp</Filter>
     </ClCompile>
     <ClCompile Include="Class\Game\Entity\Bullet\BulletEnemyBall.cpp">
@@ -431,9 +437,6 @@
     <ClInclude Include="Class\Game\Algorithsm\QuadNode.h">
       <Filter>Algorithm\Quadtree</Filter>
     </ClInclude>
-    <ClInclude Include="Class\Game\Entity\Map\Tile.h">
-      <Filter>Game\Entity\Children\Map</Filter>
-    </ClInclude>
     <ClInclude Include="Class\Game\Scene\SelectStageScene.h">
       <Filter>Game\Scene</Filter>
     </ClInclude>
@@ -445,6 +448,14 @@
     </ClInclude>
     <ClInclude Include="Class\Game\Entity\Bullet\BaseBullet.h">
       <Filter>Game\Entity\Children\Bullet</Filter>
+    <ClInclude Include="Class\Game\Map\MapManager.h">
+      <Filter>Game\Entity\Children\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Map\MapData.h">
+      <Filter>Game\Entity\Children\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Tile\Tile.h">
+      <Filter>Game\Entity\Children\Map</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

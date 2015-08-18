@@ -79,6 +79,8 @@
 #define BOMBMAN_STAGE_INFO_STRING	L"BOMBMAN\n\nCLEAR POINT"
 #define FIREMAN_STAGE_INFO_STRING	L"FIREMAN\n\nCLEAR POINT"
 
+#define PATH_RESOURCE_MAP_INFOR		L"Resource//Image//Maps//mapinfo//mapinfo.txt"
+
 #define VEL_PLAYER_X 4
 #define VEL_PLAYER_Y 19
 #define ACCEL_PLAYER_X 0.5f
@@ -173,15 +175,6 @@ enum COLDIRECTION
 	COLDIRECTION_LEFT,
 	COLDIRECTION_RIGHT
 };
-/******************/
-
-/*STRUCT*/
-struct KeyState
-{
-	int KeyCode;
-	KEYSTATE KeyStates;
-};
-
 enum PLAYERSTATES
 {
 	STATE_START				= 0,
@@ -195,6 +188,32 @@ enum PLAYERSTATES
 	STATE_CLIMB_SHOOT		= 8,
 	STATE_CLIMB_END			= 9,
 	STATE_HIT				= 10
+};
+/******************/
+
+/*STRUCT*/
+struct KeyState
+{
+	int KeyCode;
+	KEYSTATE KeyStates;
+};
+
+struct	MapInfo
+{
+	char*		m_Name;
+	wchar_t*		m_Path;
+
+	MapInfo(char* name, wchar_t* path)
+	{
+		m_Name = name;
+		m_Path = path;
+	}
+
+	~MapInfo()
+	{
+		SAFE_RELEASE(m_Name);
+		SAFE_RELEASE(m_Path);
+	}
 };
 /******************************/
 

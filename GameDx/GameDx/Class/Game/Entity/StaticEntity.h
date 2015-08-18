@@ -19,7 +19,7 @@ public:
 	CStaticEntity();
 	~CStaticEntity();
 
-	virtual		bool					loadSprite()			= 0;
+	virtual		bool					loadSprite()				= 0;
 	virtual		CBox2D					getBounding()			override;
 	virtual		bool					initEntity()			override;
 	virtual		const char*				getTagNode()			override;

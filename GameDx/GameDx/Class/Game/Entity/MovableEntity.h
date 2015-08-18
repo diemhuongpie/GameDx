@@ -17,6 +17,7 @@ class CMovable : public CBaseEntity
 public:
 	CMovable();
 	~CMovable();
+	
 	virtual		bool					loadSprite()			=	0;
 	virtual		vector3d				getPosition()					;
 	virtual		CBox2D					getBounding()			override;
@@ -26,6 +27,7 @@ public:
 	virtual		int						getState()				override;
 	virtual		void					setState(int newState)	override;
 	virtual		void					setPosition(vector3d pos)		;
+
 protected:
 				vector2d				m_Velocity;
 };
