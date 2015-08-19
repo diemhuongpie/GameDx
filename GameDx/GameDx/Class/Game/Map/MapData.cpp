@@ -15,11 +15,17 @@ MapData::~MapData()
 	m_listTile.clear();
 }
 
+
+vector<CBaseEntity*>	MapData::getlistCollisionTile()
+{
+	return m_listCollisionTile;
+}
+
 void	MapData::readMapInfor(wstring filePath)
 {
 	readTileMap(filePath);
-
-
+	CQuadTree::getInstance()->DeviceObjectToTree(m_listTile);
+	CQuadTree::getInstance()->DeviceObjectToTree(m_listCollisionTile);
 }
 
 void	MapData::readTileMap(wstring filePath)
@@ -58,9 +64,9 @@ void	MapData::readTileMap(wstring filePath)
 			m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//8.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 7));
 		if (type == L"8C")
 			m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//9.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 8));
-		/*if (type == L"9C") thang
+		if (type == L"9C") //stair
 			m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//10.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 9));
-		*/if (type == L"10C")
+		if (type == L"10C")
 			m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//11.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 10));
 		if (type == L"11C")
 			m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//12.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 11));
@@ -115,7 +121,6 @@ void	MapData::readTileMap(wstring filePath)
 	}
 }
 
-
 void		MapData::update(float deltaTime)
 {
 
@@ -123,12 +128,14 @@ void		MapData::update(float deltaTime)
 
 void		MapData::render()
 {
-	for (int i = 0; i < m_listTile.size(); i++)
+	/*for (int i = 0; i < m_listTile.size(); i++)
 	{
 		m_listTile.at(i)->drawEntity();
 	}
 	for (int i = 0; i < m_listCollisionTile.size(); i++)
 	{
 		m_listCollisionTile.at(i)->drawEntity();
-	}
+	}*/
+
+	CQuadTree::getInstance()->RenderTree();
 }

@@ -7,6 +7,7 @@
 #include "Game\Utill\Config.h"
 #include "Game\Entity\Tile\Tile.h"
 #include "Game\Entity\BaseEntity.h"
+#include "Game\Algorithsm\QuadTree.h"
 
 class MapData
 {
@@ -20,11 +21,12 @@ public:
 		
 	void					update(float deltaTime);
 	void					render();
+	vector<CBaseEntity*>	getlistCollisionTile();
 
 protected:
-	vector<CTile*>			m_listTile;
-	vector<CTile*>			m_listCollisionTile;
-	vector<CBaseEntity*>	m_listEntity;
+	vector<CBaseEntity*>			m_listTile;
+	vector<CBaseEntity*>			m_listCollisionTile;
+	vector<CBaseEntity*>			m_listEntity;
 
 };
 

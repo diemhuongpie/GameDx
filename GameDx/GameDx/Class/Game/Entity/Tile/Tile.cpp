@@ -11,8 +11,8 @@ CTile::~CTile()
 CTile::CTile(CSprite* sprite, vector3d pos, CBox2D* bounding, int styleID)
 {
 	m_listSprite.push_back(sprite);
-	m_Position						= pos;
-	m_Bounding						= bounding;
+	m_Position						= (pos);
+	m_Bounding						= new CBox2D(m_Position.x, m_Position.y, bounding->getWidth(), bounding->getHeight());
 	m_styleID						= styleID;
 
 	initEntity();

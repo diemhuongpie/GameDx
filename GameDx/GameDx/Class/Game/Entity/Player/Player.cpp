@@ -427,6 +427,7 @@ void CPlayer::drawEntity()
 		m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(m_Position), vector2d(SIGN(m_Velocity.x) * 2, 2), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
 		break;
 	}
+
 }
 
 void CPlayer::logicMovePlayer(float deltaTime)

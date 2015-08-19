@@ -3,6 +3,7 @@
 
 CQuadTree::CQuadTree()
 {
+	this->CreateTree();
 }
 
 
@@ -12,7 +13,7 @@ CQuadTree::~CQuadTree()
 
 void CQuadTree::CreateTree()
 {
-	m_Node			= new CQuadNode(0, CBox2D(0, 0, SIZE_MAP_WIDTH, SIZE_MAP_HIGHT));
+	m_Node = new CQuadNode();
 
 	//Get List Entities of Map
 }

@@ -29,6 +29,7 @@ public:
 
 private:
 	int						m_NodeLevel;
+	vector3d				m_PosNode;
 	CBox2D					m_NodeSize;
 	vector<CBaseEntity*>	m_EntityList;
 	CQuadNode**				m_Node;

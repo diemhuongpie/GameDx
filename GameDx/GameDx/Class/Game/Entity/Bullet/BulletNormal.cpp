@@ -41,10 +41,7 @@ void CBulletNormal::updateEntity(float deltaTime)
 		break;
 	case BULLETSTATE::BULLET_STATE_SHOW:
 		if (deltaTime > 0)
-		{
-			m_Position.x += m_Velocity.x*deltaTime / 30;
-		}
-	
+		m_Position.x += m_Velocity.x*deltaTime / 20 ;
 		break;
 	case BULLETSTATE::BULLET_STATE_HIT:
 		m_State	= BULLETSTATE::BULLET_STATE_INVIS;

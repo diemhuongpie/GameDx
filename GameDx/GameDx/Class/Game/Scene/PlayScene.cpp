@@ -8,6 +8,13 @@ CPlayScene::CPlayScene()
 
 CPlayScene::~CPlayScene()
 {
+	SAFE_RELEASE(m_Player);
+	SAFE_RELEASE(m_EnemyTankRed);
+	SAFE_RELEASE(m_EnemyAutoOrange);
+
+	SAFE_RELEASE(m_EnemyBall);
+	SAFE_RELEASE(m_EnemyBubbleBlue);
+	SAFE_RELEASE(m_EnemyCut);
 }
 
 bool	CPlayScene::initScene()
@@ -23,7 +30,7 @@ bool	CPlayScene::initScene()
 	m_EnemyBall			= new CEnemyBall();
 
 	CMapmanager::getInstance()->readMapList();
-	CMapmanager::getInstance()->setCurrentMapAt(2);
+	CMapmanager::getInstance()->setCurrentMapAt(1);
 	return true;
 }
 
@@ -37,7 +44,14 @@ void	CPlayScene::updateScene(double deltaTime)
 	m_EnemyBall->updateEntity(deltaTime);
 	m_EnemyAutoOrange->updateEntity(deltaTime);
 
+	/*for (auto i = 0; i < CMapmanager::getInstance()->getCurrentMap()->getlistCollisionTile().size(); ++i)
+	{
+		if (CCollision::CheckCollision(m_Player, CMapmanager::getInstance()->getCurrentMap()->getlistCollisionTile().at(i)) == COLDIRECTION::COLDIRECTION_BOTTOM)
+			m_Player->setPosition(vector3d(CMapmanager::getInstance()->getCurrentMap()->getlistCollisionTile().at(i)->getBounding().getX(), CMapmanager::getInstance()->getCurrentMap()->getlistCollisionTile().at(i)->getBounding().getY() + CMapmanager::getInstance()->getCurrentMap()->getlistCollisionTile().at(i)->getBounding().getHeight(), 0.5f));
+	}*/
+
 	CCollision::CheckCollision(m_Player, m_EnemyTankRed);
+
 	CBox2D::Intersect(m_Player->getBounding(), m_EnemyTankRed->getBounding());
 	
 	// Update Bullet
@@ -65,6 +79,9 @@ void	CPlayScene::updateScene(CKeyBoard* keyboard)
 void	CPlayScene::renderScene()
 {
 	m_Player		->drawEntity();
+	
+
+
 	m_EnemyTankRed	->drawEntity();
 	m_EnemyBall->drawEntity();
 	m_EnemyAutoOrange->drawEntity();

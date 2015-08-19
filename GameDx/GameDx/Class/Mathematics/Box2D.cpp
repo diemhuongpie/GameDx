@@ -182,3 +182,6 @@ bool CBox2D::Intersect(CBox2D box1, CBox2D box2)
 			(box1.getY()								< box2.getY() - box2.getHeight())
 			);
 }
+
+
+
