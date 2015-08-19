@@ -22,7 +22,7 @@ public:
 	bool loadSprite()											;
 
 private:
-	int m_delay_Time;
+	int m_delayTime;
 	bool check_State;
 };
 

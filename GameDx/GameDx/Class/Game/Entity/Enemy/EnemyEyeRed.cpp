@@ -33,6 +33,7 @@ bool CEnemyEyeRed::initEntity()
 bool CEnemyEyeRed::loadSprite()
 {
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//enemy_eye_red.png", 1, 3, 3, 0));
+	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//boom_burst.png", 1, 4, 4, 0));
 	return true;
 }
 

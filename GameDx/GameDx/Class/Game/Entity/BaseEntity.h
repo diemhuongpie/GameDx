@@ -31,6 +31,7 @@ public:
 
 protected:
 	int						m_State;
+	bool					m_isDead;
 	const char*				m_TagNode;
 	CBox2D*					m_Bounding;
 	vector3d				m_Position;

@@ -32,6 +32,7 @@ bool CEnemyMachineOrange::initEntity()
 bool CEnemyMachineOrange::loadSprite()
 {
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossBoomMan//enemy_machine_orange.png", 1, 2, 2, 0));
+	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//boom_burst.png", 1, 4, 4, 0));
 	return true;
 }
 void CEnemyMachineOrange::updateEntity(CKeyBoard *device)

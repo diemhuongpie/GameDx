@@ -32,6 +32,7 @@ bool CEnemyInkBlue::initEntity()
 bool CEnemyInkBlue::loadSprite()
 {
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//enemy_ink_blue.png", 1, 2, 2, 0));
+	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//boom_burst.png", 1, 4, 4, 0));
 	return true;
 }
 void CEnemyInkBlue::updateEntity(CKeyBoard *device)

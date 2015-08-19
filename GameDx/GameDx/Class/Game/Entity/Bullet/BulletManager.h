@@ -9,6 +9,7 @@
 #include "Game\Entity\Bullet\BulletEnemyBall.h"
 #include "Game\Entity\Bullet\BaseBullet.h"
 #include "Game\Entity\Bullet\BulletEnemy.h"
+#include "Game\Entity\Bullet\BulletTankRed.h"
 
 class CBulletManager : public CSingleton<CBulletManager>
 {
@@ -22,6 +23,7 @@ public:
 
 private:
 	vector<CBaseBullet*>*			m_listBullet;
+	float m_angle;
 
 };
 

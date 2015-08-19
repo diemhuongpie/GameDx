@@ -1,11 +1,12 @@
 #pragma once
+#include "Framework\Camera.h"
 #include "Game\Entity\Bullet\BaseBullet.h"
 
-class CBulletEnemy : public CBaseBullet
+class CBulletTankRed : public CBaseBullet
 {
 public:
-	CBulletEnemy(float );
-	~CBulletEnemy();
+	CBulletTankRed(float);
+	~CBulletTankRed();
 	bool					initEntity();
 	void					updateEntity(float deltaTime);
 	void					updateEntity(CKeyBoard*);
@@ -17,6 +18,7 @@ public:
 
 private:
 	int						m_timeDestroy;
+	int						m_changeAngle;
 	float					m_angle;
 };
 

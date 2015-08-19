@@ -21,8 +21,9 @@ public:
 	bool loadSprite();
 
 private:
-	bool m_checkState;
-	int	 m_delay_Time;
+	int m_checkState;
+	int	m_delayTime;
+	int m_delayShoot;
 
 };
 

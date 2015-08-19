@@ -18,6 +18,8 @@ CEnemyCut::~CEnemyCut()
 
 bool CEnemyCut::initEntity()
 {
+	RECT rectangle = { 150, 300, 500, 200 };
+	m_Bounding = new CBox2D(rectangle);
 	m_Position = vector3d(350.0f, 300.0f, 0.0f);
 	// LOAD SPRITE
 	this->loadSprite();

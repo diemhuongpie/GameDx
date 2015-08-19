@@ -31,6 +31,7 @@ bool CEnemyNinja::loadSprite()
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossBoomMan//enemy_ninja_green_stand.png", 1, 1, 1, 0));
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossBoomMan//enemy_ninja_green_fire.png", 1, 2, 2, 0));
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossBoomMan//enemy_ninja_green_jump.png", 1, 1, 1, 0));
+	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//boom_burst.png", 1, 4, 4, 0));
 	return true;
 }
 void CEnemyNinja::updateEntity(CKeyBoard *device)

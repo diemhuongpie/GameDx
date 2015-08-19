@@ -306,6 +306,9 @@
     <ClCompile Include="Class\Game\Entity\Bullet\BulletEnemy.cpp">
       <Filter>Game\Entity\Children\Bullet</Filter>
     </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Bullet\BulletTankRed.cpp">
+      <Filter>Game\Entity\Children\Bullet\cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Class\Framework\Timer.h">
@@ -463,6 +466,10 @@
     </ClInclude>
     <ClInclude Include="Class\Game\Map\UtillMap.h" />
     <ClInclude Include="Class\Game\Entity\Bullet\BulletEnemy.h">
+      <Filter>Game\Entity\Children\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Map\UtillMap.h" />
+    <ClInclude Include="Class\Game\Entity\Bullet\BulletTankRed.h">
       <Filter>Game\Entity\Children\Bullet</Filter>
     </ClInclude>
   </ItemGroup>

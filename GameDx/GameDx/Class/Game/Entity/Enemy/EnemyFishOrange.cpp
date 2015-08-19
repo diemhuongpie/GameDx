@@ -31,6 +31,7 @@ bool CEnemyFishOrange::initEntity()
 bool CEnemyFishOrange::loadSprite()
 {
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossBoomMan//enemy_fish_orange.png", 1, 1, 1, 0));
+	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//boom_burst.png", 1, 4, 4, 0));
 	return true;
 }
 void CEnemyFishOrange::updateEntity(CKeyBoard *device)

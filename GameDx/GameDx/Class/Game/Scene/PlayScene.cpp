@@ -25,8 +25,8 @@ bool	CPlayScene::initScene()
 	//m_Player->initEntity();
 
 	m_Player			= new CPlayer();
-	m_EnemyTankRed		= new CEnemyTankRed();
-	m_EnemyAutoOrange	= new CEnemyMachineAutoOrange(D3DXVECTOR3(200, 200, 0));
+	m_EnemyTankRed = new CEnemyTankRed(D3DXVECTOR3(400, 100, 0));
+	m_EnemyAutoOrange	= new CEnemyMachineAutoOrange(D3DXVECTOR3(200, 350, 0));
 	m_EnemyBall			= new CEnemyBall();
 
 	CMapmanager::getInstance()->readMapList();
@@ -74,6 +74,7 @@ void	CPlayScene::updateScene(CKeyBoard* keyboard)
 	m_EnemyAutoOrange->updateEntity(keyboard);
 	m_Player->updateEntity(keyboard);
 	m_EnemyBall->updateEntity(keyboard);
+
 }
 
 void	CPlayScene::renderScene()
