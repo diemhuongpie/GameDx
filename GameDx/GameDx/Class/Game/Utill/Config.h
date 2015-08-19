@@ -11,8 +11,8 @@
 using namespace std;
 
 /*DEFINE*/
-#define FPS							60
-#define GAME_RATE					(1000.0f/60.0f)
+#define FPS							80
+#define GAME_RATE					(1000.0f/80.0f)
 #define WINDOWS_NAME				L"Oishi"
 
 #define DRAWCENTER_LEFT_TOP			1					
@@ -46,12 +46,13 @@ using namespace std;
 #define SIGN(A)						(A > 0 ? 1 : -1)
 #define DIRECT_COORDINATE(A)		{-(A)}
 #define SAFE_RELEASE(A)				{if (A) {delete A; A = 0;}}
+#define SETMAX(A,B)					{A > B ? B : A}	
 
 #define BACKBUFFER_WIDTH			510
 #define	BACKBUFFER_HEIGHT			485
 
 #define DELTA_FIX_SIZE_RESOURCE		10
-#define TIME_FOR_JUMB				500
+#define TIME_FOR_JUMB				700
 #define TIME_FOR_SHOOT				1000
 
 #define SCREEN_SIZE					CBox2D()
