@@ -12,6 +12,7 @@ CBulletMachineAutoOrange::~CBulletMachineAutoOrange()
 {
 }
 
+
 bool CBulletMachineAutoOrange::loadSprite()
 {
 	for (int i = 0; i < 5; i++)

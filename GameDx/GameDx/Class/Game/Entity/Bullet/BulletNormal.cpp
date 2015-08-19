@@ -32,14 +32,19 @@ bool		CBulletNormal::initEntity()
 
 void CBulletNormal::updateEntity(float deltaTime)
 {
+	
 	switch (m_State)
 	{
 	case BULLETSTATE::BULLET_STATE_INVIS:
+		
 		m_Position	= vector3dMinimum;
 		break;
 	case BULLETSTATE::BULLET_STATE_SHOW:
 		if (deltaTime > 0)
-		m_Position.x += m_Velocity.x*deltaTime / 60 ;
+		{
+			m_Position.x += m_Velocity.x*deltaTime / 30;
+		}
+	
 		break;
 	case BULLETSTATE::BULLET_STATE_HIT:
 		m_State	= BULLETSTATE::BULLET_STATE_INVIS;
@@ -79,3 +84,4 @@ int	CBulletNormal::getState()
 {
 	return m_State;
 }
+

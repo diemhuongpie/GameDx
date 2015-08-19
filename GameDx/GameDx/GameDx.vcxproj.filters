@@ -303,6 +303,9 @@
     <ClCompile Include="Class\Game\Entity\Tile\Tile.cpp">
       <Filter>Game\Entity\Children\Map\cpp</Filter>
     </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Bullet\BulletEnemy.cpp">
+      <Filter>Game\Entity\Children\Bullet\cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Class\Framework\Timer.h">
@@ -458,8 +461,8 @@
     <ClInclude Include="Class\Game\Entity\Tile\Tile.h">
       <Filter>Game\Entity\Children\Map</Filter>
     </ClInclude>
-    <ClInclude Include="Class\Game\Map\UtillMap.h">
-      <Filter>Game\Entity\Children\Map</Filter>
+    <ClInclude Include="Class\Game\Entity\Bullet\BulletEnemy.h">
+      <Filter>Game\Entity\Children\Bullet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

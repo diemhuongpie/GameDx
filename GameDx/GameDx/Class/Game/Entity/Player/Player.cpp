@@ -151,7 +151,7 @@ void CPlayer::updateEntity(CKeyBoard* device)
 		}
 		else if (device->KeyPress(DIK_Z))
 		{
-			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
+			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position,m_Velocity);
 			m_State			= PLAYERSTATES::STATE_STAND_SHOOT;
 			m_TimeState		= 0;
 		}

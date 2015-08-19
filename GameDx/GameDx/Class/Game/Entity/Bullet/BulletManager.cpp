@@ -14,6 +14,12 @@ CBulletManager::CBulletManager()
 	{
 		m_listBullet[TYPE_BULLET::NORMAL].push_back(new CBulletNormal());
 	}
+
+	m_listBullet[TYPE_BULLET::ENEMY].push_back(new CBulletEnemy(0));
+	m_listBullet[TYPE_BULLET::ENEMY].push_back(new CBulletEnemy(PI/4));
+	m_listBullet[TYPE_BULLET::ENEMY].push_back(new CBulletEnemy(PI/2));
+	m_listBullet[TYPE_BULLET::ENEMY].push_back(new CBulletEnemy(3*PI/4));
+	m_listBullet[TYPE_BULLET::ENEMY].push_back(new CBulletEnemy(PI));
 }
 
 CBulletManager::~CBulletManager()
@@ -26,6 +32,7 @@ void	CBulletManager::ShowBullet(int styleBullet, vector3d pos)
 	for (int i = 0; i < m_listBullet[styleBullet].size(); ++i)
 		if (m_listBullet[styleBullet].at(i)->getState() == BULLETSTATE::BULLET_STATE_INVIS)
 		{
+			
 			m_listBullet[styleBullet].at(i)->setState(BULLETSTATE::BULLET_STATE_SHOW);
 			m_listBullet[styleBullet].at(i)->setPosition(pos);
 			break;

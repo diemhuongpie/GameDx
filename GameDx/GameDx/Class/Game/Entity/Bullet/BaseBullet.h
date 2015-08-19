@@ -7,6 +7,7 @@ class CBaseBullet : public CMovable
 public:
 	CBaseBullet(){};
 	~CBaseBullet(){};
+	int type_Angle;
 
 };
 #endif

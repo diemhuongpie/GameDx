@@ -21,7 +21,8 @@ public:
 	void					setState(int newState);
 	int						getState();
 private:
-	vector <vector3d> m_BulletPosition;
+	vector <vector3d>		m_BulletPosition;
+	vector<CMovable*>	m_ListBullet;
 
 };
 

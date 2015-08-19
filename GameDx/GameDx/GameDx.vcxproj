@@ -101,6 +101,7 @@
     <ClInclude Include="Class\Game\Algorithsm\Singleton.h" />
     <ClInclude Include="Class\Game\Entity\BaseEntity.h" />
     <ClInclude Include="Class\Game\Entity\Bullet\BaseBullet.h" />
+    <ClInclude Include="Class\Game\Entity\Bullet\BulletEnemy.h" />
     <ClInclude Include="Class\Game\Entity\Bullet\BulletEnemyBall.h" />
     <ClInclude Include="Class\Game\Entity\Bullet\BulletMachineAutoOrange.h" />
     <ClInclude Include="Class\Game\Entity\Bullet\BulletManager.h" />
@@ -152,6 +153,7 @@
     <ClCompile Include="Class\Game\Algorithsm\QuadNode.cpp" />
     <ClCompile Include="Class\Game\Algorithsm\QuadTree.cpp" />
     <ClCompile Include="Class\Game\Entity\BaseEntity.cpp" />
+    <ClCompile Include="Class\Game\Entity\Bullet\BulletEnemy.cpp" />
     <ClCompile Include="Class\Game\Entity\Bullet\BulletEnemyBall.cpp" />
     <ClCompile Include="Class\Game\Entity\Bullet\BulletMachineAutoOrange.cpp" />
     <ClCompile Include="Class\Game\Entity\Bullet\BulletManager.cpp" />
