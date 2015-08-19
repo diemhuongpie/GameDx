@@ -33,7 +33,6 @@ private:
 			CEnemyBall*				m_EnemyBall;
 			CEnemyBubbleBlue*		m_EnemyBubbleBlue;
 			CEnemyCut*				m_EnemyCut;
-			MapData*					map;
 };
 
 #endif

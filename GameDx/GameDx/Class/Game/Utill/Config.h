@@ -7,6 +7,8 @@
 #define __CONFIG_H__
 
 #include <tchar.h>
+#include <string>
+using namespace std;
 
 /*DEFINE*/
 #define FPS							60
@@ -201,10 +203,10 @@ struct KeyState
 
 struct	MapInfo
 {
-	char*		m_Name;
-	wchar_t*		m_Path;
+	wstring			m_Name;
+	wstring			m_Path;
 
-	MapInfo(char* name, wchar_t* path)
+	MapInfo(wstring name, wstring path)
 	{
 		m_Name = name;
 		m_Path = path;
@@ -212,8 +214,6 @@ struct	MapInfo
 
 	~MapInfo()
 	{
-		SAFE_RELEASE(m_Name);
-		SAFE_RELEASE(m_Path);
 	}
 };
 /******************************/

@@ -124,6 +124,7 @@
     <ClInclude Include="Class\Game\Game\Game.h" />
     <ClInclude Include="Class\Game\Map\MapData.h" />
     <ClInclude Include="Class\Game\Map\MapManager.h" />
+    <ClInclude Include="Class\Game\Map\UtillMap.h" />
     <ClInclude Include="Class\Game\Scene\BaseScene.h" />
     <ClInclude Include="Class\Game\Scene\GameOverScene.h" />
     <ClInclude Include="Class\Game\Scene\IntroStageScene.h" />

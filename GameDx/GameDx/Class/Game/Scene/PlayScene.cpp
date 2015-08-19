@@ -20,7 +20,10 @@ bool	CPlayScene::initScene()
 	m_Player			= new CPlayer();
 	m_EnemyTankRed		= new CEnemyTankRed();
 	m_EnemyAutoOrange	= new CEnemyMachineAutoOrange(D3DXVECTOR3(200, 200, 0));
-	m_EnemyBall = new CEnemyBall();
+	m_EnemyBall			= new CEnemyBall();
+
+	CMapmanager::getInstance()->readMapList();
+	CMapmanager::getInstance()->setCurrentMapAt(2);
 	return true;
 }
 
@@ -37,6 +40,7 @@ void	CPlayScene::updateScene(double deltaTime)
 	CCollision::CheckCollision(m_Player, m_EnemyTankRed);
 	CBox2D::Intersect(m_Player->getBounding(), m_EnemyTankRed->getBounding());
 	
+	// Update Bullet
 	for (int i = 0; i < TYPE_BULLET::NUMBER_OF_TYPE_BULLET; ++i)
 	{
 		for (int j = 0; j < CBulletManager::getInstance()->getListBullet()[i].size(); j++)
@@ -44,6 +48,9 @@ void	CPlayScene::updateScene(double deltaTime)
 			CBulletManager::getInstance()->getListBullet()[i].at(j)->updateEntity(deltaTime);
 		}
 	}
+
+	// Update Map
+
 }
 
 void	CPlayScene::updateScene(CKeyBoard* keyboard)
@@ -69,4 +76,6 @@ void	CPlayScene::renderScene()
 			CBulletManager::getInstance()->getListBullet()[i].at(j)->drawEntity();
 		}
 	}
+
+	CMapmanager::getInstance()->getCurrentMap()->render();
 }

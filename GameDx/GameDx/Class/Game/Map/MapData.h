@@ -1,6 +1,7 @@
 #ifndef __MAP_INFOR_H__
 #define __MAP_INFOR_H__
 
+#include "Game\Utill\Config.h"
 #include "Mathematics\Box2D.h"
 #include "Game\Utill\stdafx.h"
 #include "Game\Utill\Config.h"
@@ -13,17 +14,16 @@ public:
 	MapData();
 	~MapData();
 
-	void					readMapInfor(wchar_t*);
-	void					readTileMap(wchar_t*);
+	void					readMapInfor(wstring);
+	void					readTileMap(wstring);
 	CBox2D					getSize();
 		
-	void					init();
 	void					update(float deltaTime);
 	void					render();
 
 protected:
 	vector<CTile*>			m_listTile;
-	vector<CBox2D*>			m_listBox;
+	vector<CTile*>			m_listCollisionTile;
 	vector<CBaseEntity*>	m_listEntity;
 
 };

@@ -458,5 +458,8 @@
     <ClInclude Include="Class\Game\Entity\Tile\Tile.h">
       <Filter>Game\Entity\Children\Map</Filter>
     </ClInclude>
+    <ClInclude Include="Class\Game\Map\UtillMap.h">
+      <Filter>Game\Entity\Children\Map</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

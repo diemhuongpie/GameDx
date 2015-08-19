@@ -4,6 +4,7 @@
 
 CMapmanager::CMapmanager()
 {
+	m_CurrentMap		= new MapData();
 }
 
 CMapmanager::~CMapmanager()
@@ -13,9 +14,9 @@ CMapmanager::~CMapmanager()
 
 void		CMapmanager::readMapList()
 {
-	char*			mapName		="";
-	char*			mapPath		="";
-	ifstream		fs;
+	wstring			mapName;
+	wstring			mapPath;
+	wfstream		fs;
 
 	fs.open(PATH_RESOURCE_MAP_INFOR);
 	if (!fs)
@@ -24,7 +25,7 @@ void		CMapmanager::readMapList()
 	while (fs)
 	{
 		fs >> mapName >> mapPath;
-		m_MapList.push_back(new MapInfo(mapName, (wchar_t*)mapPath));
+		m_MapList.push_back(new MapInfo(mapName, mapPath));
 	}
 }
 
@@ -41,12 +42,10 @@ MapData*	CMapmanager::getCurrentMap()
 
 void		CMapmanager::setCurrentMapAt(int index)
 {
-	if (index < 0 || index >= m_MapList.size())
+	if (index < 1 || index >= m_MapList.size() + 1)
 		return;
 
-	m_CrIndex = index + 1;
+	m_CrIndex = index - 1;
 
 	m_CurrentMap->readMapInfor(m_MapList.at(m_CrIndex)->m_Path);
 }
-
-
