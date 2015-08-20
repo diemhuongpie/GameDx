@@ -8,6 +8,7 @@ public:
 	CBaseBullet(){};
 	~CBaseBullet(){};
 	int type_Angle;
+	void		logicCollision(CBaseEntity* entity) {};
 
 };
 #endif

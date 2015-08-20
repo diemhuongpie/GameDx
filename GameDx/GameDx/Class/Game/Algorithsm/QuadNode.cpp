@@ -3,8 +3,8 @@
 CQuadNode::CQuadNode()
 {
 	m_NodeLevel			= 0;
-	m_PosNode			= (vector3d(0, SIZE_MAP_HIGHT, 0.5f));
-	m_NodeSize = CBox2D(m_PosNode.x, m_PosNode.y, SIZE_MAP_WIDTH, SIZE_MAP_HIGHT);
+	m_PosNode = (vector3d(0, 10000, 0.5f));
+	m_NodeSize = CBox2D(m_PosNode.x, m_PosNode.y, 10000, 10000);
 
 }
 
@@ -121,22 +121,21 @@ void CQuadNode::RenderNode()
 		(*i)->drawEntity();
 }
 
-void CQuadNode::DetectCollisionInNode(CMovable* MovableEntity)
+void CQuadNode::DetectCollisionInViewport(CMovable* movableEntity)
 {
-	if (CBox2D::Intersect(m_Node[0]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
-		m_Node[0]->RenderNode();
-	if (CBox2D::Intersect(m_Node[1]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
-		m_Node[1]->RenderNode();
-	if (CBox2D::Intersect(m_Node[2]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
-		m_Node[2]->RenderNode();
-	if (CBox2D::Intersect(m_Node[3]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
-		m_Node[3]->RenderNode();
-
-	for (vector<CBaseEntity*>::iterator i = m_EntityList.begin(); i != m_EntityList.end(); ++i)
+	if (m_Node != NULL)
 	{
-		if (CCollision::CheckCollision(MovableEntity, (*i)))
-		{
-			//Resolve collision here
-		}
+		if (CBox2D::Intersect(m_Node[0]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
+			m_Node[0]->DetectCollisionInViewport(movableEntity);
+		if (CBox2D::Intersect(m_Node[1]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
+			m_Node[1]->DetectCollisionInViewport(movableEntity);
+		if (CBox2D::Intersect(m_Node[2]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
+			m_Node[2]->DetectCollisionInViewport(movableEntity);
+		if (CBox2D::Intersect(m_Node[3]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
+			m_Node[3]->DetectCollisionInViewport(movableEntity);
+	}
+	for (int i = 0; i < this->m_EntityList.size(); ++i)
+	{
+		movableEntity->logicCollision(m_EntityList.at(i));
 	}
 }

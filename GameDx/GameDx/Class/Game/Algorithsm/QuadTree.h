@@ -5,6 +5,7 @@
 #include "Game\Utill\Config.h"
 #include "Game\Algorithsm\Singleton.h"
 #include "QuadNode.h"
+#include "Game\Entity\MovableEntity.h"
 
 class CQuadTree : public CSingleton<CQuadTree>
 {
@@ -16,6 +17,7 @@ public:
 	void								ReleaseTree();
 	void								RenderTree();
 	void								DeviceObjectToTree(vector<CBaseEntity*> ListTileObject);
+	void								CollisionNodeInViewPort(CMovable* movableEntity);
 protected:
 	CQuadNode*							m_Node;
 

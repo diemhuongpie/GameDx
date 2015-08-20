@@ -25,7 +25,7 @@ public:
 	CQuadNode**				getParent();							
 	void					SplitParent();
 	void					RenderNode();
-	void					DetectCollisionInNode(CMovable*);
+	void					DetectCollisionInViewport(CMovable* movableEntity);
 
 private:
 	int						m_NodeLevel;

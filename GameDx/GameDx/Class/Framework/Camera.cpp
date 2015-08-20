@@ -79,7 +79,7 @@ void CCamera::Update(vector3d	positionEntity)
 
 void	CCamera::NormalUpdate(vector3d	positionEntity)
 {
-	if (positionEntity.x - BACKBUFFER_WIDTH / 2.0f > m_LimitRect.left - 16
+	if (positionEntity.x - BACKBUFFER_WIDTH / 2.0f > m_LimitRect.left
 		&& positionEntity.x + BACKBUFFER_WIDTH < m_LimitRect.right)
 		m_Position.x = positionEntity.x - BACKBUFFER_WIDTH / 2.0f;
 

@@ -19,7 +19,7 @@ CPlayer::CPlayer(LPDIRECT3DDEVICE9)
 
 bool CPlayer::initEntity()
 {
-	m_Position		= vector3d(200, 337, 0.5);
+	m_Position		= vector3d(50, 400, 0.5);
 	m_Velocity		= vector2d(10, 10);
 	m_Accelero		= vector2d(0, 0);
 	m_State			= PLAYSTATE::START;
@@ -52,10 +52,40 @@ bool CPlayer::loadSprite()
 void CPlayer::logicGravity(float deltaTime)
 {
 	// Update Gravity
-	m_Position.y -= m_Velocity.y*deltaTime / 15;
+	m_Position.y -= m_Velocity.y*deltaTime;
 }
 
+void CPlayer::logicCollision(CBaseEntity* entity)
+{
+	switch (CCollision::CheckCollision(this, entity))
+	{
+	case COLDIRECTION::COLDIRECTION_LEFT:
+		//this->setPosition(vector3d (entity->getBounding().getX() - entity->getBounding().getWidth() / 2 - this->getBounding().getWidth(), m_Position.y, 0.5f));
+		break;
+	case COLDIRECTION::COLDIRECTION_TOP:
+		this->setPosition(vector3d(m_Position.x, entity->getBounding().getY() + entity->getBounding().getHeight()/ 2 + this->getBounding().getHeight()/ 2 - 2, 0.5f));
+		OutputDebugString(L"pos: ");
+		OutputDebugString(_itow(m_Position.y, new WCHAR[1], 10));
+		OutputDebugString(L"\n");
 
+		break;
+	case COLDIRECTION::COLDIRECTION_BOTTOM:
+		//this->setPosition(vector3d(m_Position.x, entity->getBounding().getY() - entity->getBounding().getHeight(), 0.5f));
+		OutputDebugString(L"pos: ");
+		OutputDebugString(_itow(m_Position.x, new WCHAR[1], 10));
+		OutputDebugString(L"\n");
+		break;
+	case COLDIRECTION::COLDIRECTION_RIGHT:
+		//this->setPosition(vector3d(entity->getBounding().getX() + entity->getBounding().getWidth(), m_Position.y, 0.5f));
+		break;
+	default:
+		break;
+	}
+
+	OutputDebugString(L"pos: ");
+	OutputDebugString(_itow(CCollision::CheckCollision(this, entity), new WCHAR[1], 10));
+	OutputDebugString(L"\n");
+}
 
 void CPlayer::updateEntity(float deltaTime)
 {
@@ -101,20 +131,18 @@ void CPlayer::updateEntity(float deltaTime)
 		break;
 	}
 
+	
+
 	if (m_Position.y < 50)
 	{
 		m_Position.y = 50;
 		m_Accelero.y = 5;
-		m_Velocity.y = 10;
+		m_Velocity.y = 0.5;
 		//m_State = PLAYERSTATES::STATE_STAND;
 	}
 
 	// Update State
 	m_TimeState += deltaTime;
-
-	OutputDebugString(L"pos: ");
-	OutputDebugString(_itow(m_Position.x, new WCHAR[1], 10));
-	OutputDebugString(L"\n");
 
 }
 
@@ -474,6 +502,7 @@ void CPlayer::logicClimbPlayer(float deltaTime)
 	else if (m_Direction == DIRECTION::DIRECTION_DOWN)
 		m_Position.y -= m_Velocity.y *deltaTime / 60;
 }
+
 vector3d CPlayer::getPosition()
 {
 	return m_Position;

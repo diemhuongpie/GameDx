@@ -30,7 +30,7 @@ bool	CPlayScene::initScene()
 	m_EnemyBall			= new CEnemyBall();
 
 	CMapmanager::getInstance()->readMapList();
-	CMapmanager::getInstance()->setCurrentMapAt(1);
+	CMapmanager::getInstance()->setCurrentMapAt(2);
 	return true;
 }
 
@@ -46,9 +46,10 @@ void	CPlayScene::updateScene(double deltaTime)
 
 	/*for (auto i = 0; i < CMapmanager::getInstance()->getCurrentMap()->getlistCollisionTile().size(); ++i)
 	{
-		if (CCollision::CheckCollision(m_Player, CMapmanager::getInstance()->getCurrentMap()->getlistCollisionTile().at(i)) == COLDIRECTION::COLDIRECTION_BOTTOM)
-			m_Player->setPosition(vector3d(CMapmanager::getInstance()->getCurrentMap()->getlistCollisionTile().at(i)->getBounding().getX(), CMapmanager::getInstance()->getCurrentMap()->getlistCollisionTile().at(i)->getBounding().getY() + CMapmanager::getInstance()->getCurrentMap()->getlistCollisionTile().at(i)->getBounding().getHeight(), 0.5f));
+		m_Player->logicCollision(CMapmanager::getInstance()->getCurrentMap()->getlistCollisionTile().at(i));
 	}*/
+
+	CMapmanager::getInstance()->getCurrentMap()->update(deltaTime, m_Player);
 
 	CCollision::CheckCollision(m_Player, m_EnemyTankRed);
 
@@ -71,14 +72,14 @@ void	CPlayScene::updateScene(CKeyBoard* keyboard)
 {
 	if (keyboard->KeyPress(DIK_P))
 		return;
-	m_EnemyAutoOrange->updateEntity(keyboard);
-	m_Player->updateEntity(keyboard);
-	m_EnemyBall->updateEntity(keyboard);
-
+	m_EnemyAutoOrange	->updateEntity(keyboard);
+	m_Player			->updateEntity(keyboard);
+	m_EnemyBall			->updateEntity(keyboard);
 }
 
 void	CPlayScene::renderScene()
 {
+	CMapmanager::getInstance()->getCurrentMap()->render();
 	m_Player		->drawEntity();
 	
 
@@ -95,5 +96,5 @@ void	CPlayScene::renderScene()
 		}
 	}
 
-	CMapmanager::getInstance()->getCurrentMap()->render();
+	
 }

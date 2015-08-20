@@ -18,6 +18,8 @@ public:
 	bool loadSprite();
 	void enemyMoving();
 
+	virtual	void logicCollision(CBaseEntity* entity) override;
+
 private:
 	vector3d m_position1;
 	int x;

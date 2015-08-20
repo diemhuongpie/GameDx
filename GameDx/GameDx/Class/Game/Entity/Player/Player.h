@@ -5,6 +5,7 @@
 
 #include "Game\Entity\MovableEntity.h"
 #include "Framework\Camera.h"
+#include "Mathematics\Collision.h"
 
 #ifndef __CPLAYER_H__
 #define __CPLAYER_H__
@@ -23,6 +24,7 @@ public:
 	virtual void			drawEntity()											override;
 	virtual	vector3d		getPosition()											override;
 	virtual bool			loadSprite()											override;
+	virtual void			logicCollision(CBaseEntity* entity)						override;
 
 public:
 			void			logicGravity(float deltaTime);

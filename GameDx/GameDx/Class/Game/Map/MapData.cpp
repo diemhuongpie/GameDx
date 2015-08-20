@@ -16,16 +16,13 @@ MapData::~MapData()
 }
 
 
-vector<CBaseEntity*>	MapData::getlistCollisionTile()
-{
-	return m_listCollisionTile;
-}
-
 void	MapData::readMapInfor(wstring filePath)
 {
 	readTileMap(filePath);
 	CQuadTree::getInstance()->DeviceObjectToTree(m_listTile);
 	CQuadTree::getInstance()->DeviceObjectToTree(m_listCollisionTile);
+	vector<CBaseEntity*> results;
+
 }
 
 void	MapData::readTileMap(wstring filePath)
@@ -121,9 +118,9 @@ void	MapData::readTileMap(wstring filePath)
 	}
 }
 
-void		MapData::update(float deltaTime)
+void		MapData::update(float deltaTime, CMovable* entity)
 {
-
+	CQuadTree::getInstance()->CollisionNodeInViewPort(entity);
 }
 
 void		MapData::render()

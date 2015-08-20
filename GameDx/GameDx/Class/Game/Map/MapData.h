@@ -7,6 +7,7 @@
 #include "Game\Utill\Config.h"
 #include "Game\Entity\Tile\Tile.h"
 #include "Game\Entity\BaseEntity.h"
+#include "Game\Entity\MovableEntity.h"
 #include "Game\Algorithsm\QuadTree.h"
 
 class MapData
@@ -19,9 +20,8 @@ public:
 	void					readTileMap(wstring);
 	CBox2D					getSize();
 		
-	void					update(float deltaTime);
+	void					update(float deltaTime, CMovable* entity);
 	void					render();
-	vector<CBaseEntity*>	getlistCollisionTile();
 
 protected:
 	vector<CBaseEntity*>			m_listTile;
