@@ -22,7 +22,8 @@ public:
 	virtual		bool					loadSprite()				= 0;
 	virtual		CBox2D					getBounding()			override;
 	virtual		bool					initEntity()			override;
-	virtual		const char*				getTagNode()			override;
+	virtual		char*					getTagNode()			override;
+	virtual		void					setTagNode(char* tag)	override;
 				vector3d				getPosition();
 	virtual		int						getState()				override;
 	virtual		void					setState(int newState)	override;

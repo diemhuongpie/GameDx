@@ -19,7 +19,7 @@ CPlayer::CPlayer(LPDIRECT3DDEVICE9)
 
 bool CPlayer::initEntity()
 {
-	m_Position		= vector3d(50, 400, 0.5);
+	m_Position		= vector3d(50, 337, 0.5);
 	m_Velocity		= vector2d(10, 10);
 	m_Accelero		= vector2d(0, 0);
 	m_State			= PLAYSTATE::START;

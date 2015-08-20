@@ -25,14 +25,15 @@ public:
 	virtual void			updateEntity(float deltaTime)						= 0;
 	virtual void			drawEntity()										= 0;
 	virtual	CBox2D			getBounding()										= 0;
-	virtual const char*		getTagNode()										= 0;
+	virtual char*			getTagNode()										= 0;
+	virtual	void			setTagNode(char*)									= 0;
 	virtual int				getState()											= 0;
 	virtual void			setState(int newState)								= 0;
 
 protected:
 	int						m_State;
 	bool					m_isDead;
-	const char*				m_TagNode;
+	char*					m_TagNode;
 	CBox2D*					m_Bounding;
 	vector3d				m_Position;
 	vector<CSprite*>		m_listSprite;

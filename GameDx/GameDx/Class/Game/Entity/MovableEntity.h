@@ -17,7 +17,7 @@ class CMovable : public CBaseEntity
 public:
 	CMovable();
 	~CMovable();
-	
+
 	virtual		void					updateEntity(float deltaTime)		= 0;
 	virtual		void					updateEntity(CKeyBoard*)			= 0;
 	virtual		void					logicCollision(CBaseEntity* entity)	= 0;
@@ -26,11 +26,13 @@ public:
 	virtual		CBox2D					getBounding()						override;
 	virtual		bool					initEntity()						override;
 	virtual		const char*				getTagNode()						override;
+	virtual		void					setTagNode(char* tag)			override;
 	virtual		vector2d				getVelocity()						;
 	virtual		int						getState()							override;
 	virtual		void					setState(int newState)				override;
 	virtual		void					setPosition(vector3d pos)			;
 	virtual		void					setVelocity(vector2d vel)			;
+
 
 protected:
 				vector2d				m_Velocity;

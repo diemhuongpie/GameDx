@@ -103,18 +103,25 @@ void	MapData::readTileMap(wstring filePath)
 			m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//30.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 29));
 		if (type == L"30C")
 			m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//31.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 30));
-		
-		
 		if (type == L"13C")
-			m_listCollisionTile.push_back(new CTile(new CSprite((filePath + L"resource//14.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 13));
+			m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//14.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 13));
 		if (type == L"31C")
-			m_listCollisionTile.push_back(new CTile(new CSprite((filePath + L"resource//32.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 31));
+			m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//32.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 31));
 		if (type == L"32C")
-			m_listCollisionTile.push_back(new CTile(new CSprite((filePath + L"resource//33.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 32));
+			m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//33.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 32));
 		if (type == L"33C")
-			m_listCollisionTile.push_back(new CTile(new CSprite((filePath + L"resource//34.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 33));
+			m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//34.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 33));
 		if (type == L"34C")
-			m_listCollisionTile.push_back(new CTile(new CSprite((filePath + L"resource//35.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 34));
+			m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//35.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 34));
+		
+
+		m_listTile.at(m_listTile.size() - 1)->setTagNode("Tile");
+
+		if (type == L"C")
+		{
+			m_listCollisionTile.push_back(new CTile(new CSprite((filePath + L"resource//C.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 35));
+			m_listCollisionTile.at(m_listCollisionTile.size() - 1)->setTagNode("Collision");
+		}
 	}
 }
 

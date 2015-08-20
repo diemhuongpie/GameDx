@@ -35,7 +35,7 @@ vector3d CStaticEntity::getPosition()
 	return m_Position;
 }
 
-const char* CStaticEntity::getTagNode()
+char* CStaticEntity::getTagNode()
 {
 	return this->m_TagNode;
 }
@@ -48,4 +48,9 @@ int CStaticEntity::getState()
 void		CStaticEntity::setState(int newState)
 {
 	m_State = newState;
+}
+
+void		CStaticEntity::setTagNode(char* tag)
+{
+	m_TagNode	= tag;
 }

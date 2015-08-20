@@ -21,7 +21,7 @@ public:
 
 private:
 	vector<CBaseBullet*>*			m_listBullet;
-	float m_angle;
+	float							m_angle;
 
 };
 

@@ -126,11 +126,6 @@ void CBossCutMan::updateEntity(float deltaTime)
 	{
 		m_isLeft = true;
 	}
-
-	
-
-	
-
 }
 
 void CBossCutMan::updateEntity(RECT rectCamera)

@@ -194,6 +194,13 @@ enum PLAYERSTATES
 	STATE_CLIMB_END			= 9,
 	STATE_HIT				= 10
 };
+
+enum STYLELIST_IN_QUADTREE
+{
+	ENEMY_LIST,
+	TILE_LIST,
+	COLLISION_LIST
+};
 /******************/
 
 /*STRUCT*/

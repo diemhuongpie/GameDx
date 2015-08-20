@@ -24,7 +24,7 @@ vector3d	CMovable::getPosition()
 
 void	CMovable::setPosition(vector3d pos)
 {
-	m_Position = pos;
+	m_Position		= pos;
 }
 
 CBox2D		CMovable::getBounding()
@@ -45,9 +45,14 @@ vector2d CMovable::getVelocity()
 	return m_Velocity;
 }
 
-const char* CMovable::getTagNode()
+char* CMovable::getTagNode()
 {
 	return this->m_TagNode;
+}
+
+void	CMovable::setTagNode(char* tag)
+{
+	m_TagNode		= tag;
 }
 
 int CMovable::getState()
@@ -57,7 +62,7 @@ int CMovable::getState()
 
 void	CMovable::setState(int newState)
 {
-	m_State = newState;
+	m_State			= newState;
 }
 
 void	CMovable::setVelocity(vector2d newVel)

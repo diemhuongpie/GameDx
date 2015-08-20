@@ -1,5 +1,5 @@
 #include "QuadNode.h"
-
+#include "Game\Entity\Tile\Tile.h"
 CQuadNode::CQuadNode()
 {
 	m_NodeLevel			= 0;
@@ -117,8 +117,18 @@ void CQuadNode::RenderNode()
 			m_Node[3]->RenderNode();
 	}
 
-	for (vector<CBaseEntity*>::iterator i = m_EntityList.begin(); i != m_EntityList.end(); ++i)
-		(*i)->drawEntity();
+	for (int i = 0; i < m_EntityList.size(); ++i)
+	{
+		if (!(m_EntityList.at(i)->getTagNode() == "Collision"))
+		{
+			m_EntityList.at(i)->drawEntity();
+		}
+		else
+		{
+			int a = 0;
+			int b = 0;
+		}
+	}
 }
 
 void CQuadNode::DetectCollisionInViewport(CMovable* movableEntity)

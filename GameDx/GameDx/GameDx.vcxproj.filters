@@ -288,12 +288,6 @@
     <ClCompile Include="Class\Game\Algorithsm\QuadNode.cpp">
       <Filter>Algorithm\Quadtree\cpp</Filter>
     </ClCompile>
-    <ClCompile Include="Class\Game\Entity\Bullet\BulletEnemyBall.cpp">
-      <Filter>Game\Entity\Children\Bullet\cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\Game\Entity\Bullet\BulletMachineAutoOrange.cpp">
-      <Filter>Game\Entity\Children\Bullet\cpp</Filter>
-    </ClCompile>
     <ClCompile Include="Class\Game\Map\MapData.cpp">
       <Filter>Game\Entity\Children\Map\cpp</Filter>
     </ClCompile>
@@ -308,6 +302,9 @@
     </ClCompile>
     <ClCompile Include="Class\Game\Entity\Bullet\BulletTankRed.cpp">
       <Filter>Game\Entity\Children\Bullet\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Bullet\BombBullet.cpp">
+      <Filter>Game\Entity\Children\Bullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -446,12 +443,6 @@
     <ClInclude Include="Class\Game\Scene\SelectStageScene.h">
       <Filter>Game\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Class\Game\Entity\Bullet\BulletEnemyBall.h">
-      <Filter>Game\Entity\Children\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\Game\Entity\Bullet\BulletMachineAutoOrange.h">
-      <Filter>Game\Entity\Children\Bullet</Filter>
-    </ClInclude>
     <ClInclude Include="Class\Game\Entity\Bullet\BaseBullet.h">
       <Filter>Game\Entity\Children\Bullet</Filter>
     </ClInclude>
@@ -470,6 +461,9 @@
     </ClInclude>
     <ClInclude Include="Class\Game\Map\UtillMap.h" />
     <ClInclude Include="Class\Game\Entity\Bullet\BulletTankRed.h">
+      <Filter>Game\Entity\Children\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Bullet\BombBullet.h">
       <Filter>Game\Entity\Children\Bullet</Filter>
     </ClInclude>
   </ItemGroup>

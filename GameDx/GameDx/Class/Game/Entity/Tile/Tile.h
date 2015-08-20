@@ -20,8 +20,11 @@ public:
 	virtual		bool					loadSprite()							override;
 	virtual		CBox2D					getBounding()							override;
 	virtual		bool					initEntity()							override;
-
+				
+				int						getStyleID();
+				void					setStyleID();
 protected:
+				// styleID's including CollisionTile, Enemy, Tile
 				int						m_styleID;
 };
 
