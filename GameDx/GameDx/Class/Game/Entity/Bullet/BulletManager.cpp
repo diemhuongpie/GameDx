@@ -58,7 +58,7 @@ void	CBulletManager::ShowBullet(int styleBullet, vector3d pos, vector2d Vel)
 	{
 		m_listBullet[styleBullet].at(i)->setState(BULLETSTATE::BULLET_STATE_SHOW);
 		m_listBullet[styleBullet].at(i)->setPosition(pos);
-		m_listBullet[styleBullet].at(i)->setVelocity(Vel);
+		m_listBullet[styleBullet].at(i)->setVelocity(vector2d(Vel.x*3, Vel.y*3));
 		break;
 	}
 }

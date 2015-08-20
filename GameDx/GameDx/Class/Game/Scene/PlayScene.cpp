@@ -30,7 +30,7 @@ bool	CPlayScene::initScene()
 	m_EnemyBall			= new CEnemyBall();
 
 	CMapmanager::getInstance()->readMapList();
-	CMapmanager::getInstance()->setCurrentMapAt(1);
+	CMapmanager::getInstance()->setCurrentMapAt(2);
 	return true;
 }
 

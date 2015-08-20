@@ -15,6 +15,8 @@ using namespace std;
 #define GAME_RATE					(1000.0f/80.0f)
 #define WINDOWS_NAME				L"Oishi"
 
+#define GRAVITY						0.2
+
 #define DRAWCENTER_LEFT_TOP			1					
 #define DRAWCENTER_LEFT_MIDDLE		2			
 #define DRAWCENTER_LEFT_BOTTOM		3					

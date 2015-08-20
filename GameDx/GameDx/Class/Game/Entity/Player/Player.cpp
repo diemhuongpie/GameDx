@@ -20,7 +20,7 @@ CPlayer::CPlayer(LPDIRECT3DDEVICE9)
 bool CPlayer::initEntity()
 {
 	m_Position		= vector3d(50, 337, 0.5);
-	m_Velocity		= vector2d(10, 10);
+	m_Velocity		= vector2d(GRAVITY, GRAVITY);
 	m_Accelero		= vector2d(0, 0);
 	m_State			= PLAYSTATE::START;
 	m_TimeState		= 0;
@@ -63,7 +63,7 @@ void CPlayer::logicCollision(CBaseEntity* entity)
 		//this->setPosition(vector3d (entity->getBounding().getX() - entity->getBounding().getWidth() / 2 - this->getBounding().getWidth(), m_Position.y, 0.5f));
 		break;
 	case COLDIRECTION::COLDIRECTION_TOP:
-		this->setPosition(vector3d(m_Position.x, entity->getBounding().getY() + entity->getBounding().getHeight()/ 2 + this->getBounding().getHeight()/ 2 - 2, 0.5f));
+		//this->setPosition(vector3d(m_Position.x, entity->getBounding().getY() + entity->getBounding().getHeight()/ 2 + this->getBounding().getHeight()/ 2 - 2, 0.5f));
 		OutputDebugString(L"pos: ");
 		OutputDebugString(_itow(m_Position.y, new WCHAR[1], 10));
 		OutputDebugString(L"\n");
@@ -137,7 +137,7 @@ void CPlayer::updateEntity(float deltaTime)
 	{
 		m_Position.y = 50;
 		m_Accelero.y = 5;
-		m_Velocity.y = 0.5;
+		m_Velocity.y = GRAVITY;
 		//m_State = PLAYERSTATES::STATE_STAND;
 	}
 
@@ -171,7 +171,7 @@ void CPlayer::updateEntity(CKeyBoard* device)
 		{
 			m_State			= PLAYERSTATES::STATE_JUMP;
 			m_TimeState		= 0;
-			//m_Velocity.y	= std::abs(m_Velocity.y) * (DIRECTION::DIRECTION_UP);
+			m_Velocity.y	= std::abs(m_Velocity.y) * (DIRECTION::DIRECTION_UP);
 		}
 		else if (device->KeyPress(DIK_UP))
 		{
@@ -460,7 +460,7 @@ void CPlayer::drawEntity()
 
 void CPlayer::logicMovePlayer(float deltaTime)
 {
-	m_Position.x += m_Velocity.x*(deltaTime / 60);
+	m_Position.x += m_Velocity.x*deltaTime;
 }
 
 void CPlayer::logicJumpPlayer(float deltaTime)
@@ -472,12 +472,12 @@ void CPlayer::logicJumpPlayer(float deltaTime)
 
 		if (m_TimeState > TIME_FOR_JUMB / 2)
 		{
-			m_Velocity.y	= 10;
-			m_Position.y	+= m_Accelero.y;
+			m_Velocity.y	= GRAVITY;
+			m_Position.y	+= m_Velocity.y*deltaTime + m_Accelero.y;
 		}
 		else
 		{
-			m_Velocity.y	= -10;
+			m_Velocity.y	= -GRAVITY;
 			m_Position.y	-= m_Accelero.y;
 		}
 
@@ -489,18 +489,14 @@ void CPlayer::logicJumpPlayer(float deltaTime)
 
 void CPlayer::logicStandPlayer(float deltaTime)
 {
-	if ((m_Velocity.x > 0 && m_Velocity.x <= 1) || (m_Velocity.x >= -1 && m_Velocity.x < 0))
-	{
-		m_Velocity.x = 0;
-	}
 }
 
 void CPlayer::logicClimbPlayer(float deltaTime)
 {
 	if (m_Direction == DIRECTION::DIRECTION_UP)
-		m_Position.y += m_Velocity.y* deltaTime / 60;
+		m_Position.y += m_Velocity.y* deltaTime;
 	else if (m_Direction == DIRECTION::DIRECTION_DOWN)
-		m_Position.y -= m_Velocity.y *deltaTime / 60;
+		m_Position.y -= m_Velocity.y *deltaTime;
 }
 
 vector3d CPlayer::getPosition()
