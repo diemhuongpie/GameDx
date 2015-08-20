@@ -17,6 +17,8 @@ public:
 	void updateEntity(RECT rectCamera);
 	void drawEntity();
 
+	virtual		void					logicCollision(CBaseEntity* entity) ;
+
 	bool loadSprite();
 private:
 	int m_delay_Time;

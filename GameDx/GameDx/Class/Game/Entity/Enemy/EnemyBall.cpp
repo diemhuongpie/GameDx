@@ -44,6 +44,10 @@ void CEnemyBall::updateEntity(CKeyBoard *device)
 
 }
 
+void CEnemyBall::logicCollision(CBaseEntity* entity)
+{
+}
+
 void CEnemyBall::updateEntity(float deltaTime)
 {
 	CCollision::CheckCollision(new CEnemyBall(), new CEnemyBubbleBlue());

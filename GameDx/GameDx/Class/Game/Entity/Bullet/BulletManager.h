@@ -5,8 +5,6 @@
 #include "Game\Entity\MovableEntity.h"
 #include "Game\Entity\StaticEntity.h"
 #include "Game\Entity\Bullet\BulletNormal.h"
-#include "Game\Entity\Bullet\BulletMachineAutoOrange.h"
-#include "Game\Entity\Bullet\BulletEnemyBall.h"
 #include "Game\Entity\Bullet\BaseBullet.h"
 #include "Game\Entity\Bullet\BulletEnemy.h"
 #include "Game\Entity\Bullet\BulletTankRed.h"
