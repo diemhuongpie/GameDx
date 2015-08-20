@@ -44,7 +44,7 @@ void CEnemyMachineAutoOrange::updateEntity(float deltaTime)
 	{
 		check_State = true;
 	}
-	if (m_delay_Time >= 500)
+	if (m_delay_Time >= 1000)
 	{
 		check_State		= false;
 		CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::MACHINE_AUTO_ORANGE, this->m_Position);

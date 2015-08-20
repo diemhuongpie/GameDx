@@ -304,7 +304,7 @@
       <Filter>Game\Entity\Children\Map\cpp</Filter>
     </ClCompile>
     <ClCompile Include="Class\Game\Entity\Bullet\BulletEnemy.cpp">
-      <Filter>Game\Entity\Children\Bullet</Filter>
+      <Filter>Game\Entity\Children\Bullet\cpp</Filter>
     </ClCompile>
     <ClCompile Include="Class\Game\Entity\Bullet\BulletTankRed.cpp">
       <Filter>Game\Entity\Children\Bullet\cpp</Filter>
