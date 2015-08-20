@@ -23,6 +23,10 @@ public:
 				
 				int						getStyleID();
 				void					setStyleID();
+
+	virtual		void					resetObject()							override;
+
+
 protected:
 				// styleID's including CollisionTile, Enemy, Tile
 				int						m_styleID;

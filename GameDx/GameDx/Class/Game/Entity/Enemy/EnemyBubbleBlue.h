@@ -16,6 +16,7 @@ public:
 	void updateEntity(RECT rectCamera);
 	void drawEntity();
 	bool loadSprite();
+	void resetObject();
 	void enemyMoving();
 
 	virtual	void logicCollision(CBaseEntity* entity) override;

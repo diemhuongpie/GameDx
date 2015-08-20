@@ -33,6 +33,9 @@ bool CBulletEnemy::initEntity()
 	return true;
 }
 
+void CBulletEnemy::resetObject()
+{}
+
 void CBulletEnemy::updateEntity(float deltaTime)
 {
 	

@@ -30,6 +30,9 @@ bool		CBulletNormal::initEntity()
 	return true;
 }
 
+void CBulletNormal::resetObject()
+{}
+
 void CBulletNormal::updateEntity(float deltaTime)
 {
 	

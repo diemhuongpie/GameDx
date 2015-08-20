@@ -44,3 +44,6 @@ void		CTile::drawEntity()
 {
 	m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(m_Position), vector2d(2.0, 2.0), 0.0f, DRAWCENTER_LEFT_TOP, true, FPS);
 }
+
+void CTile::resetObject()
+{}

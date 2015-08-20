@@ -21,7 +21,7 @@ public:
 	
 	void updateEntity(RECT rectCamera)							;
 	void drawEntity()											;
-
+	void resetObject()											;
 	bool loadSprite()											;
 
 private:

@@ -11,6 +11,7 @@ CEnemyInkBlue::CEnemyInkBlue(vector3d m_position_p, vector3d m_position)
 {
 	m_position_Player = m_position_p;
 	m_Position = m_position;
+
 	this->initEntity();
 }
 
@@ -23,6 +24,7 @@ bool CEnemyInkBlue::initEntity()
 	check_State = true;
 	m_delay_Time = 0;
 	m_Velocity.x = 1;
+	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
 	// LOAD SPRITE
 	this->loadSprite();
 	return true;
@@ -34,6 +36,11 @@ bool CEnemyInkBlue::loadSprite()
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//enemy_ink_blue.png", 1, 2, 2, 0));
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//boom_burst.png", 1, 4, 4, 0));
 	return true;
+}
+
+void CEnemyInkBlue::resetObject()
+{
+
 }
 void CEnemyInkBlue::updateEntity(CKeyBoard *device)
 {}

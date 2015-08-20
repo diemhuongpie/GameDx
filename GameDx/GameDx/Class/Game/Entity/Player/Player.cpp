@@ -49,6 +49,11 @@ bool CPlayer::loadSprite()
 	return true;
 }
 
+void CPlayer::resetObject()
+{
+
+}
+
 void CPlayer::logicGravity(float deltaTime)
 {
 	// Update Gravity

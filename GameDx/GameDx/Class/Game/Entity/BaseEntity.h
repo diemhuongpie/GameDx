@@ -29,6 +29,7 @@ public:
 	virtual	void			setTagNode(char*)									= 0;
 	virtual int				getState()											= 0;
 	virtual void			setState(int newState)								= 0;
+	virtual void			resetObject()										= 0;
 
 protected:
 	int						m_State;
@@ -37,6 +38,8 @@ protected:
 	CBox2D*					m_Bounding;
 	vector3d				m_Position;
 	vector<CSprite*>		m_listSprite;
+	int						m_heath;
+	float					m_delayDeath;
 
 };
 

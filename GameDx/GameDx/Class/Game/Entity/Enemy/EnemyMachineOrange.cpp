@@ -24,6 +24,7 @@ bool CEnemyMachineOrange::initEntity()
 {
 	// LOAD SPRITE
 	m_Velocity.x = 5;
+	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
 	this->loadSprite();
 	return true;
 }
@@ -35,6 +36,10 @@ bool CEnemyMachineOrange::loadSprite()
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//boom_burst.png", 1, 4, 4, 0));
 	return true;
 }
+
+void CEnemyMachineOrange::resetObject()
+{}
+
 void CEnemyMachineOrange::updateEntity(CKeyBoard *device)
 {}
 

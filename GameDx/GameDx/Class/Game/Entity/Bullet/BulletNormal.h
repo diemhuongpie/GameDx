@@ -18,6 +18,7 @@ public:
 	vector3d				getPosition();
 	void					setState(int newState);
 	int						getState();
+	void					resetObject();
 
 private :
 	float					m_Angle;

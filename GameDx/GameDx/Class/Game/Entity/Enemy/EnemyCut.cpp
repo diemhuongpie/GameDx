@@ -18,8 +18,7 @@ CEnemyCut::~CEnemyCut()
 
 bool CEnemyCut::initEntity()
 {
-	RECT rectangle = { 150, 300, 500, 200 };
-	m_Bounding = new CBox2D(rectangle);
+	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
 	m_Position = vector3d(350.0f, 300.0f, 0.0f);
 	// LOAD SPRITE
 	this->loadSprite();
@@ -33,6 +32,8 @@ bool CEnemyCut::loadSprite()
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//enemy_cut.png", 1, 2, 2, 0));
 	return true;
 }
+void CEnemyCut::resetObject()
+{}
 
 void CEnemyCut::updateEntity(CKeyBoard *device)
 {

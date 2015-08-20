@@ -19,8 +19,7 @@ CEnemyBall::~CEnemyBall()
 
 bool CEnemyBall::initEntity()
 {
-	RECT rectangle = { 420, 300, 500, 200 };
-	m_Bounding = new CBox2D(rectangle, vector2d(50, 50));
+	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
 	m_Velocity = vector2d(50, 50);
 
 	check_State = true;
@@ -48,6 +47,11 @@ void CEnemyBall::logicCollision(CBaseEntity* entity)
 {
 }
 
+
+void CEnemyBall::resetObject()
+{
+
+}
 void CEnemyBall::updateEntity(float deltaTime)
 {
 	CCollision::CheckCollision(new CEnemyBall(), new CEnemyBubbleBlue());

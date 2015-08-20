@@ -33,6 +33,9 @@ bool CBulletTankRed::initEntity()
 	return true;
 }
 
+void CBulletTankRed::resetObject()
+{}
+
 void CBulletTankRed::updateEntity(float deltaTime)
 {
 	switch (m_changeAngle)

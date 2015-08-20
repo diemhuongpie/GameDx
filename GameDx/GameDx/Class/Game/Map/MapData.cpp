@@ -59,8 +59,8 @@ void	MapData::readTileMap(wstring filePath)
 			m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//7.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 6));
 		if (type == L"7C")
 			m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//8.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 7));
-		if (type == L"8C")
-			m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//9.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 8));
+		/*if (type == L"8C")
+			m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//9.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 8));*/
 		if (type == L"9C") //stair
 			m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//10.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 9));
 		if (type == L"10C")

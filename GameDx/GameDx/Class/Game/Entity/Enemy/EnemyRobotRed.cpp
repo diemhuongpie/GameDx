@@ -15,7 +15,8 @@ bool EnemyRobotRed::initEntity()
 {
 	check_State = true;
 	m_Position = D3DXVECTOR3(300.0f, 300.0f, 0.0f);
-	m_delay_Time = 0;
+	m_delayTime = 0;
+	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
 	// LOAD SPRITE
 	this->loadSprite();
 	return true;
@@ -27,6 +28,11 @@ bool EnemyRobotRed::loadSprite()
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//enemy_robot_red.png", 1, 2, 2, 0));
 	return true;
 }
+
+void EnemyRobotRed::resetObject()
+{
+
+}
 void EnemyRobotRed::updateEntity(CKeyBoard *device)
 {
 
@@ -35,7 +41,7 @@ void EnemyRobotRed::updateEntity(float deltaTime)
 {
 	this->m_Position.x += this->m_Velocity.x*deltaTime;
 	this->m_Position.y += this->m_Velocity.y*deltaTime;
-	m_delay_Time++;
+	m_delayTime++;
 	if (m_Position.x >= 400)
 	{
 		m_isLEFT = true;
@@ -45,9 +51,9 @@ void EnemyRobotRed::updateEntity(float deltaTime)
 		m_isLEFT = false;
 	}
 
-	if (m_delay_Time >= 70)
-		m_delay_Time = 0;
-	if (m_delay_Time > 0 && m_delay_Time < 50)
+	if (m_delayTime >= 70)
+		m_delayTime = 0;
+	if (m_delayTime > 0 && m_delayTime < 50)
 	{
 		
 		if (m_Position.y >= 300)
@@ -58,7 +64,7 @@ void EnemyRobotRed::updateEntity(float deltaTime)
 		m_Velocity.x = 0;
 		
 	}
-	if (m_delay_Time >= 50)
+	if (m_delayTime >= 50)
 	{
 		check_State = false;
 		if (m_isLEFT)

@@ -25,6 +25,7 @@ public:
 	virtual	vector3d		getPosition()											override;
 	virtual bool			loadSprite()											override;
 	virtual void			logicCollision(CBaseEntity* entity)						override;
+	virtual void			resetObject()											override;
 
 public:
 			void			logicGravity(float deltaTime);

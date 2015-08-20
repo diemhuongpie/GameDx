@@ -19,9 +19,10 @@ public:
 
 	virtual		void					logicCollision(CBaseEntity* entity) ;
 
+	void resetObject();
 	bool loadSprite();
 private:
-	int m_delay_Time;
+	int m_delayTime;
 	bool check_State;
 };
 

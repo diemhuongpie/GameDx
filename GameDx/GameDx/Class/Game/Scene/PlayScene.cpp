@@ -25,12 +25,12 @@ bool	CPlayScene::initScene()
 
 	m_Player			= new CPlayer();
 	m_Player->initEntity();
-	m_EnemyTankRed		= new CEnemyTankRed(D3DXVECTOR3(400, 100, 0));
+	m_EnemyTankRed = new CEnemyTankRed(D3DXVECTOR3(400, 100, 0));
 	m_EnemyAutoOrange	= new CEnemyMachineAutoOrange(D3DXVECTOR3(200, 350, 0));
 	m_EnemyBall			= new CEnemyBall();
 
 	CMapmanager::getInstance()->readMapList();
-	CMapmanager::getInstance()->setCurrentMapAt(1);
+	CMapmanager::getInstance()->setCurrentMapAt(2);
 	return true;
 }
 
@@ -44,7 +44,10 @@ void	CPlayScene::updateScene(double deltaTime)
 	m_EnemyBall->updateEntity(deltaTime);
 	m_EnemyAutoOrange->updateEntity(deltaTime);
 
-
+	/*for (auto i = 0; i < CMapmanager::getInstance()->getCurrentMap()->getlistCollisionTile().size(); ++i)
+	{
+		m_Player->logicCollision(CMapmanager::getInstance()->getCurrentMap()->getlistCollisionTile().at(i));
+	}*/
 
 	CMapmanager::getInstance()->getCurrentMap()->update(deltaTime, m_Player);
 
@@ -80,9 +83,6 @@ void	CPlayScene::renderScene()
 	CMapmanager::getInstance()->getCurrentMap()->render();
 
 	m_Player		->drawEntity();
-
-	
-
 
 	m_EnemyTankRed	->drawEntity();
 	m_EnemyBall->drawEntity();

@@ -21,14 +21,14 @@ CEnemyEyeRed::CEnemyEyeRed(vector3d m_position, bool m_Horizontal, bool m_isleft
 
 bool CEnemyEyeRed::initEntity()
 {
-	m_delay_Time = 0;
+	m_delayTime = 0;
 	m_Velocity.x = 1;
+	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
 	// LOAD SPRITE
 	m_checkState = true;
 	this->loadSprite();
 	return true;
 }
-
 
 bool CEnemyEyeRed::loadSprite()
 {
@@ -36,6 +36,9 @@ bool CEnemyEyeRed::loadSprite()
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//boom_burst.png", 1, 4, 4, 0));
 	return true;
 }
+
+void CEnemyEyeRed::resetObject()
+{}
 
 void CEnemyEyeRed::updateEntity(CKeyBoard* keyboard)
 {
@@ -46,11 +49,11 @@ void CEnemyEyeRed::updateEntity(float deltaTime)
 {
 	this->m_Position.x += this->m_Velocity.x*deltaTime;
 	this->m_Position.y += this->m_Velocity.y*deltaTime;
-	m_delay_Time++;
+	m_delayTime++;
 
-	if (m_delay_Time > 85)
+	if (m_delayTime > 85)
 	{
-		m_delay_Time = 0;
+		m_delayTime = 0;
 	}
 	if (m_horizontal)
 	{
@@ -75,18 +78,18 @@ void CEnemyEyeRed::updateEntity(float deltaTime)
 		}
 	}
 
-	if (m_delay_Time > 0 && m_delay_Time < 30)
+	if (m_delayTime > 0 && m_delayTime < 30)
 	{
 		m_checkState = 0;
 		m_Velocity.x = 0;
 	}
 
-	if (m_delay_Time >= 30 && m_delay_Time <= 45)
+	if (m_delayTime >= 30 && m_delayTime <= 45)
 	{
 		m_checkState = 1;
 	}
 
-	if (m_delay_Time > 45)
+	if (m_delayTime > 45)
 	{
 		m_checkState = 2;
 	}

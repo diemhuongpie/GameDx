@@ -49,6 +49,11 @@ bool CBossCutMan::loadSprite()
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//cutman_fire0.png", 1, 2, 2, 0));
 	return true;
 }
+void CBossCutMan::resetObject()
+{
+
+}
+
 void CBossCutMan::updateEntity(CKeyBoard *device)
 {
 

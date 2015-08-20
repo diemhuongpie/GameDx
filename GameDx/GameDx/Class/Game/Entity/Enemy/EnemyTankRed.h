@@ -18,6 +18,7 @@ public:
 	void updateEntity(float deltaTime);
 	void updateEntity(RECT rectCamera);
 	void drawEntity();
+	void resetObject();
 	bool loadSprite();
 
 private:

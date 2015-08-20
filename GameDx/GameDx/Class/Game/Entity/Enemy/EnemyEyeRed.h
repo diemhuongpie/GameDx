@@ -14,14 +14,14 @@ public:
 	void updateEntity( float deltaTime);
 	void updateEntity(RECT rectCamera);
 	void drawEntity();
-
+	void resetObject();
 	bool loadSprite();
 private:
 	bool m_horizontal;
 	bool m_isTop;
 	bool m_isLeft;
 	int m_checkState;
-	int	 m_delay_Time;
+	int	 m_delayTime;
 
 };
 

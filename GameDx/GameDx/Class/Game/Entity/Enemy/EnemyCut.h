@@ -16,7 +16,7 @@ public:
 	void updateEntity(CKeyBoard *device);
 	void updateEntity(RECT rectCamera);
 	void drawEntity();
-
+	void resetObject();
 	bool loadSprite();
 
 private: 
