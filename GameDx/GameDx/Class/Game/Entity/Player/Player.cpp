@@ -60,23 +60,23 @@ void CPlayer::logicCollision(CBaseEntity* entity)
 	switch (CCollision::CheckCollision(this, entity))
 	{
 	case COLDIRECTION::COLDIRECTION_LEFT:
-		//this->setPosition(vector3d (entity->getBounding().getX() - entity->getBounding().getWidth() / 2 - this->getBounding().getWidth(), m_Position.y, 0.5f));
+		this->setPosition(vector3d (entity->getBounding().getX() - entity->getBounding().getWidth() / 2 - this->getBounding().getWidth(), m_Position.y, 0.5f));
 		break;
 	case COLDIRECTION::COLDIRECTION_TOP:
-		//this->setPosition(vector3d(m_Position.x, entity->getBounding().getY() + entity->getBounding().getHeight()/ 2 + this->getBounding().getHeight()/ 2 - 2, 0.5f));
+		this->setPosition(vector3d(m_Position.x, entity->getBounding().getY() + entity->getBounding().getHeight()/ 2 + this->getBounding().getHeight()/ 2 - 2, 0.5f));
 		OutputDebugString(L"pos: ");
 		OutputDebugString(_itow(m_Position.y, new WCHAR[1], 10));
 		OutputDebugString(L"\n");
 
 		break;
 	case COLDIRECTION::COLDIRECTION_BOTTOM:
-		//this->setPosition(vector3d(m_Position.x, entity->getBounding().getY() - entity->getBounding().getHeight(), 0.5f));
+		this->setPosition(vector3d(m_Position.x, entity->getBounding().getY() - entity->getBounding().getHeight(), 0.5f));
 		OutputDebugString(L"pos: ");
 		OutputDebugString(_itow(m_Position.x, new WCHAR[1], 10));
 		OutputDebugString(L"\n");
 		break;
 	case COLDIRECTION::COLDIRECTION_RIGHT:
-		//this->setPosition(vector3d(entity->getBounding().getX() + entity->getBounding().getWidth(), m_Position.y, 0.5f));
+		this->setPosition(vector3d(entity->getBounding().getX() + entity->getBounding().getWidth(), m_Position.y, 0.5f));
 		break;
 	default:
 		break;

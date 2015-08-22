@@ -13,12 +13,12 @@ CEnemyBubbleBlue::~CEnemyBubbleBlue()
 
 bool CEnemyBubbleBlue::initEntity()
 {
-	RECT rectangle = { 150, 300, 500, 200 };
-	m_Bounding = new CBox2D(rectangle);
-
-	m_Position = D3DXVECTOR3(500.0f, 100.0f, 0.0f);
-	x = 1;
-	m_count = 0;
+	RECT rectangle		= { 150, 300, 500, 200 };
+	m_Bounding			= new CBox2D(rectangle);
+	m_Velocity			= vector2dZero;
+	m_Position			= D3DXVECTOR3(500.0f, 100.0f, 0.0f);
+	x					= 1;
+	m_count				= 0;
 	// LOAD SPRITE
 	this->loadSprite();
 	return true;

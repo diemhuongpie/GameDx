@@ -19,18 +19,18 @@ CPlayScene::~CPlayScene()
 
 bool	CPlayScene::initScene()
 {
-	//m_Player->initEntity();
 	m_Tag				= "PlayScene";
 	//map = new Map();
 	//m_Player->initEntity();
 
 	m_Player			= new CPlayer();
+	m_Player->initEntity();
 	m_EnemyTankRed		= new CEnemyTankRed(D3DXVECTOR3(400, 100, 0));
 	m_EnemyAutoOrange	= new CEnemyMachineAutoOrange(D3DXVECTOR3(200, 350, 0));
 	m_EnemyBall			= new CEnemyBall();
 
 	CMapmanager::getInstance()->readMapList();
-	CMapmanager::getInstance()->setCurrentMapAt(2);
+	CMapmanager::getInstance()->setCurrentMapAt(1);
 	return true;
 }
 

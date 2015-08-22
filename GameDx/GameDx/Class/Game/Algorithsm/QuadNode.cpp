@@ -128,15 +128,19 @@ void CQuadNode::RenderNode()
 
 void CQuadNode::DetectCollisionInViewport(CMovable* movableEntity)
 {
-	if (CBox2D::Intersect(m_Node[0]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
-		m_Node[0]->RenderNode();
-	if (CBox2D::Intersect(m_Node[1]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
-		m_Node[1]->RenderNode();
-	if (CBox2D::Intersect(m_Node[2]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
-		m_Node[2]->RenderNode();
-	if (CBox2D::Intersect(m_Node[3]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
-		m_Node[3]->RenderNode();
-
+	if (m_Node)
+	{
+		if (CBox2D::Intersect(m_Node[0]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
+			m_Node[0]->DetectCollisionInViewport(movableEntity);
+		if (CBox2D::Intersect(m_Node[1]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
+			m_Node[1]->DetectCollisionInViewport(movableEntity);
+		if (CBox2D::Intersect(m_Node[2]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
+			m_Node[2]->DetectCollisionInViewport(movableEntity);
+		if (CBox2D::Intersect(m_Node[3]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
+			m_Node[3]->DetectCollisionInViewport(movableEntity);
+	}
+	
+	else
 	for (int i = 0; i < m_EntityList.size(); ++i)
 	{
 		if (m_EntityList.at(i)->getTagNode() == "Collision")
