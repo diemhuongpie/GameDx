@@ -12,6 +12,9 @@
 #include "Game\Map\MapManager.h"
 #include "Mathematics\Collision.h"
 #include "Game\Entity\Bullet\BulletManager.h"
+#include "Game\Entity\Enemy\CutManWeapon.h"
+#include "Game\Entity\Enemy\EnemyPartBoomBlue.h"
+#include "Game\Entity\Enemy\EnemyBoomBlue.h"
 
 class CPlayScene :
 	public CBaseScene
@@ -33,6 +36,8 @@ private:
 			CEnemyBall*				m_EnemyBall;
 			CEnemyBubbleBlue*		m_EnemyBubbleBlue;
 			CEnemyCut*				m_EnemyCut;
+			CCutManWeapon*			m_Weapon;
+			CEnemyBoomBlue*		m_boomBlue;
 };
 
 #endif

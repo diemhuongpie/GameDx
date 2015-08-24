@@ -21,8 +21,8 @@ CEnemyNinja::~CEnemyNinja()
 bool CEnemyNinja::initEntity()
 {
 	// LOAD SPRITE
-	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
 	this->loadSprite();
+	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
 	this->m_delayTime = 0;
 	return true;
 }

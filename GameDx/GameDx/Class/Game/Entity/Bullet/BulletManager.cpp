@@ -14,14 +14,18 @@ CBulletManager::CBulletManager()
 		m_listBullet[TYPE_BULLET::TANK_RED].push_back(new CBulletTankRed(m_angle));
 		m_angle++;
 	}
-		
-
+	//************BULLET_ENEMY_PART_BOOM*************//
+	m_listBullet[TYPE_BULLET::ENEMY_PART_BOOM].push_back(new CEnemyPartBoomBlue(3));
+	m_listBullet[TYPE_BULLET::ENEMY_PART_BOOM].push_back(new CEnemyPartBoomBlue(-3));
+	m_listBullet[TYPE_BULLET::ENEMY_PART_BOOM].push_back(new CEnemyPartBoomBlue(4.5));
+	m_listBullet[TYPE_BULLET::ENEMY_PART_BOOM].push_back(new CEnemyPartBoomBlue(-4.5));
+	//************BULLET_MACHINE_AUTO_ORANGE*************//
 	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE].push_back(new CBulletEnemy(0));
 	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE].push_back(new CBulletEnemy(PI/4));
 	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE].push_back(new CBulletEnemy(PI/2));
 	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE].push_back(new CBulletEnemy(3*PI/4));
 	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE].push_back(new CBulletEnemy(PI));
-
+	//************BULLET_ENEMY_BALL*************//
 	m_listBullet[TYPE_BULLET::ENEMY_BALL].push_back(new CBulletEnemy(0));
 	m_listBullet[TYPE_BULLET::ENEMY_BALL].push_back(new CBulletEnemy(PI / 4));
 	m_listBullet[TYPE_BULLET::ENEMY_BALL].push_back(new CBulletEnemy(PI / 2));

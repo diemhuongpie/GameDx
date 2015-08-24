@@ -26,9 +26,9 @@ bool CEnemyMachineAutoOrange::initEntity()
 {
 	check_State = true;
 	m_delayTime = 0;
+	this->loadSprite();
 	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
 	// LOAD SPRITE
-	this->loadSprite();
 	return true;
 
 }

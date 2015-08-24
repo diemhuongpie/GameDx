@@ -10,9 +10,10 @@ CEnemyFishOrange::CEnemyFishOrange(vector3d position)
 	m_Position = position;
 	m_CurrentPosition = position;
 	m_Velocity.x = -3.5;
-	m_Velocity.y = 2;
-	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
+	m_Velocity.y = 2; 
 	this->loadSprite();
+	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
+	
 }
 
 

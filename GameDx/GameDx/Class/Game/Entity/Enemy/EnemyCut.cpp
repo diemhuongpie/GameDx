@@ -18,10 +18,11 @@ CEnemyCut::~CEnemyCut()
 
 bool CEnemyCut::initEntity()
 {
+	this->loadSprite();
 	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
 	m_Position = vector3d(350.0f, 300.0f, 0.0f);
 	// LOAD SPRITE
-	this->loadSprite();
+
 	return true;
 
 }

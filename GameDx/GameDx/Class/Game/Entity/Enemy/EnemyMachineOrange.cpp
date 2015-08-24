@@ -24,8 +24,9 @@ bool CEnemyMachineOrange::initEntity()
 {
 	// LOAD SPRITE
 	m_Velocity.x = 5;
-	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
 	this->loadSprite();
+	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
+	
 	return true;
 }
 

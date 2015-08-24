@@ -8,6 +8,7 @@
 #include "Game\Entity\Bullet\BaseBullet.h"
 #include "Game\Entity\Bullet\BulletEnemy.h"
 #include "Game\Entity\Bullet\BulletTankRed.h"
+#include "Game\Entity\Enemy\EnemyPartBoomBlue.h"
 
 class CBulletManager : public CSingleton<CBulletManager>
 {

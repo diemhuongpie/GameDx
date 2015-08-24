@@ -13,13 +13,14 @@ CEnemyBubbleBlue::~CEnemyBubbleBlue()
 
 bool CEnemyBubbleBlue::initEntity()
 {
+	this->loadSprite();
 	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
 
 	m_Position = D3DXVECTOR3(500.0f, 100.0f, 0.0f);
 	x = 1;
 	m_count = 0;
 	// LOAD SPRITE
-	this->loadSprite();
+	
 	return true;
 
 }
@@ -28,6 +29,7 @@ bool CEnemyBubbleBlue::initEntity()
 bool CEnemyBubbleBlue::loadSprite()
 {
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//enemy_bubble_blue.png", 1, 2, 2, 0));
+	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//boom_burst.png", 1, 4, 4, 0));
 	return true;
 }
 void CEnemyBubbleBlue::resetObject()

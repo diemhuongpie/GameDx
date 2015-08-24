@@ -23,10 +23,11 @@ bool CEnemyEyeRed::initEntity()
 {
 	m_delayTime = 0;
 	m_Velocity.x = 1;
+	this->loadSprite();
 	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
 	// LOAD SPRITE
 	m_checkState = true;
-	this->loadSprite();
+
 	return true;
 }
 

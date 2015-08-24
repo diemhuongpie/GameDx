@@ -22,6 +22,7 @@ bool CCutManWeapon::initEntity()
 	m_dx = 0;
 	// LOAD SPRITE
 	this->loadSprite();
+	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
 	return true;
 
 }
@@ -105,8 +106,8 @@ void CCutManWeapon::updateEntity(float deltaTime)
 
 
 
-	if (abs(m_Position.x - m_PositionPlayer.x) < 2 || abs(m_Position.y - m_PositionPlayer.y) < 2
-		|| ((abs(m_Position.x - m_PositionBoss.x) < 3 || abs(m_Position.y - m_PositionBoss.y) < 3) && m_count > 0))
+	if (abs(m_Position.x - m_PositionPlayer.x) < 1 || abs(m_Position.y - m_PositionPlayer.y) < 1
+		|| ((abs(m_Position.x - m_PositionBoss.x) < 1 || abs(m_Position.y - m_PositionBoss.y) < 1) && m_count > 0))
 	{
 		m_count++;
 	}

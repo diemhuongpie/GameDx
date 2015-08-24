@@ -16,9 +16,10 @@ bool EnemyRobotRed::initEntity()
 	check_State = true;
 	m_Position = D3DXVECTOR3(300.0f, 300.0f, 0.0f);
 	m_delayTime = 0;
+	this->loadSprite();
 	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
 	// LOAD SPRITE
-	this->loadSprite();
+	
 	return true;
 }
 
