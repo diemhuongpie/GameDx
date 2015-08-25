@@ -30,6 +30,7 @@ public:
 public:
 			void			logicGravity(float deltaTime);
 			
+			void			logicStartPlayer(float deltaTime);
 			void 			logicStandPlayer(float deltaTime);
 			void 			logicMovePlayer(float deltaTime);
 			void 			logicJumpPlayer(float deltaTime);
@@ -37,11 +38,10 @@ public:
 			
 protected:
 	
-			clock_t			m_TimeState;
-			vector2d		m_Accelero;
-			int				m_Direction;
-
-
+			clock_t					m_TimeState;
+			vector2d				m_Accelero;
+			vector2d				m_Direction;
+			vector<CSprite*>*		m_RockManSpriteList;
 private:
 
 };

@@ -37,8 +37,8 @@ void CMenuScene::updateScene(double deltaTime)
 	if (countTimeOfMenu >= 1000 * 32 / 16)
 	{
 		countTimeOfMenu = 0;
-		CSceneManager::getInstance()->getScene().pop();
-		CSceneManager::getInstance()->getScene().push(new CSelectStageScene());
+		CSceneManager::getInstance()->getScene().pop_back();
+		CSceneManager::getInstance()->getScene().push_back(new CSelectStageScene());
 	}
 
 }

@@ -19,6 +19,8 @@ COLDIRECTION CCollision::CheckCollision(CMovable* MovableObject, CBaseEntity* Ob
 	double			timeCollition		= 0;
 	float			normalX				= 0, 
 					normalY				= 0;
+	if (Object->getTagNode() == "Tile")
+		return COLDIRECTION::COLDIRECTION_NONE;
 
 	if (AABB((MovableObject->getBounding()), (Object->getBounding()), moveX, moveY))
 	{
@@ -48,7 +50,7 @@ COLDIRECTION CCollision::CheckCollision(CMovable* MovableObject, CBaseEntity* Ob
 	}
 	else
 	{
-		if (Object->getTagNode() == "Static" || Object->getTagNode() == "Tile" || Object->getTagNode() == "Collision")
+		if (Object->getTagNode() == "Static" || Object->getTagNode() == "Collision")
 			velocity = MovableObject->getVelocity();
 		else
 		{

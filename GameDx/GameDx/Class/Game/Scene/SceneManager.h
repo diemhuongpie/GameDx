@@ -14,7 +14,7 @@ class CSceneManager
 public:
 
 	static	CSceneManager*				getInstance();
-			std::stack<CBaseScene*>&	getScene();
+			std::vector<CBaseScene*>&	getScene();
 	static	void						initDevice(LPDIRECT3DDEVICE9 device);
 			void						init();
 
@@ -26,7 +26,7 @@ private:
 
 private:
 	static	LPDIRECT3DDEVICE9			m_Device;
-			std::stack<CBaseScene*>		m_ListScene;
+			std::vector<CBaseScene*>		m_ListScene;
 };
 
 #endif

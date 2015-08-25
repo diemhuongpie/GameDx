@@ -1,0 +1,12 @@
+Resource//Image//Game//Sprites//RockMan//RockManNormal//rockman_collide.png
+Resource//Image//Game//Sprites//RockMan//RockManNormal//rockman_die.png
+Resource//Image//Game//Sprites//RockMan//RockManNormal//rockman_jump.png
+Resource//Image//Game//Sprites//RockMan//RockManNormal//rockman_jump_fire.png
+Resource//Image//Game//Sprites//RockMan//RockManNormal//rockman_run.png
+Resource//Image//Game//Sprites//RockMan//RockManNormal//rockman_run_fire.png
+Resource//Image//Game//Sprites//RockMan//RockManNormal//rockman_stair.png
+Resource//Image//Game//Sprites//RockMan//RockManNormal//rockman_stair_end.png
+Resource//Image//Game//Sprites//RockMan//RockManNormal//rockman_stair_fire.png
+Resource//Image//Game//Sprites//RockMan//RockManNormal//rockman_stand.png
+Resource//Image//Game//Sprites//RockMan//RockManNormal//rockman_stand_fire.png
+Resource//Image//Game//Sprites//RockMan//RockManNormal//rockman_start.png

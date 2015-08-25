@@ -21,11 +21,14 @@ bool CPopUpScene::initScene()
 
 void CPopUpScene::updateScene(CKeyBoard* keyboard)
 {
-	if (keyboard->KeyPress(DIK_RETURN))
+	/*if (keyboard->KeyPress(DIK_RETURN))
 	{
-		CSceneManager::getInstance()->getScene().pop();
-		CSceneManager::getInstance()->getScene().push(new CGameOverScene());
-	}
+		CSceneManager::getInstance()->getScene().pop_back();
+		CSceneManager::getInstance()->getScene().push_back(new CGameOverScene());
+	}*/
+
+	if (keyboard->KeyPress(DIK_RETURN))
+		CSceneManager::getInstance()->getScene().pop_back();
 
 }
 void CPopUpScene::updateScene(double deltaTime)

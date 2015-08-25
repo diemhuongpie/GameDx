@@ -23,6 +23,8 @@ public:
 private:
 	CSprite*					m_PpopUp;
 	CSprite*					m_LifeItem;
+	CSprite*					m_BarSkill;
+
 };
 
 #endif

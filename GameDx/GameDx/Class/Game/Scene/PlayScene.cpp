@@ -1,5 +1,6 @@
 #include "PlayScene.h"
-
+#include "SceneManager.h"
+#include "PopUpScene.h"
 
 CPlayScene::CPlayScene()
 {
@@ -25,7 +26,7 @@ bool	CPlayScene::initScene()
 
 	m_Player			= new CPlayer();
 	m_Player->initEntity();
-	m_EnemyTankRed = new CEnemyTankRed(D3DXVECTOR3(400, 100, 0));
+	m_EnemyTankRed		= new CEnemyTankRed(D3DXVECTOR3(400, 100, 0));
 	m_EnemyAutoOrange	= new CEnemyMachineAutoOrange(D3DXVECTOR3(200, 350, 0));
 	m_EnemyBall			= new CEnemyBall();
 	m_boomBlue = new CEnemyBoomBlue(D3DXVECTOR3(250, 200, 0));
@@ -48,13 +49,8 @@ void	CPlayScene::updateScene(double deltaTime)
 	m_Weapon->updateEntity(deltaTime/60);
 	m_boomBlue->updateEntity(deltaTime / 60);
 
-	/*for (auto i = 0; i < CMapmanager::getInstance()->getCurrentMap()->getlistCollisionTile().size(); ++i)
-	{
-		m_Player->logicCollision(CMapmanager::getInstance()->getCurrentMap()->getlistCollisionTile().at(i));
-	}*/
 
 	CMapmanager::getInstance()->getCurrentMap()->update(deltaTime, m_Player);
-
 
 	CCollision::CheckCollision(m_Player, m_EnemyTankRed);
 
@@ -70,6 +66,7 @@ void	CPlayScene::updateScene(double deltaTime)
 	}
 
 	// Update Map
+	CMapmanager::getInstance()->getCurrentMap()->update(deltaTime, m_Player);
 
 }
 
@@ -82,6 +79,11 @@ void	CPlayScene::updateScene(CKeyBoard* keyboard)
 	m_EnemyBall			->updateEntity(keyboard);
 	m_Weapon			->updateEntity(keyboard);
 	m_boomBlue			->updateEntity(keyboard);
+
+	if (keyboard->KeyPress(DIK_RETURN))
+	{
+		CSceneManager::getInstance()->getScene().push_back(new CPopUpScene());
+	}
 }
 
 void	CPlayScene::renderScene()

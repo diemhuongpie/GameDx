@@ -58,8 +58,8 @@ void CSelectStageScene::updateScene(double deltaTime)
 
 	if (m_enterTheGame)
 	{
-		CSceneManager::getInstance()->getScene().pop();
-		CSceneManager::getInstance()->getScene().push(new CIntroStageScene());
+		CSceneManager::getInstance()->getScene().pop_back();
+		CSceneManager::getInstance()->getScene().push_back(new CIntroStageScene());
 	}
 }
 

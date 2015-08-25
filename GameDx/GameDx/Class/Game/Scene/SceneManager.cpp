@@ -28,10 +28,10 @@ void CSceneManager::initDevice(LPDIRECT3DDEVICE9 device)
 
 void CSceneManager::init()
 {
-	m_ListScene.push(new CPlayScene());
+	m_ListScene.push_back(new CPlayScene());
 }
 
-std::stack<CBaseScene*>& CSceneManager::getScene()
+std::vector<CBaseScene*>& CSceneManager::getScene()
 {
 	return m_ListScene;
 }

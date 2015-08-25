@@ -3,22 +3,19 @@
 #ifndef __INFOMATIONRESOURCE_H__
 #define __INFOMATIONRESOURCE_H__
 
-class CInfomationResource
+#include "stdafx.h"
+#include "Framework\Sprite.h"
+#include "Game\Algorithsm\Singleton.h"
+
+class CInfomationResource : public CSingleton<CInfomationResource>
 {
 public:
 	/************RESOURCE FOR PLAYER************/
-	static const wchar_t*	rockmanHit;
-	static const wchar_t*	rockmanDie;
-	static const wchar_t*	rockmanJump;
-	static const wchar_t*	rockmanJumpShoot;
-	static const wchar_t*	rockmanRun;
-	static const wchar_t*	rockmanRunShoot;
-	static const wchar_t*	rockmanClimb;
-	static const wchar_t*	rockmanClimbEnd;
-	static const wchar_t*	rockmanClimbShoot;
-	static const wchar_t*	rockmanStand;
-	static const wchar_t*	rockmanStandShoot;
-	static const wchar_t*	rockmanStart;
+	vector<const wchar_t*> InitRockManNormalResource();
+	vector<const wchar_t*> InitRockManCutResource();
+	vector<const wchar_t*> InitRockManBombResource();
+
+	vector<const wchar_t*> m_linkResourceRockManList;
 	/*************************************************/
 
 	/************BULLET RESOURCE*******/
@@ -47,6 +44,8 @@ public:
 	/************RESOURCE FOR POPUPSCENE*******/
 	static const wchar_t*	popUp;
 	static const wchar_t*	itemLife;
+	static const wchar_t*	rockManCutSkill;
+	static const wchar_t*	rockManBombSkill;
 	/*************************************************/
 };
 

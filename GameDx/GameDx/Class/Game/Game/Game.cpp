@@ -35,14 +35,16 @@ void CGame::updateGame(double deltaTime)
 	if (m_Keyboard->KeyDown(DIK_ESCAPE))
 		PostQuitMessage(0);
 
-	CSceneManager::getInstance()->getScene().top()->updateScene(m_Keyboard);
-	CSceneManager::getInstance()->getScene().top()->updateScene(deltaTime);
+	CSceneManager::getInstance()->getScene().back()->updateScene(m_Keyboard);
+	CSceneManager::getInstance()->getScene().back()->updateScene(deltaTime);
+
 
 }
 void CGame::renderGame()
 {
 	if (this->m_Windows->startDraw()) {
-		CSceneManager::getInstance()->getScene().top()->renderScene();
+		for (int i = 0; i < CSceneManager::getInstance()->getScene().size(); ++i)
+			CSceneManager::getInstance()->getScene().at(i)->renderScene();
 	}
 	this->m_Windows->stopDraw();
 }

@@ -136,8 +136,8 @@ void CIntroStageScene::updateScene(double deltaTime)
 				m_isRandomPoint			= 0;
 				m_Index					= 1;
 				m_TimeForChangingSprite = true;
-				CSceneManager::getInstance()->getScene().pop();
-				CSceneManager::getInstance()->getScene().push(new CPlayScene());
+				CSceneManager::getInstance()->getScene().pop_back();
+				CSceneManager::getInstance()->getScene().push_back(new CPlayScene());
 			}
 	}
 }

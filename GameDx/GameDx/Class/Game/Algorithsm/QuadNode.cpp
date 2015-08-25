@@ -119,10 +119,7 @@ void CQuadNode::RenderNode()
 
 	for (int i = 0; i < m_EntityList.size(); ++i)
 	{
-		if (!(m_EntityList.at(i)->getTagNode() == "Collision"))
-		{
-			m_EntityList.at(i)->drawEntity();
-		}
+		m_EntityList.at(i)->drawEntity();
 	}
 }
 
