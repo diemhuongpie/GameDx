@@ -111,8 +111,8 @@ void CCutManWeapon::updateEntity(float deltaTime)
 	{
 		m_count++;
 	}
-	OutputDebugString(L"Count: ");
-	OutputDebugString(_itow(m_count, new WCHAR[1], 10));
+	//OutputDebugString(L"Count: ");
+	//OutputDebugString(_itow(m_count, new WCHAR[1], 10));
 	
 		
 

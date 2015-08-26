@@ -37,7 +37,8 @@ private:
 			CEnemyBubbleBlue*		m_EnemyBubbleBlue;
 			CEnemyCut*				m_EnemyCut;
 			CCutManWeapon*			m_Weapon;
-			CEnemyBoomBlue*		m_boomBlue;
+			CEnemyBoomBlue*			m_boomBlue;
+			vector<CTile*>			m_Tile;
 };
 
 #endif

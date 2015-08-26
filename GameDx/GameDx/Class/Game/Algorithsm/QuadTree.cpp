@@ -42,7 +42,7 @@ void CQuadTree::DeviceObjectToTree(vector<CBaseEntity*> ListTileObject)
 	}
 }
 
-void CQuadTree::CollisionNodeInViewPort(CMovable* movableEntity)
+void CQuadTree::CollisionNodeInViewPort(CMovable* movableEntity, float deltaTime)
 {
-	m_Node->DetectCollisionInViewport(movableEntity);
+	m_Node->DetectCollisionInViewport(movableEntity, deltaTime);
 }

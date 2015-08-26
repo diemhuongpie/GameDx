@@ -20,6 +20,7 @@ public:
 	void enemyMoving();
 
 	virtual	void logicCollision(CBaseEntity* entity) override;
+	void		 updateEntityFromCollision(float detaTime, CBaseEntity* entity){};
 
 private:
 	vector3d m_position1;

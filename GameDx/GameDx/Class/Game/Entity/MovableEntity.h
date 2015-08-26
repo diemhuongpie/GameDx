@@ -18,20 +18,21 @@ public:
 	CMovable();
 	~CMovable();
 
-	virtual		void					updateEntity(float deltaTime)		= 0;
-	virtual		void					updateEntity(CKeyBoard*)			= 0;
-	virtual		void					logicCollision(CBaseEntity* entity)	= 0;
-	virtual		bool					loadSprite()						= 0;
-	virtual		vector3d				getPosition()						;
-	virtual		CBox2D					getBounding()						override;
-	virtual		bool					initEntity()						override;
-	virtual		char*					getTagNode()						override;
-	virtual		void					setTagNode(char* tag)			override;
-	virtual		vector2d				getVelocity()						;
-	virtual		int						getState()							override;
-	virtual		void					setState(int newState)				override;
-	virtual		void					setPosition(vector3d pos)			;
-	virtual		void					setVelocity(vector2d vel)			;
+	virtual		void					updateEntity(float deltaTime)										= 0;
+	virtual		void					updateEntity(CKeyBoard*)											= 0;
+	virtual		void					logicCollision(CBaseEntity* entity)									= 0;
+	virtual		void					updateEntityFromCollision(float deltaTime, CBaseEntity* entity)		= 0;
+	virtual		bool					loadSprite()														= 0;
+	virtual		vector3d				getPosition()													;
+	virtual		CBox2D					getBounding()											override;
+	virtual		bool					initEntity()											override;
+	virtual		char*					getTagNode()											override;
+	virtual		void					setTagNode(char* tag)									override;
+	virtual		vector2d				getVelocity()													;
+	virtual		int						getState()												override;
+	virtual		void					setState(int newState)									override;
+	virtual		void					setPosition(vector3d pos)										;
+	virtual		void					setVelocity(vector2d vel)										;
 
 
 protected:

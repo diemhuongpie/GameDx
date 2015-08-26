@@ -303,8 +303,17 @@
     <ClCompile Include="Class\Game\Entity\Bullet\BulletTankRed.cpp">
       <Filter>Game\Entity\Children\Bullet\cpp</Filter>
     </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy\EnemyBoomBlue.cpp">
+      <Filter>Game\Entity\Children\Mod\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy\EnemyPartBoomBlue.cpp">
+      <Filter>Game\Entity\Children\Mod\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy\CutManWeapon.cpp">
+      <Filter>Game\Entity\Children\Bullet\cpp</Filter>
+    </ClCompile>
     <ClCompile Include="Class\Game\Entity\Bullet\BombBullet.cpp">
-      <Filter>Game\Entity\Children\Bullet</Filter>
+      <Filter>Game\Entity\Children\Bullet\cpp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -464,6 +473,15 @@
       <Filter>Game\Entity\Children\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="Class\Game\Entity\Bullet\BombBullet.h">
+      <Filter>Game\Entity\Children\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Enemy\EnemyBoomBlue.h">
+      <Filter>Game\Entity\Children\Mod</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Enemy\EnemyPartBoomBlue.h">
+      <Filter>Game\Entity\Children\Mod</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Enemy\CutManWeapon.h">
       <Filter>Game\Entity\Children\Bullet</Filter>
     </ClInclude>
   </ItemGroup>

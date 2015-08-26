@@ -41,8 +41,8 @@ void	MapData::readTileMap(wstring filePath)
 	while (fs)
 	{
 		fs >> type >> posX >> posY >> posWidth >> posHeight;
-		posX *= 2;
-		posY *= 2; posY += 32;
+		posWidth *= 2;
+		posHeight *= 2; //posY += 32;
 		if (type == L"0C")
 			m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//1.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 0));
 		if (type == L"1C")
@@ -127,7 +127,7 @@ void	MapData::readTileMap(wstring filePath)
 
 void		MapData::update(float deltaTime, CMovable* entity)
 {
-	CQuadTree::getInstance()->CollisionNodeInViewPort(entity);
+	CQuadTree::getInstance()->CollisionNodeInViewPort(entity, deltaTime);
 }
 
 void		MapData::render()

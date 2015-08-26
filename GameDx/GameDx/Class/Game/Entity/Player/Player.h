@@ -18,14 +18,15 @@ public:
 	CPlayer(LPDIRECT3DDEVICE9);
 	~CPlayer();
 
-	virtual bool			initEntity()											override;
-	virtual void			updateEntity(float deltaTime)							override;
-	virtual void			updateEntity(CKeyBoard *device)							override;
-	virtual void			drawEntity()											override;
-	virtual	vector3d		getPosition()											override;
-	virtual bool			loadSprite()											override;
-	virtual void			logicCollision(CBaseEntity* entity)						override;
-	virtual void			resetObject()											override;
+	virtual bool			initEntity()														override;
+	virtual void			updateEntity(float deltaTime)										override;
+	virtual void			updateEntityFromCollision(float detaTime, CBaseEntity* entity)		override;
+	virtual void			updateEntity(CKeyBoard *device)										override;
+	virtual void			drawEntity()														override;
+	virtual	vector3d		getPosition()														override;
+	virtual bool			loadSprite()														override;
+	virtual void			logicCollision(CBaseEntity* entity)									override;
+	virtual void			resetObject()														override;
 
 public:
 			void			logicGravity(float deltaTime);

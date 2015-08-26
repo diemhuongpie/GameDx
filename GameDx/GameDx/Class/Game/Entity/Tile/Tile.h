@@ -12,13 +12,14 @@ class CTile	: public CStaticEntity
 {
 public:
 	CTile();
+	CTile(CSprite*, vector3d);
 	CTile(CSprite* sprite, vector3d pos, CBox2D* bounding, int styleID);
 	~CTile();
 
 	virtual		void					updateEntity(float deltaTime)			override;
 	virtual		void					drawEntity()							override;
 	virtual		bool					loadSprite()							override;
-	virtual		CBox2D					getBounding()							override;
+	//virtual		CBox2D					getBounding()							override;
 	virtual		bool					initEntity()							override;
 				
 				int						getStyleID();

@@ -123,24 +123,24 @@ void CQuadNode::RenderNode()
 	}
 }
 
-void CQuadNode::DetectCollisionInViewport(CMovable* movableEntity)
+void CQuadNode::DetectCollisionInViewport(CMovable* movableEntity, float deltaTime)
 {
 	if (m_Node)
 	{
 		if (CBox2D::Intersect(m_Node[0]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
-			m_Node[0]->DetectCollisionInViewport(movableEntity);
+			m_Node[0]->DetectCollisionInViewport(movableEntity, deltaTime);
 		if (CBox2D::Intersect(m_Node[1]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
-			m_Node[1]->DetectCollisionInViewport(movableEntity);
+			m_Node[1]->DetectCollisionInViewport(movableEntity, deltaTime);
 		if (CBox2D::Intersect(m_Node[2]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
-			m_Node[2]->DetectCollisionInViewport(movableEntity);
+			m_Node[2]->DetectCollisionInViewport(movableEntity, deltaTime);
 		if (CBox2D::Intersect(m_Node[3]->getNodeSize(), CCamera::getInstance()->getBoundingScreen()))
-			m_Node[3]->DetectCollisionInViewport(movableEntity);
+			m_Node[3]->DetectCollisionInViewport(movableEntity, deltaTime);
 	}
 	
 	else
 	for (int i = 0; i < m_EntityList.size(); ++i)
 	{
 		if (m_EntityList.at(i)->getTagNode() == "Collision")
-			movableEntity->logicCollision(m_EntityList.at(i));
+			movableEntity->updateEntityFromCollision(deltaTime, m_EntityList.at(i));
 	}
 }

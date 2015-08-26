@@ -17,7 +17,8 @@ public:
 	void updateEntity(RECT rectCamera);
 	void drawEntity();
 
-	virtual		void					logicCollision(CBaseEntity* entity) ;
+	virtual	void logicCollision(CBaseEntity* entity) ;
+	void		 updateEntityFromCollision(float detaTime, CBaseEntity* entity){};
 
 	void resetObject();
 	bool loadSprite();

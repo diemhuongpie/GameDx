@@ -17,7 +17,7 @@ public:
 	void								ReleaseTree();
 	void								RenderTree();
 	void								DeviceObjectToTree(vector<CBaseEntity*> ListTileObject);
-	void								CollisionNodeInViewPort(CMovable* movableEntity);
+	void								CollisionNodeInViewPort(CMovable* movableEntity, float deltaTime);
 protected:
 	CQuadNode*							m_Node;
 

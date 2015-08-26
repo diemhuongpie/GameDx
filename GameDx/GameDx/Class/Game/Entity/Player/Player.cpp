@@ -19,8 +19,8 @@ CPlayer::CPlayer(LPDIRECT3DDEVICE9)
 
 bool CPlayer::initEntity()
 {
-	m_Position		= vector3d(50, 50, 0.5);
-	m_Velocity		= vector2d(GRAVITY, -GRAVITY);
+	m_Position		= vector3d(16, 100, 0.5);
+	m_Velocity		= vector2d(0.05, 0.01);
 	m_Accelero		= vector2d(0, 0.01);
 	m_State			= PLAYSTATE::START;
 	m_TimeState		= 0;
@@ -127,63 +127,92 @@ void CPlayer::logicCollision(CBaseEntity* entity)
 
 void CPlayer::updateEntity(float deltaTime)
 {
+		// Update State
+		m_TimeState += deltaTime;
+}
 
-	/*if (m_State == PLAYERSTATES::STATE_START)
-		m_State = PLAYERSTATES::STATE_STAND;*/
-
-	// Update Action
-	switch (m_State)
-	{
-	case PLAYERSTATES::STATE_START:
-		logicGravity(deltaTime);
-		logicStartPlayer(deltaTime);
-		break;
-
-	case PLAYERSTATES::STATE_STAND:
-	{
-		logicStandPlayer(deltaTime);
-		//logicGravity(deltaTime);
-	}
-		break;
-
-	case PLAYERSTATES::STATE_MOVE: 
-	case PLAYERSTATES::STATE_MOVE_SHOOT:
-		logicMovePlayer(deltaTime);
-		//logicGravity(deltaTime);
-		break;
-
-	case PLAYERSTATES::STATE_JUMP:
-	case PLAYERSTATES::STATE_JUMP_SHOOT:
+void CPlayer::updateEntityFromCollision(float deltaTime, CBaseEntity* entity)
+{
+	if( m_State == PLAYERSTATES::STATE_START)
+		switch (CCollision::CheckCollision(this, entity))
 		{
-			logicJumpPlayer(deltaTime);
-			if (m_Direction.x != 0 && m_Direction.y != 0)
-				logicMovePlayer(deltaTime);
-			//logicGravity(deltaTime);
+		case COLDIRECTION::COLDIRECTION_TOP:
+			m_State = PLAYERSTATES::STATE_STAND;
+			break;
+		case COLDIRECTION::COLDIRECTION_NONE:
+			m_Velocity.y = std::abs(m_Velocity.y) * DIRECTION::DIRECTION_DOWN;
+			m_Position.y += m_Velocity.y * deltaTime;
+			break;
+		default:
+			break;
 		}
-		break;
-	case PLAYERSTATES::STATE_CLIMB:
-	/*case PLAYERSTATES::STATE_CLIMB_SHOOT:
-	case PLAYERSTATES::STATE_CLIMB_END:*/
-		logicClimbPlayer(deltaTime);
-		break;
 
-	default:
-		break;
+	else if (m_State == PLAYERSTATES::STATE_STAND)
+	{
+		if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_LEFT)
+		{
+			this->m_Velocity.x = 0;
+		}
+		else if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_TOP)
+		{
+			m_Velocity.y = 0;
+			m_Velocity.x = 0;
+			//m_Position.y += m_Velocity.y * deltaTime;
+		}
+		else if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_RIGHT)
+		{
+
+		}
+		else if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_BOTTOM)
+		{
+		}
+		else if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_NONE)
+		{
+			m_Velocity.y = std::abs(m_Velocity.y) * DIRECTION::DIRECTION_DOWN;
+			m_Position.y += m_Velocity.y * deltaTime;
+		}
 	}
 
-	
+	else if (m_State == PLAYERSTATES::STATE_MOVE)
+	{
+		if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_LEFT)
+		{
+			this->m_Velocity.x = 0;
+			/*if (m_Direction.x == DIRECTION::DIRECTION_LEFT)
+				this->m_Velocity.x = GRAVITY * m_Direction.x;*/
 
-	//if (m_Position.y < 50)
-	//{
-	//	m_Position.y = 50;
-	//	m_Accelero.y = 5;
-	//	m_Velocity.y = GRAVITY;
-	//	//m_State = PLAYERSTATES::STATE_STAND;
-	//}
+			//this->m_Velocity.y = GRAVITY * m_Direction.y;
 
-	// Update State
-	m_TimeState += deltaTime;
+			m_Position.x += m_Velocity.x * deltaTime;
+		}
+		if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_RIGHT)
+		{
+			this->m_Velocity.x = 0;
+			/*if (m_Direction.x == DIRECTION::DIRECTION_RIGHT)
+				this->m_Velocity.x = GRAVITY * m_Direction.x;*/
 
+			//this->m_Velocity.y = GRAVITY * m_Direction.y;
+		}
+		if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_TOP)
+		{
+			this->m_Velocity.x = GRAVITY * m_Direction.x;
+			this->m_Velocity.y = 0;
+
+			m_Position.x += m_Velocity.x * deltaTime;
+
+		}
+		if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_BOTTOM)
+		{
+			this->m_Velocity.x = GRAVITY * m_Direction.x;
+			this->m_Velocity.y = -GRAVITY;
+		}
+		if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_NONE)
+		{
+		}
+	}
+	OutputDebugString(L"Colli: ");
+	OutputDebugString(_itow(CCollision::CheckCollision(this, entity), new WCHAR[1], 10));
+	OutputDebugString(L"\n");
 }
 
 void CPlayer::updateEntity(CKeyBoard* device)
@@ -592,6 +621,7 @@ void CPlayer::drawEntity()
 		break;
 	default:
 		m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(m_Position), vector2d(m_Direction.x * 2, 2), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
+		m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(vector3d(this->getBounding().getX(), this->getBounding().getY(), 0.5f)), vector2d(m_Direction.x * 2, 2), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
 		break;
 	}
 

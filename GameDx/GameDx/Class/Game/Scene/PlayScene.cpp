@@ -1,6 +1,7 @@
 #include "PlayScene.h"
 #include "SceneManager.h"
 #include "PopUpScene.h"
+#include "Game\Entity\Tile\Tile.h"
 
 CPlayScene::CPlayScene()
 {
@@ -21,9 +22,6 @@ CPlayScene::~CPlayScene()
 bool	CPlayScene::initScene()
 {
 	m_Tag				= "PlayScene";
-	//map = new Map();
-	//m_Player->initEntity();
-
 	m_Player			= new CPlayer();
 	m_Player->initEntity();
 	m_EnemyTankRed		= new CEnemyTankRed(D3DXVECTOR3(400, 100, 0));
@@ -31,9 +29,17 @@ bool	CPlayScene::initScene()
 	m_EnemyBall			= new CEnemyBall();
 	m_boomBlue = new CEnemyBoomBlue(D3DXVECTOR3(250, 200, 0));
 	m_Weapon = new CCutManWeapon(m_EnemyTankRed->getPosition(), m_Player->getPosition());
+	
+	m_Tile.push_back(new CTile(new CSprite(L"Resource//Image//Maps//map1//resource//4.png", 1, 1, 1, 0), vector3d(0, 32, 0.5f), new CBox2D(0, 32, 32, 32), 1));
+	m_Tile.push_back(new CTile(new CSprite(L"Resource//Image//Maps//map1//resource//4.png", 1, 1, 1, 0), vector3d(32, 32, 0.5f), new CBox2D(32, 32, 32, 32), 1));
+	m_Tile.push_back(new CTile(new CSprite(L"Resource//Image//Maps//map1//resource//4.png", 1, 1, 1, 0), vector3d(64, 32, 0.5f), new CBox2D(54, 32, 32, 32), 1));
+	m_Tile.push_back(new CTile(new CSprite(L"Resource//Image//Maps//map1//resource//4.png", 1, 1, 1, 0), vector3d(96, 32, 0.5f), new CBox2D(96, 32, 32, 32), 1));
+	m_Tile.push_back(new CTile(new CSprite(L"Resource//Image//Maps//map1//resource//4.png", 1, 1, 1, 0), vector3d(128, 32, 0.5f), new CBox2D(128, 32, 32, 32), 1));
+	m_Tile.push_back(new CTile(new CSprite(L"Resource//Image//Maps//map1//resource//4.png", 1, 1, 1, 0), vector3d(128, 64, 0.5f), new CBox2D(128, 64, 32, 32), 1));
+	m_Tile.push_back(new CTile(new CSprite(L"Resource//Image//Maps//map1//resource//4.png", 1, 1, 1, 0), vector3d(160, 32, 0.5f), new CBox2D(160, 32, 32, 32), 1));
 
-	CMapmanager::getInstance()->readMapList();
-	CMapmanager::getInstance()->setCurrentMapAt(2);
+	//CMapmanager::getInstance()->readMapList();
+	//CMapmanager::getInstance()->setCurrentMapAt(1);
 	return true;
 }
 
@@ -49,12 +55,6 @@ void	CPlayScene::updateScene(double deltaTime)
 	m_Weapon->updateEntity(deltaTime/60);
 	m_boomBlue->updateEntity(deltaTime / 60);
 
-
-	CMapmanager::getInstance()->getCurrentMap()->update(deltaTime, m_Player);
-
-	CCollision::CheckCollision(m_Player, m_EnemyTankRed);
-
-	CBox2D::Intersect(m_Player->getBounding(), m_EnemyTankRed->getBounding());
 	
 	// Update Bullet
 	for (int i = 0; i < TYPE_BULLET::NUMBER_OF_TYPE_BULLET; ++i)
@@ -66,7 +66,9 @@ void	CPlayScene::updateScene(double deltaTime)
 	}
 
 	// Update Map
-	CMapmanager::getInstance()->getCurrentMap()->update(deltaTime, m_Player);
+	//CMapmanager::getInstance()->getCurrentMap()->update(deltaTime, m_Player);
+	for (int i = 0; i < m_Tile.size(); ++i)
+	m_Player->updateEntityFromCollision(deltaTime, m_Tile.at(i));
 
 }
 
@@ -88,7 +90,9 @@ void	CPlayScene::updateScene(CKeyBoard* keyboard)
 
 void	CPlayScene::renderScene()
 {
-	CMapmanager::getInstance()->getCurrentMap()->render();
+	//CMapmanager::getInstance()->getCurrentMap()->render();
+	for (int i = 0; i < m_Tile.size(); ++i)
+		m_Tile.at(i)->drawEntity();
 
 	m_Player		->drawEntity();
 
