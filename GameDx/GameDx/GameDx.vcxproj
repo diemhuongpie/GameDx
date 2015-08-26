@@ -107,7 +107,9 @@
     <ClInclude Include="Class\Game\Entity\Bullet\BulletNormal.h" />
     <ClInclude Include="Class\Game\Entity\Bullet\BulletTankRed.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\BossCutMan.h" />
+    <ClInclude Include="Class\Game\Entity\Enemy\CutManWeapon.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyBall.h" />
+    <ClInclude Include="Class\Game\Entity\Enemy\EnemyBoomBlue.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyBubbleBlue.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyCut.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyEyeRed.h" />
@@ -116,6 +118,7 @@
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyMachineAutoOrange.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyMachineOrange.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyNinja.h" />
+    <ClInclude Include="Class\Game\Entity\Enemy\EnemyPartBoomBlue.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyRobotRed.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyTankRed.h" />
     <ClInclude Include="Class\Game\Entity\MovableEntity.h" />
@@ -159,7 +162,9 @@
     <ClCompile Include="Class\Game\Entity\Bullet\BulletNormal.cpp" />
     <ClCompile Include="Class\Game\Entity\Bullet\BulletTankRed.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\BossCutMan.cpp" />
+    <ClCompile Include="Class\Game\Entity\Enemy\CutManWeapon.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyBall.cpp" />
+    <ClCompile Include="Class\Game\Entity\Enemy\EnemyBoomBlue.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyBubbleBlue.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyCut.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyEyeRed.cpp" />
@@ -168,6 +173,7 @@
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyMachineAutoOrange.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyMachineOrange.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyNinja.cpp" />
+    <ClCompile Include="Class\Game\Entity\Enemy\EnemyPartBoomBlue.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyRobotRed.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyTankRed.cpp" />
     <ClCompile Include="Class\Game\Entity\MovableEntity.cpp" />
