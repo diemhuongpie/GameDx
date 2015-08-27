@@ -141,6 +141,6 @@ void CQuadNode::DetectCollisionInViewport(CMovable* movableEntity, float deltaTi
 	for (int i = 0; i < m_EntityList.size(); ++i)
 	{
 		if (m_EntityList.at(i)->getTagNode() == "Collision")
-			movableEntity->updateEntityFromCollision(deltaTime, m_EntityList.at(i));
+			movableEntity->updateEntity(m_EntityList.at(i));
 	}
 }

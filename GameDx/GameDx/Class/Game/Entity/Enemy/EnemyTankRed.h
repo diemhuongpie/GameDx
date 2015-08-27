@@ -14,6 +14,7 @@ public:
 	CEnemyTankRed(vector3d position);
 	~CEnemyTankRed();
 	virtual bool initEntity()											override;
+
 	void updateEntity(CKeyBoard* keyboard);
 	void updateEntity(float deltaTime);
 	void updateEntity(RECT rectCamera);

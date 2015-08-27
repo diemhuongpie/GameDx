@@ -35,6 +35,11 @@ vector3d CStaticEntity::getPosition()
 	return m_Position;
 }
 
+void	CStaticEntity::setPosition(vector3d vec)
+{
+	m_Position = vec;
+}
+
 char* CStaticEntity::getTagNode()
 {
 	return this->m_TagNode;

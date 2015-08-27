@@ -50,8 +50,8 @@ using namespace std;
 #define SAFE_RELEASE(A)				{if (A) {delete A; A = 0;}}
 #define SETMAX(A,B)					{A > B ? B : A}	
 
-#define BACKBUFFER_WIDTH			510
-#define	BACKBUFFER_HEIGHT			485
+#define BACKBUFFER_WIDTH			256
+#define	BACKBUFFER_HEIGHT			240
 
 #define DELTA_FIX_SIZE_RESOURCE		10
 #define TIME_FOR_JUMB				700

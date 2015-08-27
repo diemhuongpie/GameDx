@@ -13,9 +13,6 @@ public:
 	void updateEntity(float deltaTime);
 	void updateEntity(CKeyBoard *device);
 
-	virtual	void logicCollision(CBaseEntity* entity)  override;
-	void		 updateEntityFromCollision(float detaTime, CBaseEntity* entity){};
-
 	void updateEntity(RECT rectCamera);
 	void drawEntity();
 	void resetObject();

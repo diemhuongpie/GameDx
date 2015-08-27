@@ -54,10 +54,6 @@ void CEnemyBall::updateEntity(CKeyBoard *device)
 
 }
 
-void CEnemyBall::logicCollision(CBaseEntity* entity)
-{
-}
-
 
 void CEnemyBall::resetObject()
 {

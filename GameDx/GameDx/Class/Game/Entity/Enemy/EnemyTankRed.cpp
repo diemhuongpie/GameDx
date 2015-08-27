@@ -15,10 +15,6 @@ CEnemyTankRed::~CEnemyTankRed()
 {
 }
 
-//CEnemyTankRed::CEnemyTankRed(LPDIRECT3DDEVICE9)
-//{
-//	this->initEntity();
-//}
 
 bool CEnemyTankRed::initEntity()
 {

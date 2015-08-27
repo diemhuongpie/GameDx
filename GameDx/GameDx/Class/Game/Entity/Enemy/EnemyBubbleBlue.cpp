@@ -134,8 +134,3 @@ void  CEnemyBubbleBlue::drawEntity()
 	}
 
 }
-
-void CEnemyBubbleBlue::logicCollision(CBaseEntity* entity)
-{
-
-}

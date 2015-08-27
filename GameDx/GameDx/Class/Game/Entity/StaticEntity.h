@@ -19,14 +19,18 @@ public:
 	CStaticEntity();
 	~CStaticEntity();
 
-	virtual		bool					loadSprite()				= 0;
-	virtual		CBox2D					getBounding()			override;
-	virtual		bool					initEntity()			override;
-	virtual		char*					getTagNode()			override;
-	virtual		void					setTagNode(char* tag)	override;
-				vector3d				getPosition();
-	virtual		int						getState()				override;
-	virtual		void					setState(int newState)	override;
+	virtual		bool					loadSprite()							= 0;
+	virtual		void					updateEntity(float deltaTime){};
+	virtual		void					updateEntity(CBaseEntity* entity){};
+
+	virtual		CBox2D					getBounding()							override;
+	virtual		bool					initEntity()							override;
+	virtual		char*					getTagNode()							override;
+	virtual		void					setTagNode(char* tag)					override;
+	virtual		vector3d				getPosition()							override;
+	virtual		void					setPosition(vector3d)					override;
+	virtual		int						getState()								override;
+	virtual		void					setState(int newState)					override;
 
 protected:
 };

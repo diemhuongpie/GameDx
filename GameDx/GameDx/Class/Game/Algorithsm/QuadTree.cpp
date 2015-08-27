@@ -20,13 +20,7 @@ void CQuadTree::CreateTree()
 
 void CQuadTree::ReleaseTree()
 {
-	/*if (!m_Node)
-	for (int i = 0; i < 4; ++i)
-	{
-		(m_Node->getParent())[i];
-		m_Node->ReleaseNode();
-		delete m_Node;
-	}*/
+
 }
 
 void CQuadTree::RenderTree()

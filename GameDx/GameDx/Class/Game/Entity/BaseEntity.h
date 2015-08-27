@@ -23,8 +23,12 @@ public:
 
 	virtual bool			initEntity()										= 0;
 	virtual void			updateEntity(float deltaTime)						= 0;
+	virtual void			updateEntity(CBaseEntity*)							= 0;
 	virtual void			drawEntity()										= 0;
+
 	virtual	CBox2D			getBounding()										= 0;
+	virtual vector3d		getPosition()										= 0;
+	virtual void			setPosition(vector3d)								= 0;
 	virtual char*			getTagNode()										= 0;
 	virtual	void			setTagNode(char*)									= 0;
 	virtual int				getState()											= 0;

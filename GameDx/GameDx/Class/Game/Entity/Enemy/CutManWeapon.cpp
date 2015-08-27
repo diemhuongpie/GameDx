@@ -35,10 +35,6 @@ bool CCutManWeapon::loadSprite()
 	return true;
 }
 
-void CCutManWeapon::logicCollision(CBaseEntity* entity)
-{
-	
-}
 void CCutManWeapon::resetObject()
 {
 	m_Position = m_PositionBoss;
@@ -55,7 +51,6 @@ void CCutManWeapon::updateEntity(CKeyBoard *device)
 		resetObject();
 	}
 }
-	
 
 void CCutManWeapon::moveTo(vector3d m_Position, vector3d m_PositionPlayer)
 {
@@ -85,6 +80,7 @@ void CCutManWeapon::moveTo(vector3d m_Position, vector3d m_PositionPlayer)
 	}
 
 }
+
 void CCutManWeapon::updateEntity(float deltaTime)
 {
 	if (m_isDead == false)

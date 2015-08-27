@@ -30,16 +30,9 @@ bool	CPlayScene::initScene()
 	m_boomBlue = new CEnemyBoomBlue(D3DXVECTOR3(250, 200, 0));
 	m_Weapon = new CCutManWeapon(m_EnemyTankRed->getPosition(), m_Player->getPosition());
 	
-	m_Tile.push_back(new CTile(new CSprite(L"Resource//Image//Maps//map1//resource//4.png", 1, 1, 1, 0), vector3d(0, 32, 0.5f), new CBox2D(0, 32, 32, 32), 1));
-	m_Tile.push_back(new CTile(new CSprite(L"Resource//Image//Maps//map1//resource//4.png", 1, 1, 1, 0), vector3d(32, 32, 0.5f), new CBox2D(32, 32, 32, 32), 1));
-	m_Tile.push_back(new CTile(new CSprite(L"Resource//Image//Maps//map1//resource//4.png", 1, 1, 1, 0), vector3d(64, 32, 0.5f), new CBox2D(54, 32, 32, 32), 1));
-	m_Tile.push_back(new CTile(new CSprite(L"Resource//Image//Maps//map1//resource//4.png", 1, 1, 1, 0), vector3d(96, 32, 0.5f), new CBox2D(96, 32, 32, 32), 1));
-	m_Tile.push_back(new CTile(new CSprite(L"Resource//Image//Maps//map1//resource//4.png", 1, 1, 1, 0), vector3d(128, 32, 0.5f), new CBox2D(128, 32, 32, 32), 1));
-	m_Tile.push_back(new CTile(new CSprite(L"Resource//Image//Maps//map1//resource//4.png", 1, 1, 1, 0), vector3d(128, 64, 0.5f), new CBox2D(128, 64, 32, 32), 1));
-	m_Tile.push_back(new CTile(new CSprite(L"Resource//Image//Maps//map1//resource//4.png", 1, 1, 1, 0), vector3d(160, 32, 0.5f), new CBox2D(160, 32, 32, 32), 1));
+	CMapmanager::getInstance()->readMapList();
+	CMapmanager::getInstance()->setCurrentMapAt(1);
 
-	//CMapmanager::getInstance()->readMapList();
-	//CMapmanager::getInstance()->setCurrentMapAt(1);
 	return true;
 }
 
@@ -67,8 +60,7 @@ void	CPlayScene::updateScene(double deltaTime)
 
 	// Update Map
 	//CMapmanager::getInstance()->getCurrentMap()->update(deltaTime, m_Player);
-	for (int i = 0; i < m_Tile.size(); ++i)
-	m_Player->updateEntityFromCollision(deltaTime, m_Tile.at(i));
+
 
 }
 
@@ -91,9 +83,7 @@ void	CPlayScene::updateScene(CKeyBoard* keyboard)
 void	CPlayScene::renderScene()
 {
 	//CMapmanager::getInstance()->getCurrentMap()->render();
-	for (int i = 0; i < m_Tile.size(); ++i)
-		m_Tile.at(i)->drawEntity();
-
+	
 	m_Player		->drawEntity();
 
 	m_EnemyTankRed	->drawEntity();

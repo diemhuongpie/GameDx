@@ -34,10 +34,6 @@ bool CEnemyBoomBlue::loadSprite()
 	return true;
 }
 
-void CEnemyBoomBlue::logicCollision(CBaseEntity* entity)
-{
-	
-}
 void CEnemyBoomBlue::resetObject()
 {
 

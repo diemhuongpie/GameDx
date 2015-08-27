@@ -20,23 +20,15 @@ public:
 
 	virtual bool			initEntity()														override;
 	virtual void			updateEntity(float deltaTime)										override;
-	virtual void			updateEntityFromCollision(float detaTime, CBaseEntity* entity)		override;
+	virtual void			updateEntity(CBaseEntity*)											override;
 	virtual void			updateEntity(CKeyBoard *device)										override;
 	virtual void			drawEntity()														override;
+
 	virtual	vector3d		getPosition()														override;
 	virtual bool			loadSprite()														override;
-	virtual void			logicCollision(CBaseEntity* entity)									override;
 	virtual void			resetObject()														override;
 
-public:
-			void			logicGravity(float deltaTime);
-			
-			void			logicStartPlayer(float deltaTime);
-			void 			logicStandPlayer(float deltaTime);
-			void 			logicMovePlayer(float deltaTime);
-			void 			logicJumpPlayer(float deltaTime);
-			void			logicClimbPlayer(float deltaTime);
-			
+
 protected:
 	
 			clock_t					m_TimeState;
