@@ -19,8 +19,8 @@ CPlayer::CPlayer(LPDIRECT3DDEVICE9)
 
 bool CPlayer::initEntity()
 {
-	m_Position		= vector3d(50, 100, 0.5);
-	m_Velocity		= vector2d(0.05, 0.2);
+	m_Position		= vector3d(88, 150, 0.5);
+	m_Velocity		= vector2d(0.2, 0.01);
 	m_Accelero		= vector2d(0, 0.01);
 	m_State			= PLAYSTATE::START;
 	m_TimeState		= 0;
@@ -110,8 +110,8 @@ void CPlayer::updateEntity(float deltaTime)
 	}
 		break;
 	case PLAYERSTATES::STATE_CLIMB:
-		/*case PLAYERSTATES::STATE_CLIMB_SHOOT:
-		case PLAYERSTATES::STATE_CLIMB_END:*/
+		case PLAYERSTATES::STATE_CLIMB_SHOOT:
+		case PLAYERSTATES::STATE_CLIMB_END:
 
 		break;
 
@@ -513,7 +513,6 @@ void CPlayer::updateEntity(CKeyBoard* device)
 
 void CPlayer::updateEntity(CBaseEntity* entity)
 {
-
 }
 
 void CPlayer::drawEntity()
@@ -537,7 +536,8 @@ void CPlayer::drawEntity()
 			m_listSprite.at(m_State)->Render(1, 1, CCamera::setPositionEntity(m_Position), vector2d(m_Direction.x * 1, 1), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
 		break;
 	default:
-		m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(m_Position), vector2d(m_Direction.x * 1, 1), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
+		//m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(m_Position), vector2d(m_Direction.x * 2, 2), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
+		m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(vector3d(this->getBounding().getX(), this->getBounding().getY(), 0.5f)), vector2d(m_Direction.x * 1, 1), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
 		break;
 	}
 

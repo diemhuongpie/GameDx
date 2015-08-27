@@ -106,6 +106,7 @@
     <ClInclude Include="Class\Game\Entity\Bullet\BulletManager.h" />
     <ClInclude Include="Class\Game\Entity\Bullet\BulletNormal.h" />
     <ClInclude Include="Class\Game\Entity\Bullet\BulletTankRed.h" />
+    <ClInclude Include="Class\Game\Entity\Enemy\BossBombMan.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\BossCutMan.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\CutManWeapon.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyBall.h" />
@@ -161,6 +162,7 @@
     <ClCompile Include="Class\Game\Entity\Bullet\BulletManager.cpp" />
     <ClCompile Include="Class\Game\Entity\Bullet\BulletNormal.cpp" />
     <ClCompile Include="Class\Game\Entity\Bullet\BulletTankRed.cpp" />
+    <ClCompile Include="Class\Game\Entity\Enemy\BossBombMan.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\BossCutMan.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\CutManWeapon.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyBall.cpp" />

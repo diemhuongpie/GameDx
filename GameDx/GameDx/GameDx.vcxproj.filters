@@ -315,6 +315,9 @@
     <ClCompile Include="Class\Game\Entity\Bullet\BombBullet.cpp">
       <Filter>Game\Entity\Children\Bullet\cpp</Filter>
     </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Enemy\BossBombMan.cpp">
+      <Filter>Game\Entity\Children\Boss\cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Class\Framework\Timer.h">
@@ -483,6 +486,9 @@
     </ClInclude>
     <ClInclude Include="Class\Game\Entity\Enemy\CutManWeapon.h">
       <Filter>Game\Entity\Children\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Enemy\BossBombMan.h">
+      <Filter>Game\Entity\Children\Boss</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
