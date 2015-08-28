@@ -144,6 +144,7 @@
     <ClInclude Include="Class\Game\Utill\stdafx.h" />
     <ClInclude Include="Class\Mathematics\Box2D.h" />
     <ClInclude Include="Class\Mathematics\Collision.h" />
+    <ClInclude Include="Class\Mathematics\CollisionManager.h" />
     <ClInclude Include="Class\Mathematics\Polygon.h" />
     <ClInclude Include="Class\Mathematics\SweptAABB.h" />
   </ItemGroup>
@@ -197,6 +198,7 @@
     <ClCompile Include="Class\Game\WinMain.cpp" />
     <ClCompile Include="Class\Mathematics\Box2D.cpp" />
     <ClCompile Include="Class\Mathematics\Collision.cpp" />
+    <ClCompile Include="Class\Mathematics\CollisionManager.cpp" />
     <ClCompile Include="Class\Mathematics\Polygon.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

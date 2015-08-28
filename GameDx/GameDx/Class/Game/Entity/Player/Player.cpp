@@ -20,7 +20,7 @@ CPlayer::CPlayer(LPDIRECT3DDEVICE9)
 bool CPlayer::initEntity()
 {
 	m_Position		= vector3d(16, 150, 0.5);
-	m_Velocity		= vector2d(0.01, 0.01);
+	m_Velocity		= vector2d(0.1, 0.1);
 	m_Accelero		= vector2d(0, 0.01);
 	m_State			= PLAYSTATE::START;
 	m_TimeState		= 0;
@@ -90,21 +90,47 @@ void CPlayer::updateEntity(float deltaTime)
 	switch (m_State)
 	{
 	case PLAYERSTATES::STATE_START:
+		for (int i = 0; i < m_listCollitionEvent.size(); ++i)
+		{
+			OutputDebugString(L"\n Colli: ");
+		OutputDebugString(_itow(m_listCollitionEvent.size(), new WCHAR[1], 10));
+			switch (m_listCollitionEvent.at(i)->m_CollisionDirection)
+			{
+			case COLDIRECTION::COLDIRECTION_LEFT:
+
+				break;
+			case COLDIRECTION::COLDIRECTION_RIGHT:
+
+				break;
+			case COLDIRECTION::COLDIRECTION_TOP:
+				m_State = PLAYERSTATES::STATE_STAND;
+				m_Velocity.y = 0;
+				break;
+			case COLDIRECTION::COLDIRECTION_BOTTOM:
+				m_Velocity.y = GRAVITY * DIRECTION::DIRECTION_DOWN;
+				break;
+			default:
+				m_Direction.y = DIRECTION::DIRECTION_DOWN;
+				m_Velocity.y = GRAVITY *m_Direction.y;
+				break;
+			}
+
+
+			m_listCollitionEvent.pop_back();
+		}
+
+		m_Position.x += m_Velocity.x * deltaTime;
+		m_Position.y += m_Velocity.y * deltaTime;
+
 	break;
 	case PLAYERSTATES::STATE_STAND:
 	break;
-	case PLAYERSTATES::STATE_MOVE:
-	m_Velocity.x = GRAVITY * m_Direction.x;
-	m_Position.x += m_Velocity.x * deltaTime;
-	break;
-	default:
-	break;
-	}
 
-	for (int i = 0; i < m_listCollitionEvent.size(); ++i)
-	{
-		OutputDebugString(L"\n Colli: ");
-		OutputDebugString(_itow(m_listCollitionEvent.size(), new WCHAR[1], 10));
+	case PLAYERSTATES::STATE_MOVE:
+		for (int i = 0; i < m_listCollitionEvent.size(); ++i)
+		{
+			OutputDebugString(L"\n ColliMOVE: ");
+			OutputDebugString(_itow(m_listCollitionEvent.size(), new WCHAR[1], 10));
 			switch (m_listCollitionEvent.at(i)->m_CollisionDirection)
 			{
 			case COLDIRECTION::COLDIRECTION_LEFT:
@@ -112,34 +138,50 @@ void CPlayer::updateEntity(float deltaTime)
 				if (m_Direction.x == DIRECTION::DIRECTION_LEFT)
 					m_Velocity.x = GRAVITY * m_Direction.x;
 
-				m_Position.x += m_Velocity.x * deltaTime;
 				break;
 			case COLDIRECTION::COLDIRECTION_RIGHT:
 				m_Velocity.x = 0;
 				if (m_Direction.x == DIRECTION::DIRECTION_RIGHT)
 					m_Velocity.x = GRAVITY * m_Direction.x;
 
-				m_Position.x += m_Velocity.x * deltaTime;
 				break;
 			case COLDIRECTION::COLDIRECTION_TOP:
-				m_State = PLAYERSTATES::STATE_STAND;
-				m_Velocity.y = 0;
-				m_Position.y += m_Velocity.y * m_Direction.y * deltaTime;
+				if (m_Velocity.y < 0)
+					m_Velocity.y = 0;
+				else
+					m_Velocity.y = GRAVITY * m_Direction.y;
 				break;
 			case COLDIRECTION::COLDIRECTION_BOTTOM:
-				m_Velocity.y = GRAVITY * DIRECTION::DIRECTION_DOWN;
-				m_Position.y += m_Velocity.y * deltaTime;
+				m_Direction.y = DIRECTION::DIRECTION_DOWN;
+				m_Velocity.y = GRAVITY * m_Direction.y;
 				break;
 			default:
 				m_Direction.y = DIRECTION::DIRECTION_DOWN;
-				m_Velocity.y = 0.01 *m_Direction.y;
-				//m_Position.x += m_Velocity.x * m_Direction.x *deltaTime;
-				m_Position.y += m_Velocity.y;
+				m_Velocity.y = GRAVITY *m_Direction.y;
 				break;
 			}
 
+			if (m_listCollitionEvent.size() <= 1)
+				m_listCollitionEvent.clear();
+			else
+				m_listCollitionEvent.pop_back();
+		}
 
-		m_listCollitionEvent.pop_back();
+		m_Position.x += m_Velocity.x * deltaTime;
+		m_Position.y += m_Velocity.y * deltaTime;
+	
+		break;
+
+	case PLAYERSTATES::STATE_JUMP:
+
+		//m_Position.x += m_Velocity.x * deltaTime;
+		m_Position.y += m_Velocity.y * deltaTime;
+
+		break;
+
+
+	default:
+	break;
 	}
 		// Update State
 		m_TimeState += deltaTime;
@@ -563,7 +605,7 @@ void CPlayer::drawEntity()
 			m_listSprite.at(m_State)->Render(1, 1, CCamera::setPositionEntity(m_Position), vector2d(m_Direction.x * 1, 1), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
 		break;
 	default:
-		//m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(m_Position), vector2d(m_Direction.x * 2, 2), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
+	//	m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(m_Position), vector2d(m_Direction.x * 1, 1), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
 		m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(vector3d(this->getBounding().getX(), this->getBounding().getY(), 0.5f)), vector2d(m_Direction.x * 1, 1), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
 		break;
 	}

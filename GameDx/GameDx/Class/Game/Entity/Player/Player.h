@@ -2,25 +2,13 @@
 /* Create by Michael Le*/
 /* 08/07/2015 */
 /*********************************************************/
-
+#include "Game\Utill\Config.h"
 #include "Game\Entity\MovableEntity.h"
 #include "Framework\Camera.h"
 #include "Mathematics\Collision.h"
 
 #ifndef __CPLAYER_H__
 #define __CPLAYER_H__
-
-struct CollisionEvents
-{
-	int				m_CollisionDirection;
-	CBaseEntity*	m_Entity;
-
-	CollisionEvents(int colDirect, CBaseEntity* entity)
-	{
-		m_CollisionDirection = colDirect;
-		m_Entity = entity;
-	}
-};
 
 class CPlayer : public CMovable
 {

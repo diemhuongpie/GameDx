@@ -6,10 +6,12 @@
 #ifndef __CONFIG_H__
 #define __CONFIG_H__
 
+#include "stdafx.h"
 #include <tchar.h>
 #include <string>
 using namespace std;
 
+class CBaseEntity;
 /*DEFINE*/
 #define FPS							80
 #define GAME_RATE					(1000.0f/80.0f)
@@ -217,6 +219,19 @@ enum SKILL_ROCKMAN
 /******************/
 
 /*STRUCT*/
+struct CollisionEvents
+{
+	int				m_CollisionDirection;
+	CBaseEntity*	m_Entity;
+	
+
+	CollisionEvents(int colDirect, CBaseEntity* entity)
+	{
+		m_CollisionDirection	= colDirect;
+		m_Entity				= entity;
+	}
+};
+
 struct KeyState
 {
 	int KeyCode;

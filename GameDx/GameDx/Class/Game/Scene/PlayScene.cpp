@@ -59,8 +59,8 @@ void	CPlayScene::updateScene(double deltaTime)
 
 	// Update Map
 	//get List Collision Events
-	m_Player->updateEntity(deltaTime);
 	CMapmanager::getInstance()->getCurrentMap()->update(deltaTime, m_Player);
+	m_Player->updateEntity(deltaTime);
 	// Handling Collision Events in List
 
 
