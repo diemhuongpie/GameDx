@@ -34,7 +34,6 @@ public:
 	virtual		void					setPosition(vector3d pos)											override;
 	virtual		void					setVelocity(vector2d vel)													;
 
-
 protected:
 				vector2d				m_Velocity;
 };

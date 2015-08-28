@@ -19,8 +19,8 @@ CPlayer::CPlayer(LPDIRECT3DDEVICE9)
 
 bool CPlayer::initEntity()
 {
-	m_Position		= vector3d(88, 150, 0.5);
-	m_Velocity		= vector2d(0.2, 0.01);
+	m_Position		= vector3d(16, 150, 0.5);
+	m_Velocity		= vector2d(0.01, 0.01);
 	m_Accelero		= vector2d(0, 0.01);
 	m_State			= PLAYSTATE::START;
 	m_TimeState		= 0;
@@ -86,45 +86,64 @@ void CPlayer::resetObject()
 
 void CPlayer::updateEntity(float deltaTime)
 {
+	//Update State
 	switch (m_State)
 	{
 	case PLAYERSTATES::STATE_START:
-
-		break;
-
+	break;
 	case PLAYERSTATES::STATE_STAND:
-	{
-
-	}
-		break;
-
+	break;
 	case PLAYERSTATES::STATE_MOVE:
-	case PLAYERSTATES::STATE_MOVE_SHOOT:
-
-		break;
-
-	case PLAYERSTATES::STATE_JUMP:
-	case PLAYERSTATES::STATE_JUMP_SHOOT:
-	{
-
-	}
-		break;
-	case PLAYERSTATES::STATE_CLIMB:
-		case PLAYERSTATES::STATE_CLIMB_SHOOT:
-		case PLAYERSTATES::STATE_CLIMB_END:
-
-		break;
-
+	m_Velocity.x = GRAVITY * m_Direction.x;
+	m_Position.x += m_Velocity.x * deltaTime;
+	break;
 	default:
-		break;
+	break;
 	}
 
-	if (m_Position.y < 120)
+	for (int i = 0; i < m_listCollitionEvent.size(); ++i)
 	{
-		m_Position.y = 120;
+		OutputDebugString(L"\n Colli: ");
+		OutputDebugString(_itow(m_listCollitionEvent.size(), new WCHAR[1], 10));
+			switch (m_listCollitionEvent.at(i)->m_CollisionDirection)
+			{
+			case COLDIRECTION::COLDIRECTION_LEFT:
+				m_Velocity.x = 0;
+				if (m_Direction.x == DIRECTION::DIRECTION_LEFT)
+					m_Velocity.x = GRAVITY * m_Direction.x;
+
+				m_Position.x += m_Velocity.x * deltaTime;
+				break;
+			case COLDIRECTION::COLDIRECTION_RIGHT:
+				m_Velocity.x = 0;
+				if (m_Direction.x == DIRECTION::DIRECTION_RIGHT)
+					m_Velocity.x = GRAVITY * m_Direction.x;
+
+				m_Position.x += m_Velocity.x * deltaTime;
+				break;
+			case COLDIRECTION::COLDIRECTION_TOP:
+				m_State = PLAYERSTATES::STATE_STAND;
+				m_Velocity.y = 0;
+				m_Position.y += m_Velocity.y * m_Direction.y * deltaTime;
+				break;
+			case COLDIRECTION::COLDIRECTION_BOTTOM:
+				m_Velocity.y = GRAVITY * DIRECTION::DIRECTION_DOWN;
+				m_Position.y += m_Velocity.y * deltaTime;
+				break;
+			default:
+				m_Direction.y = DIRECTION::DIRECTION_DOWN;
+				m_Velocity.y = 0.01 *m_Direction.y;
+				//m_Position.x += m_Velocity.x * m_Direction.x *deltaTime;
+				m_Position.y += m_Velocity.y;
+				break;
+			}
+
+
+		m_listCollitionEvent.pop_back();
 	}
 		// Update State
 		m_TimeState += deltaTime;
+
 }
 
 void CPlayer::updateEntity(CKeyBoard* device)
@@ -506,13 +525,21 @@ void CPlayer::updateEntity(CKeyBoard* device)
 
 		break;
 	default:
-		m_State				= PLAYERSTATES::STATE_STAND;
+		//m_State				= PLAYERSTATES::STATE_STAND;
 		break;
 	}
 }
 
 void CPlayer::updateEntity(CBaseEntity* entity)
 {
+	if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_LEFT)
+		m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_LEFT, entity));
+	if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_RIGHT)
+		m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_RIGHT, entity));
+	if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_TOP)
+		m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_TOP, entity));
+	if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_BOTTOM)
+		m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_BOTTOM, entity));
 }
 
 void CPlayer::drawEntity()

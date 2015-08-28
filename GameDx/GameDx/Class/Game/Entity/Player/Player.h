@@ -10,6 +10,17 @@
 #ifndef __CPLAYER_H__
 #define __CPLAYER_H__
 
+struct CollisionEvents
+{
+	int				m_CollisionDirection;
+	CBaseEntity*	m_Entity;
+
+	CollisionEvents(int colDirect, CBaseEntity* entity)
+	{
+		m_CollisionDirection = colDirect;
+		m_Entity = entity;
+	}
+};
 
 class CPlayer : public CMovable
 {
@@ -27,8 +38,6 @@ public:
 	virtual	vector3d		getPosition()														override;
 	virtual bool			loadSprite()														override;
 	virtual void			resetObject()														override;
-
-			void			HandlingCollisionEvents()													;
 
 
 protected:

@@ -239,17 +239,6 @@ struct	MapInfo
 	}
 };
 
-struct CollisionEvents
-{
-	int				m_CollisionDirection;
-	CBaseEntity*	m_Entity;
-
-	CollisionEvents(int colDirect, CBaseEntity* entity)
-	{
-		m_CollisionDirection	= colDirect;
-		m_Entity				= entity;
-	}
-};
 /******************************/
 
 /*CONST*/

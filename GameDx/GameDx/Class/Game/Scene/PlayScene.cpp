@@ -27,8 +27,8 @@ bool	CPlayScene::initScene()
 	m_EnemyTankRed		= new CEnemyTankRed(D3DXVECTOR3(400, 100, 0));
 	m_EnemyAutoOrange	= new CEnemyMachineAutoOrange(D3DXVECTOR3(200, 350, 0));
 	m_EnemyBall			= new CEnemyBall();
-	m_boomBlue = new CEnemyBoomBlue(D3DXVECTOR3(250, 200, 0));
-	m_Weapon = new CCutManWeapon(m_EnemyTankRed->getPosition(), m_Player->getPosition());
+	m_boomBlue			= new CEnemyBoomBlue(D3DXVECTOR3(250, 200, 0));
+	m_Weapon			= new CCutManWeapon(m_EnemyTankRed->getPosition(), m_Player->getPosition());
 	
 	CMapmanager::getInstance()->readMapList();
 	CMapmanager::getInstance()->setCurrentMapAt(1);
@@ -41,7 +41,6 @@ void	CPlayScene::updateScene(double deltaTime)
 	// update Camera
 	CCamera::getInstance()->Update(m_Player->getPosition());
 
-	m_Player		->updateEntity(deltaTime);
 	m_EnemyTankRed	->updateEntity(deltaTime);
 	m_EnemyBall->updateEntity(deltaTime);
 	m_EnemyAutoOrange->updateEntity(deltaTime);
@@ -59,7 +58,10 @@ void	CPlayScene::updateScene(double deltaTime)
 	}
 
 	// Update Map
-	//CMapmanager::getInstance()->getCurrentMap()->update(deltaTime, m_Player);
+	//get List Collision Events
+	m_Player->updateEntity(deltaTime);
+	CMapmanager::getInstance()->getCurrentMap()->update(deltaTime, m_Player);
+	// Handling Collision Events in List
 
 
 }
@@ -82,7 +84,7 @@ void	CPlayScene::updateScene(CKeyBoard* keyboard)
 
 void	CPlayScene::renderScene()
 {
-	//CMapmanager::getInstance()->getCurrentMap()->render();
+	CMapmanager::getInstance()->getCurrentMap()->render();
 	
 	m_Player		->drawEntity();
 
