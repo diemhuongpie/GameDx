@@ -9,6 +9,7 @@
 #include "Game\Entity\Bullet\BulletEnemy.h"
 #include "Game\Entity\Bullet\BulletTankRed.h"
 #include "Game\Entity\Enemy\EnemyPartBoomBlue.h"
+#include "Game\Entity\Bullet\BulletFireMan.h"
 
 class CBulletManager : public CSingleton<CBulletManager>
 {

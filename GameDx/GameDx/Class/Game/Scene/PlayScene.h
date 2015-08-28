@@ -15,6 +15,7 @@
 #include "Game\Entity\Enemy\CutManWeapon.h"
 #include "Game\Entity\Enemy\EnemyPartBoomBlue.h"
 #include "Game\Entity\Enemy\EnemyBoomBlue.h"
+#include "Game\Entity\Enemy\BossFireMan.h"
 
 class CPlayScene :
 	public CBaseScene
@@ -38,6 +39,9 @@ private:
 			CEnemyCut*				m_EnemyCut;
 			CCutManWeapon*			m_Weapon;
 			CEnemyBoomBlue*			m_boomBlue;
+
+			CBossFireMan*			m_fireMan;
+
 };
 
 #endif

@@ -24,7 +24,7 @@ bool CBulletEnemy::initEntity()
 	m_timeDestroy = 0;
 	m_Position		= vector3d(100, 100, 0.5);
 	m_State			= BULLETSTATE::BULLET_STATE_INVIS;
-	m_Velocity		= vector2d(10, 10);
+	m_Velocity		= vector2d(5,5);
 	m_Bounding		= new CBox2D(m_Position.x, m_Position.y, 32, 32);
 	m_TagNode		= "N";
 

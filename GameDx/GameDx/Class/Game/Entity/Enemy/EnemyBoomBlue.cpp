@@ -62,16 +62,17 @@ void CEnemyBoomBlue::updateEntity(float deltaTime)
 		m_delayTime++;
 		if (m_delayTime > 0 && m_delayTime < 100)
 		{
-			m_Velocity.y = -4;
+			m_Velocity.y = 5;
 		}
 		if (m_delayTime > 100 && m_delayTime < 120)
 		{
 			m_Velocity.y = 0;
-			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::ENEMY_PART_BOOM, this->m_Position);
+			if (m_Velocity.y == 0)
+				CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::ENEMY_PART_BOOM, this->m_Position);
 		}
 		if (m_delayTime > 120 && m_delayTime < 250)
 		{
-			m_Velocity.y = 7;
+			m_Velocity.y = -7;
 		}
 
 		if (m_delayTime > 250)
@@ -97,7 +98,7 @@ void CEnemyBoomBlue::drawEntity()
 {
 	if (m_isDead == false)
 	{
-		this->m_listSprite[0]->Render(m_Position, vector2d(1.0, 1.0), 0.0f, DRAWCENTER_MIDDLE_MIDDLE, true, 5);
+		this->m_listSprite[0]->Render(CCamera::setPositionEntity(m_Position), vector2d(1.0, 1.0), 0.0f, DRAWCENTER_MIDDLE_MIDDLE, true, 5);
 	}
 		
 }

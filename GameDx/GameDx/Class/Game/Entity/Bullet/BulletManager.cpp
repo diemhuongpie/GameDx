@@ -9,6 +9,10 @@ CBulletManager::CBulletManager()
 	{
 		m_listBullet[TYPE_BULLET::NORMAL].push_back(new CBulletNormal());
 	}
+	for (int i = 0; i < 2; ++i)
+	{
+		m_listBullet[TYPE_BULLET::BOSS_FIRE_MAN].push_back(new CBulletFireMan());
+	}
 	for (int i = 0; i < 4; ++i)
 	{
 		m_listBullet[TYPE_BULLET::TANK_RED].push_back(new CBulletTankRed(m_angle));
@@ -48,8 +52,7 @@ void	CBulletManager::ShowBullet(int styleBullet, vector3d pos)
 		{
 			m_listBullet[styleBullet].at(i)->setState(BULLETSTATE::BULLET_STATE_SHOW);
 			m_listBullet[styleBullet].at(i)->setPosition(pos);
-			
-			break;
+		//	break;
 		}
 	if (m_angle > 3)
 		m_angle = 0;

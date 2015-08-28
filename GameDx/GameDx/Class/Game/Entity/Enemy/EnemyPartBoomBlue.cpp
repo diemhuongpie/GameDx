@@ -14,7 +14,7 @@ CEnemyPartBoomBlue::~CEnemyPartBoomBlue()
 
 bool CEnemyPartBoomBlue::initEntity()
 {
-	m_Position = vector3d(100, 100, 0.5);
+	m_Position = vector3d(250, 200, 0);
 	m_State = BULLETSTATE::BULLET_STATE_INVIS;
 	m_delayDeath = 0;
 	m_delayTime = 0;
@@ -61,10 +61,10 @@ void CEnemyPartBoomBlue::updateEntity(float deltaTime)
 		m_delayTime++;
 		if (m_delayTime > 0 && m_delayTime < 20)
 		{
-			m_Velocity.y = 4;
+			m_Velocity.y = 3;
 			m_Velocity.x = m_velX;
 		}
-		if (m_delayTime > 20 && m_delayTime < 200)
+		if (m_delayTime > 20 && m_delayTime < 250)
 		{
 			m_Velocity.x = m_velX;
 			m_Velocity.y = -5;
@@ -99,13 +99,13 @@ void CEnemyPartBoomBlue::updateEntity(float deltaTime)
 
 	
 
-	if (m_delayTime > 200)
+	if (m_delayTime > 250)
 	{
 		m_isDead = true;
 		m_delayTime = 0;
 	}
 
-	if (m_delayDeath > 2000)
+	if (m_delayDeath > 3000)
 	{
 		m_State = BULLETSTATE::BULLET_STATE_INVIS;
 		m_delayDeath = 0;
