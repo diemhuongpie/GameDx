@@ -27,14 +27,12 @@ public:
 	virtual bool			loadSprite()														override;
 	virtual void			resetObject()														override;
 
-
 protected:
 	
 			clock_t						m_TimeState;
 			vector2d					m_Accelero;
 			vector2d					m_Direction;
 			vector<CSprite*>*			m_RockManSpriteList;
-			vector<CollisionEvents*>	m_listCollitionEvent;
 private:
 
 };

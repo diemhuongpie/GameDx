@@ -69,3 +69,8 @@ void	CMovable::setVelocity(vector2d newVel)
 {
 	m_Velocity = newVel;
 }
+
+vector<CollisionEvents*> CMovable::getListCollisionEvents()
+{
+	return m_listCollitionEvent;
+}

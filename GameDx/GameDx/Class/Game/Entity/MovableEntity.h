@@ -33,9 +33,10 @@ public:
 	virtual		void					setState(int newState)												override;
 	virtual		void					setPosition(vector3d pos)											override;
 	virtual		void					setVelocity(vector2d vel)													;
-
+	virtual		vector<CollisionEvents*>getListCollisionEvents();
 protected:
-				vector2d				m_Velocity;
+				vector2d					m_Velocity;
+				vector<CollisionEvents*>	m_listCollitionEvent;
 };
 
 #endif

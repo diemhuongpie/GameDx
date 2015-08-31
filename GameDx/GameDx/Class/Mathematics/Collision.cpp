@@ -25,7 +25,7 @@ COLDIRECTION CCollision::CheckCollision(CMovable* MovableObject, CBaseEntity* Ob
 	if (AABB((MovableObject->getBounding()), (Object->getBounding()), moveX, moveY))
 	{
 		if (moveY != 0)
-			if (moveY >= 0)
+			if (moveY > 0)
 				return COLDIRECTION::COLDIRECTION_TOP;
 			else
 				return COLDIRECTION::COLDIRECTION_BOTTOM;
@@ -38,13 +38,13 @@ COLDIRECTION CCollision::CheckCollision(CMovable* MovableObject, CBaseEntity* Ob
 			else
 			{
 				// already changing axis Oy into dacac
-				if (MovableObject->getBounding().getY() == Object->getBounding().getY() + Object->getBounding().getHeight())
+				if (MovableObject->getBounding().getY() - MovableObject->getBounding().getHeight() == Object->getBounding().getY())
 					return COLDIRECTION::COLDIRECTION_TOP;
-				else if (MovableObject->getBounding().getY() + MovableObject->getBounding().getHeight() == Object->getBounding().getY())
+				else if (MovableObject->getBounding().getY() == Object->getBounding().getY() - Object->getBounding().getHeight())
 						return COLDIRECTION::COLDIRECTION_BOTTOM;
-				else if (MovableObject->getBounding().getX() == Object->getBounding().getX() + Object->getBounding().getWidth())
-							return COLDIRECTION::COLDIRECTION_LEFT;
 				else if (MovableObject->getBounding().getX() + MovableObject->getBounding().getWidth() == Object->getBounding().getX())
+						return COLDIRECTION::COLDIRECTION_LEFT;
+				else if (MovableObject->getBounding().getX() == Object->getBounding().getX() + Object->getBounding().getWidth())
 								return COLDIRECTION::COLDIRECTION_RIGHT;
 			}
 	}

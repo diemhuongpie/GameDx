@@ -17,7 +17,9 @@ class CBaseEntity;
 #define GAME_RATE					(1000.0f/80.0f)
 #define WINDOWS_NAME				L"Oishi"
 
-#define GRAVITY						0.03
+#define GRAVITY						0.15
+#define MOVESPEED					0.08
+#define GRAVITYSTART				0.02
 
 #define DRAWCENTER_LEFT_TOP			1					
 #define DRAWCENTER_LEFT_MIDDLE		2			
@@ -47,16 +49,16 @@ class CBaseEntity;
 
 #define PI							3.14
 
-#define SIGN(A)						(A > 0 ? 1 : -1)
+#define SIGN(A)						(A >= 0 ? 1 : -1)
 #define DIRECT_COORDINATE(A)		{-(A)}
 #define SAFE_RELEASE(A)				{if (A) {delete A; A = 0;}}
 #define SETMAX(A,B)					{A > B ? B : A}	
 
 #define BACKBUFFER_WIDTH			256
-#define	BACKBUFFER_HEIGHT			240
+#define	BACKBUFFER_HEIGHT			224
 
 #define DELTA_FIX_SIZE_RESOURCE		10
-#define TIME_FOR_JUMB				700
+#define TIME_FOR_JUMB				650
 #define TIME_FOR_SHOOT				1000
 
 #define SCREEN_SIZE					CBox2D()

@@ -162,7 +162,7 @@ inline float SweptAABB(CBox2D box1, CBox2D box2, float &normalX, float &normalY)
 	}
 	else
 	{
-		if (xEntry > yEntry && (box1.getY() - box1.getHeight() != box2.getY()))
+		if (xEntry > yEntry)
 		{
 			if (xInvEntry < 0.0f)
 			{
@@ -177,7 +177,7 @@ inline float SweptAABB(CBox2D box1, CBox2D box2, float &normalX, float &normalY)
 		}
 		else
 		{
-			if (yInvEntry <= 0.0f)
+			if (yInvEntry < 0.0f)
 			{
 				normalX = 0.0f;
 				normalY = 1.0f;
