@@ -205,7 +205,7 @@ void CPlayer::updateEntity(float deltaTime)
 			m_Velocity.x			= 0;
 			m_Direction.y			= DIRECTION::DIRECTION_DOWN;
 			m_Velocity.y			= GRAVITY * m_Direction.y;
-			m_State					= PLAYERSTATES::STATE_JUMP;
+			//m_State					= PLAYERSTATES::STATE_JUMP;
 		}
 		OutputDebugString(L"\n LISTSIZEMOVE: ");
 		OutputDebugString(_itow(m_listCollitionEvent.size(), new WCHAR[1], 10));

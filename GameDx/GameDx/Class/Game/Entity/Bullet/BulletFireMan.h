@@ -8,15 +8,16 @@ class CBulletFireMan : public CBaseBullet
 public:
 	CBulletFireMan();
 	~CBulletFireMan();
-	bool					initEntity();
-	void					updateEntity(float deltaTime);
-	void					updateEntity(CKeyBoard*);
-	void					drawEntity();
-	bool					loadSprite();
-	vector3d				getPosition();
-	void					setState(int newState);
-	int						getState();
-	void					resetObject();
+	virtual		void					updateEntity(float deltaTime)		override;
+	virtual		void					updateEntity(CKeyBoard *device)		override;
+	virtual		void					updateEntity(CBaseEntity*)			override;
+	virtual		bool					loadSprite()						override;
+				bool					initEntity();
+				void					drawEntity();
+				vector3d				getPosition();
+				void					setState(int newState);
+				int						getState();
+				void					resetObject();
 
 private:
 	int						m_timeDestroy;

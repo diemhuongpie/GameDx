@@ -63,6 +63,10 @@ void CBulletFireMan::updateEntity(CKeyBoard* device)
 {
 }
 
+void CBulletFireMan::updateEntity(CBaseEntity* device)
+{
+}
+
 void CBulletFireMan::drawEntity()
 {
 	if (m_State == BULLETSTATE::BULLET_STATE_SHOW)

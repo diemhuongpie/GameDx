@@ -116,13 +116,13 @@ inline float SweptAABB(CBox2D box1, CBox2D box2, float &normalX, float &normalY)
 
 	if (box1.getVelocityY() > 0.0f)
 	{
-		yInvEntry		= (box2.getY()	- box2.getHeight())	- box1.getY();
-		yInvExit		= box2.getY()	- (box1.getY()		- box1.getHeight());
+		yInvEntry		= (box2.getY()	- box1.getHeight())	- box1.getY();
+		yInvExit		= box2.getY()	- box1.getY()		+ box2.getHeight();
 	}
 	else
 	{
-		yInvEntry		= box2.getY()	- (box1.getY()		- box1.getHeight());
-		yInvExit		= (box2.getY()	- box2.getHeight())	- box1.getY();
+		yInvEntry		= box2.getY()	- box1.getY()		+ box2.getHeight();
+		yInvExit		= box2.getY()	- box1.getHeight()	- box1.getY();
 	}
 
 

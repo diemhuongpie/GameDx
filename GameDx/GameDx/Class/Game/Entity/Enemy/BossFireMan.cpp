@@ -37,7 +37,7 @@ void CBossFireMan::resetObject()
 {
 
 }
-void CBossFireMan::logicCollision(CBaseEntity* entity)
+void CBossFireMan::updateEntity(CBaseEntity* entity)
 {
 }
 void CBossFireMan::updateEntity(CKeyBoard *device)

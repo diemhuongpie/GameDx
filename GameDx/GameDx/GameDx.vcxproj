@@ -103,11 +103,13 @@
     <ClInclude Include="Class\Game\Entity\Bullet\BaseBullet.h" />
     <ClInclude Include="Class\Game\Entity\Bullet\BombBullet.h" />
     <ClInclude Include="Class\Game\Entity\Bullet\BulletEnemy.h" />
+    <ClInclude Include="Class\Game\Entity\Bullet\BulletFireMan.h" />
     <ClInclude Include="Class\Game\Entity\Bullet\BulletManager.h" />
     <ClInclude Include="Class\Game\Entity\Bullet\BulletNormal.h" />
     <ClInclude Include="Class\Game\Entity\Bullet\BulletTankRed.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\BossBombMan.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\BossCutMan.h" />
+    <ClInclude Include="Class\Game\Entity\Enemy\BossFireMan.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\CutManWeapon.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyBall.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyBoomBlue.h" />
@@ -159,11 +161,13 @@
     <ClCompile Include="Class\Game\Entity\BaseEntity.cpp" />
     <ClCompile Include="Class\Game\Entity\Bullet\BombBullet.cpp" />
     <ClCompile Include="Class\Game\Entity\Bullet\BulletEnemy.cpp" />
+    <ClCompile Include="Class\Game\Entity\Bullet\BulletFireMan.cpp" />
     <ClCompile Include="Class\Game\Entity\Bullet\BulletManager.cpp" />
     <ClCompile Include="Class\Game\Entity\Bullet\BulletNormal.cpp" />
     <ClCompile Include="Class\Game\Entity\Bullet\BulletTankRed.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\BossBombMan.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\BossCutMan.cpp" />
+    <ClCompile Include="Class\Game\Entity\Enemy\BossFireMan.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\CutManWeapon.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyBall.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyBoomBlue.cpp" />

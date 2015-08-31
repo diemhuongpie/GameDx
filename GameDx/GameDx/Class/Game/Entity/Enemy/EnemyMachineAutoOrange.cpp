@@ -17,11 +17,6 @@ CEnemyMachineAutoOrange::~CEnemyMachineAutoOrange()
 {
 }
 
-void CEnemyMachineAutoOrange::logicCollision(CBaseEntity* entity)
-{
-
-}
-
 bool CEnemyMachineAutoOrange::initEntity()
 {
 	check_State = true;
