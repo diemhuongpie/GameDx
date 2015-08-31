@@ -12,7 +12,9 @@ public:
 
 	bool					initEntity()										;
 	virtual void			updateEntity(float deltaTime)				override;
-	void					updateEntity(CKeyBoard*)							;
+	virtual void			updateEntity(CKeyBoard*)					override;
+	virtual void			updateEntity(CBaseEntity*)					override;
+
 	void					drawEntity()										;
 	bool					loadSprite()										;
 	vector3d				getPosition();

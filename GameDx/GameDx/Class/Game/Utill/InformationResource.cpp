@@ -76,8 +76,23 @@ vector<const wchar_t*> CInfomationResource::InitRockManBombResource()
 
 /*******************************************/
 
+/************RESOURCE FOR BOOMMAN************/
+vector < const wchar_t* > CInfomationResource::InitBoomManResource()
+{
+	m_linkResourceBombManList.clear();
+	m_linkResourceBombManList.push_back(L"Resource//Image//Game//Sprites//BossBoomMan//bom_stand.png");
+	m_linkResourceBombManList.push_back(L"Resource//Image//Game//Sprites//BossBoomMan//bom_jump_low.png");
+	m_linkResourceBombManList.push_back(L"Resource//Image//Game//Sprites//BossBoomMan//bom_jump_height.png");
+	m_linkResourceBombManList.push_back(L"Resource//Image//Game//Sprites//BossBoomMan//boss_boom_fire.png");
+
+	return m_linkResourceBombManList;
+}
+/********************************************/
+
 /************BULLET RESOURCE*****************/
 const wchar_t*		CInfomationResource::rockmanBullet				= L"Resource//Image//Game//Sprites//RockMan//Bullet//bullet_rockman.png";
+const wchar_t*		CInfomationResource::bombmanBullet				= L"Reousrce//Image//Game//Sprite//BossBoomMan//boom_boss.png";
+const wchar_t*		CInfomationResource::effectBumBomSkill			= L"Reousrce//Image//Game//Sprite//BossBoomMan//boom_burst.png";
 
 /************RESOURCE FOR SELECTSTAGE*******/
 const wchar_t*		CInfomationResource::backgroundSeletStage		= L"Resource//Image//SelectStage//selectStage.png";

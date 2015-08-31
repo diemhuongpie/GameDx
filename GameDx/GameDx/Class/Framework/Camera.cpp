@@ -90,7 +90,7 @@ void	CCamera::NormalUpdate(vector3d	positionEntity)
 
 void	CCamera::AutoUpdate(vector3d positionEntiyt)
 {
-
+	if (true);
 }
 
 vector3d	CCamera::setPositionEntity(vector3d	&pos)

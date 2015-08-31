@@ -41,6 +41,7 @@ bool CEnemyBall::loadSprite()
 	this->m_listSprite.push_back(new CSprite(L"Resource//Image//Game//Sprites//BossCutMan//boom_burst.png", 1, 4, 4, 0));
 	return true;
 }
+
 void CEnemyBall::updateEntity(CKeyBoard *device)
 {
 	if (device->KeyDown(DIK_J))
@@ -54,6 +55,10 @@ void CEnemyBall::updateEntity(CKeyBoard *device)
 
 }
 
+void CEnemyBall::updateEntity(CBaseEntity* entity)
+{
+
+}
 
 void CEnemyBall::resetObject()
 {

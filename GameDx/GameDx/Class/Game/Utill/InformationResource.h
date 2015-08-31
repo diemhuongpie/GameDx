@@ -11,16 +11,22 @@ class CInfomationResource : public CSingleton<CInfomationResource>
 {
 public:
 	/************RESOURCE FOR PLAYER************/
-	vector<const wchar_t*> InitRockManNormalResource();
-	vector<const wchar_t*> InitRockManCutResource();
-	vector<const wchar_t*> InitRockManBombResource();
+	vector<const wchar_t*>	InitRockManNormalResource();
+	vector<const wchar_t*>	InitRockManCutResource();
+	vector<const wchar_t*>	InitRockManBombResource();
 
-	vector<const wchar_t*> m_linkResourceRockManList;
+	vector<const wchar_t*>	m_linkResourceRockManList;
+	/*************************************************/
+
+	/************RESOURCE FOR BOSS******************/
+	vector<const wchar_t*>	InitBoomManResource();
+	vector<const wchar_t*>	m_linkResourceBombManList;
 	/*************************************************/
 
 	/************BULLET RESOURCE*******/
 	static const wchar_t*	rockmanBullet;
-
+	static const wchar_t*	bombmanBullet;
+	static const wchar_t*	effectBumBomSkill;
 	/*************************************************/
 
 	/************RESOURCE FOR SELECTSTAGE*******/

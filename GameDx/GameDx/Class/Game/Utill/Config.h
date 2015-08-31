@@ -88,16 +88,20 @@ class CBaseEntity;
 
 #define PATH_RESOURCE_MAP_INFOR		L"Resource//Image//Maps//mapinfo//mapinfo.txt"
 
-#define VEL_PLAYER_X 4
-#define VEL_PLAYER_Y 19
-#define ACCEL_PLAYER_X 0.5f
-#define ACCEL_PLAYER_Y 1
+#define VEL_PLAYER_X			4
+#define VEL_PLAYER_Y			19
+#define ACCEL_PLAYER_X			0.5f
+#define ACCEL_PLAYER_Y			1
 
 #define POOLSIZE					5
 #define LEVELPOOL(A)				(A*POOLSIZE)		
 #define GAME_OVER_STRING			"GAME  OVER"
 #define CONTINUE_STRING				"CONTINUE"
 #define SELECT_STAGE_STRING_GV		"SELECT  STAGE"
+
+#define DELTA_SIZE_Y_FOR_BOOM_OF_BOSSMAN			30
+#define TIME_FOR_WAIT_BUM							2000
+#define TIME_FOR_BUM								1000
 /************************************/
 
 /*ENUM*/
@@ -157,6 +161,15 @@ enum PLAYSTATE
 	CLIMB_SHOOT,
 	CLIMB_END,
 	HIT
+};
+
+enum BOSSSTATE
+{
+	BOSS_STAND,
+	BOSS_JUMP_LOW,
+	BOSS_JUMP_HIGHT,
+	BOSS_SHOOT,
+	BOSS_DIE
 };
 
 

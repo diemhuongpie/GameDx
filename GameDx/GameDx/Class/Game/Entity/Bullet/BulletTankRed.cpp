@@ -95,6 +95,10 @@ void CBulletTankRed::updateEntity(CKeyBoard* device)
 {
 }
 
+void CBulletTankRed::updateEntity(CBaseEntity* entity)
+{
+}
+
 void CBulletTankRed::drawEntity()
 {
 	if (m_State == BULLETSTATE::BULLET_STATE_SHOW)

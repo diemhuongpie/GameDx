@@ -49,7 +49,10 @@ void CEnemyBoomBlue::updateEntity(CKeyBoard *device)
 	}
 }
 
+void CEnemyBoomBlue::updateEntity(CBaseEntity* entity)
+{
 
+}
 
 void CEnemyBoomBlue::updateEntity(float deltaTime)
 {

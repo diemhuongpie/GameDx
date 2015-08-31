@@ -20,7 +20,7 @@ public:
 
 	virtual		void					updateEntity(float deltaTime)										= 0;
 	virtual		void					updateEntity(CKeyBoard*)											= 0;
-	virtual		void					updateEntity(CBaseEntity*){};
+	virtual		void					updateEntity(CBaseEntity*)											= 0;
 
 	virtual		bool					loadSprite()														= 0;
 	virtual		vector3d				getPosition()														override;

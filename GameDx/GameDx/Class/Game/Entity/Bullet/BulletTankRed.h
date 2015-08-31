@@ -10,6 +10,7 @@ public:
 	bool					initEntity();
 	void					updateEntity(float deltaTime);
 	void					updateEntity(CKeyBoard*);
+	void					updateEntity(CBaseEntity*);
 	void					drawEntity();
 	bool					loadSprite();
 	vector3d				getPosition();

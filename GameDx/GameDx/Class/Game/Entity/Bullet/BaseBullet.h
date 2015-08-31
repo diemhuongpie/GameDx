@@ -8,8 +8,6 @@ public:
 	CBaseBullet(){};
 	~CBaseBullet(){};
 	int			type_Angle;
-	void		logicCollision(CBaseEntity* entity) {};
-	void		updateEntityFromCollision(float detaTime, CBaseEntity* entity){};
-
+	
 };
 #endif

@@ -63,6 +63,10 @@ void		CBulletNormal::updateEntity(CKeyBoard* device)
 {
 }
 
+void		CBulletNormal::updateEntity(CBaseEntity* entity)
+{
+}
+
 void		CBulletNormal::drawEntity()
 {
 	if (m_State == BULLETSTATE::BULLET_STATE_SHOW)

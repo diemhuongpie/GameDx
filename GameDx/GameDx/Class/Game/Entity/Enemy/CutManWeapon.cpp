@@ -52,6 +52,11 @@ void CCutManWeapon::updateEntity(CKeyBoard *device)
 	}
 }
 
+void CCutManWeapon::updateEntity(CBaseEntity* entity)
+{
+
+}
+
 void CCutManWeapon::moveTo(vector3d m_Position, vector3d m_PositionPlayer)
 {
 	if (m_Position.x > m_PositionPlayer.x)

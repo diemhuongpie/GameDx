@@ -2,23 +2,32 @@
 #define __BOMB_BULLET_H__
 #include "Game\Utill\stdafx.h"
 #include "Framework\KeyBoard.h"
-class CBombBullet /*: public CBombBullet*/
+#include "Framework\Camera.h"
+#include "Game\Entity\Bullet\BaseBullet.h"
+#include "Game\Utill\InformationResource.h"
+
+class CBombBullet : public CBaseBullet
 {
-public:
+public:	
 	CBombBullet();
 	~CBombBullet();
 
-	/*bool					initEntity();
+	bool					initEntity();
 	virtual void			updateEntity(float deltaTime)				override;
-	void					updateEntity(CKeyBoard*);
+	virtual void			updateEntity(CKeyBoard*)					override;
+	virtual void			updateEntity(CBaseEntity*)					override;
+
 	void					drawEntity();
 	bool					loadSprite();
 	vector3d				getPosition();
 	void					setState(int newState);
 	int						getState();
-	void					resetObject();*/
+	void					resetObject();
+
 private:
 
+	vector3d				m_MaxPosition;
+	float					m_countTimeForBummm;
 };
 
 #endif

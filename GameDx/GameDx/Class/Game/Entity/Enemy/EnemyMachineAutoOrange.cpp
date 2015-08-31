@@ -49,6 +49,11 @@ void CEnemyMachineAutoOrange::resetObject()
 void CEnemyMachineAutoOrange::updateEntity(CKeyBoard *device)
 {
 }
+
+void CEnemyMachineAutoOrange::updateEntity(CBaseEntity* entity)
+{
+}
+
 void CEnemyMachineAutoOrange::updateEntity(float deltaTime)
 {
 	m_delayTime += deltaTime;
