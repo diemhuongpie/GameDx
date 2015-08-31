@@ -32,6 +32,7 @@ private:
 
 	static RECT					m_LimitRect;
 
+	static vector<vector<int>>	m_ListPathCamera;
 private:
 	CCamera();
 	~CCamera();

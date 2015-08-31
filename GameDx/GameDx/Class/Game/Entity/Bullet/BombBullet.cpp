@@ -142,4 +142,4 @@ inline vector3d changePosition(int style, vector3d pos)
 	default:
 		break;
 	}
-}
+};
