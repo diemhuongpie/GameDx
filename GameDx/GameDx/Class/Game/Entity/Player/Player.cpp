@@ -2,15 +2,7 @@
 #include "Game\Utill\InformationResource.h"
 #include "Game\Entity\Bullet\BulletManager.h"
 
-bool CheckOverlapCollision(int key, vector<CollisionEvents*> listCollisionEvents, CBaseEntity* entity)
-{
-	for (int i = 0; i < listCollisionEvents.size(); ++i)
-	{
-		if (listCollisionEvents.at(i)->m_CollisionDirection == key && listCollisionEvents.at(i)->m_Entity == entity)
-			return false;
-	}
-	return true;
-}
+inline bool haveEventInList(vector<CollisionEvents*> listEvent, int styleEventCollision);
 
 
 CPlayer::CPlayer()
@@ -30,7 +22,7 @@ CPlayer::CPlayer(LPDIRECT3DDEVICE9)
 
 bool CPlayer::initEntity()
 {
-	m_Position		= vector3d(135, 150, 0.5);
+	m_Position		= vector3d(130, 150, 0.5);
 	m_Velocity		= vector2d(GRAVITYSTART, GRAVITYSTART);
 	m_Accelero		= vector2d(0, 0.01);
 	m_State			= PLAYSTATE::START;
@@ -149,19 +141,12 @@ void CPlayer::updateEntity(float deltaTime)
 	case PLAYERSTATES::STATE_STAND:
 	case PLAYERSTATES::STATE_STAND_SHOOT:
 
-		OutputDebugString(L"\n LISTSIZESTAND: ");
-		OutputDebugString(_itow(m_listCollitionEvent.size(), new WCHAR[1], 10));
-		if (m_listCollitionEvent.size() > 1)
-		{
-		OutputDebugString(_itow(m_listCollitionEvent.at(0)->m_CollisionDirection, new WCHAR[1], 10));
-		OutputDebugString(_itow(m_listCollitionEvent.at(1)->m_CollisionDirection, new WCHAR[1], 10));
-		}
 		if (m_listCollitionEvent.empty())
 		{
 			m_Velocity.x			= 0;
 			m_Direction.y			= DIRECTION::DIRECTION_DOWN;
 			m_Velocity.y			= GRAVITY * m_Direction.y;
-			//m_State				= PLAYERSTATES::STATE_JUMP;
+			m_State				= PLAYERSTATES::STATE_JUMP;
 			
 		}
 
@@ -213,40 +198,29 @@ void CPlayer::updateEntity(float deltaTime)
 	case PLAYERSTATES::STATE_MOVE_SHOOT:
 		if (m_listCollitionEvent.empty())
 		{
-			OutputDebugString(L"\n NO: ");
 			m_Velocity.x			= 0;
 			m_Direction.y			= DIRECTION::DIRECTION_DOWN;
 			m_Velocity.y			= GRAVITY * m_Direction.y;
-			//m_State					= PLAYERSTATES::STATE_JUMP;
+			m_State					= PLAYERSTATES::STATE_JUMP;
 		}
-		OutputDebugString(L"\n LISTSIZEMOVE: ");
-		OutputDebugString(_itow(m_listCollitionEvent.size(), new WCHAR[1], 10));
-		for (int i = 0; i < m_listCollitionEvent.size(); ++i)
-		{
-			OutputDebugString(_itow(m_listCollitionEvent.at(i)->m_CollisionDirection, new WCHAR[1], 10));
-
-		}
-
+		
 		for (int i = 0; i < m_listCollitionEvent.size(); ++i)
 		{
 			switch (m_listCollitionEvent.back()->m_CollisionDirection)
 			{
 			case COLDIRECTION::COLDIRECTION_LEFT:
-				OutputDebugString(L"\n LEFT: ");
 				m_Velocity.x		= 0;
 				if (m_Direction.x == DIRECTION::DIRECTION_LEFT)
 					m_Velocity.x	= MOVESPEED * m_Direction.x;
 
 				break;
 			case COLDIRECTION::COLDIRECTION_RIGHT:
-				OutputDebugString(L"\n RIGHT: ");
 				m_Velocity.x		= 0;
 				if (m_Direction.x == DIRECTION::DIRECTION_RIGHT)
 					m_Velocity.x	= MOVESPEED * m_Direction.x;
 
 				break;
 			case COLDIRECTION::COLDIRECTION_TOP:
-				OutputDebugString(L"\n TOP: ");
 				m_Velocity.y		= 0;
 				m_Velocity.x		= MOVESPEED * m_Direction.x;
 				if (m_Direction.y == DIRECTION::DIRECTION_UP)
@@ -256,7 +230,6 @@ void CPlayer::updateEntity(float deltaTime)
 				}
 				break;
 			case COLDIRECTION::COLDIRECTION_BOTTOM:
-				OutputDebugString(L"\n BOT: ");
 				m_Direction.y		= DIRECTION::DIRECTION_DOWN;
 				m_Velocity.y		= GRAVITY * m_Direction.y;
 				break;
@@ -265,8 +238,6 @@ void CPlayer::updateEntity(float deltaTime)
 			}
 			m_listCollitionEvent.pop_back();
 		}
-		OutputDebugString(L"\n VEL: ");
-		OutputDebugString(_itow(m_Velocity.x * 100, new WCHAR[1], 10));
 
 		m_Position.x += m_Velocity.x * deltaTime;
 		m_Position.y += m_Velocity.y * deltaTime;
@@ -732,26 +703,30 @@ void CPlayer::updateEntity(CKeyBoard* device)
 	}
 }
 
+
 void CPlayer::updateEntity(CBaseEntity* entity)
 {
 	if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_LEFT)
 	{
-		//if (!CheckOverlapCollision(COLDIRECTION::COLDIRECTION_LEFT, m_listCollitionEvent, entity))
+		if ((!haveEventInList(m_listCollitionEvent, COLDIRECTION::COLDIRECTION_LEFT)) || entity->getTagNode() != "Collision")
 			m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_LEFT, entity));
 	}
+
 	else if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_RIGHT)
 	{
-	//	if (!CheckOverlapCollision(COLDIRECTION::COLDIRECTION_RIGHT, m_listCollitionEvent, entity))
+		if ((!haveEventInList(m_listCollitionEvent, COLDIRECTION::COLDIRECTION_RIGHT)) || entity->getTagNode() != "Collision")
 			m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_RIGHT, entity));
 	}
+
 	else if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_TOP)
 	{
-		//if (!CheckOverlapCollision(COLDIRECTION::COLDIRECTION_TOP, m_listCollitionEvent, entity))
+		if ((!haveEventInList(m_listCollitionEvent, COLDIRECTION::COLDIRECTION_TOP)) || entity->getTagNode() != "Collision")
 			m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_TOP, entity));
 	}
+
 	else if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_BOTTOM)
 	{
-		//if (!CheckOverlapCollision(COLDIRECTION::COLDIRECTION_BOTTOM, m_listCollitionEvent, entity))
+		if ((!haveEventInList(m_listCollitionEvent, COLDIRECTION::COLDIRECTION_BOTTOM)) || entity->getTagNode() != "Collision")
 			m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_BOTTOM, entity));
 	}
 }
@@ -786,4 +761,27 @@ void CPlayer::drawEntity()
 vector3d CPlayer::getPosition()
 {
 	return m_Position;
+}
+
+inline bool haveEventInList(vector<CollisionEvents*> listEvent, int styleEventCollision)
+{
+	for (int i = 0; i < listEvent.size(); ++i)
+	{
+		if (listEvent.at(i)->m_CollisionDirection == styleEventCollision)
+			return true;
+	}
+	return false;
+}
+
+CBox2D		CPlayer::getBounding()
+{
+	if (m_listSprite.size())
+	{
+		m_Bounding->setX(m_Position.x - this->m_listSprite.at(m_State)->getFrameInfo().Width / 2 * std::abs(m_listSprite.at(m_State)->getScale().x) + 2);
+		m_Bounding->setY(m_Position.y + this->m_listSprite.at(m_State)->getFrameInfo().Height / 2 * std::abs(m_listSprite.at(m_State)->getScale().y));
+		m_Bounding->setWidth(m_listSprite.at(m_State)->getFrameInfo().Width					 	 * std::abs(m_listSprite.at(m_State)->getScale().x) - 2);
+		m_Bounding->setHeight(m_listSprite.at(m_State)->getFrameInfo().Height					 * std::abs(m_listSprite.at(m_State)->getScale().y));
+	}
+
+	return *m_Bounding;
 }

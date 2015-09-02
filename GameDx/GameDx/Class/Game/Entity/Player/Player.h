@@ -23,6 +23,7 @@ public:
 	virtual void			updateEntity(CKeyBoard *device)										override;
 	virtual void			drawEntity()														override;
 
+	virtual CBox2D			getBounding()														override;
 	virtual	vector3d		getPosition()														override;
 	virtual bool			loadSprite()														override;
 	virtual void			resetObject()														override;

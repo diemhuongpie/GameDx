@@ -27,26 +27,30 @@ COLDIRECTION CCollision::CheckCollision(CMovable* MovableObject, CBaseEntity* Ob
 		if (moveY != 0)
 		if (moveY > 0)
 		{
+			if (MovableObject->getVelocity().y == 0)
 			MovableObject->setPosition(vector3d(MovableObject->getPosition().x, MovableObject->getPosition().y + moveY, 0.5f));
 				return COLDIRECTION::COLDIRECTION_TOP;
 		}
 		else
 		{
+			if (MovableObject->getVelocity().y == 0)
 			MovableObject->setPosition(vector3d(MovableObject->getPosition().x, MovableObject->getPosition().y + moveY, 0.5f));
 				return COLDIRECTION::COLDIRECTION_BOTTOM;
 		}
 		else 
 			if (moveX != 0)
-			if (moveX < 0)
-			{
-				MovableObject->setPosition(vector3d(MovableObject->getPosition().x + moveX, MovableObject->getPosition().y, 0.5f));
-					return COLDIRECTION::COLDIRECTION_LEFT;
-			}
-			else
-			{
-				MovableObject->setPosition(vector3d(MovableObject->getPosition().x + moveX, MovableObject->getPosition().y, 0.5f));
-					return COLDIRECTION::COLDIRECTION_RIGHT;
-			}
+				if (moveX < 0)
+				{
+					if (MovableObject->getVelocity().y == 0)
+					MovableObject->setPosition(vector3d(MovableObject->getPosition().x + moveX, MovableObject->getPosition().y, 0.5f));
+						return COLDIRECTION::COLDIRECTION_LEFT;
+				}
+				else
+				{
+					if (MovableObject->getVelocity().y == 0)
+					MovableObject->setPosition(vector3d(MovableObject->getPosition().x + moveX, MovableObject->getPosition().y, 0.5f));
+						return COLDIRECTION::COLDIRECTION_RIGHT;
+				}
 			else
 			{
 				// already changing axis Oy into dacac
