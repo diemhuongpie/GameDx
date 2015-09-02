@@ -25,16 +25,28 @@ COLDIRECTION CCollision::CheckCollision(CMovable* MovableObject, CBaseEntity* Ob
 	if (AABB((MovableObject->getBounding()), (Object->getBounding()), moveX, moveY))
 	{
 		if (moveY != 0)
-			if (moveY > 0)
+		if (moveY > 0)
+		{
+			MovableObject->setPosition(vector3d(MovableObject->getPosition().x, MovableObject->getPosition().y + moveY, 0.5f));
 				return COLDIRECTION::COLDIRECTION_TOP;
-			else
+		}
+		else
+		{
+			MovableObject->setPosition(vector3d(MovableObject->getPosition().x, MovableObject->getPosition().y + moveY, 0.5f));
 				return COLDIRECTION::COLDIRECTION_BOTTOM;
+		}
 		else 
 			if (moveX != 0)
-				if (moveX < 0)
+			if (moveX < 0)
+			{
+				MovableObject->setPosition(vector3d(MovableObject->getPosition().x + moveX, MovableObject->getPosition().y, 0.5f));
 					return COLDIRECTION::COLDIRECTION_LEFT;
-				else
+			}
+			else
+			{
+				MovableObject->setPosition(vector3d(MovableObject->getPosition().x + moveX, MovableObject->getPosition().y, 0.5f));
 					return COLDIRECTION::COLDIRECTION_RIGHT;
+			}
 			else
 			{
 				// already changing axis Oy into dacac
@@ -74,6 +86,7 @@ COLDIRECTION CCollision::CheckCollision(CMovable* MovableObject, CBaseEntity* Ob
 				}
 				else
 				{
+					if (normalY != 0)
 					if (moveY != 0)
 						if(normalY == -1.0f)
 							return COLDIRECTION::COLDIRECTION_BOTTOM;

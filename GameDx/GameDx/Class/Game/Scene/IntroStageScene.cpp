@@ -167,32 +167,32 @@ void CIntroStageScene::renderScene()
 		{
 			if (!m_TimeForChangingSprite)
 			{
-				m_SpriteList.at(1)->Render(1, 1, m_Position,vector2d(2.0f, 2.0f), 0.0f, DRAWCENTER_LEFT_TOP, true, 10);
+				m_SpriteList.at(1)->Render(1, 1, m_Position,vector2d(1.0f, 1.0f), 0.0f, DRAWCENTER_LEFT_TOP, true, 10);
 
 				if (m_LoadTextTime)
 				{
 					//Draw information of Stage
 
-					CText::getInstace()->Draw(m_Temp, vector3d(22 * BACKBUFFER_WIDTH / 40, 6 * BACKBUFFER_HEIGHT / 20, 0.5f), DEFAULT_FONT_COLOR, 16, DT_LEFT, DEFAULT_FONTNAME);
+					CText::getInstace()->Draw(m_Temp, vector3d(22 * BACKBUFFER_WIDTH / 40, 6 * BACKBUFFER_HEIGHT / 20, 0.5f), DEFAULT_FONT_COLOR, 11, DT_LEFT, DEFAULT_FONTNAME);
 				}
 
 				//Draw Point need to get of this stage
 				if (m_Index > wcslen(CUTMAN_STAGE_INFO_STRING))
 				{
-					CText::getInstace()->Draw(DEFAULT_POINT_STRING, vector3d(27 * BACKBUFFER_WIDTH / 40, 9 * BACKBUFFER_HEIGHT / 20, 0.5f), DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
+					CText::getInstace()->Draw(DEFAULT_POINT_STRING, vector3d(27 * BACKBUFFER_WIDTH / 40, 10 * BACKBUFFER_HEIGHT / 20, 0.5f), DEFAULT_FONT_COLOR, 11, DT_CENTER, DEFAULT_FONTNAME);
 					if (m_RandomPoint < 10)
-						CText::getInstace()->Draw(_itow(m_RandomPoint, new WCHAR[2], 10), vector3d(23.8 * BACKBUFFER_WIDTH / 40, 9 * BACKBUFFER_HEIGHT / 20, 0.5f), DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
+						CText::getInstace()->Draw(_itow(m_RandomPoint, new WCHAR[2], 10), vector3d(22 * BACKBUFFER_WIDTH / 40, 10 * BACKBUFFER_HEIGHT / 20, 0.5f), DEFAULT_FONT_COLOR, 11, DT_CENTER, DEFAULT_FONTNAME);
 					else
-						CText::getInstace()->Draw(_itow(m_RandomPoint, new WCHAR[2], 10), vector3d(23.3 * BACKBUFFER_WIDTH / 40, 9 * BACKBUFFER_HEIGHT / 20, 0.5f), DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
+						CText::getInstace()->Draw(_itow(m_RandomPoint, new WCHAR[2], 10), vector3d(21.5 * BACKBUFFER_WIDTH / 40, 10 * BACKBUFFER_HEIGHT / 20, 0.5f), DEFAULT_FONT_COLOR, 11, DT_CENTER, DEFAULT_FONTNAME);
 				}
 			}
 
 			else
-				m_SpriteList.at(1)->Render(1, 3, m_Position, vector2d(2.0f, 2.0f), 0.0f, DRAWCENTER_LEFT_TOP, true, 10);
+				m_SpriteList.at(1)->Render(1, 3, m_Position, vector2d(1.0f, 1.0f), 0.0f, DRAWCENTER_LEFT_TOP, true, 10);
 				
 		}
 		else
-			m_SpriteList.at(1)->Render(0, 0, m_Position, vector2d(2.0f, 2.0f), 0.0f, DRAWCENTER_LEFT_TOP, true, 20);
+			m_SpriteList.at(1)->Render(0, 0, m_Position, vector2d(1.0f, 1.0f), 0.0f, DRAWCENTER_LEFT_TOP, true, 20);
 	}
 
 
@@ -202,32 +202,32 @@ void CIntroStageScene::renderScene()
 		{
 			if (!m_TimeForChangingSprite)
 			{
-				m_SpriteList.at(2)->Render(1, 1, m_Position, vector2d(2.0f, 2.0f), (0.0f), DRAWCENTER_LEFT_TOP, true, 10);
-				m_SpriteList.at(3)->Render(vector3d(m_Position.x, m_Position.y + 10, 0.5f), vector2d(2.0f, 2.0f), (0.0f), DRAWCENTER_MIDDLE_MIDDLE, true, 10);
+				m_SpriteList.at(2)->Render(1, 1, m_Position, vector2d(1.0f, 1.0f), (0.0f), DRAWCENTER_LEFT_TOP, true, 10);
+				m_SpriteList.at(3)->Render(vector3d(m_Position.x, m_Position.y + 10, 0.5f), vector2d(1.0f, 1.0f), (0.0f), DRAWCENTER_MIDDLE_MIDDLE, true, 10);
 				if (m_LoadTextTime)
 				{
 					//Draw information of Stage
 
-					CText::getInstace()->Draw(m_Temp, vector3d(22 * BACKBUFFER_WIDTH / 40, 6 * BACKBUFFER_HEIGHT / 20, 0.5f), DEFAULT_FONT_COLOR, 16, DT_LEFT, DEFAULT_FONTNAME);
+					CText::getInstace()->Draw(m_Temp, vector3d(22 * BACKBUFFER_WIDTH / 40, 6 * BACKBUFFER_HEIGHT / 20, 0.5f), DEFAULT_FONT_COLOR, 11, DT_LEFT, DEFAULT_FONTNAME);
 				}
 
 				//Draw Point need to get of this stage
-				if (m_Index > wcslen(CUTMAN_STAGE_INFO_STRING))
+				if (m_Index > wcslen(BOMBMAN_STAGE_INFO_STRING))
 				{
-					CText::getInstace()->Draw(DEFAULT_POINT_STRING, vector3d(27 * BACKBUFFER_WIDTH / 40, 9 * BACKBUFFER_HEIGHT / 20, 0.5f), DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
+					CText::getInstace()->Draw(DEFAULT_POINT_STRING, vector3d(27 * BACKBUFFER_WIDTH / 40, 10 * BACKBUFFER_HEIGHT / 20, 0.5f), DEFAULT_FONT_COLOR, 11, DT_CENTER, DEFAULT_FONTNAME);
 					if (m_RandomPoint < 10)
-						CText::getInstace()->Draw(_itow(m_RandomPoint, new WCHAR[2], 10), vector3d(23.8 * BACKBUFFER_WIDTH / 40, 9 * BACKBUFFER_HEIGHT / 20, 0.5f), DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
+						CText::getInstace()->Draw(_itow(m_RandomPoint, new WCHAR[2], 10), vector3d(22 * BACKBUFFER_WIDTH / 40, 10 * BACKBUFFER_HEIGHT / 20, 0.5f), DEFAULT_FONT_COLOR, 11, DT_CENTER, DEFAULT_FONTNAME);
 					else
-						CText::getInstace()->Draw(_itow(m_RandomPoint, new WCHAR[2], 10), vector3d(23.3 * BACKBUFFER_WIDTH / 40, 9 * BACKBUFFER_HEIGHT / 20, 0.5f), DEFAULT_FONT_COLOR, 16, DT_CENTER, DEFAULT_FONTNAME);
+						CText::getInstace()->Draw(_itow(m_RandomPoint, new WCHAR[2], 10), vector3d(21.5 * BACKBUFFER_WIDTH / 40, 10 * BACKBUFFER_HEIGHT / 20, 0.5f), DEFAULT_FONT_COLOR, 11, DT_CENTER, DEFAULT_FONTNAME);
 				}
 			}
 			else
 			{
-				m_SpriteList.at(2)->Render(0, 0, m_Position, vector2d(2.0f, 2.0f), 0.0f, DRAWCENTER_LEFT_TOP, true, 10);
+				m_SpriteList.at(2)->Render(0, 0, m_Position, vector2d(1.0f, 1.0f), 0.0f, DRAWCENTER_LEFT_TOP, true, 10);
 			}
 		}
 		else
-			m_SpriteList.at(2)->Render(3, 3, m_Position, vector2d(2.0f, 2.0f), 0.0f, DRAWCENTER_LEFT_TOP, true, 10);
+			m_SpriteList.at(2)->Render(3, 3, m_Position, vector2d(1.0f, 1.0f), 0.0f, DRAWCENTER_LEFT_TOP, true, 10);
 	}
 	
 

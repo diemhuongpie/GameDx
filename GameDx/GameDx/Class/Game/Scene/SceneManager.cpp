@@ -28,7 +28,7 @@ void CSceneManager::initDevice(LPDIRECT3DDEVICE9 device)
 
 void CSceneManager::init()
 {
-	m_ListScene.push_back(new CPlayScene());
+	m_ListScene.push_back(new CMenuScene());
 }
 
 std::vector<CBaseScene*>& CSceneManager::getScene()

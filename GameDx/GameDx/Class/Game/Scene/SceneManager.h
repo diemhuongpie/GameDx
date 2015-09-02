@@ -26,7 +26,7 @@ private:
 
 private:
 	static	LPDIRECT3DDEVICE9			m_Device;
-			std::vector<CBaseScene*>		m_ListScene;
+			std::vector<CBaseScene*>	m_ListScene;
 };
 
 #endif

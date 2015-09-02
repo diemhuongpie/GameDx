@@ -2,6 +2,17 @@
 #include "Game\Utill\InformationResource.h"
 #include "Game\Entity\Bullet\BulletManager.h"
 
+bool CheckOverlapCollision(int key, vector<CollisionEvents*> listCollisionEvents, CBaseEntity* entity)
+{
+	for (int i = 0; i < listCollisionEvents.size(); ++i)
+	{
+		if (listCollisionEvents.at(i)->m_CollisionDirection == key && listCollisionEvents.at(i)->m_Entity == entity)
+			return false;
+	}
+	return true;
+}
+
+
 CPlayer::CPlayer()
 {
 	this->initEntity();
@@ -121,6 +132,7 @@ void CPlayer::updateEntity(float deltaTime)
 			case COLDIRECTION::COLDIRECTION_TOP:
 				m_Direction.y		= DIRECTION::DIRECTION_DOWN;
 				m_Velocity.y		= GRAVITY * m_Direction.y;
+				m_State = PLAYERSTATES::STATE_STAND;
 				break;
 			case COLDIRECTION::COLDIRECTION_BOTTOM:
 				m_Direction.y		= DIRECTION::DIRECTION_DOWN;
@@ -724,16 +736,24 @@ void CPlayer::updateEntity(CBaseEntity* entity)
 {
 	if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_LEFT)
 	{
+		//if (!CheckOverlapCollision(COLDIRECTION::COLDIRECTION_LEFT, m_listCollitionEvent, entity))
 			m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_LEFT, entity));
 	}
 	else if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_RIGHT)
 	{
+	//	if (!CheckOverlapCollision(COLDIRECTION::COLDIRECTION_RIGHT, m_listCollitionEvent, entity))
 			m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_RIGHT, entity));
 	}
 	else if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_TOP)
-		m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_TOP, entity));
+	{
+		//if (!CheckOverlapCollision(COLDIRECTION::COLDIRECTION_TOP, m_listCollitionEvent, entity))
+			m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_TOP, entity));
+	}
 	else if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_BOTTOM)
-		m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_BOTTOM, entity));
+	{
+		//if (!CheckOverlapCollision(COLDIRECTION::COLDIRECTION_BOTTOM, m_listCollitionEvent, entity))
+			m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_BOTTOM, entity));
+	}
 }
 
 void CPlayer::drawEntity()
@@ -742,24 +762,22 @@ void CPlayer::drawEntity()
 	{
 	case PLAYERSTATES::STATE_STAND_SHOOT:
 	case PLAYERSTATES::STATE_MOVE_SHOOT:
-		m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(vector3d(this->getBounding().getX() + SIGN(m_Direction.x) * DELTA_FIX_SIZE_RESOURCE, this->getBounding().getY(), 0.5f)),
+		m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(vector3d(m_Position.x + SIGN(m_Direction.x) * DELTA_FIX_SIZE_RESOURCE, m_Position.y, 0.5f)),
 											vector2d(SIGN(m_Direction.x) * 1, 1),
 											0,
 											DRAWCENTER_MIDDLE_MIDDLE,
 											true,
 											10);
 		break;
-
+		\
 	case PLAYERSTATES::STATE_CLIMB:
 		if (m_Direction.y != 0)
-			m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(vector3d(this->getBounding().getX(), this->getBounding().getY(), 0.5f)), vector2d(SIGN(m_Direction.x) * 1, 1), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
+			m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(m_Position), vector2d(SIGN(m_Direction.x) * 1, 1), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
 		else
-			//m_listSprite.at(m_State)->Render(1, 1, CCamera::setPositionEntity(m_Position), vector2d(SIGN(m_Direction.x) * 1, 1), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
-			m_listSprite.at(m_State)->Render(1, 1, CCamera::setPositionEntity(vector3d(this->getBounding().getX(), this->getBounding().getY(), 0.5f)), vector2d(SIGN(m_Direction.x) * 1, 1), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
+			m_listSprite.at(m_State)->Render(1, 1, CCamera::setPositionEntity(m_Position), vector2d(SIGN(m_Direction.x) * 1, 1), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
 		break;
 	default:
-	//	m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(m_Position), vector2d(SIGN(m_Direction.x) * 1, 1), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
-		m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(vector3d(this->getBounding().getX(), this->getBounding().getY(), 0.5f)), vector2d(SIGN(m_Direction.x) * 1, 1), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
+		m_listSprite.at(m_State)->Render(CCamera::setPositionEntity(m_Position), vector2d(SIGN(m_Direction.x) * 1, 1), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
 		break;
 	}
 
