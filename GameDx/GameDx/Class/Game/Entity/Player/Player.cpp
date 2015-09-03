@@ -585,21 +585,11 @@ void CPlayer::updateEntity(CKeyBoard* device)
 		else if (device->KeyDown(DIK_RIGHT))
 		{
 			m_Direction			= vector2d(DIRECTION::DIRECTION_RIGHT, DIRECTION::DIRECTION_UP);
-			if (m_TimeState > TIME_FOR_SHOOT * 2)
-			{
-				m_State			= PLAYERSTATES::STATE_MOVE;
-				m_State			= 0;
-			}
 			m_Velocity.x		= MOVESPEED * m_Direction.x;
 		}
 		else if (device->KeyDown(DIK_LEFT))
 		{
 			m_Direction			= vector2d (DIRECTION::DIRECTION_LEFT, DIRECTION::DIRECTION_UP);
-			if (m_TimeState > TIME_FOR_SHOOT * 2)
-			{
-				m_State			= PLAYERSTATES::STATE_MOVE;
-				m_State			= 0;
-			}
 			m_Velocity.x		= MOVESPEED * DIRECTION::DIRECTION_LEFT;
 		}
 		else

@@ -70,7 +70,7 @@ void		CBulletNormal::updateEntity(CBaseEntity* entity)
 void		CBulletNormal::drawEntity()
 {
 	if (m_State == BULLETSTATE::BULLET_STATE_SHOW)
-	m_listSprite.at(0)->Render(CCamera::setPositionEntity(m_Position), vector2d(SIGN(m_Velocity.x)*2.0, SIGN(m_Velocity.y)*2.0), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
+	m_listSprite.at(0)->Render(CCamera::setPositionEntity(m_Position), vector2d(SIGN(m_Velocity.x)*1.0, SIGN(m_Velocity.y)*1.0), 0, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
 }
 
 vector3d	CBulletNormal::getPosition()
