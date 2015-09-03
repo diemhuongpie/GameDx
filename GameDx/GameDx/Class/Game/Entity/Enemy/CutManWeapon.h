@@ -6,13 +6,14 @@
 class CCutManWeapon : public CMovable
 {
 public:
-	CCutManWeapon(vector3d, vector3d);
+	CCutManWeapon(vector3d);
 	~CCutManWeapon();
 	bool initEntity();
 	void updateEntity(float deltaTime);
 	void updateEntity(CKeyBoard *device);
 	void updateEntity(CBaseEntity* entity);
 	void updateEntity(RECT rectCamera);
+	void updateEntity(CBaseEntity*, CBaseEntity*);
 
 	void drawEntity();
 	void resetObject();
@@ -23,7 +24,5 @@ private :
 	int m_count;
 	float m_dx, m_dy;
 	float m_angle;
-	vector3d m_PositionPlayer;
-	vector3d m_PositionBoss;
 };
 

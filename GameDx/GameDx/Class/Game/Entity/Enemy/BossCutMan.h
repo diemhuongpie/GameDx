@@ -2,6 +2,7 @@
 #define __BOSS_CUT_MAN_H__
 #include "Game\Entity\MovableEntity.h"
 #include "Framework\Camera.h"
+#include "Game\Entity\Enemy\CutManWeapon.h"
 
 
 class CBossCutMan : public CMovable
@@ -12,6 +13,7 @@ public:
 	~CBossCutMan();
 	bool initEntity();
 	void updateEntity(float deltaTime);
+	void updateEntity(CBaseEntity *);
 	void updateEntity(CKeyBoard *device);
 	void updateEntity(RECT rectCamera);
 	void drawEntity();
@@ -19,7 +21,9 @@ public:
 
 	bool loadSprite();
 private:
+	CCutManWeapon*	m_Weapon;
 	int m_delayTime;
+	int m_delayTime1;
 	int m_checkState;
 	bool m_isLeft;
 };

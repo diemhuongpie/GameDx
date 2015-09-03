@@ -18,6 +18,7 @@ public:
 	void updateEntity(CKeyBoard* keyboard);
 	void updateEntity(float deltaTime);
 	void updateEntity(RECT rectCamera);
+	void updateEntity(CBaseEntity*);
 	void drawEntity();
 	void resetObject();
 	bool loadSprite();

@@ -37,48 +37,48 @@ void CBossFireMan::resetObject()
 {
 
 }
-void CBossFireMan::updateEntity(CBaseEntity* entity)
-{
-}
+
 void CBossFireMan::updateEntity(CKeyBoard *device)
 {
-
 }
-void CBossFireMan::updateEntity(float deltaTime)
-{
 
-	if (abs(m_Position.x - m_PositionPlayer.x) > 200)
+void CBossFireMan::updateEntity(CBaseEntity* player)
+{
+	if (abs(m_Position.x - player->getPosition().x) > 130)
 	{
 		this->m_State = 1;
 		m_Velocity.x = 0;
-	
-		if (m_Position.x > m_PositionPlayer.x)
+
+		if (m_Position.x > player->getPosition().x)
 		{
 			m_isLeft = true;
-			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::BOSS_FIRE_MAN, this->m_Position, vector2d(-3,0));
+			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::BOSS_FIRE_MAN, this->m_Position, vector2d(-3, 0));
 		}
-		if (m_Position.x < m_PositionPlayer.x)
+		if (m_Position.x < player->getPosition().x)
 		{
 			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::BOSS_FIRE_MAN, this->m_Position, vector2d(3, 0));
 			m_isLeft = false;
 		}
-		
 	}
 	else
 	{
 		this->m_State = 2;
-		if (m_Position.x > m_PositionPlayer.x)
+		if (m_Position.x > player->getPosition().x)
 		{
 			m_isLeft = false;
 			m_Velocity.x = 3;
 		}
-		if (m_Position.x < m_PositionPlayer.x)
+		if (m_Position.x < player->getPosition().x)
 		{
 			m_isLeft = true;
 			m_Velocity.x = -3;
 		}
 	}
+}
 
+
+void CBossFireMan::updateEntity(float deltaTime)
+{
 	m_Position.x += m_Velocity.x*deltaTime / 60;
 	m_Position.y += m_Velocity.y*deltaTime / 60;
 	m_delayTime++;

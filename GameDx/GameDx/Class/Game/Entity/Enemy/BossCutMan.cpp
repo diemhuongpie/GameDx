@@ -31,8 +31,10 @@ bool CBossCutMan::initEntity()
 {
 	m_checkState = true;
 	m_delayTime = 0;
+	m_Weapon = new CCutManWeapon(m_Position);
 	// LOAD SPRITE
 	this->loadSprite();
+	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
 	return true;
 
 }
@@ -54,6 +56,65 @@ void CBossCutMan::resetObject()
 
 }
 
+void CBossCutMan::updateEntity(CBaseEntity * player)
+{
+	if (m_delayTime > 0 && m_delayTime <= 500)
+	{
+		m_checkState = State_BossCutMan::CUTMAN_STAND;
+		if (m_Position.y >= 400)
+		{
+			m_Velocity.y = 0;
+		}
+	}
+	else
+	{
+		if (abs(m_Position.x - player->getPosition().x > 50))
+		{
+			
+			m_checkState = State_BossCutMan::CUTMAN_RUN;
+		}
+		else
+		{
+			m_delayTime1++;
+			if (m_delayTime1 > 0 && m_delayTime1 < 50)
+			{
+				//shot
+				m_Weapon->updateEntity(player, this);
+			}
+			if (m_delayTime1 > 50)
+			{
+				if (m_isLeft == false)
+				{
+					m_Velocity.x = 3;
+				}
+				else
+				{
+					m_Velocity.x = -3;
+				}
+				m_Velocity.y = -6;
+				m_checkState = State_BossCutMan::CUTMAN_JUMP;
+			}
+
+			if (m_delayTime1 > 90)
+			{
+				m_delayTime1 = 0;
+			}
+			
+		}
+		
+
+	}
+
+	if (m_Position.x > player->getPosition().x)
+	{
+		m_isLeft = true;
+	}
+	else
+	{
+		m_isLeft = false;
+	}
+}
+
 void CBossCutMan::updateEntity(CKeyBoard *device)
 {
 
@@ -62,75 +123,18 @@ void CBossCutMan::updateEntity(float deltaTime)
 {
 	m_Position.x += m_Velocity.x*deltaTime;
 	m_Position.y += m_Velocity.y*deltaTime;
-	m_delayTime++;
-	if (m_delayTime >= 280)
+	m_delayTime	+= deltaTime;
+	m_Weapon->updateEntity(deltaTime);
+	
+	if (m_delayTime >= 500)
 		m_delayTime = 0;
 
-	if (m_delayTime > 0 && m_delayTime <= 50)
-	{
-		m_checkState = State_BossCutMan::CUTMAN_STAND;
-		if (m_Position.y >= 400)
-		{
-			m_Velocity.y = 0;
-		}
-	}
 	
-	if (m_delayTime > 50 && m_delayTime < 100)
-	{
-		m_Velocity.x = -3;
-		m_checkState = State_BossCutMan::CUTMAN_RUN;
-		//is shooting
-	}
-
-	if (m_delayTime > 100 && m_delayTime < 150)
-	{
-		m_Velocity.y = -10;
-		m_checkState = State_BossCutMan::CUTMAN_JUMP;
-		//is shooting
-	}
-
-	if (m_delayTime > 150 && m_delayTime < 210)
-	{
-		
-		if (m_Position.y >= 400)
-		{
-			m_Velocity.y = 0;
-		}
-		m_checkState = State_BossCutMan::CUTMAN_STAND;
-		m_Velocity.x = 0;
-	}
-
-	if (m_delayTime > 210 && m_delayTime < 270)
-	{
-		m_Velocity.x = 3;
-		m_Velocity.y = -6;
-		m_checkState = State_BossCutMan::CUTMAN_JUMP;
-		
-	}
-
-	if (m_delayTime > 270)
-	{
-		m_Velocity.x = 0;
-		if (m_Position.y >= 400)
-		{
-			m_Velocity.y = 0;
-		}
-		m_checkState = State_BossCutMan::CUTMAN_STAND;
-	}
-
 	if (m_Position.y < 400)
 	{
 		m_Velocity.y++;
 	}
 
-	if (m_Velocity.x > 0)
-	{
-		m_isLeft = false;
-	}
-	else
-	{
-		m_isLeft = true;
-	}
 }
 
 void CBossCutMan::updateEntity(RECT rectCamera)
@@ -144,5 +148,6 @@ void  CBossCutMan::drawEntity()
 		this->m_listSprite[m_checkState]->Render(m_Position, vector2d(1.0, 1.0), 0.0f, DRAWCENTER_MIDDLE_MIDDLE, true, 5);
 	else
 		this->m_listSprite[m_checkState]->Render(m_Position, vector2d(-1.0, 1.0), 0.0f, DRAWCENTER_MIDDLE_MIDDLE, true, 5);
+	m_Weapon->drawEntity();
 }
 

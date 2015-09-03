@@ -8,6 +8,7 @@
 #include "Game\Entity\Enemy\EnemyRobotRed.h"
 #include "Game\Entity\Enemy\EnemyCut.h"
 #include "Game\Entity\Enemy\EnemyTankRed.h"
+#include "Game\Entity\Enemy\EnemyEyeRed.h"
 #include "Game\Entity\Enemy\EnemyMachineAutoOrange.h"
 #include "Game\Map\MapManager.h"
 #include "Mathematics\Collision.h"
@@ -33,11 +34,10 @@ private:
 			CPlayer*				m_Player;
 			CEnemyTankRed*			m_EnemyTankRed;
 			CEnemyMachineAutoOrange*m_EnemyAutoOrange;
-
+			CEnemyEyeRed*			m_EnemyEyeRed;
 			CEnemyBall*				m_EnemyBall;
 			CEnemyBubbleBlue*		m_EnemyBubbleBlue;
 			CEnemyCut*				m_EnemyCut;
-			CCutManWeapon*			m_Weapon;
 			CEnemyBoomBlue*			m_boomBlue;
 
 			CBossFireMan*			m_fireMan;

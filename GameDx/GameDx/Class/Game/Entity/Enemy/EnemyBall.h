@@ -9,8 +9,7 @@
 class CEnemyBall : public CMovable
 {
 public:
-	CEnemyBall();
-	CEnemyBall(LPDIRECT3DDEVICE9);
+	CEnemyBall(vector3d pos);
 	~CEnemyBall();
 
 	bool initEntity()											;

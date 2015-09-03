@@ -11,6 +11,7 @@ public:
 	~CEnemyEyeRed();
 	bool initEntity();
 	void updateEntity(CKeyBoard* keyboard);
+	void updateEntity(CBaseEntity*);
 	void updateEntity( float deltaTime);
 	void updateEntity(RECT rectCamera);
 	void drawEntity();
@@ -22,7 +23,7 @@ private:
 	bool m_isLeft;
 	int m_checkState;
 	int	 m_delayTime;
-
+	vector3d old_pos;
 };
 
 #endif

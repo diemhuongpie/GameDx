@@ -37,7 +37,13 @@ bool CEnemyTankRed::loadSprite()
 void CEnemyTankRed::resetObject()
 {}
 
-
+void CEnemyTankRed::updateEntity(CBaseEntity *entity)
+{
+	if (entity->getTagNode() == "PlayerBullet" && CBox2D::Intersect(this->getBounding(), entity->getBounding()))
+	{
+		m_heath--;
+	}
+}
 void CEnemyTankRed::updateEntity(float deltaTime)
 {
 	
