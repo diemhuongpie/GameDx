@@ -327,7 +327,6 @@ void CPlayer::updateEntity(CKeyBoard* device)
 	if (device->KeyPress(DIK_1))
 	{
 		this->m_listSprite.clear();
-		//this->loadSprite();
 		for (int i = 0; i < m_RockManSpriteList[ROCKMAN_CUT_SKILL].size(); ++i)
 			this->m_listSprite.push_back(this->m_RockManSpriteList[ROCKMAN_CUT_SKILL].at(i));
 	}
@@ -335,14 +334,12 @@ void CPlayer::updateEntity(CKeyBoard* device)
 	if (device->KeyPress(DIK_2))
 	{
 		this->m_listSprite.clear();
-		//this->loadSprite();
 		for (int i = 0; i < m_RockManSpriteList[ROCKMAN_BOMB_SKILL].size(); ++i)
 			this->m_listSprite.push_back(this->m_RockManSpriteList[ROCKMAN_BOMB_SKILL].at(i));
 	}
 	if (device->KeyPress(DIK_0))
 	{
 		this->m_listSprite.clear();
-		//this->loadSprite();
 		for (int i = 0; i < m_RockManSpriteList[ROCKMAN_NORMAL_SKILL].size(); ++i)
 			this->m_listSprite.push_back(this->m_RockManSpriteList[ROCKMAN_NORMAL_SKILL].at(i));
 	}
@@ -356,13 +353,11 @@ void CPlayer::updateEntity(CKeyBoard* device)
 		{
 			m_listCollitionEvent.clear();
 			m_Direction		= vector2d(DIRECTION::DIRECTION_RIGHT, DIRECTION::DIRECTION_NONE);
-		//	m_Velocity.x	= GRAVITY * m_Direction.x;
 			m_State			= PLAYERSTATES::STATE_MOVE;
 		}
 		else if (device->KeyDown(DIK_LEFT))
 		{
 			m_Direction		= vector2d (DIRECTION::DIRECTION_LEFT, DIRECTION::DIRECTION_NONE);
-		//	m_Velocity.x	= GRAVITY * m_Direction.x;
 			m_State			= PLAYERSTATES::STATE_MOVE;
 		}
 		else if (device->KeyPress(DIK_Z) && device->KeyPress(DIK_X))
@@ -509,7 +504,6 @@ void CPlayer::updateEntity(CKeyBoard* device)
 			if (m_TimeState > TIME_FOR_SHOOT * 0.2)
 			{
 				m_State		= PLAYERSTATES::STATE_STAND;
-				//m_TimeState = 0;
 			}
 		}
 		break;
@@ -542,7 +536,6 @@ void CPlayer::updateEntity(CKeyBoard* device)
 				if (m_TimeState > TIME_FOR_SHOOT * 0.2)
 				{
 					m_State		= PLAYERSTATES::STATE_MOVE;
-					//m_TimeState = 0;
 				}
 			}
 		}
@@ -614,11 +607,13 @@ void CPlayer::updateEntity(CKeyBoard* device)
 	case PLAYERSTATES::STATE_CLIMB:
 		if (device->KeyPress(DIK_Z) && device->KeyPress(DIK_X))
 		{
+			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, vector2d(MOVESPEED * SIGN(m_Direction.x), GRAVITY));
 			m_TimeState			= 0;
 			m_State				= PLAYERSTATES::STATE_JUMP_SHOOT;
 		}
 		else if (device->KeyPress(DIK_Z))
 		{
+			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, vector2d(MOVESPEED * SIGN(m_Direction.x), GRAVITY));
 			m_TimeState			= 0;
 			m_State				= PLAYERSTATES::STATE_CLIMB_SHOOT;
 		}
@@ -662,7 +657,6 @@ void CPlayer::updateEntity(CKeyBoard* device)
 				}
 				else
 					CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, vector2d(MOVESPEED * SIGN(m_Direction.x), GRAVITY));
-					m_State = PLAYERSTATES::STATE_CLIMB;
 					m_TimeState = 0;
 			}
 			else
@@ -710,23 +704,29 @@ void CPlayer::updateEntity(CKeyBoard* device)
 			m_State				= PLAYERSTATES::STATE_CLIMB;
 			m_Velocity.y		= GRAVITY * DIRECTION::DIRECTION_DOWN;
 		}
-
+		else if (device->KeyPress(DIK_Z))
+		{
+			if (m_TimeState > TIME_FOR_SHOOT)
+			{
+				m_State = PLAYERSTATES::STATE_CLIMB;
+			}
+			else
+			{
+				CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, vector2d(MOVESPEED * SIGN(m_Direction.x), GRAVITY));
+				m_TimeState = 0;
+			}
+		}
 		else
 		{
-			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, vector2d(MOVESPEED * SIGN(m_Direction.x), GRAVITY));
-			//m_Direction.x = DIRECTION::DIRECTION_NONE;
 			if (m_TimeState > TIME_FOR_SHOOT / 2)
 			{
 				m_State			= PLAYERSTATES::STATE_CLIMB;
 				m_TimeState		= 0;
 			}
-			//else
-				//CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
 		}
 
 		break;
 	default:
-		//m_State				= PLAYERSTATES::STATE_STAND;
 		break;
 	}
 
