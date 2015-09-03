@@ -95,14 +95,14 @@ void	CPlayScene::renderScene()
 {
 	CMapmanager::getInstance()->getCurrentMap()->render();
 	
-	m_Player		->drawEntity();
+	m_Player			->drawEntity();
 
-	m_EnemyTankRed	->drawEntity();
-	m_EnemyBall->drawEntity();
-	m_EnemyAutoOrange->drawEntity();
-	m_Weapon->drawEntity();
-	m_boomBlue->drawEntity();
-	m_fireMan->drawEntity();
+	m_EnemyTankRed		->drawEntity();
+	m_EnemyBall			->drawEntity();
+	m_EnemyAutoOrange	->drawEntity();
+	m_Weapon			->drawEntity();
+	m_boomBlue			->drawEntity();
+	m_fireMan			->drawEntity();
 
 	for (int i = 0; i < TYPE_BULLET::NUMBER_OF_TYPE_BULLET; ++i)
 	{

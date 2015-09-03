@@ -16,6 +16,7 @@ public:
 	// step = 1 meaning the next one, -1 is the previous one and so on...
 	void				switchMap(int step);
 	MapData*			getCurrentMap();
+	int					getCurrentIndexMap();
 	void				setCurrentMapAt(int index);
 
 	void				readMapList();

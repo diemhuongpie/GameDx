@@ -6,6 +6,7 @@
 #include "Game\Entity\MovableEntity.h"
 #include "Framework\Camera.h"
 #include "Mathematics\Collision.h"
+#include "Framework\Text.h"
 
 #ifndef __CPLAYER_H__
 #define __CPLAYER_H__
@@ -28,12 +29,24 @@ public:
 	virtual bool			loadSprite()														override;
 	virtual void			resetObject()														override;
 
+			void			setColisWithStair(bool);
+
 protected:
 	
+			vector<CSprite*>*			m_RockManSpriteList;
 			clock_t						m_TimeState;
 			vector2d					m_Accelero;
 			vector2d					m_Direction;
-			vector<CSprite*>*			m_RockManSpriteList;
+
+			int							m_isColisWithStair;					
+
+			/**************************************************************************************************/
+			// Stupid of thing: We built listColisionEvent to detect Colision.
+			// But. When we handled collision with tile so dont care TagColision.
+			// Now we dont now which is handle's collision for tile and another collision. It's mistaked by me.
+			/**************************************************************************************************/
+
+			
 private:
 
 };

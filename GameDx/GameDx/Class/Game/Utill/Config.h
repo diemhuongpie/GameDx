@@ -89,6 +89,7 @@ class CBaseEntity;
 #define FIREMAN_STAGE_INFO_STRING	L"FIREMAN\n\nCLEAR POINT"
 
 #define PATH_RESOURCE_MAP_INFOR		L"Resource//Image//Maps//mapinfo//mapinfo.txt"
+#define PATH_RESOURCE_PATH_CAMERA	"Resource//Path//CameraPath.txt"
 
 #define VEL_PLAYER_X			4
 #define VEL_PLAYER_Y			19
@@ -115,8 +116,10 @@ enum GAMESTATE
 
 enum CAMERASTATE
 {
-	CAMERA_NORMAL,						// with rockman, this mean is update for X asix
-	CAMERA_AUTO,						// with rockman, this mean is update for Y asix
+	CAMERA_X,							// with rockman, this mean is update for X asix
+	CAMERA_AUTO,						// AUTO ++ HEIGH
+	CAMERA_UP,
+	CAMERA_DOWN,
 	CAMERA_STOP
 };
 
@@ -270,6 +273,29 @@ struct	MapInfo
 	{
 	}
 };
+
+typedef struct DataCameraPath
+{
+	int				m_minX,
+					m_maxX,
+					m_minY,
+					m_maxY;
+
+	int				m_styleCamera;
+
+	DataCameraPath()
+	{
+	};
+	DataCameraPath(int min1, int max1, int min2, int max2, int style)
+	{
+		m_minX					= min1;
+		m_maxX					= max1;
+		m_minY					= min2;
+		m_maxY					= max2;
+		m_styleCamera			= style;
+	}
+
+}DataCameraPath;
 
 /******************************/
 

@@ -1,6 +1,7 @@
 #include "MapManager.h"
 #include <fstream>
-#include "Framework\Camera.h"
+
+class CCamera;
 
 CMapmanager::CMapmanager()
 {
@@ -49,3 +50,11 @@ void		CMapmanager::setCurrentMapAt(int index)
 
 	m_CurrentMap->readMapInfor(m_MapList.at(m_CrIndex)->m_Path);
 }
+
+
+int			CMapmanager::getCurrentIndexMap()
+{
+	return m_CrIndex;
+}
+
+#include "Framework\Camera.h"

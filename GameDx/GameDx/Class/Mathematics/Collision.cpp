@@ -28,13 +28,13 @@ COLDIRECTION CCollision::CheckCollision(CMovable* MovableObject, CBaseEntity* Ob
 		if (moveY > 0)
 		{
 			if (MovableObject->getVelocity().y == 0)
-			MovableObject->setPosition(vector3d(MovableObject->getPosition().x, MovableObject->getPosition().y + moveY, 0.5f));
+				MovableObject->setPosition(vector3d(MovableObject->getPosition().x, MovableObject->getPosition().y + moveY, 0.5f));
 				return COLDIRECTION::COLDIRECTION_TOP;
 		}
 		else
 		{
 			if (MovableObject->getVelocity().y == 0)
-			MovableObject->setPosition(vector3d(MovableObject->getPosition().x, MovableObject->getPosition().y + moveY, 0.5f));
+				MovableObject->setPosition(vector3d(MovableObject->getPosition().x, MovableObject->getPosition().y + moveY, 0.5f));
 				return COLDIRECTION::COLDIRECTION_BOTTOM;
 		}
 		else 

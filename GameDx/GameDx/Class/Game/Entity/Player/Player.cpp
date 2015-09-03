@@ -3,7 +3,7 @@
 #include "Game\Entity\Bullet\BulletManager.h"
 
 inline bool haveEventInList(vector<CollisionEvents*> listEvent, int styleEventCollision);
-
+inline bool	onSensor(vector3d pos1, vector2d sensorOfPos1, vector3d pos2);
 
 CPlayer::CPlayer()
 {
@@ -22,16 +22,16 @@ CPlayer::CPlayer(LPDIRECT3DDEVICE9)
 
 bool CPlayer::initEntity()
 {
-	m_Position		= vector3d(130, 150, 0.5);
-	m_Velocity		= vector2d(GRAVITYSTART, GRAVITYSTART);
-	m_Accelero		= vector2d(0, 0.01);
-	m_State			= PLAYSTATE::START;
-	m_TimeState		= 0;
-	m_Direction		= vector2d(DIRECTION::DIRECTION_NONE, DIRECTION::DIRECTION_NONE);
-	m_RockManSpriteList = new vector<CSprite*>[NUM_OF_ROCKMAN_SKILL];
-
+	m_Position						= vector3d(100, 60, 0.5);
+	m_Velocity						= vector2d(GRAVITYSTART, GRAVITYSTART);
+	m_Accelero						= vector2d(0, 0.01);
+	m_State							= PLAYSTATE::START;
+	m_TimeState						= 0;
+	m_Direction						= vector2d(DIRECTION::DIRECTION_NONE, DIRECTION::DIRECTION_NONE);
+	m_RockManSpriteList				= new vector<CSprite*>[NUM_OF_ROCKMAN_SKILL];
+	this->m_isColisWithStair		= false;
 	this->loadSprite();
-	this->m_Bounding = new CBox2D(0, 0, 0, 0);
+	this->m_Bounding				= new CBox2D(0, 0, 0, 0);
 
 
 	return true;
@@ -88,18 +88,23 @@ void CPlayer::resetObject()
 
 }
 
+void CPlayer::setColisWithStair(bool isCol)
+{
+	m_isColisWithStair = isCol;
+}
+
 void CPlayer::updateEntity(float deltaTime)
 {
-	OutputDebugString(L"\n LISTSIZZZZZZZZZZZZZZ: ");
-	OutputDebugString(_itow(m_listCollitionEvent.size(), new WCHAR[1], 10));
+	// update Pos by Camera
+	// SpagetiCode...But it's easy to implement.
+	if (m_Position.x <= CCamera::getInstance()->getSizeForState().x &&
+			CCamera::getInstance()->getStateCamera() == CAMERASTATE::CAMERA_X)
+		m_Position.x = CCamera::getInstance()->getSizeForState().x;
 
-	OutputDebugString(L"\n DeltaTime: ");
-	OutputDebugString(_itow(deltaTime, new WCHAR[1], 10));
-	for (int i = 0; i < m_listCollitionEvent.size(); ++i)
-	{
-		OutputDebugString(_itow(m_listCollitionEvent.at(i)->m_CollisionDirection, new WCHAR[1], 10));
+	if (m_Position.x >= CCamera::getInstance()->getSizeForState().y &&
+		CCamera::getInstance()->getStateCamera() == CAMERASTATE::CAMERA_X)
+		m_Position.x = CCamera::getInstance()->getSizeForState().y;
 
-	}
 	// Update State
 	m_TimeState += deltaTime;
 
@@ -124,7 +129,7 @@ void CPlayer::updateEntity(float deltaTime)
 			case COLDIRECTION::COLDIRECTION_TOP:
 				m_Direction.y		= DIRECTION::DIRECTION_DOWN;
 				m_Velocity.y		= GRAVITY * m_Direction.y;
-				m_State = PLAYERSTATES::STATE_STAND;
+				m_State				= PLAYERSTATES::STATE_STAND;
 				break;
 			case COLDIRECTION::COLDIRECTION_BOTTOM:
 				m_Direction.y		= DIRECTION::DIRECTION_DOWN;
@@ -155,7 +160,6 @@ void CPlayer::updateEntity(float deltaTime)
 			switch (m_listCollitionEvent.at(i)->m_CollisionDirection)
 			{
 			case COLDIRECTION::COLDIRECTION_LEFT:
-				OutputDebugString(L"\n STANDLEFT: ");
 				m_Velocity.x		= 0;
 				if (m_Direction.x == DIRECTION::DIRECTION_LEFT)
 					m_Velocity.x	= MOVESPEED * m_Direction.x;
@@ -168,8 +172,6 @@ void CPlayer::updateEntity(float deltaTime)
 
 				break;
 			case COLDIRECTION::COLDIRECTION_TOP:
-				OutputDebugString(L"\n STANDTOP: ");
-				OutputDebugString(_itow(deltaTime, new WCHAR[1], 10));
 				m_Velocity.y = 0;
 				m_Velocity.x = 0;
 				if (m_Direction.y == DIRECTION::DIRECTION_UP)
@@ -275,7 +277,6 @@ void CPlayer::updateEntity(float deltaTime)
 			default:
 				break;
 			}
-				//m_listCollitionEvent.pop_back();
 		}
 
 		if (m_listCollitionEvent.empty())
@@ -292,7 +293,19 @@ void CPlayer::updateEntity(float deltaTime)
 	break;
 
 	case PLAYERSTATES::STATE_CLIMB:
-		m_Position.y += m_Velocity.y * deltaTime;
+		if (m_isColisWithStair)
+		{
+			if (m_Direction.y == DIRECTION::DIRECTION_UP)
+				m_Position.y += m_Velocity.y * deltaTime;
+			if (m_Direction.y == DIRECTION::DIRECTION_DOWN)
+				m_Position.y += m_Velocity.y * deltaTime;
+		}
+		else
+		{
+			m_State			= PLAYERSTATES::STATE_JUMP;
+			m_Direction.y	= DIRECTION::DIRECTION_UP;
+		}
+
 		break;
 
 	default:
@@ -304,6 +317,12 @@ void CPlayer::updateEntity(float deltaTime)
 void CPlayer::updateEntity(CKeyBoard* device)
 {
 	m_listCollitionEvent.clear();
+
+	if (CCamera::getInstance()->getStateCamera() == CAMERASTATE::CAMERA_UP || CCamera::getInstance()->getStateCamera() == CAMERASTATE::CAMERA_DOWN)
+	{
+		m_Direction.y	= DIRECTION_NONE;
+		return;
+	}
 
 	if (device->KeyPress(DIK_1))
 	{
@@ -348,7 +367,6 @@ void CPlayer::updateEntity(CKeyBoard* device)
 		}
 		else if (device->KeyPress(DIK_Z) && device->KeyPress(DIK_X))
 		{
-			//CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
 			m_Direction.y	= DIRECTION::DIRECTION_UP;
 			m_Velocity.y	= GRAVITY * m_Direction.y;
 			m_TimeState		= 0;
@@ -361,14 +379,18 @@ void CPlayer::updateEntity(CKeyBoard* device)
 			m_TimeState		= 0;
 			m_State			= PLAYERSTATES::STATE_JUMP;
 		}
-		else if (device->KeyPress(DIK_UP))
+		else if (device->KeyPress(DIK_UP) && m_isColisWithStair)
 		{
 			m_Direction.y	= DIRECTION::DIRECTION_UP;
 			m_State			= PLAYERSTATES::STATE_CLIMB;
 		}
+		else if (device->KeyPress(DIK_DOWN) && m_isColisWithStair)
+		{
+			m_Direction.y = DIRECTION::DIRECTION_DOWN;
+			m_State = PLAYERSTATES::STATE_CLIMB;
+		}
 		else if (device->KeyPress(DIK_Z))
 		{
-			//CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position,m_Velocity);
 			m_TimeState		= 0;
 			m_State			= PLAYERSTATES::STATE_STAND_SHOOT;
 		}
@@ -383,7 +405,6 @@ void CPlayer::updateEntity(CKeyBoard* device)
 	case PLAYERSTATES::STATE_MOVE:
 		if (device->KeyPress(DIK_Z) && device->KeyPress(DIK_X))
 		{
-			//CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
 			m_Direction.y	= DIRECTION::DIRECTION_UP;
 			m_Velocity.y	= GRAVITY * m_Direction.y;
 			m_TimeState		= 0;
@@ -448,27 +469,29 @@ void CPlayer::updateEntity(CKeyBoard* device)
 		
 		if (device->KeyPress(DIK_Z))
 		{
-			//CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
+			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, vector2d(MOVESPEED * SIGN(m_Direction.x), GRAVITY));
 
 			if (m_TimeState > TIME_FOR_SHOOT)
 			{
 				m_State		= PLAYERSTATES::STATE_STAND;
 			}
 			else
+			{
+				CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, vector2d(MOVESPEED * SIGN(m_Direction.x), GRAVITY));
 				m_TimeState = 0;
-				//CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
+			}
 		}
 		else if (device->KeyPress(DIK_RIGHT))
 		{
 			m_Direction		= vector2d (DIRECTION::DIRECTION_RIGHT, DIRECTION::DIRECTION_NONE);
-			//CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
+			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, vector2d(MOVESPEED * SIGN(m_Direction.x), GRAVITY));
 			m_Velocity.x	= MOVESPEED * m_Direction.x;
 			m_State			= PLAYERSTATES::STATE_MOVE_SHOOT;
 		}
 		else if (device->KeyPress(DIK_LEFT))
 		{
 			m_Direction		= vector2d (DIRECTION::DIRECTION_LEFT, DIRECTION::DIRECTION_NONE);
-			//CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
+			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, vector2d(MOVESPEED * SIGN(m_Direction.x), GRAVITY));
 			m_Velocity.x	= MOVESPEED * m_Direction.x;
 			m_State			= PLAYERSTATES::STATE_MOVE_SHOOT;
 		}
@@ -509,7 +532,7 @@ void CPlayer::updateEntity(CKeyBoard* device)
 					m_State		= PLAYERSTATES::STATE_MOVE;
 				}
 				else
-					//CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
+					CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
 					m_TimeState	= 0;
 			}
 			else
@@ -554,7 +577,18 @@ void CPlayer::updateEntity(CKeyBoard* device)
 		break;
 
 	case PLAYERSTATES::STATE_JUMP_SHOOT:
-		if (device->KeyDown(DIK_RIGHT))
+		if (device->KeyPress(DIK_Z))
+		{
+			if (m_TimeState > TIME_FOR_SHOOT)
+			{
+				m_State = PLAYERSTATES::STATE_MOVE;
+			}
+			else
+				CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, vector2d(MOVESPEED * m_Direction.x, GRAVITY));
+			m_TimeState = 0;
+		}
+
+		else if (device->KeyDown(DIK_RIGHT))
 		{
 			m_Direction			= vector2d(DIRECTION::DIRECTION_RIGHT, DIRECTION::DIRECTION_UP);
 			if (m_TimeState > TIME_FOR_SHOOT * 2)
@@ -589,7 +623,6 @@ void CPlayer::updateEntity(CKeyBoard* device)
 		}
 		else if (device->KeyPress(DIK_Z))
 		{
-			//CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
 			m_TimeState			= 0;
 			m_State				= PLAYERSTATES::STATE_CLIMB_SHOOT;
 		}
@@ -612,7 +645,6 @@ void CPlayer::updateEntity(CKeyBoard* device)
 		{
 			m_Direction.y		= DIRECTION::DIRECTION_NONE;
 			m_Velocity.y		= GRAVITY * m_Direction.y;
-			//m_State			= PLAYERSTATES::STATE_CLIMB;
 		}
 		break;
 
@@ -633,8 +665,8 @@ void CPlayer::updateEntity(CKeyBoard* device)
 					m_State		= PLAYERSTATES::STATE_CLIMB;
 				}
 				else
-					//CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
-					//m_State = PLAYERSTATES::STATE_CLIMB;
+					CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, vector2d(MOVESPEED * SIGN(m_Direction.x), GRAVITY));
+					m_State = PLAYERSTATES::STATE_CLIMB;
 					m_TimeState = 0;
 			}
 			else
@@ -658,7 +690,7 @@ void CPlayer::updateEntity(CKeyBoard* device)
 					m_State		= PLAYERSTATES::STATE_CLIMB;
 				}
 				else
-				//CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
+				CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, vector2d(MOVESPEED * SIGN(m_Direction.x), GRAVITY));
 				m_TimeState		= 0;
 			}
 			else
@@ -685,7 +717,7 @@ void CPlayer::updateEntity(CKeyBoard* device)
 
 		else
 		{
-			//CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, m_Velocity);
+			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::NORMAL, m_Position, vector2d(MOVESPEED * SIGN(m_Direction.x), GRAVITY));
 			//m_Direction.x = DIRECTION::DIRECTION_NONE;
 			if (m_TimeState > TIME_FOR_SHOOT / 2)
 			{
@@ -701,33 +733,46 @@ void CPlayer::updateEntity(CKeyBoard* device)
 		//m_State				= PLAYERSTATES::STATE_STAND;
 		break;
 	}
+
 }
 
 
 void CPlayer::updateEntity(CBaseEntity* entity)
 {
-	if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_LEFT)
+	if (onSensor(entity->getPosition(), vector2d(5, 5), this->m_Position))
 	{
-		if ((!haveEventInList(m_listCollitionEvent, COLDIRECTION::COLDIRECTION_LEFT)) || entity->getTagNode() != "Collision")
-			m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_LEFT, entity));
+		if (entity->getTagNode() == "Stair")
+		{
+			this->m_isColisWithStair = true;
+			return;
+		}
+		this->m_isColisWithStair			= false;
 	}
-
-	else if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_RIGHT)
+	if (entity->getTagNode()	== "Collision")
 	{
-		if ((!haveEventInList(m_listCollitionEvent, COLDIRECTION::COLDIRECTION_RIGHT)) || entity->getTagNode() != "Collision")
-			m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_RIGHT, entity));
-	}
+		if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_LEFT)
+		{
+			if ((!haveEventInList(m_listCollitionEvent, COLDIRECTION::COLDIRECTION_LEFT)))
+				m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_LEFT, entity));
+		}
 
-	else if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_TOP)
-	{
-		if ((!haveEventInList(m_listCollitionEvent, COLDIRECTION::COLDIRECTION_TOP)) || entity->getTagNode() != "Collision")
-			m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_TOP, entity));
-	}
+		else if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_RIGHT)
+		{
+			if ((!haveEventInList(m_listCollitionEvent, COLDIRECTION::COLDIRECTION_RIGHT)))
+				m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_RIGHT, entity));
+		}
 
-	else if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_BOTTOM)
-	{
-		if ((!haveEventInList(m_listCollitionEvent, COLDIRECTION::COLDIRECTION_BOTTOM)) || entity->getTagNode() != "Collision")
-			m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_BOTTOM, entity));
+		else if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_TOP)
+		{
+			if ((!haveEventInList(m_listCollitionEvent, COLDIRECTION::COLDIRECTION_TOP)))
+				m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_TOP, entity));
+		}
+
+		else if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_BOTTOM)
+		{
+			if ((!haveEventInList(m_listCollitionEvent, COLDIRECTION::COLDIRECTION_BOTTOM)))
+				m_listCollitionEvent.push_back(new CollisionEvents(COLDIRECTION::COLDIRECTION_BOTTOM, entity));
+		}
 	}
 }
 
@@ -756,6 +801,9 @@ void CPlayer::drawEntity()
 		break;
 	}
 
+	
+	CText::getInstace()->Draw(_itow(m_Position.x, new WCHAR[1], 10), vector3d(150, 50, 0.5), DEFAULT_FONT_COLOR, 12);
+	CText::getInstace()->Draw(_itow(m_Position.y, new WCHAR[1], 10), vector3d(200, 50, 0.5), DEFAULT_FONT_COLOR, 12);
 }
 
 vector3d CPlayer::getPosition()
@@ -784,4 +832,15 @@ CBox2D		CPlayer::getBounding()
 	}
 
 	return *m_Bounding;
+}
+
+//  check pos2 onto pos1 with sensor
+inline bool	onSensor(vector3d pos1, vector2d sensorOfPos1, vector3d pos2)
+{
+	if ((pos2.x > pos1.x - sensorOfPos1.x)	&&
+		(pos2.x < pos1.x + sensorOfPos1.x)	&&
+		(pos2.y > pos1.y - sensorOfPos1.y)	&&
+		(pos2.y < pos1.y + sensorOfPos1.y))
+		return true;
+	return false;
 }

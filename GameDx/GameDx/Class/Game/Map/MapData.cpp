@@ -126,7 +126,7 @@ void	MapData::readTileMap(wstring filePath)
 
 		if (type == L"L")
 		{
-			m_listCollisionTile.push_back(new CTile(new CSprite((filePath + L"resource//C.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 36));
+			m_listCollisionTile.push_back(new CTile(new CSprite((filePath + L"resource//10.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 36));
 			m_listCollisionTile.at(m_listCollisionTile.size() - 1)->setTagNode("Stair");
 		}
 	}

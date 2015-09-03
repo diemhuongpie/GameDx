@@ -17,6 +17,7 @@
 #include <d3dx9.h>
 #include <string>
 #include <vector>
+#include <fstream>
 
 #define DIRECTINPUT_VERSION 0x0800
 #include <dinput.h>
