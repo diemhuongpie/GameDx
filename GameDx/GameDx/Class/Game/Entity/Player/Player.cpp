@@ -22,6 +22,7 @@ CPlayer::CPlayer(LPDIRECT3DDEVICE9)
 
 bool CPlayer::initEntity()
 {
+	m_heath							= 10;
 	m_Position						= vector3d(100, 60, 0.5);
 	m_Velocity						= vector2d(GRAVITYSTART, GRAVITYSTART);
 	m_Accelero						= vector2d(0, 0.01);
@@ -312,6 +313,10 @@ void CPlayer::updateEntity(float deltaTime)
 	break;
 	}
 
+	// check posY of player with camera BOT
+	if (m_Position.y < CCamera::getInstance()->getPosisionCamera().y - BACKBUFFER_HEIGHT - 50)
+		setDead();
+	handlingDead();
 }
 
 void CPlayer::updateEntity(CKeyBoard* device)
@@ -733,7 +738,7 @@ void CPlayer::updateEntity(CKeyBoard* device)
 }
 
 
-void CPlayer::updateEntity(CBaseEntity* entity)
+void			CPlayer::updateEntity(CBaseEntity* entity)
 {
 	if (onSensor(entity->getPosition(), vector2d(5, 5), this->m_Position))
 	{
@@ -772,7 +777,7 @@ void CPlayer::updateEntity(CBaseEntity* entity)
 	}
 }
 
-void CPlayer::drawEntity()
+void			CPlayer::drawEntity()
 {
 	switch (m_State)
 	{
@@ -802,22 +807,28 @@ void CPlayer::drawEntity()
 	CText::getInstace()->Draw(_itow(m_Position.y, new WCHAR[1], 10), vector3d(200, 50, 0.5), DEFAULT_FONT_COLOR, 12);
 }
 
-vector3d CPlayer::getPosition()
+vector3d		CPlayer::getPosition()
 {
 	return m_Position;
 }
 
-inline bool haveEventInList(vector<CollisionEvents*> listEvent, int styleEventCollision)
+void			CPlayer::setDead()
 {
-	for (int i = 0; i < listEvent.size(); ++i)
-	{
-		if (listEvent.at(i)->m_CollisionDirection == styleEventCollision)
-			return true;
-	}
-	return false;
+	m_heath		= 0;
 }
 
-CBox2D		CPlayer::getBounding()
+void			CPlayer::handlingDead()
+{
+	if (m_heath == 0)
+	{
+		CSceneManager::getInstance()->getScene().pop_back();
+		CSceneManager::getInstance()->getScene().push_back(new CGameOverScene());
+	}
+
+		
+}
+
+CBox2D			CPlayer::getBounding()
 {
 	if (m_listSprite.size())
 	{
@@ -838,5 +849,15 @@ inline bool	onSensor(vector3d pos1, vector2d sensorOfPos1, vector3d pos2)
 		(pos2.y > pos1.y - sensorOfPos1.y)	&&
 		(pos2.y < pos1.y + sensorOfPos1.y))
 		return true;
+	return false;
+}
+
+inline bool haveEventInList(vector<CollisionEvents*> listEvent, int styleEventCollision)
+{
+	for (int i = 0; i < listEvent.size(); ++i)
+	{
+		if (listEvent.at(i)->m_CollisionDirection == styleEventCollision)
+			return true;
+	}
 	return false;
 }

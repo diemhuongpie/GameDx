@@ -7,6 +7,10 @@
 #include "Framework\Camera.h"
 #include "Mathematics\Collision.h"
 #include "Framework\Text.h"
+#include "Game\Scene\GameOverScene.h"
+
+class CSceneManager;
+
 
 #ifndef __CPLAYER_H__
 #define __CPLAYER_H__
@@ -30,6 +34,8 @@ public:
 	virtual void			resetObject()														override;
 
 			void			setColisWithStair(bool);
+			void			setDead();
+			void			handlingDead();
 
 protected:
 	
@@ -51,4 +57,5 @@ private:
 
 };
 
+#include "Game\Scene\SceneManager.h"
 #endif
