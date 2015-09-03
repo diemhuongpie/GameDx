@@ -74,3 +74,6 @@ vector<CollisionEvents*> CMovable::getListCollisionEvents()
 {
 	return m_listCollitionEvent;
 }
+
+void	CMovable::setSubHealthy(int health)
+{}

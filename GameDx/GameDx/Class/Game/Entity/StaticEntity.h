@@ -31,6 +31,7 @@ public:
 	virtual		void					setPosition(vector3d)					override;
 	virtual		int						getState()								override;
 	virtual		void					setState(int newState)					override;
+	virtual		void					setSubHealthy(int health)				override;
 
 protected:
 };

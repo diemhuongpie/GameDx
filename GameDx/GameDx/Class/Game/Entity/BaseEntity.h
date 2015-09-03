@@ -35,6 +35,8 @@ public:
 	virtual void			setState(int newState)								= 0;
 	virtual void			resetObject()										= 0;
 
+	virtual	void			setSubHealthy(int health)							= 0;
+
 protected:
 	int						m_State;
 	bool					m_isDead;

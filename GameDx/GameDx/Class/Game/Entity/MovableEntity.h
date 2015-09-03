@@ -34,6 +34,7 @@ public:
 	virtual		void					setPosition(vector3d pos)											override;
 	virtual		void					setVelocity(vector2d vel)													;
 	virtual		vector<CollisionEvents*>getListCollisionEvents();
+	virtual		void					setSubHealthy(int health)											override;
 protected:
 				vector2d					m_Velocity;
 				vector<CollisionEvents*>	m_listCollitionEvent;

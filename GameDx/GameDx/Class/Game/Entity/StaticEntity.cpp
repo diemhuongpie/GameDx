@@ -59,3 +59,6 @@ void		CStaticEntity::setTagNode(char* tag)
 {
 	m_TagNode	= tag;
 }
+
+void		CStaticEntity::setSubHealthy(int health)
+{};
