@@ -27,6 +27,43 @@ bool CEnemyNinja::initEntity()
 	return true;
 }
 
+void CEnemyNinja::updateEntity(CBaseEntity* player)
+{
+	if (abs(m_Position.x - player->getPosition().x) < 120)
+	{
+		if (m_delayTime > 0 && m_delayTime < 50)
+		{
+			this->m_checkState = 0;
+			if (m_Position.y >= 420)
+			{
+				m_Velocity.y = 0;
+			}
+			m_Velocity.x = 0;
+		}
+		if (m_delayTime > 50 && m_delayTime < 110)
+		{
+			this->m_checkState = 1;
+			if (m_Position.y >= 420)
+			{
+				m_Velocity.y = 0;
+			}
+			m_Velocity.x = 0;
+		}
+		if (m_delayTime > 110)
+		{
+			this->m_checkState = 2;
+			m_Velocity.y = -8;
+			if (m_Position.x > player->getPosition().x)
+				m_Velocity.x = 3;
+			else
+				m_Velocity.x = -3;
+		}
+		if (m_Position.y < 420)
+		{
+			m_Velocity.y++;
+		}
+	}
+}
 
 bool CEnemyNinja::loadSprite()
 {
@@ -53,36 +90,7 @@ void CEnemyNinja::updateEntity(float deltaTime)
 		m_delayTime = 0;
 	}
 
-	if (abs(m_Position.x - m_PositionPlayer.x) < 120)
-	{
-		if (m_delayTime > 0 && m_delayTime < 50)
-		{
-			this->m_checkState = 0;
-			if (m_Position.y >= 420)
-			{
-				m_Velocity.y = 0;
-			}
-			m_Velocity.x = 0;
-		}
-		if (m_delayTime > 50 && m_delayTime < 110)
-		{
-			this->m_checkState = 1;
-			if (m_Position.y >= 420)
-			{
-				m_Velocity.y = 0;	
-			}
-			m_Velocity.x = 0;
-		}
-		if (m_delayTime > 110)
-		{
-			this->m_checkState = 2;
-			jump();
-		}
-		if (m_Position.y < 420)
-		{
-			m_Velocity.y++;
-		}
-	}
+	
 	
 	
 }
@@ -103,11 +111,7 @@ void CEnemyNinja::drawEntity()
 
 void CEnemyNinja::jump()
 {
-	m_Velocity.y = -8;
-	if (m_Position.x > m_PositionPlayer.x)
-		m_Velocity.x = 3;
-	else
-		m_Velocity.x = -3;
+	
 	
 	
 }

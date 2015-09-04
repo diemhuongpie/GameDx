@@ -51,13 +51,16 @@ void CEnemyBoomBlue::updateEntity(CKeyBoard *device)
 
 void CEnemyBoomBlue::updateEntity(CBaseEntity* entity)
 {
-
+	if (entity->getTagNode() == "PlayerBullet" && CBox2D::Intersect(this->getBounding(), entity->getBounding()))
+	{
+		m_heath--;
+	}
 }
 
 void CEnemyBoomBlue::updateEntity(float deltaTime)
 {
-	m_Position.x += m_Velocity.x*deltaTime;
-	m_Position.y += m_Velocity.y*deltaTime;
+	m_Position.x += m_Velocity.x*deltaTime/60;
+	m_Position.y += m_Velocity.y*deltaTime/60;
 	
 
 	if (m_isDead == false)

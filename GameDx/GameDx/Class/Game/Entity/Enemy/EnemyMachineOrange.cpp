@@ -5,12 +5,11 @@ CEnemyMachineOrange::CEnemyMachineOrange()
 {
 }
 
-CEnemyMachineOrange::CEnemyMachineOrange(vector3d position,vector3d position_player,int m_rangex)
+CEnemyMachineOrange::CEnemyMachineOrange(vector3d position,int m_rangex)
 {
 	m_RangeX = m_rangex;
 	this->m_Position = position;
 	this->m_CurrentPosition = position;
-	this->m_PositionPlayer = position_player;
 	this->initEntity();
 }
 
@@ -24,6 +23,7 @@ bool CEnemyMachineOrange::initEntity()
 {
 	// LOAD SPRITE
 	m_Velocity.x = 5;
+	m_heath = 1;
 	this->loadSprite();
 	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
 	
@@ -39,17 +39,20 @@ bool CEnemyMachineOrange::loadSprite()
 }
 
 void CEnemyMachineOrange::resetObject()
-{}
+{
+	m_Velocity.x = 5;
+	m_heath = 1;
+	m_isDead = false;
+	m_Sign = false;
+	m_Position = m_CurrentPosition;
+}
 
 void CEnemyMachineOrange::updateEntity(CKeyBoard *device)
 {}
 
-void CEnemyMachineOrange::updateEntity(float deltaTime)
+void CEnemyMachineOrange::updateEntity(CBaseEntity* player)
 {
-	this->m_Position.x += this->m_Velocity.x*deltaTime;
-	this->m_Position.y += this->m_Velocity.y*deltaTime;
-
-	if (abs(m_CurrentPosition.x - m_PositionPlayer.x) < 100 && abs(m_CurrentPosition.y - m_PositionPlayer.y) < 10)
+	if (abs(m_CurrentPosition.x - player->getPosition().x) < 100 && abs(m_CurrentPosition.y - player->getPosition().y) < 10)
 	{
 		m_Sign = true;
 	}
@@ -59,15 +62,15 @@ void CEnemyMachineOrange::updateEntity(float deltaTime)
 	}
 	if (m_Sign)
 	{
-		if (m_Position.x - m_PositionPlayer.x > 3)
+		if (m_Position.x - player->getPosition().x > 3)
 		{
 			m_Velocity.x = -5;
 		}
-		else if (m_Position.x - m_PositionPlayer.x < -3)
+		else if (m_Position.x - player->getPosition().x < -3)
 		{
 			m_Velocity.x = 5;
 		}
-		else if (abs(m_CurrentPosition.x - m_PositionPlayer.x) < 3)
+		else if (abs(m_CurrentPosition.x - player->getPosition().x) < 3)
 		{
 			m_Velocity.x *= 0.1;
 		}
@@ -80,6 +83,13 @@ void CEnemyMachineOrange::updateEntity(float deltaTime)
 		}
 	}
 
+}
+void CEnemyMachineOrange::updateEntity(float deltaTime)
+{
+	this->m_Position.x += this->m_Velocity.x*deltaTime;
+	this->m_Position.y += this->m_Velocity.y*deltaTime;
+
+	
 
 }
 
@@ -90,5 +100,9 @@ void CEnemyMachineOrange::updateEntity(RECT rectCamera)
 
 void CEnemyMachineOrange::drawEntity()
 {
-	this->m_listSprite[0]->Render(0, 0, m_Position, vector2d(1.0, 1.0), 0.0f, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
+	if (m_isDead == false)
+	{
+		this->m_listSprite[m_State]->Render(0, 0, m_Position, vector2d(1.0, 1.0), 0.0f, DRAWCENTER_MIDDLE_MIDDLE, true, 10);
+	}
+	
 }

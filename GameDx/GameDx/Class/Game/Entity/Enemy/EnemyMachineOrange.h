@@ -6,11 +6,12 @@ class CEnemyMachineOrange : public CMovable
 {
 public:
 	CEnemyMachineOrange();
-	CEnemyMachineOrange(vector3d position , vector3d position_player,int m_rangex);
+	CEnemyMachineOrange(vector3d position ,int m_rangex);
 	~CEnemyMachineOrange();
 	bool initEntity();
 	void updateEntity(float deltaTime);
 	void updateEntity(CKeyBoard *device);
+	void updateEntity(CBaseEntity*);
 	void updateEntity(RECT rectCamera);
 	void drawEntity();
 	void resetObject();
@@ -18,7 +19,6 @@ public:
 private:
 	bool m_Sign;
 	vector3d m_CurrentPosition;
-	vector3d m_PositionPlayer;
 	int m_RangeX;
 };
 

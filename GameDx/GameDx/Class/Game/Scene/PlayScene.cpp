@@ -25,11 +25,11 @@ bool	CPlayScene::initScene()
 	m_Player			= new CPlayer();
 	m_EnemyTankRed		= new CEnemyTankRed(D3DXVECTOR3(400, 100, 0));
 	m_EnemyAutoOrange	= new CEnemyMachineAutoOrange(D3DXVECTOR3(200, 350, 0));
-	m_EnemyBall			= new CEnemyBall();
+	m_EnemyEyeRed		= new CEnemyEyeRed(D3DXVECTOR3(20, 50, 0), true, true, false);
+	m_EnemyBall			 = new CEnemyBall(D3DXVECTOR3(16, 170, 0));
+	m_EnemyBubbleBlue = new CEnemyBubbleBlue(D3DXVECTOR3(36, 170, 0));
+	m_boomBlue			= new CEnemyBoomBlue(D3DXVECTOR3(70, 200, 0));
 
-	m_boomBlue			= new CEnemyBoomBlue(D3DXVECTOR3(250, 200, 0));
-	m_Weapon			= new CCutManWeapon(m_EnemyTankRed->getPosition(), m_Player->getPosition());
-	
 
 	m_boomBlue = new CEnemyBoomBlue(D3DXVECTOR3(250, 200, 0));
 	m_Weapon = new CCutManWeapon(m_EnemyTankRed->getPosition(), m_Player->getPosition());
@@ -50,16 +50,19 @@ void	CPlayScene::updateScene(double deltaTime)
 	m_EnemyTankRed	->updateEntity(deltaTime);
 	m_EnemyBall->updateEntity(deltaTime);
 	m_EnemyAutoOrange->updateEntity(deltaTime);
-	m_Weapon->updateEntity(deltaTime/60);
-	m_boomBlue->updateEntity(deltaTime / 60);
+	m_boomBlue->updateEntity(deltaTime);
 	m_fireMan->updateEntity(deltaTime);
-
+	m_EnemyEyeRed->updateEntity(deltaTime);
+	m_fireMan->updateEntity(m_Player);
+	m_EnemyBubbleBlue->updateEntity(deltaTime);
+	m_EnemyBubbleBlue->updateEntity(m_Player);
 	
 	// Update Bullet
 	for (int i = 0; i < TYPE_BULLET::NUMBER_OF_TYPE_BULLET; ++i)
 	{
 		for (int j = 0; j < CBulletManager::getInstance()->getListBullet()[i].size(); j++)
 		{
+			
 			CBulletManager::getInstance()->getListBullet()[i].at(j)->updateEntity(deltaTime);
 		}
 	}
@@ -81,9 +84,8 @@ void	CPlayScene::updateScene(CKeyBoard* keyboard)
 	m_EnemyAutoOrange	->updateEntity(keyboard);
 	m_Player			->updateEntity(keyboard);
 	m_EnemyBall			->updateEntity(keyboard);
-	m_Weapon			->updateEntity(keyboard);
 	m_boomBlue			->updateEntity(keyboard);
-
+	m_EnemyBubbleBlue	->updateEntity(keyboard);
 	if (keyboard->KeyPress(DIK_RETURN))
 	{
 		CSceneManager::getInstance()->getScene().push_back(new CPopUpScene());
@@ -92,17 +94,18 @@ void	CPlayScene::updateScene(CKeyBoard* keyboard)
 
 void	CPlayScene::renderScene()
 {
-	CMapmanager::getInstance()->getCurrentMap()->render();
 	
+	CMapmanager::getInstance()->getCurrentMap()->render();
 	m_Player			->drawEntity();
 
 	m_EnemyTankRed		->drawEntity();
 	m_EnemyBall			->drawEntity();
 	m_EnemyAutoOrange	->drawEntity();
-	m_Weapon			->drawEntity();
 	m_boomBlue			->drawEntity();
 	m_fireMan			->drawEntity();
+	m_EnemyBubbleBlue	->drawEntity();
 
+	
 	for (int i = 0; i < TYPE_BULLET::NUMBER_OF_TYPE_BULLET; ++i)
 	{
 		for (int j = 0; j < CBulletManager::getInstance()->getListBullet()[i].size(); j++)

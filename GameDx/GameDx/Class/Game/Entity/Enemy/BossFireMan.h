@@ -10,7 +10,7 @@ public:
 	~CBossFireMan();
 	virtual		void					updateEntity(float deltaTime)		override;
 	virtual		void					updateEntity(CKeyBoard *device)		override;
-	virtual		void					updateEntity(CBaseEntity*)			override;
+				void					updateEntity(CBaseEntity*)			;
 	virtual		bool					loadSprite()						override;
 				bool					initEntity()								;
 				void					updateEntity(RECT rectCamera)				;

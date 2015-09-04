@@ -3,13 +3,9 @@
 #include "Game\Entity\Bullet\BulletManager.h"
 #include "Framework\Camera.h"
 
-CEnemyBall::CEnemyBall()
+CEnemyBall::CEnemyBall(vector3d pos)
 {
-	this->initEntity();
-}
-
-CEnemyBall::CEnemyBall(LPDIRECT3DDEVICE9)
-{
+	this->m_Position = pos;
 	this->initEntity();
 }
 
@@ -24,7 +20,7 @@ bool CEnemyBall::initEntity()
 
 	check_State = true;
 	m_isDead = false;
-	m_Position = vector3d(450.0f, 200.0f, 0.0f);
+	m_heath = 1;
 	m_delayTime = 0;
 	m_State = 0;
 	// LOAD SPRITE
@@ -46,7 +42,7 @@ void CEnemyBall::updateEntity(CKeyBoard *device)
 {
 	if (device->KeyDown(DIK_J))
 	{
-		m_State = 1;
+		m_heath = 0;
 	}
 	if (device->KeyDown(DIK_K))
 	{
@@ -57,16 +53,17 @@ void CEnemyBall::updateEntity(CKeyBoard *device)
 
 void CEnemyBall::updateEntity(CBaseEntity* entity)
 {
-
+	if (entity->getTagNode() == "PlayerBullet" && CBox2D::Intersect(this->getBounding(),entity->getBounding()))
+	{
+		m_heath--;
+	}
 }
 
 void CEnemyBall::resetObject()
 {
 	check_State = true;
 	m_isDead = false;
-	m_Position = vector3d(450.0f, 200.0f, 0.0f);
 	m_delayTime = 0;
-
 	m_State = 0;
 }
 void CEnemyBall::updateEntity(float deltaTime)
@@ -74,12 +71,11 @@ void CEnemyBall::updateEntity(float deltaTime)
 	if (m_isDead == false)
 	{
 		this->m_Position.x += this->m_Velocity.x*deltaTime / 60;
-		//this->m_Position.y += this->m_Velocity.y*deltaTime/60;
 		m_delayTime++;
 		if (m_delayTime > 0 && m_delayTime < 70)
 		{
 			check_State = true;
-			m_Velocity.x = -2;
+			m_Velocity.x = -3;
 		}
 
 
@@ -92,6 +88,9 @@ void CEnemyBall::updateEntity(float deltaTime)
 
 		if (m_delayTime >= 105)
 			m_delayTime = 0;
+
+		if (m_heath == 0)
+			m_State = 1;
 
 		if (m_State == 1)
 		{

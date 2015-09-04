@@ -23,6 +23,7 @@ public:
 private:
 	int m_delayTime;
 	bool check_State;
+	vector3d m_oldPosition;
 };
 
 #endif

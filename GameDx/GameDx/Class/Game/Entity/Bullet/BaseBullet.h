@@ -8,6 +8,6 @@ public:
 	CBaseBullet(){};
 	~CBaseBullet(){};
 	int			type_Angle;
-	
+
 };
 #endif

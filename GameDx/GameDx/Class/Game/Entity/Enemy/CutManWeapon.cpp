@@ -1,11 +1,9 @@
 #include "Game\Entity\Enemy\CutManWeapon.h"
 
 
-CCutManWeapon::CCutManWeapon(vector3d position, vector3d position_p)
+CCutManWeapon::CCutManWeapon(vector3d position)
 {
 	m_Position = position;
-	m_PositionBoss = position;
-	m_PositionPlayer = position_p;
 	this->initEntity();
 }
 
@@ -37,7 +35,6 @@ bool CCutManWeapon::loadSprite()
 
 void CCutManWeapon::resetObject()
 {
-	m_Position = m_PositionBoss;
 	m_isDead = false;
 	m_count = 0;
 	m_dy = 0;
@@ -52,9 +49,30 @@ void CCutManWeapon::updateEntity(CKeyBoard *device)
 	}
 }
 
-void CCutManWeapon::updateEntity(CBaseEntity* entity)
-{
 
+void CCutManWeapon::updateEntity(CBaseEntity* player, CBaseEntity* boss)
+{
+	if (m_isDead == false)
+	{
+		if (m_count == 0)
+		{
+			moveTo(m_Position, player->getPosition());
+		}
+		if (m_count == 1)
+		{
+			moveTo(m_Position, boss->getPosition());
+		}
+
+		m_angle = (float)atan(m_dy / m_dx);
+
+
+	}
+
+	if (abs(m_Position.x - player->getPosition().x) < 1 || abs(m_Position.y - player->getPosition().y) < 1
+		|| ((abs(m_Position.x - boss->getPosition().x) < 1 || abs(m_Position.y - boss->getPosition().y) < 1) && m_count > 0))
+	{
+		m_count++;
+	}
 }
 
 void CCutManWeapon::moveTo(vector3d m_Position, vector3d m_PositionPlayer)
@@ -88,42 +106,26 @@ void CCutManWeapon::moveTo(vector3d m_Position, vector3d m_PositionPlayer)
 
 void CCutManWeapon::updateEntity(float deltaTime)
 {
-	if (m_isDead == false)
-	{
-		if (m_count == 0)
-		{
-			moveTo(m_Position, m_PositionPlayer);
-		}
-		if (m_count == 1)
-		{
-			moveTo(m_Position, m_PositionBoss);
-		}
-
-		m_angle = (float)atan(m_dy / m_dx);
-
-		m_Position.x += m_Velocity.x*deltaTime;
-		m_Position.y += m_Velocity.y*deltaTime;
-	}
+	
+	m_Position.x += m_Velocity.x*deltaTime/60;
+	m_Position.y += m_Velocity.y*deltaTime/60;
 
 
-
-	if (abs(m_Position.x - m_PositionPlayer.x) < 1 || abs(m_Position.y - m_PositionPlayer.y) < 1
-		|| ((abs(m_Position.x - m_PositionBoss.x) < 1 || abs(m_Position.y - m_PositionBoss.y) < 1) && m_count > 0))
-	{
-		m_count++;
-	}
+	
 	//OutputDebugString(L"Count: ");
 	//OutputDebugString(_itow(m_count, new WCHAR[1], 10));
 	
 		
-
-	
-
 	if (m_count >= 2)
 	{
 		m_isDead = true;
 		m_count = 0;
 	}
+}
+
+void CCutManWeapon::updateEntity(CBaseEntity* entity)
+{
+
 }
 
 void CCutManWeapon::updateEntity(RECT rectCamera)
@@ -136,5 +138,3 @@ void CCutManWeapon::drawEntity()
 	if (m_isDead == false)
 		this->m_listSprite[0]->Render(m_Position, vector2d(-1.0, 1.0), 0.0f, DRAWCENTER_MIDDLE_MIDDLE, true, 5);
 }
-
-
