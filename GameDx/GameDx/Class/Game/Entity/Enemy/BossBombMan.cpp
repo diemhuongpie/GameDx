@@ -43,7 +43,14 @@ void		CBossBombMan::drawEntity()
 
 void		CBossBombMan::updateEntity(float deltaTime)
 {
+	switch (m_State)
+	{
+	case BOSSSTATE::BOSS_STAND:
+		break;
 
+	default:
+		break;
+	}
 }
 
 void		CBossBombMan::updateEntity(CBaseEntity* entity)

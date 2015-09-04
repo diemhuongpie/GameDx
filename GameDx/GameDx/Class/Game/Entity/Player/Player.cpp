@@ -749,6 +749,8 @@ void			CPlayer::updateEntity(CBaseEntity* entity)
 		}
 		this->m_isColisWithStair			= false;
 	}
+
+
 	if (entity->getTagNode()	== "Collision")
 	{
 		if (CCollision::CheckCollision(this, entity) == COLDIRECTION::COLDIRECTION_LEFT)
