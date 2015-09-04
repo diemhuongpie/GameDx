@@ -9,7 +9,7 @@ class CEnemyMachineAutoOrange : public CMovable
 {
 public:
 	CEnemyMachineAutoOrange();
-	CEnemyMachineAutoOrange(vector3d position);
+	CEnemyMachineAutoOrange(vector3d position,bool dir);
 	~CEnemyMachineAutoOrange();
 	bool initEntity();
 	void updateEntity(float deltaTime);
@@ -22,6 +22,7 @@ public:
 	bool loadSprite();
 private:
 	int m_delayTime;
+	bool m_isTop;
 	bool check_State;
 	vector3d m_oldPosition;
 };

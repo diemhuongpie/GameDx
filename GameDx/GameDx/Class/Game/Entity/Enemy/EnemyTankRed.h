@@ -11,7 +11,7 @@ class CEnemyTankRed : public CStaticEntity
 {
 public:
 	CEnemyTankRed();
-	CEnemyTankRed(vector3d position);
+	CEnemyTankRed(vector3d position,bool dir);
 	~CEnemyTankRed();
 	virtual bool initEntity()											override;
 
@@ -27,7 +27,7 @@ private:
 	int m_checkState;
 	int	m_delayTime;
 	int m_delayShoot;
-
+	bool m_isLeft;
 };
 
 #endif

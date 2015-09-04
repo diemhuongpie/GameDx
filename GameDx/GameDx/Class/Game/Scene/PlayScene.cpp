@@ -23,17 +23,22 @@ bool	CPlayScene::initScene()
 {
 	m_Tag				= "PlayScene";
 	m_Player			= new CPlayer();
-	m_EnemyTankRed		= new CEnemyTankRed(D3DXVECTOR3(400, 100, 0));
-	m_EnemyAutoOrange	= new CEnemyMachineAutoOrange(D3DXVECTOR3(200, 350, 0));
-	m_EnemyEyeRed		= new CEnemyEyeRed(D3DXVECTOR3(20, 50, 0), true, true, false);
-	m_EnemyBall			 = new CEnemyBall(D3DXVECTOR3(16, 170, 0));
-	m_EnemyBubbleBlue = new CEnemyBubbleBlue(D3DXVECTOR3(36, 170, 0));
+
+	m_Player->initEntity();
+	m_EnemyTankRed		= new CEnemyTankRed(D3DXVECTOR3(120, 100, 0),false);
+	m_EnemyAutoOrange	= new CEnemyMachineAutoOrange(D3DXVECTOR3(150, 190, 0),false);
+	m_EnemyEyeRed		= new CEnemyEyeRed(D3DXVECTOR3(50, 150, 0), true, true, false);
+	m_EnemyBall			 = new CEnemyBall(D3DXVECTOR3(150, 170, 0));
+	m_EnemyBubbleBlue = new CEnemyBubbleBlue(D3DXVECTOR3(190, 170, 0));
+
 	m_boomBlue			= new CEnemyBoomBlue(D3DXVECTOR3(70, 200, 0));
 
 
-	m_boomBlue = new CEnemyBoomBlue(D3DXVECTOR3(250, 200, 0));
+
 	m_Weapon = new CCutManWeapon(m_EnemyTankRed->getPosition(), m_Player->getPosition());
-	m_fireMan = new CBossFireMan(vector3d(350, 337, 0), m_Player->getPosition());
+
+	m_fireMan = new CBossFireMan(vector3d(190, 170, 0), m_Player->getPosition());
+
 
 
 	CMapmanager::getInstance()->readMapList();

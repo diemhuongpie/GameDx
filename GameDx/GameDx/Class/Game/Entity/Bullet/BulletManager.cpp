@@ -15,7 +15,8 @@ CBulletManager::CBulletManager()
 	}
 	for (int i = 0; i < 4; ++i)
 	{
-		m_listBullet[TYPE_BULLET::TANK_RED].push_back(new CBulletTankRed(m_angle));
+		m_listBullet[TYPE_BULLET::TANK_RED_L].push_back(new CBulletTankRed(m_angle,true));
+		m_listBullet[TYPE_BULLET::TANK_RED_R].push_back(new CBulletTankRed(m_angle,false));
 		m_angle++;
 	}
 	//************BULLET_ENEMY_PART_BOOM*************//
@@ -24,11 +25,17 @@ CBulletManager::CBulletManager()
 	m_listBullet[TYPE_BULLET::ENEMY_PART_BOOM].push_back(new CEnemyPartBoomBlue(4.5));
 	m_listBullet[TYPE_BULLET::ENEMY_PART_BOOM].push_back(new CEnemyPartBoomBlue(-4.5));
 	//************BULLET_MACHINE_AUTO_ORANGE*************//
-	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE].push_back(new CBulletEnemy(0));
-	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE].push_back(new CBulletEnemy(PI/4));
-	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE].push_back(new CBulletEnemy(PI/2));
-	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE].push_back(new CBulletEnemy(3*PI/4));
-	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE].push_back(new CBulletEnemy(PI));
+	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE_T].push_back(new CBulletEnemy(0));
+	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE_T].push_back(new CBulletEnemy(PI/4));
+	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE_T].push_back(new CBulletEnemy(PI/2));
+	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE_T].push_back(new CBulletEnemy(3*PI/4));
+	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE_T].push_back(new CBulletEnemy(PI));
+
+	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE_B].push_back(new CBulletEnemy(0));
+	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE_B].push_back(new CBulletEnemy(7*PI / 4));
+	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE_B].push_back(new CBulletEnemy(3*PI / 2));
+	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE_B].push_back(new CBulletEnemy(5*PI / 4));
+	m_listBullet[TYPE_BULLET::MACHINE_AUTO_ORANGE_B].push_back(new CBulletEnemy(PI));
 	//************BULLET_ENEMY_BALL*************//
 	m_listBullet[TYPE_BULLET::ENEMY_BALL].push_back(new CBulletEnemy(0));
 	m_listBullet[TYPE_BULLET::ENEMY_BALL].push_back(new CBulletEnemy(PI / 4));
@@ -47,18 +54,32 @@ CBulletManager::~CBulletManager()
 
 void	CBulletManager::ShowBullet(int styleBullet, vector3d pos)
 {
-	for (int i = 0; i < m_listBullet[styleBullet].size(); ++i)
-		if (m_listBullet[styleBullet].at(i)->getState() == BULLETSTATE::BULLET_STATE_INVIS)
-		{
-			m_listBullet[styleBullet].at(i)->setState(BULLETSTATE::BULLET_STATE_SHOW);
-			m_listBullet[styleBullet].at(i)->setPosition(pos);
-		//	break;
-		}
-	if (m_angle > 3)
-		m_angle = 0;
+
+	if (styleBullet == TYPE_BULLET::TANK_RED_L || styleBullet == TYPE_BULLET::TANK_RED_R)
+	{
+		for (int i = 0; i < m_listBullet[styleBullet].size(); ++i)
+			if (m_listBullet[styleBullet].at(i)->getState() == BULLETSTATE::BULLET_STATE_INVIS)
+			{
+				m_listBullet[styleBullet].at(i)->setState(BULLETSTATE::BULLET_STATE_SHOW);
+				m_listBullet[styleBullet].at(i)->setPosition(pos);
+				break;
+			}
+		if (m_angle > 3)
+			m_angle = 0;
+
+	}
+	else
+	{
+		for (int i = 0; i < m_listBullet[styleBullet].size(); ++i)
+			if (m_listBullet[styleBullet].at(i)->getState() == BULLETSTATE::BULLET_STATE_INVIS)
+			{
+				m_listBullet[styleBullet].at(i)->setState(BULLETSTATE::BULLET_STATE_SHOW);
+				m_listBullet[styleBullet].at(i)->setPosition(pos);
+			}
+	}
 }
 
-void	CBulletManager::ShowBullet(int styleBullet, vector3d pos, vector2d Vel)
+void CBulletManager::ShowBullet(int styleBullet, vector3d pos, vector2d Vel)
 {
 	for (int i = 0; i < m_listBullet[styleBullet].size(); ++i)
 	if (m_listBullet[styleBullet].at(i)->getState() == BULLETSTATE::BULLET_STATE_INVIS)

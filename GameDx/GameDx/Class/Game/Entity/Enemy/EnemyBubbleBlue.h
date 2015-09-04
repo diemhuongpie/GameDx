@@ -31,6 +31,7 @@ private:
 	float m_speedX, m_speedY;
 	float m_angle;
 	bool m_isLEFT;
+	bool m_checkState;
 };
 
 #endif

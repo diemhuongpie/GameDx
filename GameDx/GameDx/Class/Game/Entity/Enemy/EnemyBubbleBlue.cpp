@@ -18,6 +18,7 @@ CEnemyBubbleBlue::~CEnemyBubbleBlue()
 
 bool CEnemyBubbleBlue::initEntity()
 {
+	m_Velocity = vector2d(0, 0);
 	this->loadSprite();
 	this->m_Bounding = new CBox2D(m_Position.x, m_Position.y, m_listSprite.at(0)->getFrameInfo().Width, m_listSprite.at(0)->getFrameInfo().Height);
 	m_delayTime = 0;
@@ -39,6 +40,7 @@ bool CEnemyBubbleBlue::loadSprite()
 void CEnemyBubbleBlue::resetObject()
 {
 	this->m_heath = 1;
+	
 	m_Position = m_oldPosition;
 	m_delayTime = 0;
 	x = 1;
@@ -51,8 +53,8 @@ void  CEnemyBubbleBlue::enemyMoving(vector3d position_p)
 	switch (x)
 	{
 	case 1:
-		m_position1.x  = position_p.x + 50 ; //m_position1.x = toadonv.x + 100
-		m_position1.y = position_p.y + 15;
+		m_position1.x  = position_p.x + 60 ; //m_position1.x = toadonv.x + 100
+		m_position1.y = position_p.y + 40;
 		break;
 	case 2:
 		m_position1.x = position_p.x;
@@ -60,8 +62,8 @@ void  CEnemyBubbleBlue::enemyMoving(vector3d position_p)
 
 		break;
 	case 3:
-		m_position1.x = position_p.x - 50; //m_position1.x = toadonv.x + 100
-		m_position1.y = position_p.y + 15;
+		m_position1.x = position_p.x - 60; //m_position1.x = toadonv.x + 100
+		m_position1.y = position_p.y + 40;
 		break;
 	}
 }
@@ -86,9 +88,70 @@ void CEnemyBubbleBlue::updateEntity(RECT rectCamera)
 
 void CEnemyBubbleBlue::updateEntity(float deltaTime)
 {
-		this->m_Position.x += this->m_Velocity.x*deltaTime/60;
-	this->m_Position.y += this->m_Velocity.y*deltaTime/60;
+	OutputDebugString(L"VELX: ");
+	OutputDebugString(_itow(m_Position.x, new WCHAR[1], 10));
+	OutputDebugString(L"\n");
+	OutputDebugString(L"VELY: ");
+	OutputDebugString(_itow(m_Velocity.x, new WCHAR[1], 10));
+	OutputDebugString(L"\n");
 
+	if (m_isDead == false)
+	{
+		if (m_checkState)
+		{
+			if (m_Position.x > m_position1.x)
+			{
+				m_dx = m_Position.x - m_position1.x;
+				m_speedX = -3 * cos(m_angle);
+			}
+			else
+			{
+				m_dx = m_position1.x - m_Position.x;
+				m_speedX = 3 * cos(m_angle);
+			}
+			if (m_Position.y > m_position1.y)
+			{
+				m_dy = m_Position.y - m_position1.y;
+				m_speedY = -2 * sin(m_angle);
+			}
+			else
+			{
+				m_dy = m_position1.y - m_Position.y;
+				m_speedY = 2 * sin(m_angle);
+			}
+
+			if (m_dx < 0)
+			{
+				m_angle -= PI / 2;
+			}
+			if (m_delayTime > 0 && m_delayTime < 25)
+			{
+				x = 2;
+				m_count--;
+			}
+			if (m_delayTime > 25 && m_delayTime < 50)
+			{
+				x = 3;
+			}
+			if (m_delayTime > 50 && m_delayTime < 75)
+			{
+				x = 2;
+			}
+			if (m_delayTime > 105)
+			{
+				x = 1;
+				m_count++;
+			}
+			m_angle = (float)atan(m_dy / m_dx);
+			this->m_Position.x += m_speedX*deltaTime / 60;
+			this->m_Position.y += m_speedY*deltaTime / 60;
+
+		}
+		else
+		{
+			this->m_Position.x += -15 * deltaTime / 60;
+		}
+	}
 	if (m_heath == 0)
 		m_State = 1;
 	if (m_State == 1)
@@ -121,60 +184,12 @@ void CEnemyBubbleBlue::updateEntity(CBaseEntity *player)
 	if (m_isDead == false)
 	{
 		m_delayTime++;
-		if (player->getPosition().x - m_Position.x < 100)
+		if (player->getPosition().x - m_Position.x < 50)
 		{
-			if (m_Position.x > m_position1.x)
-			{
-				m_speedX = -3 * cos(m_angle);
-				m_dx = m_Position.x - m_position1.x;
-			}
-			else
-			{
-				m_dx = m_position1.x - m_Position.x;
-				m_speedX = 3 * cos(m_angle);
-			}
-			if (m_Position.y > m_position1.y)
-			{
-				m_dy = m_Position.y - m_position1.y;
-				m_speedY = -2 * sin(m_angle);
-			}
-			else
-			{
-				m_dy = m_position1.y - m_Position.y;
-				m_speedY = 2 * sin(m_angle);
-			}
-			m_Velocity = D3DXVECTOR2(m_speedX, m_speedY);
-
-			m_angle = (float)atan(m_dy / m_dx);
-
-			if (m_dx < 0)
-			{
-				m_angle -= PI / 2;
-			}
-			if (m_delayTime > 0 && m_delayTime < 35)
-			{
-				x = 2;
-				m_count--;
-			}
-			if (m_delayTime > 35 &&  m_delayTime < 70)
-			{
-				x = 3;
-			}
-			if (m_delayTime > 70 && m_delayTime < 105)
-			{
-				x = 2;
-			}
-			if (m_delayTime > 140)
-			{
-				x = 1;
-				m_count++;
-			}
-			
+			m_checkState = true;
 		}
-		else
-			m_Velocity.x = -3;
 	}
-	if (m_delayTime > 175)
+	if (m_delayTime > 130)
 	{
 		m_delayTime = 0;
 	}

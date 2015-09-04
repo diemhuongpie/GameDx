@@ -5,7 +5,7 @@
 class CBulletTankRed : public CBaseBullet
 {
 public:
-	CBulletTankRed(float);
+	CBulletTankRed(float,bool);
 	~CBulletTankRed();
 	bool					initEntity();
 	void					updateEntity(float deltaTime);
@@ -22,5 +22,6 @@ private:
 	int						m_timeDestroy;
 	int						m_changeAngle;
 	float					m_angle;
+	bool					m_isLeft;
 };
 

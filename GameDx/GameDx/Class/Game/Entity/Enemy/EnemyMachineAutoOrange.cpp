@@ -6,9 +6,10 @@ CEnemyMachineAutoOrange::CEnemyMachineAutoOrange()
 {
 }
 
-CEnemyMachineAutoOrange::CEnemyMachineAutoOrange(vector3d position)
+CEnemyMachineAutoOrange::CEnemyMachineAutoOrange(vector3d position,bool dir)
 {
 	this->m_TagNode = "Enemy";
+	this->m_isTop = dir;
 	this->m_heath = 1;
 	this->m_Position = position;
 	this->m_oldPosition = position;
@@ -74,7 +75,10 @@ void CEnemyMachineAutoOrange::updateEntity(float deltaTime)
 		if (m_delayTime >= 500)
 		{
 			check_State = false;
-			CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::MACHINE_AUTO_ORANGE, this->m_Position);
+			if (m_isTop)
+				CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::MACHINE_AUTO_ORANGE_T, vector3d(this->m_Position.x, this->m_Position.y - 2, this->m_Position.z));
+			else
+				CBulletManager::getInstance()->ShowBullet(TYPE_BULLET::MACHINE_AUTO_ORANGE_B, vector3d(this->m_Position.x, this->m_Position.y + 2, this->m_Position.z));
 		}
 		if (m_delayTime > 2000)
 			m_delayTime = 0;
@@ -104,9 +108,20 @@ void  CEnemyMachineAutoOrange::drawEntity()
 {
 	if (m_isDead == false)
 	{
-		if (check_State)
-			this->m_listSprite[m_State]->Render(0, 0, CCamera::setPositionEntity(m_Position), vector2d(1.0, 1.0), 0.0f, DRAWCENTER_MIDDLE_MIDDLE, true, 3);
+		if (m_isTop)
+		{
+			if (check_State)
+				this->m_listSprite[m_State]->Render(0, 0, CCamera::setPositionEntity(m_Position), vector2d(1.0, 1.0), 0.0f, DRAWCENTER_MIDDLE_MIDDLE, true, 3);
+			else
+				this->m_listSprite[m_State]->Render(1, 3, CCamera::setPositionEntity(m_Position), vector2d(1.0, 1.0), 0.0f, DRAWCENTER_MIDDLE_MIDDLE, true, 3);
+		}
 		else
-			this->m_listSprite[m_State]->Render(1, 3, CCamera::setPositionEntity(m_Position), vector2d(1.0, 1.0), 0.0f, DRAWCENTER_MIDDLE_MIDDLE, true, 3);
+		{
+			if (check_State)
+				this->m_listSprite[m_State]->Render(0, 0, CCamera::setPositionEntity(m_Position), vector2d(1.0, -1.0), 0.0f, DRAWCENTER_MIDDLE_MIDDLE, true, 3);
+			else
+				this->m_listSprite[m_State]->Render(1, 3, CCamera::setPositionEntity(m_Position), vector2d(1.0, -1.0), 0.0f, DRAWCENTER_MIDDLE_MIDDLE, true, 3);
+		}
+		
 	}
 }

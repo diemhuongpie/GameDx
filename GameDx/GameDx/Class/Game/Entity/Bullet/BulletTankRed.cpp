@@ -1,8 +1,9 @@
 #include "BulletTankRed.h"
 
 
-CBulletTankRed::CBulletTankRed(float changeAngle)
+CBulletTankRed::CBulletTankRed(float changeAngle,bool dir)
 {
+	m_isLeft = dir;
 	m_changeAngle = changeAngle;
 	this->initEntity();
 }
@@ -23,7 +24,7 @@ bool CBulletTankRed::initEntity()
 	m_timeDestroy = 0;
 	m_Position = vector3d(100, 100, 0.5);
 	m_State = BULLETSTATE::BULLET_STATE_INVIS;
-	m_Velocity = vector2d(10, 10);
+	m_Velocity = vector2d(8,8);
 	m_Bounding = new CBox2D(m_Position.x, m_Position.y, 32, 32);
 	m_TagNode = "N";
 	
@@ -41,16 +42,29 @@ void CBulletTankRed::updateEntity(float deltaTime)
 	switch (m_changeAngle)
 	{
 	case 0:
-		m_angle = 5 * PI / 6;
+		if (m_isLeft)
+			m_angle = 5 * PI / 6;
+		else
+			m_angle = PI / 6;
+		
 		break;
 	case 1:
-		m_angle = PI;
+		if (m_isLeft)
+			m_angle = PI;
+		else
+			m_angle = 0;
 		break;
 	case 2:
-		m_angle = 7 * PI / 6;
+		if (m_isLeft)
+			m_angle = 7 * PI / 6;
+		else
+			m_angle = 33 * PI / 18;
 		break;
 	case 3:
-		m_angle = 4 * PI / 3;
+		if (m_isLeft)
+			m_angle = 4 * PI / 3;
+		else
+			m_angle = 15 * PI / 9;
 		break;
 	}
 

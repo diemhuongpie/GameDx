@@ -36,7 +36,8 @@ int CALLBACK WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR 
 		}
 		if (stateGame == GAMESTATE::STATE_RUN)
 		{
-			game->updateGame(CTimer::getInstance()->getElapedTime());
+			if ((CTimer::getInstance()->getElapedTime() >= 0) || (CTimer::getInstance()->getElapedTime() <= 20))
+				game->updateGame(CTimer::getInstance()->getElapedTime());
 			game->renderGame();
 		}
 
