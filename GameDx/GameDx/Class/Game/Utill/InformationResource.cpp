@@ -89,6 +89,14 @@ vector < const wchar_t* > CInfomationResource::InitBoomManResource()
 }
 /********************************************/
 
+/************RESOURCE FOR MANA******************/
+const wchar_t*	CInfomationResource::manaBar						= L"Resource//Image//Mana//bar_background_vertical.png";
+const wchar_t*	CInfomationResource::manaNormal						= L"Resource//Image//Mana//each_Mana_Normal.png";
+const wchar_t*	CInfomationResource::manaCut						= L"Resource//Image//Mana//each_Mana_Cut.png";
+const wchar_t*	CInfomationResource::manaBomb						= L"Resource//Image//Mana//each_Mana_Bomb.png";
+const wchar_t*	CInfomationResource::manaFire						= L"Resource//Image//Mana//each_Mana_Fire.png";
+/*************************************************/
+
 /************BULLET RESOURCE*****************/
 const wchar_t*		CInfomationResource::rockmanBullet				= L"Resource//Image//Game//Sprites//RockMan//Bullet//bullet_rockman.png";
 const wchar_t*		CInfomationResource::bombmanBullet				= L"Reousrce//Image//Game//Sprite//BossBoomMan//boom_boss.png";

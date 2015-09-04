@@ -76,4 +76,5 @@ vector<CollisionEvents*> CMovable::getListCollisionEvents()
 }
 
 void	CMovable::setSubHealthy(int health)
-{}
+{
+}

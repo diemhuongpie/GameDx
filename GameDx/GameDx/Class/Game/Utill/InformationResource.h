@@ -23,10 +23,18 @@ public:
 	vector<const wchar_t*>	m_linkResourceBombManList;
 	/*************************************************/
 
-	/************BULLET RESOURCE*******/
+	/************BULLET RESOURCE**********************/
 	static const wchar_t*	rockmanBullet;
 	static const wchar_t*	bombmanBullet;
 	static const wchar_t*	effectBumBomSkill;
+	/*************************************************/
+
+	/************RESOURCE FOR MANA******************/
+	static const wchar_t*	manaBar;
+	static const wchar_t*	manaNormal;
+	static const wchar_t*	manaCut;
+	static const wchar_t*	manaBomb;
+	static const wchar_t*	manaFire;
 	/*************************************************/
 
 	/************RESOURCE FOR SELECTSTAGE*******/

@@ -20,9 +20,9 @@ CPlayer::CPlayer(LPDIRECT3DDEVICE9)
 	
 }
 
-bool CPlayer::initEntity()
+bool			CPlayer::initEntity()
 {
-	m_heath							= 10;
+	m_heath							= SIZE_OF_MANA_MAX;
 	m_Position						= vector3d(100, 60, 0.5);
 	m_Velocity						= vector2d(GRAVITYSTART, GRAVITYSTART);
 	m_Accelero						= vector2d(0, 0.01);
@@ -34,11 +34,15 @@ bool CPlayer::initEntity()
 	this->loadSprite();
 	this->m_Bounding				= new CBox2D(0, 0, 0, 0);
 
+	m_ManaSkill.push_back(new ManaSkill(SKILL_ROCKMAN::ROCKMAN_NORMAL_SKILL, SIZE_OF_MANA_MAX));
+	m_listOfManaSprite.push_back(new CSprite(CInfomationResource::manaBar, 1, 1, 1, 0));
+	m_listOfManaSprite.push_back(new CSprite(CInfomationResource::manaNormal, 1, 1, 1, 0));
+
 
 	return true;
 }
 
-bool CPlayer::loadSprite()
+bool			CPlayer::loadSprite()
 {
 	this->m_RockManSpriteList[ROCKMAN_NORMAL_SKILL].push_back(new CSprite(CInfomationResource::getInstance()->InitRockManNormalResource().at(PLAYERSTATES::STATE_START), 1, 3, 3, 0));
 	this->m_RockManSpriteList[ROCKMAN_NORMAL_SKILL].push_back(new CSprite(CInfomationResource::getInstance()->InitRockManNormalResource().at(PLAYERSTATES::STATE_STAND), 1, 2, 2, 0));
@@ -84,17 +88,17 @@ bool CPlayer::loadSprite()
 	return true;
 }
 
-void CPlayer::resetObject()
+void			CPlayer::resetObject()
 {
 
 }
 
-void CPlayer::setColisWithStair(bool isCol)
+void			CPlayer::setColisWithStair(bool isCol)
 {
 	m_isColisWithStair = isCol;
 }
 
-void CPlayer::updateEntity(float deltaTime)
+void			CPlayer::updateEntity(float deltaTime)
 {
 	// update Pos by Camera
 	// SpagetiCode...But it's easy to implement.
@@ -317,9 +321,10 @@ void CPlayer::updateEntity(float deltaTime)
 	if (m_Position.y < CCamera::getInstance()->getPosisionCamera().y - BACKBUFFER_HEIGHT - 50)
 		setDead();
 	handlingDead();
+	//Update Mana. only update m_ManaSkill.back()
 }
 
-void CPlayer::updateEntity(CKeyBoard* device)
+void			CPlayer::updateEntity(CKeyBoard* device)
 {
 	m_listCollitionEvent.clear();
 
@@ -331,6 +336,12 @@ void CPlayer::updateEntity(CKeyBoard* device)
 
 	if (device->KeyPress(DIK_1))
 	{
+		for (int i = 0; i < m_ManaSkill.size() - 1; ++i)
+		{
+			m_ManaSkill.pop_back();
+		}
+		m_ManaSkill.push_back(new ManaSkill(SKILL_ROCKMAN::ROCKMAN_CUT_SKILL, SIZE_OF_MANA_MAX));
+		m_listOfManaSprite.push_back(new CSprite(CInfomationResource::manaCut, 1, 1, 1, 0));
 		this->m_listSprite.clear();
 		for (int i = 0; i < m_RockManSpriteList[ROCKMAN_CUT_SKILL].size(); ++i)
 			this->m_listSprite.push_back(this->m_RockManSpriteList[ROCKMAN_CUT_SKILL].at(i));
@@ -338,12 +349,24 @@ void CPlayer::updateEntity(CKeyBoard* device)
 
 	if (device->KeyPress(DIK_2))
 	{
+		for (int i = 0; i < m_ManaSkill.size() - 1; ++i)
+		{
+			m_ManaSkill.pop_back();
+		}
+		m_ManaSkill.push_back(new ManaSkill(SKILL_ROCKMAN::ROCKMAN_BOMB_SKILL, SIZE_OF_MANA_MAX));
+		m_listOfManaSprite.push_back(new CSprite(CInfomationResource::manaBomb, 1, 1, 1, 0));
 		this->m_listSprite.clear();
 		for (int i = 0; i < m_RockManSpriteList[ROCKMAN_BOMB_SKILL].size(); ++i)
 			this->m_listSprite.push_back(this->m_RockManSpriteList[ROCKMAN_BOMB_SKILL].at(i));
 	}
 	if (device->KeyPress(DIK_0))
 	{
+		for (int i = 0; i < m_ManaSkill.size() - 1; ++i)
+		{
+			m_ManaSkill.pop_back();
+		}
+		m_ManaSkill.push_back(new ManaSkill(SKILL_ROCKMAN::ROCKMAN_FIRE_SKILL, SIZE_OF_MANA_MAX));
+		m_listOfManaSprite.push_back(new CSprite(CInfomationResource::manaFire, 1, 1, 1, 0));
 		this->m_listSprite.clear();
 		for (int i = 0; i < m_RockManSpriteList[ROCKMAN_NORMAL_SKILL].size(); ++i)
 			this->m_listSprite.push_back(this->m_RockManSpriteList[ROCKMAN_NORMAL_SKILL].at(i));
@@ -727,7 +750,6 @@ void CPlayer::updateEntity(CKeyBoard* device)
 
 }
 
-
 void			CPlayer::updateEntity(CBaseEntity* entity)
 {
 	if (onSensor(entity->getPosition(), vector2d(5, 5), this->m_Position))
@@ -792,7 +814,29 @@ void			CPlayer::drawEntity()
 		break;
 	}
 
-	
+
+	for (int index = 0; index < m_ManaSkill.size(); ++index)
+	{
+			if (index == SKILL_ROCKMAN::ROCKMAN_NORMAL_SKILL)
+			{
+				m_listOfManaSprite.at(0)->Render(vector3d(16, 20, 0.5f),vector2d(1.0f, 1.0f), 0.0f, DRAWCENTER_LEFT_TOP, true, FPS);
+				for (int i = 0; i < m_ManaSkill.at(index)->m_SizeOfMana; ++i)
+				{
+					m_listOfManaSprite.at(1)->Render(vector3d(16, 72 - i * 2, 0.5f), vector2d(1.0f, 1.0f), 0.0f, DRAWCENTER_LEFT_TOP, true, FPS);
+				}
+			}
+
+			if (m_ManaSkill.at(index)->m_TypeOfMana == SKILL_ROCKMAN::ROCKMAN_CUT_SKILL || m_ManaSkill.at(index)->m_TypeOfMana == SKILL_ROCKMAN::ROCKMAN_BOMB_SKILL || m_ManaSkill.at(index)->m_TypeOfMana == SKILL_ROCKMAN::ROCKMAN_FIRE_SKILL)
+			{
+				m_listOfManaSprite.at(0)->Render(vector3d(25, 20, 0.5f), vector2d(1.0f, 1.0f), 0.0f, DRAWCENTER_LEFT_TOP, true, FPS);
+				for (int i = 0; i < m_ManaSkill.at(index)->m_SizeOfMana; ++i)
+				{
+					m_listOfManaSprite.at(m_ManaSkill.at(index)->m_TypeOfMana + 1)->Render(vector3d(25, 72 - i * 2, 0.5f), vector2d(1.0f, 1.0f), 0.0f, DRAWCENTER_LEFT_TOP, true, FPS);
+				}
+			}
+	}
+
+
 	CText::getInstace()->Draw(_itow(m_Position.x, new WCHAR[1], 10), vector3d(150, 50, 0.5), DEFAULT_FONT_COLOR, 12);
 	CText::getInstace()->Draw(_itow(m_Position.y, new WCHAR[1], 10), vector3d(200, 50, 0.5), DEFAULT_FONT_COLOR, 12);
 }
@@ -804,12 +848,12 @@ vector3d		CPlayer::getPosition()
 
 void			CPlayer::setDead()
 {
-	m_heath		= 0;
+	m_ManaSkill.at(SKILL_ROCKMAN::ROCKMAN_NORMAL_SKILL)->m_SizeOfMana = 0;
 }
 
 void			CPlayer::handlingDead()
 {
-	if (m_heath == 0)
+	if (m_ManaSkill.at(SKILL_ROCKMAN::ROCKMAN_NORMAL_SKILL)->m_SizeOfMana == 0)
 	{
 		CSceneManager::getInstance()->getScene().pop_back();
 		CSceneManager::getInstance()->getScene().push_back(new CGameOverScene());

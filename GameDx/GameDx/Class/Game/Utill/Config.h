@@ -20,6 +20,7 @@ class CBaseEntity;
 #define GRAVITY						0.15
 #define MOVESPEED					0.08
 #define GRAVITYSTART				0.02
+#define SIZE_OF_MANA_MAX			27
 
 #define DRAWCENTER_LEFT_TOP			1					
 #define DRAWCENTER_LEFT_MIDDLE		2			
@@ -249,6 +250,18 @@ struct CollisionEvents
 	{
 		m_CollisionDirection	= colDirect;
 		m_Entity				= entity;
+	}
+};
+
+struct ManaSkill
+{
+	int				m_TypeOfMana;
+	int				m_SizeOfMana;
+
+	ManaSkill(int typeOfMana, int sizeOfMana)
+	{
+		m_TypeOfMana			= typeOfMana;
+		m_SizeOfMana			= sizeOfMana;
 	}
 };
 

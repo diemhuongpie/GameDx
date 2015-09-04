@@ -38,6 +38,7 @@ public:
 protected:
 				vector2d					m_Velocity;
 				vector<CollisionEvents*>	m_listCollitionEvent;
+				vector<CSprite*>			m_listOfManaSprite;
 };
 
 #endif

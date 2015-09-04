@@ -32,7 +32,7 @@ public:
 	virtual	vector3d		getPosition()														override;
 	virtual bool			loadSprite()														override;
 	virtual void			resetObject()														override;
-
+	//virtual void			setSubHealthy(int healthy)											override;
 			void			setColisWithStair(bool);
 			void			setDead();
 			void			handlingDead();
@@ -44,7 +44,8 @@ protected:
 			vector2d					m_Accelero;
 			vector2d					m_Direction;
 
-			int							m_isColisWithStair;					
+			int							m_isColisWithStair;
+			vector<ManaSkill*>			m_ManaSkill;
 
 			/**************************************************************************************************/
 			// Stupid of thing: We built listColisionEvent to detect Colision.
