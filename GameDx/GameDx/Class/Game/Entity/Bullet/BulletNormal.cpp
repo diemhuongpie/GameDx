@@ -65,6 +65,10 @@ void		CBulletNormal::updateEntity(CKeyBoard* device)
 
 void		CBulletNormal::updateEntity(CBaseEntity* entity)
 {
+	if (entity->getTagNode() == "Enemy" && CBox2D::Intersect(entity->getBounding(), this->getBounding()))
+	{
+		entity->setSubHealthy(1);
+	}
 }
 
 void		CBulletNormal::drawEntity()
