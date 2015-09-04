@@ -166,6 +166,12 @@
     <Filter Include="Game\Entity\Children\Map\cpp">
       <UniqueIdentifier>{5764008a-e080-4aa2-bae2-62baf8c72520}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Items">
+      <UniqueIdentifier>{9f4d82bc-97d4-43ce-8fcf-7951c8255de9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Items\cpp">
+      <UniqueIdentifier>{aca28266-2180-4235-aefd-2f8a90f3b257}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Class\Framework\Timer.cpp">
@@ -324,6 +330,18 @@
     <ClCompile Include="Class\Game\Entity\Bullet\BulletFireMan.cpp">
       <Filter>Game\Entity\Children\Bullet\cpp</Filter>
     </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Items\BuffHP5.cpp">
+      <Filter>Game\Items\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Items\BuffHP20.cpp">
+      <Filter>Game\Items\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Items\ItemEntity.cpp">
+      <Filter>Game\Items\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Class\Game\Entity\Items\ItemManager.cpp">
+      <Filter>Game\Items\cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Class\Framework\Timer.h">
@@ -473,11 +491,9 @@
     <ClInclude Include="Class\Game\Entity\Tile\Tile.h">
       <Filter>Game\Entity\Children\Map</Filter>
     </ClInclude>
-    <ClInclude Include="Class\Game\Map\UtillMap.h" />
     <ClInclude Include="Class\Game\Entity\Bullet\BulletEnemy.h">
       <Filter>Game\Entity\Children\Bullet</Filter>
     </ClInclude>
-    <ClInclude Include="Class\Game\Map\UtillMap.h" />
     <ClInclude Include="Class\Game\Entity\Bullet\BulletTankRed.h">
       <Filter>Game\Entity\Children\Bullet</Filter>
     </ClInclude>
@@ -501,6 +517,18 @@
     </ClInclude>
     <ClInclude Include="Class\Game\Entity\Bullet\BulletFireMan.h">
       <Filter>Game\Entity\Children\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Items\BuffHP5.h">
+      <Filter>Game\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Items\BuffHP20.h">
+      <Filter>Game\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Items\ItemEntity.h">
+      <Filter>Game\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Game\Entity\Items\ItemManager.h">
+      <Filter>Game\Items</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

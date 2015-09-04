@@ -752,7 +752,7 @@ void			CPlayer::updateEntity(CKeyBoard* device)
 
 void			CPlayer::updateEntity(CBaseEntity* entity)
 {
-	if (onSensor(entity->getPosition(), vector2d(5, 5), this->m_Position))
+	if (onSensor(entity->getPosition(), vector2d(5, 8), this->m_Position))
 	{
 		if (entity->getTagNode() == "Stair")
 		{

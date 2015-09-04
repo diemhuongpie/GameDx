@@ -111,7 +111,7 @@ void	CCamera::NormalUpdate(vector3d	&positionEntity)
 
 void	CCamera::UpUpdate(vector3d &positionEntity)
 {
-	if (m_Position.y >= positionEntity.y + BACKBUFFER_HEIGHT)
+	if (m_Position.y >= positionEntity.y + BACKBUFFER_HEIGHT + 8)
 		m_StateCamera = CAMERASTATE::CAMERA_STOP;
 	else
 		m_Position.y += 2;
@@ -123,7 +123,7 @@ void	CCamera::UpUpdate(vector3d &positionEntity)
 
 void	CCamera::DownUpdate(vector3d &positionEntity)
 {
-	if (m_Position.y <= positionEntity.y + 10)
+	if (m_Position.y <= positionEntity.y + 8.)
 		m_StateCamera = CAMERASTATE::CAMERA_STOP;
 	else
 		m_Position.y -= 2;
@@ -189,7 +189,11 @@ void		CCamera::checkStateCamera(vector3d positionEntity)
 				else{}
 			else if (m_StateCamera != CAMERASTATE::CAMERA_X)
 				if (m_ListPathCamera.at(CMapmanager::getInstance()->getCurrentIndexMap()).at(i)->m_styleCamera == CAMERASTATE::CAMERA_X)
+				{
+					//m_Position.x = m_SizeForState.y;
+					m_Position.y = m_SizeForState.z;
 					m_StateCamera = m_ListPathCamera.at(CMapmanager::getInstance()->getCurrentIndexMap()).at(i)->m_styleCamera;
+				}
 
 		}
 		/*if (positionEntity.y > m_Position.y + 30)

@@ -41,7 +41,34 @@ void	MapData::readTileMap(wstring filePath)
 	while (fs)
 	{
 		fs >> type >> posX >> posY >> posWidth >> posHeight;
-		if (type != L"C" && type != L"L")
+		if (!type.substr(1,1).compare((wchar_t*)(L"E")))
+		{
+			//if (type == L"0E")
+			//	m_listEntity.push_back(new CEnemyTankRed(vector3d(posX, posY, 0.5), false));					// false
+			if (type == L"1E")
+				m_listEntity.push_back(new CEnemyBubbleBlue(vector3d(posX, posY, 0.5)));
+			/*if (type == L"2E")
+				m_listEntity.push_back(new CEnemyBubbleBlue(vector3d(posX, posY, 0.5)));*/
+			if (type == L"3E")
+				m_listEntity.push_back(new CEnemyInkBlue(vector3d(posX, posY, 0.5)));
+			/*if (type == L"4E")
+				m_listEntity.push_back(new CEnemyEyeRed(vector3d(posX, posY, 0.5)));
+			if (type == L"5E")
+				m_listEntity.push_back(new CEnemyBubbleBlue(vector3d(posX, posY, 0.5)));*/
+			if (type == L"6E")
+				m_listEntity.push_back(new CEnemyBall(vector3d(posX, posY, 0.5)));
+			if (type == L"7E")
+				m_listEntity.push_back(new EnemyRobotRed(vector3d(posX, posY, 0.5)));
+			/*if (type == L"8E")
+				m_listEntity.push_back(new CEnemyMachineAutoOrange(vector3d(posX, posY, 0.5)));
+			if (type == L"9E")
+				m_listEntity.push_back(new CEnemyBubbleBlue(vector3d(posX, posY, 0.5)));*/
+			if (type == L"10E")
+				m_listEntity.push_back(new CBossCutMan(vector3d(posX, posY, 0.5)));
+
+			m_listTile.at(m_listTile.size() - 1)->setTagNode("Enemy");
+		}
+		else if (type != L"C" && type != L"L")
 		{
 			if (type == L"0C")
 				m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//1.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 0));
@@ -62,7 +89,7 @@ void	MapData::readTileMap(wstring filePath)
 			if (type == L"8C")
 				m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//9.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 8));
 			if (type == L"9C")
-				m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//10.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 9));
+				m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//9.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 9));
 			if (type == L"10C")
 				m_listTile.push_back(new CTile(new CSprite((filePath + L"resource//11.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 10));
 			if (type == L"11C")
@@ -125,8 +152,8 @@ void	MapData::readTileMap(wstring filePath)
 		}
 
 		if (type == L"L")
-		{
-			m_listCollisionTile.push_back(new CTile(new CSprite((filePath + L"resource//10.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 36));
+		{      
+			m_listCollisionTile.push_back(new CTile(new CSprite((filePath + L"resource//L.png"), 1, 1, 1, 0), vector3d(posX, posY, 0.5f), new CBox2D(posX, posY, posWidth, posHeight), 36));
 			m_listCollisionTile.at(m_listCollisionTile.size() - 1)->setTagNode("Stair");
 		}
 	}

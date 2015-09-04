@@ -12,6 +12,7 @@ public:
 	bool initEntity();
 	void updateEntity(float deltaTime);
 	void updateEntity(CBaseEntity*, CBaseEntity *);
+	void updateEntity(CBaseEntity*){};
 	void updateEntity(CKeyBoard *device);
 	void updateEntity(RECT rectCamera);
 	void drawEntity();

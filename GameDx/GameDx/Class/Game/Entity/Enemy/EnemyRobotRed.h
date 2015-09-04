@@ -7,11 +7,12 @@
 class EnemyRobotRed : public CMovable
 {
 public:
-	EnemyRobotRed();
+	EnemyRobotRed(vector3d);
 	~EnemyRobotRed();
 	bool initEntity();
 	void updateEntity(float deltaTime);
 	void updateEntity(CKeyBoard *device);
+	void updateEntity(CBaseEntity*){};
 	void updateEntity(RECT rectCamera);
 	void drawEntity();
 	void resetObject();

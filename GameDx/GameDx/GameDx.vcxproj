@@ -124,6 +124,10 @@
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyPartBoomBlue.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyRobotRed.h" />
     <ClInclude Include="Class\Game\Entity\Enemy\EnemyTankRed.h" />
+    <ClInclude Include="Class\Game\Entity\Items\BuffHP20.h" />
+    <ClInclude Include="Class\Game\Entity\Items\BuffHP5.h" />
+    <ClInclude Include="Class\Game\Entity\Items\ItemEntity.h" />
+    <ClInclude Include="Class\Game\Entity\Items\ItemManager.h" />
     <ClInclude Include="Class\Game\Entity\MovableEntity.h" />
     <ClInclude Include="Class\Game\Entity\Player\Player.h" />
     <ClInclude Include="Class\Game\Entity\StaticEntity.h" />
@@ -131,7 +135,6 @@
     <ClInclude Include="Class\Game\Game\Game.h" />
     <ClInclude Include="Class\Game\Map\MapData.h" />
     <ClInclude Include="Class\Game\Map\MapManager.h" />
-    <ClInclude Include="Class\Game\Map\UtillMap.h" />
     <ClInclude Include="Class\Game\Scene\BaseScene.h" />
     <ClInclude Include="Class\Game\Scene\GameOverScene.h" />
     <ClInclude Include="Class\Game\Scene\IntroStageScene.h" />
@@ -182,6 +185,10 @@
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyPartBoomBlue.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyRobotRed.cpp" />
     <ClCompile Include="Class\Game\Entity\Enemy\EnemyTankRed.cpp" />
+    <ClCompile Include="Class\Game\Entity\Items\BuffHP20.cpp" />
+    <ClCompile Include="Class\Game\Entity\Items\BuffHP5.cpp" />
+    <ClCompile Include="Class\Game\Entity\Items\ItemEntity.cpp" />
+    <ClCompile Include="Class\Game\Entity\Items\ItemManager.cpp" />
     <ClCompile Include="Class\Game\Entity\MovableEntity.cpp" />
     <ClCompile Include="Class\Game\Entity\Player\Player.cpp" />
     <ClCompile Include="Class\Game\Entity\StaticEntity.cpp" />
