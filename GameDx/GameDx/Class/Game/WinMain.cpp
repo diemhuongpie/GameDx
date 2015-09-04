@@ -38,6 +38,10 @@ int CALLBACK WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR 
 		{
 			if ((CTimer::getInstance()->getElapedTime() >= 0) || (CTimer::getInstance()->getElapedTime() <= 20))
 				game->updateGame(CTimer::getInstance()->getElapedTime());
+
+			OutputDebugString(L"TIME: ");
+			OutputDebugString(_itow(CTimer::getInstance()->getElapedTime(), new WCHAR[1], 10));
+			OutputDebugString(L"\n");
 			game->renderGame();
 		}
 

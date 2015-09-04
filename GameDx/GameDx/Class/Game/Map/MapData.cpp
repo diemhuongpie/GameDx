@@ -20,6 +20,7 @@ void	MapData::readMapInfor(wstring filePath)
 {
 	readTileMap(filePath);
 	CQuadTree::getInstance()->DeviceObjectToTree(m_listTile);
+	CQuadTree::getInstance()->DeviceObjectToTree(m_listEntity);
 	CQuadTree::getInstance()->DeviceObjectToTree(m_listCollisionTile);
 	vector<CBaseEntity*> results;
 
@@ -46,7 +47,7 @@ void	MapData::readTileMap(wstring filePath)
 			//if (type == L"0E")
 			//	m_listEntity.push_back(new CEnemyTankRed(vector3d(posX, posY, 0.5), false));					// false
 			if (type == L"1E")
-				m_listEntity.push_back(new CEnemyBubbleBlue(vector3d(posX, posY, 0.5)));
+				m_listEntity.push_back(new CEnemyBubbleBlue(vector3d(posX - 100, posY, 0.5)));
 			/*if (type == L"2E")
 				m_listEntity.push_back(new CEnemyBubbleBlue(vector3d(posX, posY, 0.5)));*/
 			if (type == L"3E")

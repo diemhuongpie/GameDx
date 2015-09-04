@@ -36,10 +36,10 @@ private:
 			CEnemyMachineAutoOrange*m_EnemyAutoOrange;
 			CEnemyEyeRed*			m_EnemyEyeRed;
 			CEnemyBall*				m_EnemyBall;
-			CEnemyBubbleBlue*		m_EnemyBubbleBlue;
+			//CEnemyBubbleBlue*		m_EnemyBubbleBlue;
 			CEnemyCut*				m_EnemyCut;
 			CEnemyBoomBlue*			m_boomBlue;
-
+			CCutManWeapon*			m_Weapon;
 			CBossFireMan*			m_fireMan;
 
 };

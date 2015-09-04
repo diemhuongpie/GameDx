@@ -855,11 +855,11 @@ void			CPlayer::setDead()
 
 void			CPlayer::handlingDead()
 {
-	if (m_ManaSkill.at(SKILL_ROCKMAN::ROCKMAN_NORMAL_SKILL)->m_SizeOfMana == 0)
+	/*if (m_ManaSkill.at(SKILL_ROCKMAN::ROCKMAN_NORMAL_SKILL)->m_SizeOfMana == 0)
 	{
 		CSceneManager::getInstance()->getScene().pop_back();
 		CSceneManager::getInstance()->getScene().push_back(new CGameOverScene());
-	}
+	}*/
 
 		
 }

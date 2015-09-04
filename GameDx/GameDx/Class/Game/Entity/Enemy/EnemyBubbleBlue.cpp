@@ -88,13 +88,6 @@ void CEnemyBubbleBlue::updateEntity(RECT rectCamera)
 
 void CEnemyBubbleBlue::updateEntity(float deltaTime)
 {
-	OutputDebugString(L"VELX: ");
-	OutputDebugString(_itow(m_Position.x, new WCHAR[1], 10));
-	OutputDebugString(L"\n");
-	OutputDebugString(L"VELY: ");
-	OutputDebugString(_itow(m_Velocity.x, new WCHAR[1], 10));
-	OutputDebugString(L"\n");
-
 	if (m_isDead == false)
 	{
 		if (m_checkState)

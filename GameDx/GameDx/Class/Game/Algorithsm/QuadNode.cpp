@@ -117,9 +117,14 @@ void CQuadNode::RenderNode()
 			m_Node[3]->RenderNode();
 	}
 
+
+
 	for (int i = 0; i < m_EntityList.size(); ++i)
 	{
+		m_EntityList.at(i)->updateEntity(CTimer::getInstance()->getElapedTime());
 		m_EntityList.at(i)->drawEntity();
+		if (m_EntityList.at(i)->getTagNode() == "1E")
+			return;
 	}
 }
 
@@ -142,8 +147,7 @@ void CQuadNode::DetectCollisionInViewport(CMovable* movableEntity, float deltaTi
 		movableEntity->getListCollisionEvents().clear();
 		for (int i = 0; i < m_EntityList.size(); ++i)
 		{
-				movableEntity->updateEntity(m_EntityList.at(i));
+			movableEntity->updateEntity(m_EntityList.at(i));
 		}
-
 	}
 }

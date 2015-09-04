@@ -15,7 +15,7 @@ CPlayScene::~CPlayScene()
 	SAFE_RELEASE(m_EnemyAutoOrange);
 
 	SAFE_RELEASE(m_EnemyBall);
-	SAFE_RELEASE(m_EnemyBubbleBlue);
+	//SAFE_RELEASE(m_EnemyBubbleBlue);
 	SAFE_RELEASE(m_EnemyCut);
 }
 
@@ -29,13 +29,13 @@ bool	CPlayScene::initScene()
 	m_EnemyAutoOrange	= new CEnemyMachineAutoOrange(D3DXVECTOR3(150, 190, 0),false);
 	m_EnemyEyeRed		= new CEnemyEyeRed(D3DXVECTOR3(50, 150, 0), true, true, false);
 	m_EnemyBall			 = new CEnemyBall(D3DXVECTOR3(150, 170, 0));
-	m_EnemyBubbleBlue = new CEnemyBubbleBlue(D3DXVECTOR3(190, 170, 0));
+	//m_EnemyBubbleBlue = new CEnemyBubbleBlue(D3DXVECTOR3(190, 170, 0));
 
 	m_boomBlue			= new CEnemyBoomBlue(D3DXVECTOR3(70, 200, 0));
 
 
 
-	m_Weapon = new CCutManWeapon(m_EnemyTankRed->getPosition(), m_Player->getPosition());
+	m_Weapon = new CCutManWeapon(m_EnemyTankRed->getPosition());
 
 	m_fireMan = new CBossFireMan(vector3d(190, 170, 0), m_Player->getPosition());
 
@@ -59,8 +59,8 @@ void	CPlayScene::updateScene(double deltaTime)
 	m_fireMan->updateEntity(deltaTime);
 	m_EnemyEyeRed->updateEntity(deltaTime);
 	m_fireMan->updateEntity(m_Player);
-	m_EnemyBubbleBlue->updateEntity(deltaTime);
-	m_EnemyBubbleBlue->updateEntity(m_Player);
+	//m_EnemyBubbleBlue->updateEntity(deltaTime);
+	//m_EnemyBubbleBlue->updateEntity(m_Player);
 	
 	// Update Bullet
 	for (int i = 0; i < TYPE_BULLET::NUMBER_OF_TYPE_BULLET; ++i)
@@ -90,7 +90,7 @@ void	CPlayScene::updateScene(CKeyBoard* keyboard)
 	m_Player			->updateEntity(keyboard);
 	m_EnemyBall			->updateEntity(keyboard);
 	m_boomBlue			->updateEntity(keyboard);
-	m_EnemyBubbleBlue	->updateEntity(keyboard);
+	//m_EnemyBubbleBlue	->updateEntity(keyboard);
 	if (keyboard->KeyPress(DIK_RETURN))
 	{
 		CSceneManager::getInstance()->getScene().push_back(new CPopUpScene());
@@ -108,7 +108,7 @@ void	CPlayScene::renderScene()
 	m_EnemyAutoOrange	->drawEntity();
 	m_boomBlue			->drawEntity();
 	m_fireMan			->drawEntity();
-	m_EnemyBubbleBlue	->drawEntity();
+	//m_EnemyBubbleBlue	->drawEntity();
 
 	
 	for (int i = 0; i < TYPE_BULLET::NUMBER_OF_TYPE_BULLET; ++i)
